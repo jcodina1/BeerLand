@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     stock: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.INTEGER,
     },
     description: {
       type: DataTypes.TEXT,
@@ -29,6 +29,9 @@ module.exports = (sequelize) => {
     gluten: {
       type: DataTypes.BOOLEAN,
     },
+    img:{
+      type:DataTypes.ARRAY(DataTypes.STRING)
+    }
   });
 };
 //AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA
