@@ -1,35 +1,38 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getAllBeers from '../../redux/actions/index';
-import { BeerCard } from '../BeerCard/BeerCard'
-import { Pagination } from '../Pagination/Pagination'
+import { getAllBeers } from '../../redux/actions';
+
+import  BeerCard  from '../BeerCard/BeerCard'
+import  Pagination  from '../Pagination/Pagination'
 
 export default function ShowBeers(){
     const dispatch = useDispatch();
-    const beers = useSelector(state => state.beers);
+    const birras = useSelector(state => state.allBeers);
+    console.log(birras)
     const styles = useSelector(state => state.styles);
     const [ currentPage, setCuerrentPage ] = useState(1);
     const [ beerPerPage, setBeerPerPage ] = useState(10);
     const lastBeer = currentPage * beerPerPage;
     const firstBeer = lastBeer - beerPerPage;
-    const currentBeer = beers.slice(firstBeer, lastBeer);
+    const currentBeer = birras.slice(firstBeer, lastBeer);
     const page = (pageNumber) => {setCuerrentPage(pageNumber)};
     
     useEffect(() => {
-        dispatch(getBeers);
-
-    })
+        dispatch(getAllBeers())
+    }, [dispatch])
 
     return(
         <div>
             {currentBeer && currentBeer.map( beer => {return(
-                <BeerCard name={beer.name}
-                    brewery={beer.brewery}
-                    img={beer.img ? beer.img : <img alt='https://us.123rf.com/450wm/tawhy/tawhy1712/tawhy171202174/92419321-botella-rota-aislada-sobre-fondo-blanco.jpg?ver=6'/>}
-                    style={beer.style}
-                    origin={beer.origin}/>
+                <BeerCard
+                 name={beer.name}
+                description={beer.description}
+                image={beer.image ? beer.image : <img alt='https://us.123rf.com/450wm/tawhy/tawhy1712/tawhy171202174/92419321-botella-rota-aislada-sobre-fondo-blanco.jpg?ver=6'/>}
+                    // style={beer.style}
+                    // origin={beer.origin}
+                    />
             )})}
-            <Pagination beerPerPage={beerPerPage} beers={beers} currentBeer={currentBeer} page={page} />
+            <Pagination beerPerPage={beerPerPage} birras={birras} currentBeer={currentBeer} page={page} />
         </div>
     );
 }

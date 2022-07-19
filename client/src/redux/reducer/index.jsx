@@ -1,5 +1,3 @@
-import { GET_BEERS } from '../const'
-
 const initialState = {
   beers: [],
   allBeers: [],
@@ -9,7 +7,9 @@ const initialState = {
 
 function Reducer(state = initialState, action) {
   switch (action.type) {
-    case GET_BEERS:
+
+
+    case 'GET_BEERS':
       return {
         ...state,
         allBeers: action.payload,
