@@ -1,0 +1,28 @@
+.footer{
+    background-color: rgb(78, 20, 20);
+    height: 15vh;
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
+    padding: 20px 50px 20px 50px;
+    justify-content: space-between;
+    
+
+}
+.info{
+    color: bisque;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: medium;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   
+
+}
+.link{
+    text-decoration: none;
+    color: bisque;
+}

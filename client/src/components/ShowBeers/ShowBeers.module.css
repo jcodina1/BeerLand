@@ -4,7 +4,7 @@
     height: auto;
     flex-direction: column;
     gap: 40px;
-    max-height: 180vh;
+    max-height: 140vh;
     min-height: 100vh;
 }
 .cardsBox{

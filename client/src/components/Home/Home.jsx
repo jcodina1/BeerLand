@@ -3,6 +3,7 @@ import { React, useState, useEffect } from "react";
 import NavBar from "../NavBar/NavBar";
 import ShowBeers from '../ShowBeers/ShowBeers'
 import style from '../Home/Home.module.css'
+import Footer from '../Footer/Footer'
 
 export default function Home() {
   /* const [userType, setUserType] = useState('') */
@@ -15,6 +16,10 @@ export default function Home() {
       <div >
         <ShowBeers />
       </div>
+      <div>
+        <Footer />
+      </div>
     </div>
+
   );
 }
