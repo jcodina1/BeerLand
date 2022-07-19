@@ -70,8 +70,8 @@ const {Beer,Seller} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-// Seller.hasMany(Beer)
-// Beer.belongsTo(Seller,{foreignKey: 'id'})
+Seller.hasMany(Beer,{ foreignKey: 'sellerId',sourceKey: "id"})
+Beer.belongsTo(Seller,{ foreignKey: 'sellerId',targetId: "id"})
 // Model.belongsToMany(otherModel, { through: 'activities_countries' });
 
 module.exports = {

@@ -4,8 +4,8 @@ const { Beer } = require('../db.js')
 
 async function createdAllBeers(req, res, next) {
     try {
-        const beers = await axios.get('https://beerland.docuraillustration.com/api/cervezas-lider.json')
-        const beersData = beers.data.cervezas
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beersData = beers.data
         await beersData.forEach((b) => {
             Beer.findOrCreate({
                 where: {

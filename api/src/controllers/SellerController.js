@@ -1,15 +1,39 @@
-const axios= require('axios')
-const Seller = require('../models/Seller')
+const axios = require('axios')
+const { Seller } = require('../db.js')
 
-async function getAllSeller(req,res,next){
-try {
-    const sellers= await Seller.findAll()
-    res.status(200).send(sellers)
-} catch (error) {
-    next(error)
+async function postSellers(req, res, next) {
+    const { name,description,  mail, password,dni } = req.body;
+    try {
+      let newSeller = await Seller.create(
+        {
+          name,
+          description,
+          mail,
+          password,
+          dni
+          
+        },
+        {
+          fields: ["name","description", "mail","password","dni"],
+        }
+      );
+      
+       return res.json(newSeller);
+    } catch (error) {
+        next(error)
+    }
 }
+async function getAllSellers(req,res,next){
+    try {
+        let sellerdb= await Seller.findAll({
+            
+        })
+        res.status(200).json(sellerdb) 
+    } catch (error) {
+        next(error)
+    }
 }
-
-module.exports={
-    getAllSeller
+module.exports = {
+    getAllSellers,
+    postSellers
 }
