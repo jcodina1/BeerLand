@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modal from "../Modal/Modal";
+import Modal from "./LandingModal";
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
