@@ -26,13 +26,23 @@ async function createdAllBeers(req, res, next) {
 
 
 async function getAllBeers(req, res, next) {
+    const { name } = req.query
     try {
-        const beers = await Beer.findAll()
-        res.send(beers)
+        const BeersDb = await Beer.findAll()
+        if (name) {
+            let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            BeerName.length ?
+                res.status(200).json(BeerName) :
+                res.status(404).send('Beer not found');
+        } else {
+            res.status(200).send(BeersDb)
+        }
+
     } catch (error) {
         next(error)
     }
 }
+
 
 
 /* const getBeerID =  */
@@ -57,7 +67,6 @@ async function postAllBeers(req, res, next) {
             where: { name: { [Op.iLike]: `%${name}%` } },
             defaults: {
                 name: name,
-
             }
         })
         if (created === true) {
