@@ -1,0 +1,6 @@
+.homeContainer{
+    height: 100%;
+    width: 100%;
+    flex: inherit;
+    flex-direction: column;
+}
