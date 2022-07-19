@@ -1,12 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBeers, getBeerDetail, removeDetail } from "../../redux/actions";
+import { getBeerDetail, removeDetail } from "../../redux/actions/index";
 import { Link, useParams } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function BeerDetail(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   const beer = useSelector((state) => state.detail);
   console.log(beer);
@@ -19,7 +21,7 @@ export default function BeerDetail(props) {
   return (
     <div>
       {beer.length === 0 ? (
-        <div>{/* <Loader /> */}</div>
+        <div>(<Loading setLoading={setLoading}/>)</div>
       ) : (
         <div>
           <div>

@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Pagination({ beerPerPage, birras, page, currentBeer }){
+export default function Pagination({ beerPerPage, allBeers, page, currentBeer }){
     const pageNumber = [];
 
-     for(let i=1; i<=Math.ceil(birras.length/beerPerPage); i++){
+     for(let i=1; i<=Math.ceil(allBeers.length/beerPerPage); i++){
         //for(let i=1; i<=18; i++){
         pageNumber.push(i)
     }
