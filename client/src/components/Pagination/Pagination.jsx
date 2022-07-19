@@ -1,18 +1,19 @@
-import React from "react";
+import React from 'react';
 
-export default function Pagination({ allCountries, pagination }) {
-  const pages = [];
-  for (let i = 1; i <= allCountries / 10; i++) {
-    pages.push(i);
-  }
-  return (
-    <div>
-      <ul>
-        {pages &&
-          pages?.map((n) => {
-            return <button onClick={() => pagination(n)}>{n}</button>;
-          })}
-      </ul>
-    </div>
-  );
+export default function Paginated({ beerPerPage, beers, page, currentBeer }){
+    const pageNumber = [];
+
+    for(let i=1; i<=Math.ceil(beers/beerPerPage); i++){
+        pageNumber.push(i)
+    }
+
+    return (
+        <nav>
+            <ul>
+                {pageNumber && pageNumber.map(number => (
+                        <button key={number} onClick={() => page(number)}>{number}</button>
+                ))}
+            </ul>
+        </nav>
+    )
 }

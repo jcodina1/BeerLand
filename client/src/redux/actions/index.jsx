@@ -1,11 +1,16 @@
 import axios from "axios";
+import {GET_BEERS, ALL_API} from '../const'
 
-export function loadProducts() {
+export function getAllBeers() {
   return async function (dispatch) {
-    const jsonBeers = await axios.get("http://localhost:3001/beers");
-    return dispatch({
-      type: "GET_BEERS",
-      payload: jsonBeers.data,
-    });
+    const allBeers = await axios.get(ALL_API)
+    .then((response) => {
+      return dispatch({
+        type: GET_BEERS,
+        payload: allBeers.data,
+      });
+    }).catch((error)=>{
+      console.log(error)
+    })
   };
 }

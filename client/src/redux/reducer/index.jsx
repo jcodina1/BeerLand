@@ -1,20 +1,22 @@
-/* eslint-disable no-fallthrough */
+import { GET_BEERS } from '../const'
+
 const initialState = {
-  beer: [],
   beers: [],
+  allBeers: [],
   detail: {},
+  userType: []
 };
 
-function rootReducer(state = initialState, action) {
+function Reducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_BEERS":
+    case GET_BEERS:
       return {
         ...state,
-        activities: action.payload,
+        allBeers: action.payload,
       };
 
     default:
       return { ...state };
   }
 }
-export default rootReducer;
+export default Reducer;
