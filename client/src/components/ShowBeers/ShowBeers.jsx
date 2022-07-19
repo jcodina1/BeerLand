@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import getBeers from '../../redux/actions/index';
+import getAllBeers from '../../redux/actions/index';
 import { BeerCard } from '../BeerCard/BeerCard'
 import { Pagination } from '../Pagination/Pagination'
 
@@ -17,7 +17,7 @@ export default function ShowBeers(){
     
     useEffect(() => {
         dispatch(getBeers);
-        
+
     })
 
     return(

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
 
-export default function Card({ name, brewery, img, style, origin}) {
+export default function BeerCard({ name, brewery, img, style, origin}) {
   
   return (
     <div>
