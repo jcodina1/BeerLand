@@ -44,6 +44,7 @@ async function getAllBeers(req, res, next) {
 }
 
 
+
 const getBeerID = async function getBeerID(req, res, next) {
     const { id } = req.params
     try {
@@ -65,7 +66,6 @@ async function postAllBeers(req, res, next) {
             where: { name: { [Op.iLike]: `%${name}%` } },
             defaults: {
                 name: name,
-
             }
         })
         if (created === true) {
