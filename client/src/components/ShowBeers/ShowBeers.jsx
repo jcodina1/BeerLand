@@ -25,6 +25,7 @@ export default function ShowBeers(){
         <div>
             {currentBeer && currentBeer.map( beer => {return(
                 <BeerCard
+                key={beer.id}
                  name={beer.name}
                 description={beer.description}
                 image={beer.image ? beer.image : <img alt='https://us.123rf.com/450wm/tawhy/tawhy1712/tawhy171202174/92419321-botella-rota-aislada-sobre-fondo-blanco.jpg?ver=6'/>}
