@@ -34,6 +34,21 @@ async function getAllBeers(req,res,next){
     }
 }
 
+
+const getBeerID = async function getBeerID(req, res, next) {
+    const { id } = req.params
+    try {
+        const Beerid = await Beer.findOne({ where: { id: id } })
+        console.log(Beerid)
+        res.status(200).send(Beerid)
+
+    } catch (error) {
+        res.send('Beer not found')
+
+    }
+}
+
+
 async function postAllBeers(req, res, next) {
     const { name, stock, description, origin, seller, brewery, vegan, gluten, img } = req.body
     try {
@@ -55,5 +70,6 @@ async function postAllBeers(req, res, next) {
 module.exports = {
     createdAllBeers,
     postAllBeers,
-    getAllBeers
+    getAllBeers,
+    getBeerID
 }
