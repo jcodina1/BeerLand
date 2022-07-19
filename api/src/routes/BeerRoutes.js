@@ -1,13 +1,13 @@
 const { Router } = require('express');
-const { getAllBeers, getBeerID } = require('../controllers/BeerController');
+const { getAllBeers, getBeerID, updateBeer, deleteBeer } = require('../controllers/BeerController');
 
+const router = Router();
 
-
-const router=Router();
-
-router.get('/:id',getBeerID)
-router.get('/',getAllBeers)
+router.get('/id/:id', getBeerID)
+router.get('/', getAllBeers)
 router.post('/')
+router.put('/update/:id', updateBeer)
+router.delete('/', deleteBeer)
 
 
-module.exports=router;
+module.exports = router;

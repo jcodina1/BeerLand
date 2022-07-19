@@ -2,7 +2,7 @@ const axios= require('axios')
 
 async function getAllBuyers(req,res,next){
 try {
-    res.status(200).send('Esta es la ruta para obtener todas los compradores')
+    res.status(200).send('This is the route to get all buyers')
 } catch (error) {
     next(error)
 }
