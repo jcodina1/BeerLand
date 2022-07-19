@@ -25,14 +25,64 @@ async function createdAllBeers(req, res, next) {
 }
 
 
-async function getAllBeers(req,res,next){
+async function getAllBeers(req, res, next) {
+    const { name } = req.query
     try {
-        const beers= await Beer.findAll()
-        res.send(beers)
+        const BeersDb = await Beer.findAll()
+        if (name) {
+            let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            BeerName.length ?
+                res.status(200).json(BeerName) :
+                res.status(404).send('Beer not found');
+        } else {
+            res.status(200).send(BeersDb)
+        }
+
     } catch (error) {
         next(error)
     }
 }
+
+
+
+
+ const getBeerName = async function (req,res,next) {
+//     const {name} = req.query
+//     try {
+//         let BeersDb = await getAllBeers();
+//         console.log(BeersDb)
+//         let BeerName = BeersDb.filter( el => el.name.toLowerCase().includes(name.toLowerCase()))
+//        console.log(BeerName)
+//         res.status(200).json(BeerName) 
+//     } catch (error) {
+//         res.send('Beer not found')  
+//     }
+ }
+
+// const getBeerName = async function (req,res,next) {
+//     const {name} = req.query
+//     try {
+//         const db = await Beer.findOne({
+//             where: { name: name },
+//         })
+//         const beerDb = [
+//             {
+//                 id: db.id,
+//                 name: db.name,
+//                 description: db.description,
+//                 regularPrice:db.regularPrice,
+//                 currentPrice:db.currentPrice,
+//                 image:db.image
+//             },
+//         ];
+        
+//         res.status(200).send(beerDb)  
+//     } catch (error) {
+//         res.send('Beer not found')
+        
+//     }
+    
+// }
 
 
 const getBeerID = async function getBeerID(req, res, next) {
