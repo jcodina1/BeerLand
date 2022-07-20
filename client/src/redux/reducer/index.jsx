@@ -1,9 +1,7 @@
 
 import {
-  GET_BEERS,
-  SEARCH_BAR,
-  GET_BEER_DETAIL,
-  REMOVE_DETAIL,
+  GET_BEERS, GET_BEER_DETAIL,
+  SEARCH_BAR, REMOVE_DETAIL, POST_BEER
 } from "../const";
 
 
@@ -36,11 +34,15 @@ function Reducer(state = initialState, action) {
         detail: [],
       };
 
-
     case SEARCH_BAR:
       return {
         ...state,
         allBeers: action.payload,
+      };
+
+    case POST_BEER:
+      return {
+        ...state
       };
 
     default:
