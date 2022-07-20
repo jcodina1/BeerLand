@@ -1,4 +1,4 @@
-import { GET_BEERS, SEARCH_BAR  } from "../const";
+import { GET_BEERS, SEARCH_BAR, GET_BEER_DETAIL  } from "../const";
 
 const initialState = {
   beers: [],
@@ -17,6 +17,13 @@ function Reducer(state = initialState, action) {
         allBeers: action.payload,
         beers: action.payload
       };
+
+     
+      case  GET_BEER_DETAIL:
+        return {
+          ...state,
+          detail:action.payload
+        }
      
     case SEARCH_BAR:
       return {

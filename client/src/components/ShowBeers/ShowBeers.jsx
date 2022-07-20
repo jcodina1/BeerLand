@@ -29,6 +29,7 @@ export default function ShowBeers() {
                     {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading}/>)</span> : currentBeer?.map(beer => {
                         return (
                             <BeerCard
+                                id={beer.id}
                                 key={beer.id}
                                 name={beer.name}
                                 description={beer.description}
