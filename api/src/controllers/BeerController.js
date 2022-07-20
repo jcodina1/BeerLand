@@ -29,13 +29,7 @@ async function createdAllBeers(req, res, next) {
 async function getAllBeers(req, res, next) {
     const { name } = req.query
     try {
-        if (name) {
-            let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
-            BeerName.length ?
-                res.status(200).json(BeerName) :
-                res.status(404).send('Beer not found');
-            } else {
-            const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
         const beersData = beers.data.cervezas
         await beersData.forEach((b) => {
             Beer.findOrCreate({
@@ -49,8 +43,17 @@ async function getAllBeers(req, res, next) {
                 }
             })
         })
-            const BeersDb = await Beer.findAll()
-            res.status(200).send(BeersDb)
+        const BeersDb = await Beer.findAll()
+        if (name) {
+            let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            BeerName.length ?
+                res.status(200).json(BeerName) :
+                res.status(404).send('Beer not found');
+            } else {
+           
+              const BeersDb = await Beer.findAll()
+          
+              res.status(200).send(BeersDb)
         }
     } catch (error) {
         next(error)

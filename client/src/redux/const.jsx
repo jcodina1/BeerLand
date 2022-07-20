@@ -1,7 +1,7 @@
-export const ALL_API = 'https://localhost:3001/beer';
-export const ALL_ID = 'https://localhost:3001/beer/id/';
+export const ALL_API = 'http://localhost:3001/beer';
+export const ALL_ID = 'http://localhost:3001/beer/id/';
 // export const ALL_STYLES = 'http://localhost:3001/temperaments';
-export const ALL_NAME = 'https://localhost:3001/beer?name=';
+export const ALL_NAME = 'http://localhost:3001/beer?name=';
 export const POST_BEER = 'http://localhost:3001/beer';
 
 
