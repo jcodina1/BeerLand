@@ -16,3 +16,6 @@ export const ORDER_ORIG = 'ORDER_ORIG';
 export const ORDER_ALPH = 'ORDER_ALPH';
 export const ORDER_SCORE = 'ORDER_SCORE';
 export const REMOVE_DETAIL = 'REMOVE_DETAIL';
+export const ORDER_BY_NAME = 'ORDER_BY_NAME'
+export const FILTER_BY_BREWERY = 'FILTER_BY_BREWERY'
+export const GET_TYPE = 'GET_TYPE'
