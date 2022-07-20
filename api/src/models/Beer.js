@@ -5,8 +5,8 @@ const Seller = require("./Seller");
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("beer", {
-    id:{
-      type:DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true
     },
@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     }
   },
-  
-  {timestamps:false});
+
+    { timestamps: false });
 };
 //AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA

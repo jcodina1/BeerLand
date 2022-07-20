@@ -5,7 +5,7 @@ const { Beer, Seller } = require('../db.js')
 
 async function createdAllBeers(req, res, next) {
     try {
-        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beers = await axios.get('http://localhost:3001/')
         const beersData = beers.data
         await beersData.forEach((b) => {
             Beer.findOrCreate({
@@ -15,12 +15,11 @@ async function createdAllBeers(req, res, next) {
                     regularPrice: b.regularPrice ? b.regularPrice : "It does not contain regularPrice",
                     currentPrice: b.currentPrice ? b.currentPrice : "It does not contain currentPrice",
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
-                    sellerId:b.sellerid
+                    sellerId: b.sellerid
                 }
             })
         })
         res.status(200).send('Saved correctly in DB')
-
     } catch (error) {
         next(error)
     }
@@ -39,7 +38,6 @@ async function getAllBeers(req, res, next) {
         } else {
             res.status(200).send(BeersDb)
         }
-
     } catch (error) {
         next(error)
     }
@@ -54,10 +52,8 @@ async function getBeerID(req, res, next) {
         const Beerid = await Beer.findOne({ where: { id: id } })
         console.log(Beerid)
         res.status(200).send(Beerid)
-
     } catch (error) {
         res.send('Beer not found')
-
     }
 }
 
@@ -90,7 +86,7 @@ async function deleteBeer(req, res, next) {
 }
 
 async function postBeer(req, res, next) {
-    const { name,description,regularPrice,currentPrice,image,idseller} = req.body;
+    const { name, description, regularPrice, currentPrice, image, idseller } = req.body;
     try {
         let newBeer = await Seller.create(
             {
@@ -104,7 +100,6 @@ async function postBeer(req, res, next) {
                 fields: ["name", "description", "regularPrice", "currentPrice", "image"],
             }
         );
-            
         return res.json(newBeer);
     } catch (error) {
         next(error)

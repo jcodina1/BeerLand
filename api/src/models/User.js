@@ -3,7 +3,7 @@ const { DataTypes } = require("sequelize");
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("seller", {
+  sequelize.define("user", {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
@@ -12,18 +12,11 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
     },
-    description: {
+    surname: {
       type: DataTypes.STRING,
     },
-    mail: {
+    address: {
       type: DataTypes.STRING,
     },
-    password: {
-      type: DataTypes.STRING,
-    },
-    dni: {
-      type: DataTypes.STRING,
-    }
   },{ timestamps: false });
 };
-//AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA
