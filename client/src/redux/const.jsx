@@ -4,6 +4,7 @@ export const ALL_ID = 'https://localhost:3001/beer/id/';
 export const ALL_NAME = 'https://localhost:3001/beer?name=';
 export const POST_BEER = 'http://localhost:3001/beer';
 
+
 export const SEARCH_BAR = 'SEARCH_BAR';
 export const SET_PAGE = 'SET_PAGE';
 export const SET_DETAILS = 'SET_DETAILS';

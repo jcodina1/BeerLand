@@ -15,5 +15,5 @@ router.use('/user', user)
 router.use('/beer', beer)
 router.use('/seller', seller)
 
-router.use('/', createdAllBeers)
+// router.use('/', createdAllBeers)
 module.exports = router;
