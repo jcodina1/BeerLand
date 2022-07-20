@@ -1,7 +1,7 @@
 export const ALL_API = 'https://beerland.herokuapp.com/beer';
 export const ALL_ID = 'https://beerland.herokuapp.com/beer/id/'
 // export const ALL_STYLES = 'http://localhost:3001/temperaments';
-export const ALL_NAME = 'https://beerland.herokuapp.com/beer/';
+export const ALL_NAME = 'https://beerland.herokuapp.com/beer?name=';
 // export const POST_BEER = 'http://localhost:3001/dog';
 
 export const SEARCH_BAR = 'SEARCH_BAR';
