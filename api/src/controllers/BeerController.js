@@ -64,7 +64,6 @@ async function getBeerID(req, res, next) {
     const { id } = req.params
     try {
         const Beerid = await Beer.findOne({ where: { id: id } })
-        console.log(Beerid)
         res.status(200).send(Beerid)
     } catch (error) {
         res.send('Beer not found')
