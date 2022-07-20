@@ -21,7 +21,7 @@ export default function ShowBeers() {
   useEffect(() => {
     dispatch(getAllBeers());
   }, [dispatch]);
-
+  
   return (
     <div className={style.showBeers}>
       <div className={style.cardsContainer}>
@@ -29,6 +29,7 @@ export default function ShowBeers() {
                     {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading}/>)</span> : currentBeer?.map(beer => {
                         return (
                             <BeerCard
+                                id={beer.id}
                                 key={beer.id}
                                 name={beer.name}
                                 description={beer.description}
