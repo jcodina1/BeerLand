@@ -1,14 +1,9 @@
 
-import {
-  ORDER_BY_NAME,
-  FILTER_BY_BREWERY,
-} from '../const'
+import {ORDER_BY_NAME,FILTER_BY_BREWERY,} from '../const'
 
 
 import {
-  GET_BEERS, GET_BEER_DETAIL,
-  SEARCH_BAR, REMOVE_DETAIL, POST_BEER
-} from "../const";
+  GET_BEERS, GET_BEER_DETAIL,SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE} from "../const";
 
 
 
@@ -16,10 +11,9 @@ const initialState = {
   beers: [],
   allBeers: [],
   detail: {},
-
   brewery: [],
   userType: [],
-  type:[]
+  type: []
 
 
 };
@@ -34,12 +28,6 @@ function Reducer(state = initialState, action) {
       };
 
 
-    case GET_BEER_DETAIL:
-      return {
-        ...state,
-        detail: action.payload,
-      };
-
     case REMOVE_DETAIL:
       return {
         ...state,
@@ -47,32 +35,26 @@ function Reducer(state = initialState, action) {
       };
 
 
-
-    case SEARCH_BAR:
-      return {
-        ...state,
-        allBeers: action.payload,
-      };
     case GET_BEER_DETAIL: {
       return {
         ...state,
         detail: action.payload
       }
     }
-    case GET_TYPE:{
-      return{
+    case GET_TYPE: {
+      return {
         ...state,
         type: action.payload
       }
     }
-    case SEARCH_BAR:{
-      return{
+    case SEARCH_BAR: {
+      return {
         ...state,
-        allBeers:action.payload
+        allBeers: action.payload
       }
     }
     case ORDER_BY_NAME:
-      let orderBeersByName = action.payload === ASC ? state.allBeers.sort((a, b) => {
+      let orderBeersByName = action.payload === 'ASC' ? state.allBeers.sort((a, b) => {
         if (a.name < b.name) {
           return -1
         }
@@ -112,7 +94,7 @@ function Reducer(state = initialState, action) {
           beers: BreweryFiltered
         }
       }
-      
+
 
     case POST_BEER:
       return {
