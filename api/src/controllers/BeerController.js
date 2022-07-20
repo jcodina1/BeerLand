@@ -1,11 +1,11 @@
 const axios = require('axios')
-const { Op, where } = require('sequelize')
+const { Op } = require('sequelize')
 const { Beer, Seller } = require('../db.js')
 
 
 async function createdAllBeers(req, res, next) {
     try {
-        const beers = await axios.get('http://localhost:3001/')
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
         const beersData = beers.data
         await beersData.forEach((b) => {
             Beer.findOrCreate({
@@ -29,13 +29,27 @@ async function createdAllBeers(req, res, next) {
 async function getAllBeers(req, res, next) {
     const { name } = req.query
     try {
-        const BeersDb = await Beer.findAll()
         if (name) {
             let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
             BeerName.length ?
                 res.status(200).json(BeerName) :
                 res.status(404).send('Beer not found');
-        } else {
+            } else {
+            const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beersData = beers.data.cervezas
+        await beersData.forEach((b) => {
+            Beer.findOrCreate({
+                where: {
+                    name: b.name ? b.name : "It does not contain name",
+                    description: b.description ? b.description : "It does not contain description",
+                    regularPrice: b.regularPrice ? b.regularPrice : "It does not contain regularPrice",
+                    currentPrice: b.currentPrice ? b.currentPrice : "It does not contain currentPrice",
+                    image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+                    sellerId: b.sellerId
+                }
+            })
+        })
+            const BeersDb = await Beer.findAll()
             res.status(200).send(BeersDb)
         }
     } catch (error) {
