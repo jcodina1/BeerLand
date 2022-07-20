@@ -1,14 +1,9 @@
 
-import {
-  ORDER_BY_NAME,
-  FILTER_BY_BREWERY,
-} from '../const'
+import {ORDER_BY_NAME,FILTER_BY_BREWERY,} from '../const'
 
 
 import {
-  GET_BEERS, GET_BEER_DETAIL,
-  SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE
-} from "../const";
+  GET_BEERS, GET_BEER_DETAIL,SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE} from "../const";
 
 
 
