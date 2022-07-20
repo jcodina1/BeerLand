@@ -15,6 +15,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         allBeers: action.payload,
+        beers: action.payload
       };
      
     case SEARCH_BAR:
