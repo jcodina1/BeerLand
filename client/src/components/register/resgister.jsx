@@ -2,6 +2,8 @@ import React, { useReducer, useState } from "react";
 import { useAuth } from "../context/authContext";
 import { useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
+import swal from 'sweetalert'
+import { Link } from "react-router-dom";
 
 export default function Register() {
 
@@ -25,18 +27,20 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-           if (user.password === user.confirmation){
+           
+                if (user.password === user.confirmation){
             await signup(user.email, user.password)
             history.push('/home')
             }else{
-                alert('Passwords do not match')
+                swal('Passwords do not match')
             }
-            
            
+           
+            
         } catch (error) {
             console.log(error.message)
             setError(error.message)
-            alert(error.message)
+            swal(error.message)
         }
     }
     return (
@@ -69,6 +73,10 @@ export default function Register() {
 
             <button onClick={handleSubmit} >Register</button>
         </form>
+        <Link to='/home'>
+                <button>Volver</button>
+            </Link>
+
     </div>
     )
 

@@ -2,16 +2,17 @@ import React, { useReducer, useState } from "react";
 import { useAuth } from "../context/authContext";
 import { Link, useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
+import swal from 'sweetalert'
 
 export default function Login() {
 
-    const {login, logingWithGoogle} = useAuth()
+    const {login, logingWithGoogle,resetPassword} = useAuth()
     
     const history = useHistory()
     const [error,setError] = useState('')
 
     const [user, SetUser] = useState({
-        email: '',
+        email:'',
         password: ''
     })
 
@@ -25,13 +26,14 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(user)
         try {
-           await login(user.email, user.password)
-           history.push('/home')
+            await login(user.email, user.password)
+            history.push('/home')  
         } catch (error) {
             console.log(error.message)
             setError(error.message)
-            alert(error.message)
+            swal(error.message)
         }
     }
 
@@ -43,9 +45,20 @@ export default function Login() {
          } catch (error) {
              console.log(error.message)
              setError(error.message)
-             alert(error.message)
+             swal(error.message)
          }
      
+    }
+
+    const handelResetPassword =async ()=>{
+        if (!user.email) return swal("please enter your mail")
+        try {
+            await resetPassword(user.email)
+            swal('We sent you an mail with a link to reset you password')
+        } catch (error) {
+            setError(error.message)
+        }
+        
     }
 
 
@@ -71,6 +84,11 @@ export default function Login() {
             <div className={style.submit}>
                 <button onClick={handleSubmit} >Login</button>
             </div>
+            <a href='#!'
+            onClick={handelResetPassword}
+            >
+                Forgot Password
+            </a>
                 
             </form>
 
@@ -81,6 +99,9 @@ export default function Login() {
             <div>
                 <button onClick={handleGoogle}>Google Login</button>
             </div>
+            <Link to='/home'>
+                <button>Volver</button>
+            </Link>
             
         </div>
     )
