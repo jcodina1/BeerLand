@@ -1,51 +1,59 @@
 import { React, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { searchBar, getAllBeers} from '../../redux/actions/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchBar, getAllBeers } from '../../redux/actions/index';
 
-//function validation(payload){
-//     let error = {};
-    
-//     if(!payload || isNaN(payload) !== true){
-//         error.payload = 'thats not a dogito!'                             
-//     }
-//     return error;
-// };
+export default function SearchBar() {
+  const dispatch = useDispatch();
+  const [value, setValue] = useState('');
+  const allBeersx2 = useSelector(state => state.beers);
 
-export default function SearchBar({setPage}){
-const dispatch = useDispatch();
-const [ payload, setSearch ] = useState('');
-// const [ error, setError ] = useState({});
-
-function handleInput(e){
+  const onChange = (e) => {           // handleInput
     e.preventDefault();
-    setSearch(e.target.value);
-    // setError(validation(payload))
-}
+    setValue(e.target.value);
+  };
 
-function handleSubmit(e){
-    e.preventDefault();
-    // setError(validation(payload));
-    // const error = validation(payload);
+  const onSearch = (searchTerm) => {       //handleSubmit
+    setValue(searchTerm)
+    dispatch(searchBar(value));
+    setValue('')
+  };
 
-    // if(Object.values(error).length === 0){
-        dispatch(searchBar(payload));
-        //setPage(1)
-        setSearch('');
-    //}else{
-    //     alert('thats not a dog!')
-    // }  
-}
+  const onSearch2 = (payload) => {
+    dispatch(searchBar(payload));
+  }
 
-function handleBack(){
+  function handleBack() {
     dispatch(getAllBeers());
     //setPage(1);
-}
-
-    return (
-        <div >
-            <input  value={payload} type='text' placeholder='Search a beer...' onChange={(e) => handleInput(e)}/>
-            <button type='submit' onClick={(e)=> handleSubmit(e)}>Search</button>
-            <button onClick={handleBack}>Clean search</button>
-        </div>
-    )
+  }
+  console.log(value)
+  return (
+    <div>
+      <div>
+        <input type="text" value={value} onChange={onChange} />
+        <button onClick={() => onSearch(value)}> Search </button>
+      </div>
+      <div>
+        {allBeersx2?.filter((item) => {
+          const searchTerm = value.toLowerCase();
+          const beerName = item.name.toLowerCase();
+          return (
+            searchTerm &&
+            beerName.startsWith(searchTerm) &&      //no termino de entender esto!
+            beerName !== searchTerm
+          );
+        })
+          .slice(0, 3)
+          .map((item) => (
+            <li
+              onClick={() => onSearch2(item.name)}
+              key={item.name}
+            >
+              {item.name}
+            </li>
+          ))}
+      </div>
+      <button onClick={handleBack}>Clean search</button>
+    </div>
+  );
 }
