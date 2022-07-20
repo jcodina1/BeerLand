@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBeers } from '../../redux/actions';
 import style from '../ShowBeers/ShowBeers.module.css'
 import Loading from "../Loading/Loading";
-
 import BeerCard from "../BeerCard/BeerCard";
 import Pagination from "../Pagination/Pagination";
 
@@ -22,7 +21,7 @@ export default function ShowBeers() {
   useEffect(() => {
     dispatch(getAllBeers());
   }, [dispatch]);
-
+  
   return (
     <div className={style.showBeers}>
       <div className={style.cardsContainer}>
@@ -30,10 +29,11 @@ export default function ShowBeers() {
                     {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading}/>)</span> : currentBeer?.map(beer => {
                         return (
                             <BeerCard
+                                id={beer.id}
                                 key={beer.id}
                                 name={beer.name}
                                 description={beer.description}
-                                image={beer.image ? beer.image : <img alt='https://us.123rf.com/450wm/tawhy/tawhy1712/tawhy171202174/92419321-botella-rota-aislada-sobre-fondo-blanco.jpg?ver=6' />}
+                                image={beer.image}
                             // style={beer.style}
                             // origin={beer.origin}
                             />
