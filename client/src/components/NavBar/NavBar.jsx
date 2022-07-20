@@ -4,7 +4,7 @@ import SearchBar from '../SearchBar/SearchBar'
 import style from '../NavBar/NavBar.module.css'
 import BeerLogo from '../../img/BeerLogo.png'
 
-export default function NavBar() {
+export default function NavBar({setPage }) {
   return (
     <nav className={style.navbar}>
       <Link to='/home'>
@@ -12,7 +12,7 @@ export default function NavBar() {
           <img id='BeerLogo' src={BeerLogo} width='120px' height='80px' alt='Beer' />
         </span>
       </Link>
-      <SearchBar />
+      <SearchBar setPage={setPage}/>
     </nav>
   )
 }
