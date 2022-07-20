@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { Seller ,Beer} = require('../db.js')
+const { Seller, Beer } = require('../db.js')
 
 async function postSellers(req, res, next) {
   const { name, description, mail, password, dni } = req.body;
@@ -26,7 +26,7 @@ async function postSellers(req, res, next) {
 async function getAllSellers(req, res, next) {
   try {
     let sellerdb = await Seller.findAll({
-        include:{model:Beer}
+      include: { model: Beer }
     })
     res.status(200).json(sellerdb)
   } catch (error) {

@@ -2,36 +2,36 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST ,DB_NAME} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 let sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
-        database: DB_NAME,
-        dialect: "postgres",
-        host: DB_HOST,
-        port: 5432,
-        username: DB_USER,
-        password: DB_PASSWORD,
-        pool: {
-          max: 3,
-          min: 1,
-          idle: 10000,
+      database: DB_NAME,
+      dialect: "postgres",
+      host: DB_HOST,
+      port: 5432,
+      username: DB_USER,
+      password: DB_PASSWORD,
+      pool: {
+        max: 3,
+        min: 1,
+        idle: 10000,
+      },
+      dialectOptions: {
+        ssl: {
+          require: true,
+          // Ref.: https://github.com/brianc/node-postgres/issues/2009
+          rejectUnauthorized: false,
         },
-        dialectOptions: {
-          ssl: {
-            require: true,
-            // Ref.: https://github.com/brianc/node-postgres/issues/2009
-            rejectUnauthorized: false,
-          },
-          keepAlive: true,
-        },
-        ssl: true,
-      })
+        keepAlive: true,
+      },
+      ssl: true,
+    })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-        { logging: false, native: false }
-      );
+      `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+      { logging: false, native: false }
+    );
 
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
@@ -66,12 +66,20 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const {Beer,Seller} = sequelize.models;
+const { Beer, Seller, Purchases, User } = sequelize.models;
 
 // Aca vendrian las relaciones
-// Product.hasMany(Reviews);
-Seller.hasMany(Beer,{ foreignKey: 'sellerId',sourceKey: "id"})
-Beer.belongsTo(Seller,{ foreignKey: 'sellerId',targetId: "id"})
+
+Seller.hasMany(Beer, { foreignKey: 'sellerId', sourceKey: "id" })
+Beer.belongsTo(Seller, { foreignKey: 'sellerId', targetId: "id" })
+
+Purchases.belongsToMany(Beer, { through: 'PurchasesBeer' })
+Beer.belongsToMany(Purchases, { through: 'PurchasesBeer' })
+
+User.hasMany(Purchases, { foreignKey: 'userId', sourceKey: "id" })
+Purchases.belongsTo(User, { foreignKey: 'userId', targetId: "id" })
+
+
 // Model.belongsToMany(otherModel, { through: 'activities_countries' });
 
 module.exports = {

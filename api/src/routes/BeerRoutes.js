@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/id/:id', getBeerID)
 router.get('/', getAllBeers)
-router.post('/',postBeer)
+router.post('/', postBeer)
 router.put('/update/:id', updateBeer)
 router.delete('/', deleteBeer)
 
