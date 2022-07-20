@@ -21,7 +21,9 @@ export default function BeerDetail(props) {
   return (
     <div>
       {beer.length === 0 ? (
-        <div>(<Loading setLoading={setLoading}/>)</div>
+        <div>
+          (<Loading setLoading={setLoading} />)
+        </div>
       ) : (
         <div>
           <div>
@@ -37,11 +39,11 @@ export default function BeerDetail(props) {
                 {beer.description}
               </p>
               <p>
-                <strong>Description: </strong>
+                <strong>Regular Price: </strong>
                 {beer.regularPrice}
               </p>
               <p>
-                <strong>Description: </strong>
+                <strong>Current Price: </strong>
                 {beer.currentPrice}
               </p>
             </div>

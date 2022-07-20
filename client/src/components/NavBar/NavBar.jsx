@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar'
 import style from '../NavBar/NavBar.module.css'
 import BeerLogo from '../../img/BeerLogo.png'
+import { useAuth } from "../context/authContext";
 
 export default function NavBar({setPage }) {
+
+  const {salir, user} = useAuth()
+  console.log(user)
+
+  const handleLogOut = async () => {
+    await salir()
+  }
+
+
   return (
     <nav className={style.navbar}>
       <Link to='/home'>
@@ -13,6 +23,11 @@ export default function NavBar({setPage }) {
         </span>
       </Link>
       <SearchBar setPage={setPage}/>
+      <button onClick={handleLogOut}>LogOut</button>
+      <Link to='/login'>
+        <button>Login</button>
+      </Link>
+      <h1>Hello {user ? user.email : ''}</h1>
     </nav>
   )
 }
