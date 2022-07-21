@@ -2,7 +2,6 @@ const axios = require('axios')
 const { Op } = require('sequelize')
 const { Beer, Seller } = require('../db.js')
 
-
 async function createdAllBeers(req, res, next) {
     try {
         const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
@@ -24,7 +23,6 @@ async function createdAllBeers(req, res, next) {
         next(error)
     }
 }
-
 
 async function getAllBeers(req, res, next) {
     const { name } = req.query
@@ -49,18 +47,16 @@ async function getAllBeers(req, res, next) {
             BeerName.length ?
                 res.status(200).json(BeerName) :
                 res.status(404).send('Beer not found');
-            } else {
-           
-              const BeersDb = await Beer.findAll()
-          
-              res.status(200).send(BeersDb)
+        } else {
+
+            const BeersDb = await Beer.findAll()
+
+            res.status(200).send(BeersDb)
         }
     } catch (error) {
         next(error)
     }
 }
-
-
 
 /* const getBeerID =  */
 async function getBeerID(req, res, next) {
@@ -72,9 +68,6 @@ async function getBeerID(req, res, next) {
         res.send('Beer not found')
     }
 }
-
-
-
 
 async function updateBeer(req, res, next) {
     const { id } = req.params

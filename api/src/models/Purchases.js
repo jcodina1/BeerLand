@@ -9,5 +9,5 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true
     }
-  },{ timestamps: false });
+  }, { timestamps: false });
 };

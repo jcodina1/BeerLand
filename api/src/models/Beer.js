@@ -24,9 +24,10 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.STRING,
+    },
+    stock: {
+      type: DataTypes.INTEGER
     }
-  },
-
-    { timestamps: false });
+  }, { timestamps: false });
 };
 //AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA

@@ -11,17 +11,16 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-    const {  name, surname, address } = req.body;
+    const { name, surname, address } = req.body;
     try {
         let newUser = await User.create(
             {
-                
                 name,
                 surname,
                 address,
             },
             {
-                fields: [ "name", "surname", "address"],
+                fields: ["name", "surname", "address"],
             }
         );
         return res.json(newUser);
@@ -29,16 +28,18 @@ async function postUser(req, res, next) {
         next(error)
     }
 }
+
 async function getAllUsers(req, res, next) {
     try {
-      let userdb = await User.findAll({
-        include: { model: Purchases }
-      })
-      res.status(200).json(userdb)
+        let userdb = await User.findAll({
+            include: { model: Purchases }
+        })
+        res.status(200).json(userdb)
     } catch (error) {
-      next(error)
+        next(error)
     }
-  }
+}
+
 module.exports = {
     getAllUsers,
     postUser
