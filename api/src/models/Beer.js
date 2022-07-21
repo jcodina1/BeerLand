@@ -16,10 +16,10 @@ module.exports = (sequelize) => {
     description: {
       type: DataTypes.STRING,
     },
-    regularPrice: {
+    price: {
       type: DataTypes.STRING,
     },
-    currentPrice: {
+    stock: {
       type: DataTypes.STRING,
     },
     image: {

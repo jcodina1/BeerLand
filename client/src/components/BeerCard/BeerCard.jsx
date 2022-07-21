@@ -9,8 +9,8 @@ export default function BeerCard({
   name,
   description,
   image,
-  type,
-  origin,
+  // type,
+  // origin,
 }) {
   return (
     <Link to={`/beers/detail/${id}`}>
@@ -18,8 +18,8 @@ export default function BeerCard({
         <h2>{name}</h2>
         <img className={style.cardImg} src={image} alt="No img found :(" />
         <h4>{description}</h4>
-        <h4 className={style.content}>{type}</h4>
-        <h4 className={style.content}>{origin}</h4>
+        {/* <h4 className={style.content}>{type}</h4>
+        <h4 className={style.content}>{origin}</h4> */}
       </div>
     </Link>
   );

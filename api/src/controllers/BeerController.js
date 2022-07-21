@@ -5,14 +5,14 @@ const { Beer, Seller } = require('../db.js')
 async function createdAllBeers(req, res, next) {
     try {
         const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
-        const beersData = beers.data
+        const beersData = beers.data.cervezas
         await beersData.forEach((b) => {
             Beer.findOrCreate({
                 where: {
                     name: b.name ? b.name : "It does not contain name",
                     description: b.description ? b.description : "It does not contain description",
-                    regularPrice: b.regularPrice ? b.regularPrice : "It does not contain regularPrice",
-                    currentPrice: b.currentPrice ? b.currentPrice : "It does not contain currentPrice",
+                    price: b.price ? b.price : "It does not contain price",
+                    stock: b.stock ? b.stock : "It does not contain stock",
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerid
                 }
@@ -34,8 +34,8 @@ async function getAllBeers(req, res, next) {
                 where: {
                     name: b.name ? b.name : "It does not contain name",
                     description: b.description ? b.description : "It does not contain description",
-                    regularPrice: b.regularPrice ? b.regularPrice : "It does not contain regularPrice",
-                    currentPrice: b.currentPrice ? b.currentPrice : "It does not contain currentPrice",
+                    price: b.price ? b.price : "It does not contain price",
+                    stock: b.stock ? b.stock : "It does not contain stock",
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerId
                 }
@@ -69,13 +69,13 @@ async function getBeerID(req, res, next) {
 
 async function updateBeer(req, res, next) {
     const { id } = req.params
-    const { name, description, regularPrice, currentPrice, image } = req.body
+    const { name, description, price, stock, image } = req.body
     try {
         beer = await Beer.findByPk(id)
         beer.name = name
         beer.description = description
-        beer.regularPrice = regularPrice
-        beer.currentPrice = currentPrice
+        beer.price = price
+        beer.stock = stock
         beer.image = image
         await beer.save()
         res.send('update')
@@ -93,18 +93,19 @@ async function deleteBeer(req, res, next) {
 }
 
 async function postBeer(req, res, next) {
-    const { name, description, regularPrice, currentPrice, image, idseller } = req.body;
+    const { name, description, price, stock, image, sellerId } = req.body;
     try {
         let newBeer = await Seller.create(
             {
                 name,
                 description,
-                regularPrice,
-                currentPrice,
+                price,
+                stock,
                 image,
+                sellerId,
             },
             {
-                fields: ["name", "description", "regularPrice", "currentPrice", "image"],
+                fields: ["name", "description", "price", "stock", "image"],
             }
         );
         return res.json(newBeer);

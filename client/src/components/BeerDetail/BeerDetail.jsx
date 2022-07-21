@@ -39,12 +39,12 @@ export default function BeerDetail(props) {
                 {beer.description}
               </p>
               <p>
-                <strong>Regular Price: </strong>
-                {beer.regularPrice}
+                <strong>Price: </strong>
+                {beer.price}
               </p>
               <p>
-                <strong>Current Price: </strong>
-                {beer.currentPrice}
+                <strong>Stock: </strong>
+                {beer.stock}
               </p>
             </div>
           </div>
