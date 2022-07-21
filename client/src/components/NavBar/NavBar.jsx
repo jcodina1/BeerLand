@@ -27,6 +27,9 @@ export default function NavBar({setPage }) {
       <Link to='/login'>
         <button>Login</button>
       </Link>
+      <Link to="/add">
+        <button>Add</button>
+      </Link>
       <h1>Hello {user ? user.email : ''}</h1>
     </nav>
   )
