@@ -16,7 +16,6 @@ async function postSellers(req, res, next) {
         fields: ["name", "description", "mail", "password", "dni"],
       }
     );
-
     return res.json(newSeller);
   } catch (error) {
     next(error)

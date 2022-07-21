@@ -48,9 +48,7 @@ async function getAllBeers(req, res, next) {
                 res.status(200).json(BeerName) :
                 res.status(404).send('Beer not found');
         } else {
-
             const BeersDb = await Beer.findAll()
-
             res.status(200).send(BeersDb)
         }
     } catch (error) {
