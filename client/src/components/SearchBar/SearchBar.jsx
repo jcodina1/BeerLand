@@ -1,10 +1,11 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBar, getAllBeers } from '../../redux/actions/index';
+import { useLocalStorege } from '../../Hooks/useLocalStorage';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
+  const [value, setValue] = useLocalStorege('value','')
   const allBeersx2 = useSelector(state => state.beers);
 
   const onChange = (e) => {           // handleInput
