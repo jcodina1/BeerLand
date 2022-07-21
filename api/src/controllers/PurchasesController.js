@@ -3,26 +3,28 @@ const axios = require('axios');
 const { Seller, Beer, Purchases } = require('../db.js')
 
 async function postPurchases(req, res, next) {
-    const { id, userId } = req.body;
+    const {  userId, beerId } = req.body;
     try {
-        let newPurchases = await Purchases.create(
-            {
-                id,
-                userId
-            },
-            {
-                fields: ["id", "userId"],
-            }
-        );
-
-        return res.json(newPurchases);
+        const newPurchases= await Purchases.create({            
+                
+                userId: userId
+            
+        })
+        let beer = await Beer.findAll({ where: { id: beerId } })
+        newPurchases.addBeer(beer)
+        
+        res.send(newPurchases)
+    
     } catch (error) {
         next(error)
     }
 }
 async function getAllPurchases(req, res, next) {
     try {
-        const UsersDb = await User.findAll()
+        const UsersDb = await Purchases.findAll({
+            order:[['id','ASC']],
+            include:{model:Beer}
+        })
         res.status(200).send(UsersDb)
     } catch (error) {
         next(error)
@@ -30,5 +32,6 @@ async function getAllPurchases(req, res, next) {
 }
 module.exports = {
     postPurchases,
+    getAllPurchases
 
 }
