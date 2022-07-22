@@ -64,7 +64,7 @@ export default function Cart() {
             <span>{e.name}</span>
             <span>{e.price}</span>
             <span>Total: {cantidad*Number(e.price)}</span>
-            <div className={Edit}>
+            <div className={style.editDelete}>
             <span>✏️</span>
             <span>❌</span>
             </div>

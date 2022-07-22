@@ -44,7 +44,8 @@ export default function Checkout(){
           "image": "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage4.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
           "sellerId": 6
         }]
-    
+    let total= products.map((p)=>  Number(p.price) ).reduce((prev, curr) => prev + curr, 0)
+    console.log(total);
     return(
         <>
         <div className={styles.wrapper} >
@@ -52,7 +53,10 @@ export default function Checkout(){
                 
             </div>
             <div className={styles.productsContainer} >
-                <div className={styles.headerAndFooter} ></div>
+                <div className={styles.headerAndFooter} >
+                  <p>Your Products</p>
+                  <button>Edit Cart</button>
+                </div>
                 <div className={styles.productList} >
                     {/* aca mapear productos con className={styles.productContainer}  ojo que es distinto a productsContainer */}
 
@@ -63,7 +67,11 @@ export default function Checkout(){
                       </div>  )
                     } )}
                 </div>
-                <div className={styles.headerAndFooter} ></div>
+                <div className={styles.headerAndFooter} >
+                  <h3>Total:</h3>
+
+                   <h3> $ {products.map((p)=>  Number(p.price) ).reduce((prev, curr) => prev + curr, 0)} </h3>
+                </div>
             </div>
         </div>
         </>
