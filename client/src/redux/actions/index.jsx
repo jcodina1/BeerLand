@@ -1,7 +1,7 @@
 import axios from "axios";
-import {ALL_API, ALL_ID, ALL_NAME,
-  GET_BEERS, GET_BEER_DETAIL,
-  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER } from "../const";
+import {ALL_API, ALL_ID, ALL_NAME, ORDER_BY_NAME, ORDER_BY_PRICE,
+  GET_BEERS, GET_BEER_DETAIL, FILTER_BY_BREWERY, GET_TYPE,
+  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER, ALL_SELLERS, GET_SELLERS,FILTER_BY_SELLER } from "../const";
 
 export function getAllBeers() {
   return async function (dispatch) {
@@ -59,7 +59,6 @@ export function postBeer(payload){
 };
 
 export function postUser(payload){
-  console.log(payload)
   return async function(dispatch){
     try{
       const post = await axios.post(POST_USER, payload);
@@ -71,3 +70,38 @@ export function postUser(payload){
     }
   }
 };
+
+export function orderByName(payload) {
+  return {
+    type: ORDER_BY_NAME,
+    payload
+  }
+}
+export function orderByPrice(payload) {
+  return {
+    type: ORDER_BY_PRICE,
+    payload
+  }
+}
+export function filterBeersBySeller(payload) {
+  return {
+    type: FILTER_BY_SELLER,
+    payload
+  }
+}
+export function getTypes(payload){
+  return{
+    type:GET_TYPE,
+    payload
+  }
+}
+
+export function getAllSellers() {
+  return async function (dispatch) {
+    var allSellers = await axios.get(ALL_SELLERS);
+    return dispatch({
+      type: GET_SELLERS,
+      payload: allSellers.data,
+    });
+  };
+}

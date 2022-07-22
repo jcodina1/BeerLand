@@ -9,6 +9,7 @@ export default function PostBeer() {
   const dispatch = useDispatch();
 
   const [sentForm, changeSentForm] = useState(false);
+  const [form, setForm] = useState('')
   // const [input, setInput] = useState({
   //   name: "",
   //   image: "",
@@ -16,7 +17,20 @@ export default function PostBeer() {
   //   description: "",
   //   stock: 0,
   // });
-
+  const convertToBase64Profile = (file) => {
+    Array.from(file).forEach(file=>{
+        var reader = new FileReader();
+        reader.readAsDataURL(file)
+        reader.onload=function(){
+            var base64 = reader.result;
+        //    return base64;
+            setForm({
+                ...form,
+                image:base64 
+            })
+        }
+    })
+   };
   return (
     <Fragment>
       <div className={styles.container}>
@@ -28,6 +42,8 @@ export default function PostBeer() {
             description: "",
             stock: 0,
           }}
+
+          
           validate={(values) => {
             let errores = {};
 
@@ -87,7 +103,7 @@ export default function PostBeer() {
                 />
               </div>
 
-              {/* <div>
+               <div>
                 <label htmlFor="image">Image: </label>
                  <input
                   accept="image/png,image/jpeg"
@@ -97,9 +113,7 @@ export default function PostBeer() {
                   //value={values.image}
                   // onChange={handleChange}
                   //onBlur={handleBlur}
-                  onChange={(event) =>
-                    setFieldValue("image", event.currentTarget.files[0])
-                  }
+                   onChange={(e) => convertToBase64Profile(setFieldValue("image", e.currentTarget.files[0]))}
                 /> 
                 <ErrorMessage
                   name="image"
@@ -107,9 +121,9 @@ export default function PostBeer() {
                     <div className={styles.error}>{errors.image}</div>
                   )}
                 />
-              </div> */}
+              </div> 
 
-              <div>
+              {/* <div>
                 <label htmlFor="image">Image: </label>
                 <Field type="text" id="image" name="image" />
                 <ErrorMessage
@@ -118,7 +132,7 @@ export default function PostBeer() {
                     <div className={styles.error}>{errors.image}</div>
                   )}
                 />
-              </div>      
+              </div>       */}
 
 
 

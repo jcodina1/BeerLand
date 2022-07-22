@@ -6,9 +6,12 @@ import Loading from "../Loading/Loading";
 import BeerCard from "../BeerCard/BeerCard";
 import Pagination from "../Pagination/Pagination";
 
+import Filters from '../Filters/Filters';
+
 export default function ShowBeers() {
     const dispatch = useDispatch();
     const allBeers = useSelector(state => state.allBeers);
+    console.log(allBeers)
     const allBeers1 = useSelector(state => state.search);
     const styles = useSelector(state => state.styles);
     const [currentPage, setCurrentPage] = useState(1);
@@ -24,9 +27,14 @@ export default function ShowBeers() {
       dispatch(getAllBeers());
     }
   }, [dispatch]);
+
+  
   
   return (
     <div className={style.showBeers}>
+    <div>
+   <Filters setCurrentPage={setCurrentPage}/>
+  </div>
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
                     {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading}/>)</span> : currentBeer?.map(beer => {
@@ -42,8 +50,9 @@ export default function ShowBeers() {
                             />
                         )
                     })}
-                    <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} />
+                    {/* <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} /> */}
                 </div>
+                
             </div>
         </div>
   
