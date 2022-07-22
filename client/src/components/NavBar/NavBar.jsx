@@ -34,7 +34,9 @@ export default function NavBar({setPage }) {
       </Link>
       
       <h1>Hello {user ? user.email : ''}</h1>
+      { !user ? '':
       <button onClick={handleLogOut}>LogOut</button>
+      }
     </nav>
   )
 }

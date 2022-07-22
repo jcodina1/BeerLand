@@ -3,6 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ProductForm.module.css";
 import { useDispatch } from "react-redux";
 import { postBeer } from "../../redux/actions";
+import { Link } from "react-router-dom";
 
 export default function PostBeer() {
   const dispatch = useDispatch();
@@ -150,11 +151,15 @@ export default function PostBeer() {
                 />
               </div>
               <button type="submit">Add</button>
+           
               {sentForm && (
                 <p className={styles.exito}>
                   Your product has been successfully added!
                 </p>
               )}
+              <Link to='/home'>
+                <button>Return</button>
+              </Link>     
             </Form>
           )}
         </Formik>
