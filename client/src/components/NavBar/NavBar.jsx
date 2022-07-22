@@ -28,6 +28,10 @@ export default function NavBar({setPage }) {
         <button>Login</button>
       </Link>
       }
+
+    <Link to='/login'>
+        <button>Add</button>
+      </Link>
       
       <h1>Hello {user ? user.email : ''}</h1>
       <button onClick={handleLogOut}>LogOut</button>
