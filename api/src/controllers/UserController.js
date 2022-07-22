@@ -31,6 +31,8 @@ async function postUser(req, res, next) {
     }
 }
 
+
+
 module.exports = {
     getAllUsers,
     postUser
