@@ -18,5 +18,8 @@ module.exports = (sequelize) => {
     address: {
       type: DataTypes.STRING,
     },
+    email: {
+      type: DataTypes.STRING,
+    }
   }, { timestamps: false });
 };

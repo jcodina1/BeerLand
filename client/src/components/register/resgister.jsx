@@ -4,33 +4,45 @@ import { useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { postUser  } from "../../redux/actions";
+
 
 export default function Register() {
+
+    const dispatch = useDispatch()
 
     const {signup} = useAuth()
     const history = useHistory()
     const [error,setError] = useState('')
 
     const [user, SetUser] = useState({
-        email: '',
+        email:'',
         password: '',
-        confirmation:''
+        confirmation:'',
+        name:'',
+        surname:'',
+        address:''
     })
 
     const handleChange = (e) => {
         SetUser({
             ...user,
             [e.target.name]: e.target.value
+            
         })
+        console.log(e.target.value)
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
            
-                if (user.password === user.confirmation){
+            if (user.password === user.confirmation){
             await signup(user.email, user.password)
-            history.push('/home')
+            dispatch(postUser(user))
+            console.log(user, 'holaaa')
+            //history.push('/home')
             }else{
                 swal('Passwords do not match')
             }
@@ -48,8 +60,34 @@ export default function Register() {
         <form>
         <h1>Sign In</h1>
         <div className={style.password}>
+            <label>Name: </label>
+            <input name='name' 
+            type="name" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+
+     <div className={style.password}>
+            <label>Surname: </label>
+            <input name='surname' 
+            type="surname" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+
+
+     <div className={style.password}>
+            <label>Address: </label>
+            <input name='address' 
+            type="address" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+        
+        <div className={style.password}>
             <label>Email: </label>
-            <input name='email' 
+            <input 
+            name='email' 
             type="email" 
             placeholder='youremail@company.com' 
             onChange={handleChange} />
@@ -71,10 +109,10 @@ export default function Register() {
             onChange={handleChange} />
     </div>
 
-            <button onClick={handleSubmit} >Register</button>
+            <button className={style.password} onClick={handleSubmit} >Register</button>
         </form>
         <Link to='/home'>
-                <button>Volver</button>
+                <button>Return</button>
             </Link>
 
     </div>

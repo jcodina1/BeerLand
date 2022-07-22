@@ -1,7 +1,7 @@
 import axios from "axios";
 import {ALL_API, ALL_ID, ALL_NAME,
   GET_BEERS, GET_BEER_DETAIL,
-  REMOVE_DETAIL, SEARCH_BAR, POST_BEER } from "../const";
+  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER } from "../const";
 
 export function getAllBeers() {
   return async function (dispatch) {
@@ -49,6 +49,19 @@ export function postBeer(payload){
   return async function(dispatch){
     try{
       const post = await axios.post(POST_BEER, payload);
+      return post;
+    }catch(error){
+      if(error.response){
+        return alert(error.response.data)
+      }
+    }
+  }
+};
+
+export function postUser(payload){
+  return async function(dispatch){
+    try{
+      const post = await axios.post(POST_USER, payload);
       return post;
     }catch(error){
       if(error.response){

@@ -9,6 +9,7 @@ import Pagination from "../Pagination/Pagination";
 export default function ShowBeers() {
     const dispatch = useDispatch();
     const allBeers = useSelector(state => state.allBeers);
+    const allBeers1 = useSelector(state => state.search);
     const styles = useSelector(state => state.styles);
     const [currentPage, setCurrentPage] = useState(1);
     const [beerPerPage, setBeerPerPage] = useState(10);
@@ -19,7 +20,9 @@ export default function ShowBeers() {
     const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getAllBeers());
+    if (!allBeers1.length) {
+      dispatch(getAllBeers());
+    }
   }, [dispatch]);
   
   return (

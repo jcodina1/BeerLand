@@ -3,6 +3,7 @@ export const ALL_ID = 'http://localhost:3001/beer/id/';
 // export const ALL_STYLES = 'http://localhost:3001/temperaments';
 export const ALL_NAME = 'http://localhost:3001/beer?name=';
 export const POST_BEER = 'http://localhost:3001/beer';
+export const POST_USER ='http://localhost:3001/user';
 
 
 export const SEARCH_BAR = 'SEARCH_BAR';
