@@ -1,0 +1,26 @@
+.wrapper {
+    direction: flex;
+    flex-direction: row;
+}
+
+.paymentContainer {
+    direction: flex;
+    flex-direction: column;
+}
+
+.headerAndFooter {
+    direction: flex;
+    flex-direction: row
+}
+
+
+.productList {
+    direction: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.productContainer {
+    direction: flex;
+    flex-direction: row
+}
