@@ -7,10 +7,10 @@ import Login from "./components/Login/login";
 import Register from "./components/register/resgister";
 import { AuthProvider } from "./components/context/authContext";
 import AddProduct from "./components/AddProduct/AddProduct";
-// import Cart from "./components/Cart/Cart";
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Checkout from './components/Checkout/Checkout'
+import Cart from "./components/Cart/Cart";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+// import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <Route path="/beers/detail/:id" component={BeerDetail} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/test" component={Checkout} />
+            <Route path="/test" component={Cart} />
           </Switch>
         </AuthProvider>
       </div>

@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./styles.module.css";
-
 export default function Checkout() {
   const products = [
     {
@@ -55,20 +54,33 @@ export default function Checkout() {
       <div className={styles.wrapper}>
         <div className={styles.paymentContainer}></div>
         <div className={styles.productsContainer}>
-          <div className={styles.headerAndFooter}></div>
+          <div className={styles.headerAndFooter}>
+            <p>Your Products</p>
+            <button>Edit Cart</button>
+          </div>
           <div className={styles.productList}>
             {/* aca mapear productos con className={styles.productContainer}  ojo que es distinto a productsContainer */}
 
             {products.map((p) => {
               return (
                 <div className={styles.productContainer}>
-                  <img src={p.image} />
+                  <img src={p.image} alt="" />
                   {` $${p.price}`}
                 </div>
               );
             })}
           </div>
-          <div className={styles.headerAndFooter}> aaaa</div>
+          <div className={styles.headerAndFooter}>
+            <h3>Total:</h3>
+
+            <h3>
+              {" "}
+              ${" "}
+              {products
+                .map((p) => parseInt(p.price))
+                .reduce((prev, curr) => prev + curr)}{" "}
+            </h3>
+          </div>
         </div>
       </div>
     </>
