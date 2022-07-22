@@ -13,7 +13,7 @@ export default function BeerCard({
   // origin,
 }) {
   return (
-    <Link to={`/beers/detail/${id}`}>
+    <Link className ={style.link} to={`/beers/detail/${id}` }>
       <div className={style.cardContainer}>
         <h2>{name}</h2>
         <img className={style.cardImg} src={image} alt="No img found :(" />

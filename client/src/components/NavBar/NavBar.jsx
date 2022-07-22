@@ -29,7 +29,7 @@ export default function NavBar({setPage }) {
       </Link>
       }
 
-    <Link to='/login'>
+    <Link to='/add'>
         <button>Add</button>
       </Link>
       

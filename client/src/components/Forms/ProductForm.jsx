@@ -86,9 +86,9 @@ export default function PostBeer() {
                 />
               </div>
 
-              <div>
+              {/* <div>
                 <label htmlFor="image">Image: </label>
-                <input
+                 <input
                   accept="image/png,image/jpeg"
                   type="file"
                   id="image"
@@ -99,14 +99,28 @@ export default function PostBeer() {
                   onChange={(event) =>
                     setFieldValue("image", event.currentTarget.files[0])
                   }
-                />
+                /> 
                 <ErrorMessage
                   name="image"
                   component={() => (
                     <div className={styles.error}>{errors.image}</div>
                   )}
                 />
-              </div>
+              </div> */}
+
+              <div>
+                <label htmlFor="image">Image: </label>
+                <Field type="text" id="image" name="image" />
+                <ErrorMessage
+                  name="image"
+                  component={() => (
+                    <div className={styles.error}>{errors.image}</div>
+                  )}
+                />
+              </div>      
+
+
+
               <div>
                 <label htmlFor="price">Price: </label>
                 <Field type="number" id="price" name="price" />

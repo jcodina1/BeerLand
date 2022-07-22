@@ -59,6 +59,7 @@ export function postBeer(payload){
 };
 
 export function postUser(payload){
+  console.log(payload)
   return async function(dispatch){
     try{
       const post = await axios.post(POST_USER, payload);

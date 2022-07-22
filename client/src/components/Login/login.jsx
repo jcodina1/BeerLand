@@ -100,7 +100,7 @@ export default function Login() {
                 <button onClick={handleGoogle}>Google Login</button>
             </div>
             <Link to='/home'>
-                <button>Volver</button>
+                <button>Return</button>
             </Link>
             
         </div>
