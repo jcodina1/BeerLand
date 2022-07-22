@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./styles.module.css";
-
+import Paypal from '../PayPal/PayPal'
 
 export default function Checkout(){
     const products = [
@@ -46,10 +46,10 @@ export default function Checkout(){
         }]
     
     return(
-        <>
+        <>        
         <div className={styles.wrapper} >
             <div className={styles.paymentContainer} >
-                
+                <Paypal/>
             </div>
             <div className={styles.productsContainer} >
                 <div className={styles.headerAndFooter} ></div>

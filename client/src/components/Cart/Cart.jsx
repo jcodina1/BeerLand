@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import style from '../Cart/Cart.module.css'
 import { Link } from "react-router-dom";
 
+
 export default function Cart() {
-  const [checkout,setCheckout]= useState(false)
-  const cantidad=Math.floor(Math.random() * 15)+1
+  const [checkout, setCheckout] = useState(false)
+  const cantidad = Math.floor(Math.random() * 15) + 1
   const products = [
     {
       "name": "Stella Artois",
@@ -48,7 +49,6 @@ export default function Cart() {
     }]
 
   return (
-
     <>
       <div className={style.conteiner}>
         <div className={style.containerTitle}>
@@ -56,21 +56,21 @@ export default function Cart() {
           <Link to='/home'>Continue Shopping</Link>
         </div>
         <div className={style.containerProducts}>
-        <div className={style.boxend}>🛒CheckOut</div>
-        {
-          products.map(e=><>
-          <div className={style.info}>
-            <img src={e.image} />
-            <span>{e.name}</span>
-            <span>{e.price}</span>
-            <span>Total: {cantidad*Number(e.price)}</span>
-            <div className={Edit}>
-            <span>✏️</span>
-            <span>❌</span>
-            </div>
-          </div>
-          </>)
-        }
+          <div className={style.boxend}>🛒CheckOut</div>
+          {
+            products.map(e => <>
+              <div className={style.info}>
+                <img src={e.image} />
+                <span>{e.name}</span>
+                <span>{e.price}</span>
+                <span>Total: {cantidad * Number(e.price)}</span>
+                <div className={style.editDelete}>
+                  <span>✏️</span>
+                  <span>❌</span>
+                </div>
+              </div>
+            </>)
+          }
         </div>
       </div>
     </>
