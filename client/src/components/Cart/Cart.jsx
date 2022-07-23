@@ -128,7 +128,7 @@ export default function Cart() {
         </div>
       <div className={style.boxend}> 
         <h1>TOLTAL: </h1>
-         {products
+         {beerCarts
                 .map((p) => parseInt(p.price))
                 .reduce((prev, curr) => prev + curr)}
       </div>

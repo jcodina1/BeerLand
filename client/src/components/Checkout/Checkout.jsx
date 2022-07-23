@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
 import { getCart, infoBeers, infoSoldBeers, totalPrice} from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import Login from "../Login/Login";
+import Login from "../Login/login";
 import Swal from "sweetalert2";
 
 
