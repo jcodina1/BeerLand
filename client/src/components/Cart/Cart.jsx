@@ -84,7 +84,6 @@ export default function Cart() {
   } */
   
   return (
-    <div>
       <div className="cartContainer">
         <div className="cart">
           {JSON.parse(localStorage.getItem("carrito"))?.length ? (
@@ -127,6 +126,11 @@ export default function Cart() {
             </div>
           )}
         </div>
+      <div className={style.boxend}> 
+        <h1>TOLTAL: </h1>
+         {products
+                .map((p) => parseInt(p.price))
+                .reduce((prev, curr) => prev + curr)}
       </div>
       <Footer/>
     </div >
