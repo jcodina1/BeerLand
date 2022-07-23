@@ -72,9 +72,7 @@ export default function Checkout() {
           </div>
           <div className={styles.headerAndFooter}>
             <h3>Total:</h3>
-
             <h3>
-              
               {products
                 .map((p) => parseInt(p.price))
                 .reduce((prev, curr) => prev + curr)}

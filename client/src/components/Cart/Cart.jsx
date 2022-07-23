@@ -3,13 +3,16 @@ import style from '../Cart/Cart.module.css'
 import { Link } from "react-router-dom";
 import Checkout from "../Checkout/Checkout";
 
+
 export default function Cart() {
+
   const [checkout,setCheckout]= useState(false)
   const[edit,setEdit]=useState(false)
   const [carrito, setCarrito] = useState([])
   
  let quantity= 'cantidad'
-  let products = [
+  let products = [ 
+
     {
       "name": "Stella Artois",
       "description": "Pack Cerveza Premium Lager",
@@ -75,7 +78,6 @@ export default function Cart() {
    }
     console.log(carrito)   
   return (
-
     <>
       <div className={style.conteiner}>
         <div className={style.containerTitle}>
@@ -102,8 +104,7 @@ export default function Cart() {
             
             </div>
             <span>Total: {carrito.filter(producto=>producto===e.name).length*e.price}</span>
-          </div>
-          
+          </div>          
           </>)
         }
         </div>
