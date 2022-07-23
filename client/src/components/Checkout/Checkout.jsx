@@ -64,8 +64,7 @@ export default function Checkout() {
             {products.map((p) => {
               return (
                 <div className={styles.productContainer}>
-                  <img src={p.image} alt="" />
-                  {` $${p.price}`}
+                  <img src={p.image} alt="" />$ {p.price}
                 </div>
               );
             })}
@@ -74,11 +73,9 @@ export default function Checkout() {
             <h3>Total:</h3>
 
             <h3>
-              {" "}
-              ${" "}
               {products
                 .map((p) => parseInt(p.price))
-                .reduce((prev, curr) => prev + curr)}{" "}
+                .reduce((prev, curr) => prev + curr)}
             </h3>
           </div>
         </div>

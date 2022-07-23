@@ -7,10 +7,11 @@ import Login from "./components/Login/login";
 import Register from "./components/register/resgister";
 import { AuthProvider } from "./components/context/authContext";
 import AddProduct from "./components/AddProduct/AddProduct";
-import Cart from "./components/Cart/Cart";
+// import Cart from "./components/Cart/Cart";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import Checkout from "./components/Checkout/Checkout";
+import Checkout from "./components/Checkout/Checkout";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
