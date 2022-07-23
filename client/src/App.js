@@ -3,7 +3,7 @@ import "./App.css";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import BeerDetail from "./components/BeerDetail/BeerDetail";
-import Login from "./components/Login/login";
+import Login from "./components/Login/Login";
 import Register from "./components/register/resgister";
 import { AuthProvider } from "./components/context/authContext";
 import AddProduct from "./components/AddProduct/AddProduct";
@@ -11,7 +11,7 @@ import AddProduct from "./components/AddProduct/AddProduct";
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from './components/Checkout/Checkout'
-import Cart from "./components/Cart/Cart";
+import Cart from './components/Cart/Cart'
 
 function App() {
   return (
@@ -25,7 +25,8 @@ function App() {
             <Route path="/beers/detail/:id" component={BeerDetail} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/test" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/cart" component={Cart} />
           </Switch>
         </AuthProvider>
       </div>

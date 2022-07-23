@@ -1,9 +1,41 @@
 import axios from "axios";
 import {
-  ALL_API, ALL_ID, ALL_NAME,
-  GET_BEERS, GET_BEER_DETAIL,
-  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER
+  ALL_API, ALL_ID, ALL_NAME, GET_BEERS, GET_BEER_DETAIL, REMOVE_DETAIL, SEARCH_BAR, 
+  POST_BEER, POST_USER, REMOVE_ONE_FROM_CART, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS,
 } from "../const";
+
+export function addToCart(id) {
+  return { 
+    type: ADD_TO_CART, 
+    payload: id 
+  };
+};
+
+export function removeAllFromCart() {
+  return { 
+    type: REMOVE_ALL_FROM_CART 
+  };
+};
+
+export function removeOneFromCart(id) {
+  console.log(id);
+  return { 
+    type: REMOVE_ONE_FROM_CART, 
+    payload: id 
+  };
+};
+
+export function getCart() {
+  return { type: GET_CART };
+};
+
+export function totalPrice(payload) {
+  return { type: TOTAL_PRICE, payload };
+};
+
+export function infoBeers(payload) {
+  return { type: CHECKOUT_BEERS, payload };
+};
 
 export function getAllBeers() {
   return async function (dispatch) {
@@ -13,7 +45,7 @@ export function getAllBeers() {
       payload: allBeers.data,
     });
   };
-}
+};
 
 export function getBeerDetail(id) {
   return async function (dispatch) {
