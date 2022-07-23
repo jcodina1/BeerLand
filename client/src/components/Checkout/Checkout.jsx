@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
 import { getCart, infoBeers, infoSoldBeers, totalPrice} from "../../redux/actions";
 import { useHistory } from "react-router-dom";
-import Login from "../Login/Login";
+import Login from "../Login/login";
 import Swal from "sweetalert2";
 
 
@@ -102,7 +102,7 @@ export default function Checkout() {
         </div>
         <div className="pay">
           <h1 style={{ textAlign: 'center', fontSize: '30px' }}>Order Total</h1>
-          <h3>Total: ${preciototal}</h3>
+          <h3>Total: ${preciototal} </h3>
           <div className="paypal">
             <Paypal/>
           </div>

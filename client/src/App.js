@@ -3,7 +3,7 @@ import "./App.css";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import BeerDetail from "./components/BeerDetail/BeerDetail";
-import Login from "./components/Login/Login";
+import Login from "./components/Login/login";
 import Register from "./components/register/resgister";
 import { AuthProvider } from "./components/context/authContext";
 import AddProduct from "./components/AddProduct/AddProduct";
