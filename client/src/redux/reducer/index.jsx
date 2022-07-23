@@ -1,12 +1,14 @@
-
-import { ORDER_BY_NAME, FILTER_BY_BREWERY, } from '../const'
-
-
 import {
-  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER
+  GET_BEERS,
+  GET_BEER_DETAIL,
+  SEARCH_BAR,
+  REMOVE_DETAIL,
+  POST_BEER,
+  GET_TYPE,
+  POST_USER,
+  FILTER_BY_BREWERY,
+  SORT_BY_NAME,
 } from "../const";
-
-
 
 const initialState = {
   search: [],
@@ -15,9 +17,8 @@ const initialState = {
   detail: {},
   brewery: [],
   userType: [],
-  type: []
-
-
+  type: [],
+  filterPlaceholder: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -27,9 +28,7 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
-
       };
-
 
     case REMOVE_DETAIL:
       return {
@@ -37,77 +36,66 @@ function Reducer(state = initialState, action) {
         detail: [],
       };
 
-
     case GET_BEER_DETAIL: {
       return {
         ...state,
-        detail: action.payload
-      }
+        detail: action.payload,
+      };
     }
     case GET_TYPE: {
       return {
         ...state,
-        type: action.payload
-      }
+        type: action.payload,
+      };
     }
     case SEARCH_BAR: {
       return {
         ...state,
         search: action.payload,
-        allBeers: action.payload
-      }
+        allBeers: action.payload,
+      };
     }
-    case ORDER_BY_NAME:
-      let orderBeersByName = action.payload === 'ASC' ? state.allBeers.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1
-        }
-        if (a.name > b.name) {
-          return 1
-        }
-        return 0
-      }) :
-        state.allBeers.sort((a, b) => {
-          if (a.name < b.name) {
-            return 1
-          }
-          if (a.name > b.name) {
-            return -1
-          }
-          return 0
-        })
+    case SORT_BY_NAME:
+      let sortedByName =
+        action.payload === "AtoZ"
+          ? state.allBeers.sort((a, b) => {
+              a.name.localeCompare(b.name);
+            })
+          : state.allBeers.sort((a, b) => {
+              b.name.localeCompare(a.name);
+            });
       return {
         ...state,
-        allBeers: orderBeersByName
-      }
+        allBeers: sortedByName,
+        filterPlaceholder: sortedByName,
+      };
     case FILTER_BY_BREWERY:
-      const filterBeersByBrewery = state.allBeers
+      const filterBeersByBrewery = state.allBeers;
       const BreweryFiltered = filterBeersByBrewery.filter((c) => {
         return c.brewery.find((c) => {
-          return c.name === action.payload
-        })
-      })
-      if (action.payload === 'All') {
+          return c.name === action.payload;
+        });
+      });
+      if (action.payload === "All") {
         return {
           ...state,
-          beers: filterBeersByBrewery
-        }
+          beers: filterBeersByBrewery,
+        };
       } else {
         return {
           ...state,
-          beers: BreweryFiltered
-        }
+          beers: BreweryFiltered,
+        };
       }
-
 
     case POST_BEER:
       return {
-        ...state
+        ...state,
       };
 
     case POST_USER:
       return {
-        ...state
+        ...state,
       };
 
     default:
