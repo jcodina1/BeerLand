@@ -7,6 +7,7 @@ import Login from "./components/Login/login";
 import Register from "./components/register/resgister";
 import { AuthProvider } from "./components/context/authContext";
 import AddProduct from "./components/AddProduct/AddProduct";
+import RegisterSeller from "./components/register/registerSeller";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/beers/detail/:id" component={BeerDetail} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/registerCompany" component={RegisterSeller} />
         </Switch>
         </AuthProvider>
        

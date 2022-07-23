@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
     },
     email: {
       type: DataTypes.STRING,
+    },
+    User: {
+      type: DataTypes.STRING,
     }
   }, { timestamps: false });
 };

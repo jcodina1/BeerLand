@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     description: {
       type: DataTypes.STRING,
     },
-    mail: {
+    email: {
       type: DataTypes.STRING,
     },
     password: {
@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
     },
     dni: {
       type: DataTypes.STRING,
+    },
+    admin:{
+      type:DataTypes.BOOLEAN,
+      defaultValue:true
     }
   });
 };

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import style from '../Filters/Filters.module.css'
 
-export default function Filters() {
+export default function Filters({setCurrentPage}) {
     const dispatch = useDispatch()
     const seller = useSelector(state => state.allSellers)
     const [order, setOrder] = useState('');
@@ -12,23 +12,23 @@ export default function Filters() {
     useEffect(() => {
         dispatch(getAllBeers())
     }, [dispatch])
-    // function handleFilterSeller(e) {
-    //     e.preventDefault()
-    //     dispatch(filterBeersBySeller(e.target.value))
+    function handleFilterSeller(e) {
+        e.preventDefault()
+        dispatch(filterBeersBySeller(e.target.value))
      
 
-    // }
-    // function handleSort2(e) {
-    //     dispatch(orderByPrice(e.target.value))
+    }
+    function handleSort2(e) {
+        dispatch(orderByPrice(e.target.value))
      
-    //     setOrder(`Ordered ${e.target.value}`)
-    // }
+        setOrder(`Ordered ${e.target.value}`)
+    }
   
     function handleSort(e) {
         e.preventDefault();
 
             dispatch(orderByName(e.target.value))
-            
+            setCurrentPage(1)
             console.log(e.target.value)
             setOrder(`Ordenado ${e.target.value}`)
 
@@ -49,7 +49,7 @@ export default function Filters() {
                         <option value='asc'>A-Z</option>
                         <option value='desc'>Z-A</option>
                 </select>
-                {/* <select className={style.select} onChange={(e) => {
+                 <select className={style.select} onChange={(e) => {
                     handleSort2(e)
                 }}>
                     <option>Order By Price</option>
@@ -61,7 +61,7 @@ export default function Filters() {
                     {seller.map((c) => (
                         <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
-                </select> */}
+                </select> 
             </div>
             
         </div>

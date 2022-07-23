@@ -30,32 +30,32 @@ function Reducer(state = initialState, action) {
       };
 
 
-    // case REMOVE_DETAIL:
-    //   return {
-    //     ...state,
-    //     detail: [],
-    //   };
+    case REMOVE_DETAIL:
+      return {
+        ...state,
+        detail: [],
+      };
 
 
-    // case GET_BEER_DETAIL: {
-    //   return {
-    //     ...state,
-    //     detail: action.payload
-    //   }
-    // }
-    // case GET_TYPE: {
-    //   return {
-    //     ...state,
-    //     type: action.payload
-    //   }
-    // }
-    // case SEARCH_BAR: {
-    //   return {
-    //     ...state,
-    //     search: action.payload,
-    //     allBeers: action.payload
-    //   }
-    // }
+    case GET_BEER_DETAIL: {
+      return {
+        ...state,
+        detail: action.payload
+      }
+    }
+    case GET_TYPE: {
+      return {
+        ...state,
+        type: action.payload
+      }
+    }
+    case SEARCH_BAR: {
+      return {
+        ...state,
+        search: action.payload,
+        allBeers: action.payload
+      }
+    }
     case ORDER_BY_NAME:
             let sortedArr = action.payload === 'asc' ?
                 state.allBeers.sort(function (a, b) {
@@ -98,60 +98,60 @@ function Reducer(state = initialState, action) {
 
 
 
-    // case FILTER_BY_SELLER:
-    //   return{
-    //     ...state,
-    //     allBeers: action.payload === 'ALL' ? state.beers
-    //     : state.seller.filter(e => e.beers.map((e) => e.sellerId).includes(action.payload))
-    //   };
+    case FILTER_BY_SELLER:
+      return{
+        ...state,
+        allBeers: action.payload === 'ALL' ? state.beers
+        : state.seller.filter(e => e.beers.map((e) => e.sellerId).includes(action.payload))
+      };
 
-    // case POST_BEER:
-    //   return {
-    //     ...state
-    //   };
+    case POST_BEER:
+      return {
+        ...state
+      };
 
-    // case POST_USER:
-    //   return {
-    //     ...state
-    //   };
+    case POST_USER:
+      return {
+        ...state
+      };
 
-    // case FILTER_SCORE:
-    //   return {
-    //     ...state,
-    //     allBeers: payload,
-    //   };
+    case FILTER_SCORE:
+      return {
+        ...state,
+        allBeers: action.payload,
+      };
 
-    // case ORDER_BY_PRICE: {
-    //   let orderBeersByPrice = action.payload === HIGHER_PRICE ? state.allBeers.sort((a, b) => {
-    //     if (a.price < b.price) {
-    //       return -1
-    //     }
-    //     if (a.price > b.price) {
-    //       return 1
-    //     }
-    //     return 0
-    //   }) :
-    //     state.allBeers.sort((a, b) => {
-    //       if (a.price < b.price) {
-    //         return 1
-    //       }
-    //       if (a.price > b.price) {
-    //         return -1
-    //       }
-    //       return 0
-    //     })
-    //   return {
-    //     ...state,
-    //     allBeers: orderBeersByPrice
-    //   }
-    // }
+    case ORDER_BY_PRICE: {
+      let orderBeersByPrice = action.payload === HIGHER_PRICE ? state.allBeers.sort((a, b) => {
+        if (a.price < b.price) {
+          return -1
+        }
+        if (a.price > b.price) {
+          return 1
+        }
+        return 0
+      }) :
+        state.allBeers.sort((a, b) => {
+          if (a.price < b.price) {
+            return 1
+          }
+          if (a.price > b.price) {
+            return -1
+          }
+          return 0
+        })
+      return {
+        ...state,
+        allBeers: orderBeersByPrice
+      }
+    }
 
-    // case GET_SELLERS:
-    //   return {
-    //     ...state,
-    //     allSellers: action.payload,
-    //     sellers: action.payload
-    //   };
+    case GET_SELLERS:
+      return {
+        ...state,
+        allSellers: action.payload,
+        sellers: action.payload
+      };
 
 
     default:

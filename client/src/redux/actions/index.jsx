@@ -1,7 +1,7 @@
 import axios from "axios";
 import {ALL_API, ALL_ID, ALL_NAME, ORDER_BY_NAME, ORDER_BY_PRICE,
   GET_BEERS, GET_BEER_DETAIL, FILTER_BY_BREWERY, GET_TYPE,
-  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER, ALL_SELLERS, GET_SELLERS,FILTER_BY_SELLER } from "../const";
+  REMOVE_DETAIL, SEARCH_BAR, POST_BEER,POST_SELLER, POST_USER, ALL_SELLERS, GET_SELLERS,FILTER_BY_SELLER } from "../const";
 
 export function getAllBeers() {
   return async function (dispatch) {
@@ -105,3 +105,17 @@ export function getAllSellers() {
     });
   };
 }
+
+
+export function postSeller(payload){
+  return async function(dispatch){
+    try{
+      const post = await axios.post(POST_SELLER, payload);
+      return post;
+    }catch(error){
+      if(error.response){
+        return alert(error.response.data)
+      }
+    }
+  }
+};

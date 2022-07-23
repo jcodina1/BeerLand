@@ -3,9 +3,11 @@ import { useAuth } from "../context/authContext";
 import { Link, useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
+import { postUser } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
-
+    const dispatch= useDispatch()
     const {login, logingWithGoogle,resetPassword} = useAuth()
     
     const history = useHistory()
@@ -13,14 +15,32 @@ export default function Login() {
 
     const [user, SetUser] = useState({
         email:'',
-        password: ''
+        password: '',
+        User:''
+       
     })
+    console.log(user)
+
+    function verifica_seleccion(check){
+        if(!check.checked){
+            check.checked=1;
+        }
+    }
 
     const handleChange = (e) => {
         SetUser({
             ...user,
             [e.target.name]: e.target.value
         })
+    }
+
+    const handleChangeCb = (e) => {
+       if (e.targe.value) {
+         SetUser({
+             ...user,
+             User: e.target.value
+         })
+       }
     }
 
 
@@ -40,8 +60,13 @@ export default function Login() {
 
     const handleGoogle = async ()=>{
        try {
-         await  logingWithGoogle()
-         history.push('/home')
+        user.User = user.User
+          const google =  await  logingWithGoogle()
+          console.log(google)
+          const userdata ={  name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
+          dispatch(postUser(userdata))
+          history.push('/home')
+
          } catch (error) {
              console.log(error.message)
              setError(error.message)
@@ -81,27 +106,36 @@ export default function Login() {
                     placeholder='******'
                     onChange={handleChange} />
             </div>
+
+            
+
+         <a href='#!'onClick={handelResetPassword}>
+                Forgot Password
+            </a>
+
+            </form>
             <div className={style.submit}>
                 <button onClick={handleSubmit} >Login</button>
             </div>
-            <a href='#!'
-            onClick={handelResetPassword}
-            >
-                Forgot Password
-            </a>
-                
-            </form>
-
-            <label>Don't have an Account</label>
-            <Link to='/register'>
-                <button>Register</button>
-            </Link>
             <div>
                 <button onClick={handleGoogle}>Google Login</button>
             </div>
-            <Link to='/home'>
+<div>
+            <label>Don't have an Account  . </label>
+            <Link to='/register'>
+                <button>Register</button>
+            </Link>
+</div>
+            <label>Register as a company : </label>
+            <Link to='/registerCompany'>
+                <button>Register</button>
+            </Link>
+           <div>
+             <Link to='/home'>
                 <button>Return</button>
             </Link>
+           </div>
+           
             
         </div>
     )

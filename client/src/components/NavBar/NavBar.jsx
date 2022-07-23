@@ -8,7 +8,6 @@ import { useAuth } from "../context/authContext";
 export default function NavBar({setPage }) {
 
   const {salir, user} = useAuth()
-  console.log(user)
 
   const handleLogOut = async () => {
     await salir()

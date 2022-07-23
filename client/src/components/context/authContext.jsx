@@ -32,7 +32,14 @@ export function AuthProvider({children}) {
 
     useEffect(()=>{ 
         onAuthStateChanged(auth, currentUser=>{ 
-            setUser(currentUser)
+            if (currentUser) {
+                const userData = {
+                    name:userData.email
+                }
+                 setUser(userData)
+            }
+            setUser(null)
+           
         })
     },[])
 
