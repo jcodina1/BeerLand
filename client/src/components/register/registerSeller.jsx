@@ -20,7 +20,7 @@ export default function RegisterSeller() {
         name:'',
         description:'',
         dni:'',
-        mail:'',
+        email:'',
         password: '',
         confirmation:'',
     })
@@ -87,7 +87,7 @@ export default function RegisterSeller() {
         <div className={style.password}>
             <label>Email: </label>
             <input 
-            name='email' 
+            name='mail' 
             type="email" 
             placeholder='youremail@company.com' 
             onChange={handleChange} />
