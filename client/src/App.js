@@ -12,6 +12,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from './components/Checkout/Checkout'
 import Cart from "./components/Cart/Cart";
+import UpdateProduct from "./components/Forms/UpdateProductForm";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/add" component={AddProduct} />
+            <Route exact path="/update" component={UpdateProduct} />
             <Route path="/beers/detail/:id" component={BeerDetail} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

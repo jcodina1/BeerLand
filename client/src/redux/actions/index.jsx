@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
   ALL_API, ALL_ID, ALL_NAME,
-  GET_BEERS, GET_BEER_DETAIL,
+  GET_BEERS, GET_BEER_DETAIL, UPDATE_BEER,
   REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER
 } from "../const";
 
@@ -72,3 +72,14 @@ export function postUser(payload) {
     }
   }
 };
+
+export function updateBeer(data, id) {
+  return (dispatch) => {
+    axios
+      .put(`http://localhost:3001/beer/update/${id}`, data)
+      .then((response) => dispatch({ type: UPDATE_BEER }))
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+}

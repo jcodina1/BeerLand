@@ -1,9 +1,9 @@
 
-import { ORDER_BY_NAME, FILTER_BY_BREWERY, } from '../const'
+import { ORDER_BY_NAME, FILTER_BY_BREWERY, SEARCH_BAR } from '../const'
 
 
 import {
-  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER
+  GET_TYPE, GET_BEERS, GET_BEER_DETAIL, REMOVE_DETAIL, POST_BEER, POST_USER, UPDATE_BEER
 } from "../const";
 
 
@@ -106,6 +106,11 @@ function Reducer(state = initialState, action) {
       };
 
     case POST_USER:
+      return {
+        ...state
+      };
+
+    case UPDATE_BEER:
       return {
         ...state
       };
