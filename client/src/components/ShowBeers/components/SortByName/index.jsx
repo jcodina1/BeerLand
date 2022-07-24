@@ -12,7 +12,7 @@ export default function SortByName({ setOrder, setCurrentPage }) {
       setCurrentPage(1);
       setOrder(e.target.value);
     } else {
-      dispatch(action.loadCountries());
+      dispatch(action.getAllBeers());
       setCurrentPage(1);
       setOrder(e.target.value);
     }

@@ -10,14 +10,27 @@ import {
   POST_BEER,
   POST_USER,
   SORT_BY_NAME,
+  SORT_BY_PRICE,
+  FILTER_BEER_BY_BREWERY,
+  GET_ALL_BREWERIES,
 } from "../const";
 
 export function getAllBeers() {
   return async function (dispatch) {
-    var allBeers = await axios.get(ALL_API);
+    let allBeers = await axios.get(ALL_API);
     return dispatch({
       type: GET_BEERS,
       payload: allBeers.data,
+    });
+  };
+}
+
+export function getAllBreweries() {
+  return async function (dispatch) {
+    let allBreweries = await axios.get("http://localhost:3001/seller");
+    return dispatch({
+      type: GET_ALL_BREWERIES,
+      payload: allBreweries.data,
     });
   };
 }
@@ -83,6 +96,20 @@ export function postUser(payload) {
 export function sortByName(payload) {
   return {
     type: SORT_BY_NAME,
+    payload,
+  };
+}
+
+export function sortByPrice(payload) {
+  return {
+    type: SORT_BY_PRICE,
+    payload,
+  };
+}
+
+export function filterBeersByBrewery(payload) {
+  return {
+    type: FILTER_BEER_BY_BREWERY,
     payload,
   };
 }

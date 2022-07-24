@@ -1,22 +1,28 @@
-import { React, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllBeers } from '../../redux/actions';
-import style from '../ShowBeers/ShowBeers.module.css'
+import { React, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBeers } from "../../redux/actions";
+import style from "../ShowBeers/ShowBeers.module.css";
 import Loading from "../Loading/Loading";
 import BeerCard from "../BeerCard/BeerCard";
 import Pagination from "../Pagination/Pagination";
+import SortByName from "./components/SortByName";
+import FilterByBrewery from "./components/FilterByBrewery";
+import SortByPrice from "./components/SortByPrice";
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
-  const allBeers = useSelector(state => state.allBeers);
-  const allBeers1 = useSelector(state => state.search);
-  const styles = useSelector(state => state.styles);
+  const allBeers = useSelector((state) => state.allBeers);
+  const allBeers1 = useSelector((state) => state.search);
+  // const styles = useSelector((state) => state.styles);
   const [currentPage, setCurrentPage] = useState(1);
   const [beerPerPage, setBeerPerPage] = useState(10);
   const lastBeer = currentPage * beerPerPage;
   const firstBeer = lastBeer - beerPerPage;
   const currentBeer = allBeers.slice(firstBeer, lastBeer);
-  const page = (pageNumber) => { setCurrentPage(pageNumber) };
+  const [, setOrder] = useState("");
+  const page = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,26 +33,39 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
+      <SortByName setOrder={setOrder} setCurrentPage={setCurrentPage} />
+      {/* <FilterByBrewery /> */}
+      <SortByPrice setOrder={setOrder} setCurrentPage={setCurrentPage} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
-          {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading} />)</span> : currentBeer?.map(beer => {
-            return (
-              <BeerCard
-                id={beer.id}
-                key={beer.id}
-                name={beer.name}
-                description={beer.description}
-                image={beer.image}
-              // style={beer.style}
-              // origin={beer.origin}
-              />
-            )
-          })}
-          <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} />
+          {allBeers.length === 0 ? (
+            <span>
+              (<Loading setLoading={setLoading} />)
+            </span>
+          ) : (
+            currentBeer?.map((beer) => {
+              return (
+                <BeerCard
+                  id={beer.id}
+                  key={beer.id}
+                  name={beer.name}
+                  description={beer.description}
+                  image={beer.image}
+                  // style={beer.style}
+                  // origin={beer.origin}
+                />
+              );
+            })
+          )}
+          <Pagination
+            beerPerPage={beerPerPage}
+            allBeers={allBeers}
+            currentBeer={currentBeer}
+            page={page}
+          />
         </div>
       </div>
     </div>
-
   );
 }
 

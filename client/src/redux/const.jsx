@@ -4,7 +4,7 @@ export const ALL_ID = "http://localhost:3001/beer/id/";
 export const ALL_NAME = "http://localhost:3001/beer?name=";
 export const POST_BEER = "http://localhost:3001/beer";
 export const POST_USER = "http://localhost:3001/user";
-
+export const GET_ALL_BREWERIES = "GET_ALL_BREWERIES";
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
 export const SET_DETAILS = "SET_DETAILS";
@@ -16,6 +16,6 @@ export const ORDER_ORIG = "ORDER_ORIG";
 export const SORT_BY_NAME = "SORT_BY_NAME";
 export const ORDER_SCORE = "ORDER_SCORE";
 export const REMOVE_DETAIL = "REMOVE_DETAIL";
-export const ORDER_BY_NAME = "ORDER_BY_NAME";
-export const FILTER_BY_BREWERY = "FILTER_BY_BREWERY";
+export const SORT_BY_PRICE = "SORT_BY_PRICE";
+export const FILTER_BEER_BY_BREWERY = "FILTER_BEER_BY_BREWERY";
 export const GET_TYPE = "GET_TYPE";

@@ -6,8 +6,9 @@ import {
   POST_BEER,
   GET_TYPE,
   POST_USER,
-  FILTER_BY_BREWERY,
+  FILTER_BEER_BY_BREWERY,
   SORT_BY_NAME,
+  SORT_BY_PRICE,
 } from "../const";
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
   beers: [],
   allBeers: [],
   detail: {},
-  brewery: [],
+  allBreweries: [],
   userType: [],
   type: [],
   filterPlaceholder: [],
@@ -58,35 +59,45 @@ function Reducer(state = initialState, action) {
     case SORT_BY_NAME:
       let sortedByName =
         action.payload === "AtoZ"
-          ? state.allBeers.sort((a, b) => {
-              a.name.localeCompare(b.name);
+          ? state.allBeers.sort(function (a, b) {
+              return a.name.localeCompare(b.name);
             })
-          : state.allBeers.sort((a, b) => {
-              b.name.localeCompare(a.name);
+          : state.allBeers.sort(function (a, b) {
+              return b.name.localeCompare(a.name);
             });
       return {
         ...state,
-        allBeers: sortedByName,
+        beers: sortedByName,
         filterPlaceholder: sortedByName,
       };
-    case FILTER_BY_BREWERY:
-      const filterBeersByBrewery = state.allBeers;
-      const BreweryFiltered = filterBeersByBrewery.filter((c) => {
-        return c.brewery.find((c) => {
-          return c.name === action.payload;
-        });
-      });
-      if (action.payload === "All") {
-        return {
-          ...state,
-          beers: filterBeersByBrewery,
-        };
-      } else {
-        return {
-          ...state,
-          beers: BreweryFiltered,
-        };
-      }
+    case SORT_BY_PRICE:
+      let sortedByPrice =
+        action.payload === "Low to High"
+          ? state.allBeers.sort(function (a, b) {
+              return a.price - b.price;
+            })
+          : state.allBeers.sort(function (a, b) {
+              return b.price - a.price;
+            });
+      return {
+        ...state,
+        beers: sortedByPrice,
+        filterPlaceholder: sortedByPrice,
+      };
+
+    case FILTER_BEER_BY_BREWERY:
+      const preFilteredBeers = state.allBeers;
+      const filteredBeers =
+        action.payload === "All"
+          ? preFilteredBeers
+          : preFilteredBeers.filter((beer) =>
+              beer.brewery.find((brewery) => brewery.name === action.payload)
+            );
+      return {
+        ...state,
+        beers: filteredBeers,
+        filterPlaceholder: filteredBeers,
+      };
 
     case POST_BEER:
       return {

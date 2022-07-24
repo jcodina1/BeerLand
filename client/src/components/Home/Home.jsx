@@ -13,7 +13,8 @@ export default function Home() {
       <div>
         <NavBar />
       </div>
-      <div>
+
+      <div className={style.filterContainer}>
         <ShowBeers />
       </div>
       <div>

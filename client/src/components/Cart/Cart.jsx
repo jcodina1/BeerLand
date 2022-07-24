@@ -8,7 +8,6 @@ export default function Cart() {
   const [edit, setEdit] = useState(false);
   const [carrito, setCarrito] = useState([]);
 
-  let quantity = "cantidad";
   let products = [
     {
       name: "Stella Artois",
