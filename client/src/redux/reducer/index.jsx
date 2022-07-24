@@ -1,14 +1,11 @@
+
+
+
 import {
-  GET_BEERS,
-  GET_BEER_DETAIL,
-  SEARCH_BAR,
-  REMOVE_DETAIL,
-  POST_BEER,
-  GET_TYPE,
-  POST_USER,
-  FILTER_BEER_BY_BREWERY,
+  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER, REMOVE_ONE_FROM_CART, UPDATE_BEER, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS,FILTER_BEER_BY_BREWERY,
   SORT_BY_NAME,
   SORT_BY_PRICE,
+
 } from "../const";
 
 const initialState = {
@@ -20,6 +17,12 @@ const initialState = {
   userType: [],
   type: [],
   filterPlaceholder: [],
+  cart: [],
+  infoBeers: [],
+  infoSoldBeers: [],
+  totalPrice: 0,
+  user: {},
+
 };
 
 function Reducer(state = initialState, action) {
@@ -29,7 +32,62 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
+
       };
+
+
+      };
+
+    case ADD_TO_CART:
+      let newbeer = state.allBeers?.find((beer) => beer?.id === action.payload);
+      newbeer.cant = 1;
+      let carrito = JSON.parse(localStorage.getItem("carrito"));
+      if (carrito) {
+        carrito.push(newbeer);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+      } else {
+        localStorage.setItem("carrito", JSON.stringify([newbeer]));
+      }
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("carrito")),
+      };
+
+    case REMOVE_ALL_FROM_CART:
+      localStorage.setItem("carrito", JSON.stringify([]));
+      return {
+        cart: [],
+      };
+
+    case REMOVE_ONE_FROM_CART:
+      let beerToDelete = JSON.parse(localStorage.getItem("carrito")).filter(
+        (beer) => beer.id !== action.payload
+      );
+      localStorage.setItem("carrito", JSON.stringify(beerToDelete));
+      return {
+        ...state,
+        cart: beerToDelete,
+      };
+
+    case GET_CART:
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("carrito")),
+      };
+
+      
+    case TOTAL_PRICE:
+      return {
+        ...state,
+        totalPrice: action.payload,
+      };
+
+    case CHECKOUT_BEERS:
+      return {
+        ...state,
+        infoBeers: action.payload,
+      };
+
 
     case REMOVE_DETAIL:
       return {
@@ -43,12 +101,21 @@ function Reducer(state = initialState, action) {
         detail: action.payload,
       };
     }
+    
     case GET_TYPE: {
       return {
         ...state,
         type: action.payload,
       };
-    }
+    }   
+    
+    case GET_TYPE: {
+      return {
+        ...state,
+        type: action.payload
+      }
+    };
+
     case SEARCH_BAR: {
       return {
         ...state,
@@ -56,6 +123,7 @@ function Reducer(state = initialState, action) {
         allBeers: action.payload,
       };
     }
+    
     case SORT_BY_NAME:
       let sortedByName =
         action.payload === "AtoZ"
@@ -70,6 +138,8 @@ function Reducer(state = initialState, action) {
         beers: sortedByName,
         filterPlaceholder: sortedByName,
       };
+      
+      
     case SORT_BY_PRICE:
       let sortedByPrice =
         action.payload === "Low to High"
@@ -97,8 +167,11 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeers,
         filterPlaceholder: filteredBeers,
-      };
+        allBeers: action.payload
+      }
+    };
 
+    
     case POST_BEER:
       return {
         ...state,
@@ -107,6 +180,11 @@ function Reducer(state = initialState, action) {
     case POST_USER:
       return {
         ...state,
+      };
+
+    case UPDATE_BEER:
+      return {
+        ...state
       };
 
     default:
