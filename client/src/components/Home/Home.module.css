@@ -1,6 +1,17 @@
-.homeContainer{
-    height: 100%;
-    width: 100%;
-    flex: inherit;
-    flex-direction: column;
+.homeContainer {
+  height: 100%;
+  width: 100%;
+  flex: inherit;
+  flex-direction: column;
+}
+
+.vitrina {
+  display: flex;
+  flex-direction: column;
+}
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

@@ -1,7 +1,11 @@
-import { ORDER_BY_NAME, FILTER_BY_BREWERY } from '../const'
+
+
 
 import {
-  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER, REMOVE_ONE_FROM_CART, UPDATE_BEER, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS
+  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER, REMOVE_ONE_FROM_CART, UPDATE_BEER, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS,FILTER_BEER_BY_BREWERY,
+  SORT_BY_NAME,
+  SORT_BY_PRICE,
+
 } from "../const";
 
 const initialState = {
@@ -9,14 +13,16 @@ const initialState = {
   beers: [],
   allBeers: [],
   detail: {},
-  brewery: [],
+  allBreweries: [],
   userType: [],
   type: [],
+  filterPlaceholder: [],
   cart: [],
   infoBeers: [],
   infoSoldBeers: [],
   totalPrice: 0,
   user: {},
+
 };
 
 function Reducer(state = initialState, action) {
@@ -26,6 +32,10 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
+
+      };
+
+
       };
 
     case ADD_TO_CART:
@@ -78,6 +88,7 @@ function Reducer(state = initialState, action) {
         infoBeers: action.payload,
       };
 
+
     case REMOVE_DETAIL:
       return {
         ...state,
@@ -87,10 +98,17 @@ function Reducer(state = initialState, action) {
     case GET_BEER_DETAIL: {
       return {
         ...state,
-        detail: action.payload
-      }
-    };
-
+        detail: action.payload,
+      };
+    }
+    
+    case GET_TYPE: {
+      return {
+        ...state,
+        type: action.payload,
+      };
+    }   
+    
     case GET_TYPE: {
       return {
         ...state,
@@ -102,61 +120,66 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         search: action.payload,
+        allBeers: action.payload,
+      };
+    }
+    
+    case SORT_BY_NAME:
+      let sortedByName =
+        action.payload === "AtoZ"
+          ? state.allBeers.sort(function (a, b) {
+              return a.name.localeCompare(b.name);
+            })
+          : state.allBeers.sort(function (a, b) {
+              return b.name.localeCompare(a.name);
+            });
+      return {
+        ...state,
+        beers: sortedByName,
+        filterPlaceholder: sortedByName,
+      };
+      
+      
+    case SORT_BY_PRICE:
+      let sortedByPrice =
+        action.payload === "Low to High"
+          ? state.allBeers.sort(function (a, b) {
+              return a.price - b.price;
+            })
+          : state.allBeers.sort(function (a, b) {
+              return b.price - a.price;
+            });
+      return {
+        ...state,
+        beers: sortedByPrice,
+        filterPlaceholder: sortedByPrice,
+      };
+
+    case FILTER_BEER_BY_BREWERY:
+      const preFilteredBeers = state.allBeers;
+      const filteredBeers =
+        action.payload === "All"
+          ? preFilteredBeers
+          : preFilteredBeers.filter((beer) =>
+              beer.brewery.find((brewery) => brewery.name === action.payload)
+            );
+      return {
+        ...state,
+        beers: filteredBeers,
+        filterPlaceholder: filteredBeers,
         allBeers: action.payload
       }
     };
 
-    case ORDER_BY_NAME:
-      let orderBeersByName = action.payload === 'ASC' ? state.allBeers.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1
-        }
-        if (a.name > b.name) {
-          return 1
-        }
-        return 0
-      }) :
-        state.allBeers.sort((a, b) => {
-          if (a.name < b.name) {
-            return 1
-          }
-          if (a.name > b.name) {
-            return -1
-          }
-          return 0
-        })
-      return {
-        ...state,
-        allBeers: orderBeersByName
-      };
-
-    case FILTER_BY_BREWERY:
-      const filterBeersByBrewery = state.allBeers
-      const BreweryFiltered = filterBeersByBrewery.filter((c) => {
-        return c.brewery.find((c) => {
-          return c.name === action.payload
-        })
-      })
-      if (action.payload === 'All') {
-        return {
-          ...state,
-          beers: filterBeersByBrewery
-        }
-      } else {
-        return {
-          ...state,
-          beers: BreweryFiltered
-        }
-      };
-
+    
     case POST_BEER:
       return {
-        ...state
+        ...state,
       };
 
     case POST_USER:
       return {
-        ...state
+        ...state,
       };
 
     case UPDATE_BEER:

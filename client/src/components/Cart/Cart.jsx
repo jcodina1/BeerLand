@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import style from '../Cart/Cart.module.css';
+
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { removeAllFromCart, getCart, totalPrice, infoBeers, addToCart } from '../../redux/actions/index';
@@ -7,6 +9,8 @@ import Item from "../Item/Item.jsx";
 import Footer from '../Footer/Footer.jsx'
 
 export default function Cart() {
+
+
   const [checkout, setCheckout] = useState(false)
   const cantidad = Math.floor(Math.random() * 15) + 1
   const dispatch = useDispatch();
@@ -136,3 +140,4 @@ export default function Cart() {
     </div >
   );
 }
+

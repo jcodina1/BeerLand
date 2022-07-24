@@ -26,6 +26,7 @@ export default function Checkout() {
     dispatch(getCart());
   }, [dispatch]);
 
+
   const createOrder = (data, actions) => {
     if (user.hasOwnProperty("name")) {
       return actions.order.create({
@@ -105,6 +106,7 @@ export default function Checkout() {
           <h3>Total: ${preciototal} </h3>
           <div className="paypal">
             <Paypal/>
+
           </div>
         </div>
       </div>
