@@ -14,6 +14,7 @@ import Checkout from './components/Checkout/Checkout'
 import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 
+
 function App() {
   return (
     <Router>
@@ -27,7 +28,8 @@ function App() {
             <Route path="/beers/detail/:id" component={BeerDetail} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <Route path="/test" component={Cart} />
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/cart" component={Cart} />
           </Switch>
         </AuthProvider>
       </div>

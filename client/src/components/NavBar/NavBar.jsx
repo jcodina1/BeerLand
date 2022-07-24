@@ -1,4 +1,3 @@
-
 import React, { useState }from "react";
 
 import { Link } from "react-router-dom";
@@ -8,15 +7,10 @@ import BeerLogo from '../../img/BeerLogo.png'
 import { useAuth } from "../context/authContext";
 import Cart from "../Cart/Cart";
 
-
 export default function NavBar({ setPage }) {
-
   const { salir, user } = useAuth()
-
   console.log(user)
-
   const [cart, setCart] = useState(false)
-
   const handleLogOut = async () => {
     await salir()
   }
@@ -49,7 +43,7 @@ export default function NavBar({ setPage }) {
       {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
  */}
  
-      <Link to='/test'>
+      <Link to='/cart'>
         <button>Cart</button>
       </Link>
 

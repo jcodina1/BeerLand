@@ -1,85 +1,114 @@
+import Paypal from '../PayPal/PayPal'
 import React from "react";
-import styles from "./styles.module.css";
+import ReactDOM from "react-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Footer from "../Footer/Footer";
+import Itemscheckout from "./ItemsCheckout";
+import { getCart, infoBeers, infoSoldBeers, totalPrice} from "../../redux/actions";
+import { useHistory } from "react-router-dom";
+import Login from "../Login/login";
+import Swal from "sweetalert2";
+
+
 export default function Checkout() {
-  const products = [
-    {
-      name: "Stella Artois",
-      description: "Pack Cerveza Premium Lager",
-      price: "8290",
-      stock: 102,
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage0.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
-      sellerId: 14,
-    },
-    {
-      name: "Budweiser",
-      description: "Pack Cerveza Lager",
-      price: "7390",
-      stock: 53,
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage1.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
-      sellerId: 6,
-    },
-    {
-      name: "Royal Guard",
-      description: "Pack 18 Cervezas Latas 350 cc c/u",
-      price: "7790",
-      stock: 120,
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage2.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
-      sellerId: 14,
-    },
-    {
-      name: "Sol",
-      description: "Pack Cervezas",
-      price: "3990",
-      stock: 141,
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage3.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
-      sellerId: 2,
-    },
-    {
-      name: "Stella Artois",
-      description: "Pack Cerveza Premium Lager",
-      price: "3790",
-      stock: 15,
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/beerland-42137.appspot.com/o/cervezas%2Fimage4.jpg?alt=media&token=12b41f5b-56ae-4e3a-9958-e1d4540aba32",
-      sellerId: 6,
-    },
-  ];
+  const dispatch = useDispatch();
+  const infoBeer = useSelector((state) => state.infoBeers);
+  const checkoutinfo = JSON.parse(localStorage.getItem("carrito"));
+  let precio = checkoutinfo.map((e) => e.cant * e.price);
+  var user = useSelector((state) => state.user);
+  let preciototal = precio.reduce(function (a, b) {
+    return a + b;
+  }, 0);
+  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(getCart());
+  }, [dispatch]);
+
+  const createOrder = (data, actions) => {
+    if (user.hasOwnProperty("name")) {
+      return actions.order.create({
+        purchase_units: [
+          {
+            amount: {
+              value: preciototal,
+            },
+          },
+        ],
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "You have to be logged in to buy!",
+      });
+    }
+  };
+
+/*   const onApprove = (data, actions) => {
+    let totalInfo = {
+      data: data,
+      totalPrice: preciototal,
+      infoBook: infoBook,
+      userId: userId,
+      address: address
+    };
+
+    dispatch(infoBooks(infoBook));
+    dispatch(infoSoldBooks(totalInfo));
+
+    let timerInterval;
+    Swal.fire({
+      title: "Your payment was successful",
+      html: 'Thank you for trusting in BookStore',
+      timer: 5000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      <-- Read more about handling dismissals below -->
+      if (result.dismiss === Swal.DismissReason.timer) {
+        localStorage.removeItem("carrito");
+        window.location.href = "/home";
+        console.log("I was closed by the timer");
+      }
+    });
+
+    return actions.order.capture();
+  }; */
 
   return (
-    <>
-      <div className={styles.wrapper}>
-        <div className={styles.paymentContainer}></div>
-        <div className={styles.productsContainer}>
-          <div className={styles.headerAndFooter}>
-            <p>Your Products</p>
-            <button>Edit Cart</button>
-          </div>
-          <div className={styles.productList}>
-            {/* aca mapear productos con className={styles.productContainer}  ojo que es distinto a productsContainer */}
-
-            {products.map((p) => {
-              return (
-                <div className={styles.productContainer}>
-                  <img src={p.image} alt="" />
-                  $ {  p.price}
-                </div>
-              );
-            })}
-          </div>
-          <div className={styles.headerAndFooter}>
-            <h3>Total:</h3>
-            <h3>
-              {products
-                .map((p) => parseInt(p.price))
-                .reduce((prev, curr) => prev + curr)}
-            </h3>
+    <div className="checkout">
+      <div className="checkoutCont">
+        <div>
+          {checkoutinfo?.map((e) => (
+            <Itemscheckout
+              key={e.id}
+              image={e.image}
+              name={e.name}
+              price={e.price * e.cant}
+              cant={e.cant}
+            />
+          ))}
+        </div>
+        <div className="pay">
+          <h1 style={{ textAlign: 'center', fontSize: '30px' }}>Order Total</h1>
+          <h3>Total: ${preciototal} </h3>
+          <div className="paypal">
+            <Paypal/>
           </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }

@@ -1,12 +1,8 @@
-
 import { ORDER_BY_NAME, FILTER_BY_BREWERY, SEARCH_BAR } from '../const'
 
-
 import {
-  GET_TYPE, GET_BEERS, GET_BEER_DETAIL, REMOVE_DETAIL, POST_BEER, POST_USER, UPDATE_BEER
+  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER, REMOVE_ONE_FROM_CART, UPDATE_BEER, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS
 } from "../const";
-
-
 
 const initialState = {
   search: [],
@@ -15,9 +11,12 @@ const initialState = {
   detail: {},
   brewery: [],
   userType: [],
-  type: []
-
-
+  type: [],
+  cart: [],
+  infoBeers: [],
+  infoSoldBeers: [],
+  totalPrice: 0,
+  user: {},
 };
 
 function Reducer(state = initialState, action) {
@@ -27,9 +26,57 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
-
       };
 
+    case ADD_TO_CART:
+      let newbeer = state.allBeers?.find((beer) => beer?.id === action.payload);
+      newbeer.cant = 1;
+      let carrito = JSON.parse(localStorage.getItem("carrito"));
+      if (carrito) {
+        carrito.push(newbeer);
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+      } else {
+        localStorage.setItem("carrito", JSON.stringify([newbeer]));
+      }
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("carrito")),
+      };
+
+    case REMOVE_ALL_FROM_CART:
+      localStorage.setItem("carrito", JSON.stringify([]));
+      return {
+        cart: [],
+      };
+
+    case REMOVE_ONE_FROM_CART:
+      let beerToDelete = JSON.parse(localStorage.getItem("carrito")).filter(
+        (beer) => beer.id !== action.payload
+      );
+      localStorage.setItem("carrito", JSON.stringify(beerToDelete));
+      return {
+        ...state,
+        cart: beerToDelete,
+      };
+
+    case GET_CART:
+      return {
+        ...state,
+        cart: JSON.parse(localStorage.getItem("carrito")),
+      };
+
+      
+    case TOTAL_PRICE:
+      return {
+        ...state,
+        totalPrice: action.payload,
+      };
+
+    case CHECKOUT_BEERS:
+      return {
+        ...state,
+        infoBeers: action.payload,
+      };
 
     case REMOVE_DETAIL:
       return {
@@ -37,26 +84,28 @@ function Reducer(state = initialState, action) {
         detail: [],
       };
 
-
     case GET_BEER_DETAIL: {
       return {
         ...state,
         detail: action.payload
       }
-    }
+    };
+
     case GET_TYPE: {
       return {
         ...state,
         type: action.payload
       }
-    }
+    };
+
     case SEARCH_BAR: {
       return {
         ...state,
         search: action.payload,
         allBeers: action.payload
       }
-    }
+    };
+
     case ORDER_BY_NAME:
       let orderBeersByName = action.payload === 'ASC' ? state.allBeers.sort((a, b) => {
         if (a.name < b.name) {
@@ -79,7 +128,8 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         allBeers: orderBeersByName
-      }
+      };
+
     case FILTER_BY_BREWERY:
       const filterBeersByBrewery = state.allBeers
       const BreweryFiltered = filterBeersByBrewery.filter((c) => {
@@ -97,8 +147,7 @@ function Reducer(state = initialState, action) {
           ...state,
           beers: BreweryFiltered
         }
-      }
-
+      };
 
     case POST_BEER:
       return {
