@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSellers } from "../../redux/actions";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/contestautenticacion";
 import Home from "../Home/Home";
-import HomeAdmin from "./homeadmin";
+import HomeAdmin from "./HomeAdmin";
 
 
 export default function ValidacionUSer() {
-    const seller = useSelector(state => state.allSellers)
+
     const {user} = useAuth()
     console.log(user)
-    const dispatch = useDispatch()
-    console.log(seller)
+
 
 
     // useEffect(() => {
@@ -39,7 +38,7 @@ export default function ValidacionUSer() {
     return (
         <div>
             {
-                user === null ? <Home/> : <HomeAdmin/>  
+                 user === null ? <Home/> : user.rol === 'user' ?<Home/> : <HomeAdmin/>
             }
         </div>
     )

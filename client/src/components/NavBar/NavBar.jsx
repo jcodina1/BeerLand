@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar'
 import style from '../NavBar/NavBar.module.css'
 import BeerLogo from '../../img/BeerLogo.png'
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/contestautenticacion";
+import { authContext } from "../context/contestautenticacion";
+import { useContext } from "react";
 
 export default function NavBar({setPage }) {
 
-  const {salir, user} = useAuth()
+  const {user, salir} = useAuth()
+  console.log(user)
 
-  const handleLogOut = async () => {
-    await salir()
-  }
-
-
+   const handleLogOut = async () => {
+     await salir()
+   }
+   
   return (
     <nav className={style.navbar}>
       <Link to='/home'>
