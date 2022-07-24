@@ -53,6 +53,9 @@ export default function BeerDetail(props) {
           <Link to="/home">
             <button>Back</button>
           </Link>
+          <Link to="/update">
+            <button>Update</button>
+          </Link>
         </div>
       )}
     </div>
