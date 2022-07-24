@@ -1,0 +1,41 @@
+.landingbox{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-image: url(../../img/beerLanding.jpg);
+    background-repeat: no-repeat; 
+    background-size: cover;
+    flex-direction: column;
+    height: 100vh;
+    width:auto;
+    align-content: space-between;
+
+    
+}
+.modalbtn{
+    background-color: rgb(21, 55, 16);
+    font-family: 'Trebuchet MS', sans-serif;
+    color: bisque;
+    font-size: 25px;
+    font-weight: 600;
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    border-color: rgb(1, -16, -5);
+}
+:hover .modalbtn{
+    cursor: pointer;
+}
+.box{
+    background-color: rgba(6, 32, 2, 0.237);
+    padding-top: 100px;
+    padding-bottom: 150px;
+}
+.titleintro{
+    color: rgb(5, 31, 2);
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    font-size: 65px;
+
+
+}

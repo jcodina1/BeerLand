@@ -1,11 +1,49 @@
-.container {
+.container{
     margin: 100px;
-}
+    background-color: brown;
+    padding: 40px 50px 40px 50px;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    max-height: 800px;
+    min-height: 300px;
+    min-width: 400px;
+    max-width: 450px;
+    border-radius: 20px;
+    color: antiquewhite;
 
-.password {
-    margin: 20px;
-}
 
-.submit {
+}
+.password{
+margin: 20px;
+background-color:None;
+color:antiquewhite;
+font-family: 'Trebuchet MS', sans-serif;
+}
+.submit{
     margin: 10px;
+}
+.login{
+    display: flex;
+    flex-direction: column;
+    padding-left: 300px;
+    padding-right: 300px;
+    background-color: rgb(27, 39, 39);
+    align-content: space-between;
+    align-items: inherit;
+}
+.registerbox{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 25px;
+}
+.close{
+    
+    display: flex;
+    flex-direction: row;
+    padding-left: 400px;
 }
