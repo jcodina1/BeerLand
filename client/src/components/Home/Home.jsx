@@ -4,13 +4,9 @@ import NavBar from "../NavBar/NavBar";
 import ShowBeers from '../ShowBeers/ShowBeers'
 import style from '../Home/Home.module.css'
 import Footer from '../Footer/Footer'
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/contestautenticacion";
 
 export default function Home() {
-  /* const [userType, setUserType] = useState('') */
-
-  const {user} = useAuth()
-  console.log(user)
 
   return (
     <div className={style.homeContainer}>

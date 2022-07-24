@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/contestautenticacion";
 import { useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
@@ -23,7 +23,9 @@ export default function RegisterSeller() {
         email:'',
         password: '',
         confirmation:'',
+        rol:'admin'
     })
+    console.log(user)
 
     const handleChange = (e) => {
         SetUser({
@@ -39,7 +41,7 @@ export default function RegisterSeller() {
         try {
            
             if (user.password === user.confirmation){
-            await signup(user.email, user.password)
+            await signup(user.email, user.password, user)
             dispatch(postSeller(user))
             console.log(user, 'holaaa')
             history.push('/home')
@@ -87,7 +89,7 @@ export default function RegisterSeller() {
         <div className={style.password}>
             <label>Email: </label>
             <input 
-            name='mail' 
+            name='email' 
             type="email" 
             placeholder='youremail@company.com' 
             onChange={handleChange} />
