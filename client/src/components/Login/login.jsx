@@ -3,6 +3,10 @@ import { useAuth } from "../context/authContext";
 import { Link, useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
+import NavBar from "../NavBar/NavBar";
+import googleLogo from '../../img/googleLogin.png'
+import facebookLogo from '../../img/facebookLogin.png'
+import beertest from '../../img/beertest.png'
 
 export default function Login() {
 
@@ -63,47 +67,77 @@ export default function Login() {
 
 
     return (
-        <div className={style.container}>
-            <form>
-                <h1>Login</h1>
-                <div className={style.password}>
-                    <label>Email: </label>
-                    <input name='email'
-                        type="email"
-                        placeholder='youremail@company.com'
-                        onChange={handleChange} />
+        <div className={style.login}>
+
+
+            <div className={style.loginBox}>
+
+                <img className={style.image} src={beertest} alt='beercharacter' />
+
+                <div className={style.container}>
+                    <form>
+                        <h1>Login</h1>
+                        <div className={style.password}>
+                            <label>Email: </label>
+                            <input name='email'
+                                type="email"
+                                placeholder='youremail@company.com'
+                                onChange={handleChange} />
+                        </div>
+
+                        <div className={style.password}>
+                            <label>Password: </label>
+                            <input name='password'
+                                type='password' id="password"
+                                placeholder='******'
+                                onChange={handleChange} />
+                        </div>
+                        <div className={style.submit}>
+                            <button  className={style.button} onClick={handleSubmit} >Login</button>
+                        </div>
+                        <a href='#!'
+                            onClick={handelResetPassword}
+                        >
+                            Forgot Password
+                        </a>
+
+                    </form>
+
+                    <div className={style.footer}>
+                        <label className={style.footer}>Don't have an Account</label>
+                        <div className={style.registerbox}>
+
+                            <div>
+                                <Link onClick={handleGoogle}>
+                                    <span>
+                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} alt='Beer' />
+                                    </span>
+                                </Link>
+                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                            </div>
+                            <div>
+                                <Link onClick={handleGoogle}>
+                                    <span>
+                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} alt='Beer' />
+                                    </span>
+                                </Link>
+                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                            </div>
+                        </div>
+                        <Link to='/register'>
+                            <button className={style.button}>Register</button>
+                        </Link>
+
+                    </div>
+
+                </div>
+                <div className={style.buttonA} >
+                    <Link  to='/home' >
+                        <span className={style.buttonA}>Back</span>
+                    </Link>
                 </div>
 
-                <div className={style.password}>
-                    <label>Password: </label>
-                    <input name='password'
-                        type='password' id="password"
-                        placeholder='******'
-                        onChange={handleChange} />
-                </div>
-                <div className={style.submit}>
-                    <button onClick={handleSubmit} >Login</button>
-                </div>
-                <a href='#!'
-                    onClick={handelResetPassword}
-                >
-                    Forgot Password
-                </a>
-
-            </form>
-
-            <label>Don't have an Account</label>
-            <div className={style.registerbox}>
-                <Link to='/register'>
-                    <button>Register</button>
-                </Link>
-                <div>
-                    <button onClick={handleGoogle}>Google Login</button>
-                </div>
             </div>
-            <Link to='/home'>
-                <button>Volver</button>
-            </Link>
 
         </div>
     )

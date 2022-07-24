@@ -1,5 +1,5 @@
 
-import React, { useState }from "react";
+import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar'
@@ -23,35 +23,51 @@ export default function NavBar({ setPage }) {
 
   return (
     <nav className={style.navbar}>
-      <Link to='/home'>
-        <span>
-          <img id='BeerLogo' src={BeerLogo} width='120px' height='80px' alt='Beer' />
-        </span>
-      </Link>
-      <SearchBar setPage={setPage} />
-      {user ? '' :
-        <Link to='/login'>
-          <button>Login</button>
+      <div >
+        <Link to='/home'>
+          <span >
+            <img className={style.logo} id='BeerLogo' src={BeerLogo} alt='Beer' />
+          </span>
         </Link>
-      }
+      </div>
+
+      <div className={style.space}>
+        <SearchBar setPage={setPage} />
+      </div>
+      <div className={style.infoDistribution}>
+        <div className={style.space}>
+          <h1>Hello {user ? user.email : ''}</h1>
+        </div>
+        
+       <div className={style.buttonlink}>
+       <Link to='/test'>
+          <button className={style.cartBtn}></button>
+        </Link>
+        
+        {user ? '' :
+          <Link to='/login'>
+            <button className={style.button}>Login</button>
+          </Link>
+        }
 
 
-      <Link to='/login'>
+        {/* <Link to='/login'>
 
         <button>Add</button>
-      </Link>
-
-      <h1>Hello {user ? user.email : ''}</h1>
-      <button onClick={handleLogOut}>LogOut</button>
+      </Link> */}
 
 
-{/*       <button onClick={() => setCart(true)}>Cart</button>
+        <button className={style.button} onClick={handleLogOut}>LogOut</button>
+
+
+        {/*       <button onClick={() => setCart(true)}>Cart</button>
       {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
  */}
- 
-      <Link to='/test'>
-        <button>Cart</button>
-      </Link>
+       </div>
+
+       
+      </div>
+
 
 
     </nav>

@@ -42,7 +42,9 @@ export default function ShowBeers() {
               />
             )
           })}
-          <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} />
+          
+            <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} />
+          
         </div>
       </div>
     </div>
