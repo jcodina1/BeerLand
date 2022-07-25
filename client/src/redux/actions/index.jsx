@@ -1,8 +1,15 @@
 import axios from "axios";
 import {
-  ALL_API, ALL_ID, ALL_NAME,
-  GET_BEERS, GET_BEER_DETAIL,
-  REMOVE_DETAIL, SEARCH_BAR, POST_BEER, POST_USER
+  ALL_API,
+  ALL_ID,
+  ALL_NAME,
+  GET_BEERS,
+  GET_BEER_DETAIL,
+  REMOVE_DETAIL,
+  SEARCH_BAR,
+  POST_BEER,
+  POST_USER,
+  SET_PAGE,
 } from "../const";
 
 export function getAllBeers() {
@@ -23,7 +30,7 @@ export function getBeerDetail(id) {
       payload: beerById.data,
     });
   };
-};
+}
 
 export const removeDetail = () => {
   return {
@@ -37,15 +44,15 @@ export function searchBar(payload) {
       const search = await axios.get(ALL_NAME + payload);
       return dispatch({
         type: SEARCH_BAR,
-        payload: search.data
-      })
+        payload: search.data,
+      });
     } catch (error) {
       if (error.response) {
-        alert(error.response.data)
+        alert(error.response.data);
       }
     }
-  }
-};
+  };
+}
 
 export function postBeer(payload) {
   return async function (dispatch) {
@@ -54,11 +61,11 @@ export function postBeer(payload) {
       return post;
     } catch (error) {
       if (error.response) {
-        return alert(error.response.data)
+        return alert(error.response.data);
       }
     }
-  }
-};
+  };
+}
 
 export function postUser(payload) {
   return async function (dispatch) {
@@ -67,8 +74,18 @@ export function postUser(payload) {
       return post;
     } catch (error) {
       if (error.response) {
-        return alert(error.response.data)
+        return alert(error.response.data);
       }
     }
-  }
-};
+  };
+}
+
+export function setPage(num) {
+  return async function (dispatch) {
+    try {
+      return dispatch({ type: SET_PAGE, payload: num });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
