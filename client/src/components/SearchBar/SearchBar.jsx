@@ -2,6 +2,8 @@ import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBar, getAllBeers } from '../../redux/actions/index';
 import { useLocalStorege } from '../../Hooks/useLocalStorage';
+import style from '../SearchBar/SearchBar.module.css'
+
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -29,10 +31,12 @@ export default function SearchBar() {
   }
   console.log(value)
   return (
-    <div>
+    <div className={style.searchBox}>
       <div>
-        <input type="text" value={value} onChange={onChange} />
-        <button onClick={() => onSearch(value)}> Search </button>
+        <input className={style.searchTxt} type="text" value={value} onChange={onChange} />
+      </div>
+      <div>
+        <button className={style.searchBtn} onClick={() => onSearch(value)}></button>
       </div>
       <div>
         {allBeersx2?.filter((item) => {
@@ -54,7 +58,7 @@ export default function SearchBar() {
             </li>
           ))}
       </div>
-      <button onClick={handleBack}>Clean search</button>
+      <button className={style.cleanBtn} onClick={handleBack}>Clear</button>
     </div>
   );
 }
