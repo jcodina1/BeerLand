@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { useAuth } from "../context/authContext";
+// import { useAuth } from "../context/authContext";
 import { Link, useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
@@ -8,9 +8,9 @@ import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
 import beertest from '../../img/beertest.png'
 
-export default function Login() {
+export  function Login2() {
 
-    const { login, logingWithGoogle, resetPassword } = useAuth()
+    // const { login, logingWithGoogle, resetPassword } = useAuth()
 
     const history = useHistory()
     const [error, setError] = useState('')
@@ -31,38 +31,39 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(user)
-        try {
-            await login(user.email, user.password)
-            history.push('/home')
-        } catch (error) {
-            console.log(error.message)
-            setError(error.message)
-            swal(error.message)
-        }
+        // try {
+        //     await login(user.email, user.password)
+        //     history.push('/home')
+        // } catch (error) {
+        //     console.log(error.message)
+        //     setError(error.message)
+        //     swal(error.message)
+        // }
     }
 
 
     const handleGoogle = async () => {
-        try {
-            await logingWithGoogle()
-            history.push('/home')
-        } catch (error) {
-            console.log(error.message)
-            setError(error.message)
-            swal(error.message)
-        }
+        // try {
+        //     await logingWithGoogle()
+        //     history.push('/home')
+        // } catch (error) {
+        //     console.log(error.message)
+        //     setError(error.message)
+        //     swal(error.message)
+        // }
+        console.log("google");
 
     }
 
     const handelResetPassword = async () => {
-        if (!user.email) return swal("please enter your mail")
-        try {
-            await resetPassword(user.email)
-            swal('We sent you an mail with a link to reset you password')
-        } catch (error) {
-            setError(error.message)
-        }
-
+        // if (!user.email) return swal("please enter your mail")
+        // try {
+        //     await resetPassword(user.email)
+        //     swal('We sent you an mail with a link to reset you password')
+        // } catch (error) {
+        //     setError(error.message)
+        // }
+        console.log("reset");
     }
 
 
@@ -143,3 +144,4 @@ export default function Login() {
     )
 
 }
+

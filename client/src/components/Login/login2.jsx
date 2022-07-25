@@ -4,8 +4,9 @@ import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../context/contestautenticacion";
-
-
+import beertest from '../../img/beertest.png'
+import googleLogo from '../../img/googleLogin.png'
+import facebookLogo from '../../img/facebookLogin.png'
 export function Login() {
 
     const history = useHistory()
@@ -83,56 +84,80 @@ export function Login() {
 
 
         return (
-        <div className={style.container}>
-            <form>
-                <h1>Login</h1>
-            <div className={style.password}>
-                <label>Email: </label>
-                <input name='email'
-                    type="email"
-                    placeholder='youremail@company.com'
-                    onChange={handleChange} />
+            <div className={style.login}>
+
+
+            <div className={style.loginBox}>
+
+                <img className={style.image} src={beertest} alt='beercharacter' />
+
+                <div className={style.container}>
+                    <form>
+                        <h1>Login</h1>
+                        <div className={style.password}>
+                            <label>Email: </label>
+                            <input name='email'
+                                type="email"
+                                placeholder='youremail@company.com'
+                                onChange={handleChange} />
+                        </div>
+
+                        <div className={style.password}>
+                            <label>Password: </label>
+                            <input name='password'
+                                type='password' id="password"
+                                placeholder='******'
+                                onChange={handleChange} />
+                        </div>
+                        <div className={style.submit}>
+                            <button  className={style.button} onClick={handleSubmit} >Login</button>
+                        </div>
+                        <a href='#!'
+                            
+                        >
+                            Forgot Password
+                        </a>
+
+                    </form>
+
+                    <div className={style.footer}>
+                        <label className={style.footer}>Don't have an Account</label>
+                        <div className={style.registerbox}>
+
+                            <div>
+                                <Link to='/login'>
+                                    <span>
+                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} alt='Beer' />
+                                    </span>
+                                </Link>
+                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                            </div>
+                            <div>
+                                <Link to='/login'>
+                                    <span>
+                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} alt='Beer' />
+                                    </span>
+                                </Link>
+                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                            </div>
+                        </div>
+                        <Link to='/register'>
+                            <button className={style.button}>Register</button>
+                        </Link>
+
+                    </div>
+
+                </div>
+                <div className={style.buttonA} >
+                    <Link  to='/home' >
+                        <span className={style.buttonA}>Back</span>
+                    </Link>
+                </div>
+
             </div>
 
-            <div className={style.password}>
-                <label>Password: </label>
-                <input name='password'
-                    type='password' id="password"
-                    placeholder='******'
-                    onChange={handleChange} />
-            </div>
-
-            
-
-         {/* <a href='#!'onClick={handelResetPassword}>
-                Forgot Password
-            </a> */}
-
-            </form>
-            <div className={style.submit}>
-                <button onClick={handleSubmit} >Login</button>
-            </div>
-            {/* <div>
-                <button onClick={handleGoogle}>Google Login</button>
-            </div> */}
-<div>
-            <label>Don't have an Account  . </label>
-            <Link to='/register'>
-                <button>Register</button>
-            </Link>
-</div>
-            <label>Register as a company : </label>
-            <Link to='/registerCompany'>
-                <button>Register</button>
-            </Link>
-           <div>
-             <Link to='/home'>
-                <button>Return</button>
-            </Link>
-           </div>
-           
-            
         </div>
+            
     )
     
 }
