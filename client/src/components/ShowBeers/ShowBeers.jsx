@@ -17,7 +17,7 @@ export default function ShowBeers() {
   const styles = useSelector((state) => state.styles);
   let page = useSelector((state) => state.page);
   const [, setOrder] = useState("");
-  const beersPerPage = 9;
+  const beersPerPage = 10;
 
   var lastIndex = page * beersPerPage; //indice incial para metodo slice
   var firstIndex = lastIndex - beersPerPage; //indice final para metodo slice
