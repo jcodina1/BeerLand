@@ -1,5 +1,11 @@
-.info{
+.info {
   display: flex;
-    justify-content: space-around;
-    align-items: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.checkoutWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

@@ -1,12 +1,63 @@
 .navbar {
     width: auto;
-    height: 12vh;
-    background-color: rgb(78, 20, 20);
+    max-height: 10vh;
+    min-height: 12vh;
+    background-color: rgb(2, 32, 10);
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
-    position: relative;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin-bottom: 50px;
+    position: inherit;
+    margin-bottom: 0px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 10px;
+}
+.space{
+    margin-left: 15%;
+    margin-top: 5%;
+    
+}
+.logo {
+    height: 9vh;
+    width: 250px;
+    background-color: blue;
+    position: inherit;
+    top: 50%;
+    margin-left: 5%;
+    margin-right: 80px;
+    
+    
+}
+.buttonlink{
+    margin: 20px 15px 10px 10px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+
+}
+.button{
+    background-color: bisque;
+    color: rgb(2, 32, 10);
+    font-family: 'Trebuchet MS',  sans-serif;
+    border-radius: 5px;
+    margin: 0 5px 0 5px;
+    border: none;
+    height: 30px;
+}
+.cartBtn{
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px 0 5px;
+    background-image: url('../../img/cartIcon.png');
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-color: bisque;
+    padding: 2px;
+}
+.infoDistribution{
+    display: flex;
+    flex-direction: row;
+    
 }
