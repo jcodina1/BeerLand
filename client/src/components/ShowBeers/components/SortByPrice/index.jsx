@@ -3,7 +3,7 @@ import * as actions from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 
-export default function SortByPrice({ setOrder, setCurrentPage }) {
+export default function SortByPrice({ setOrder }) {
   const dispatch = useDispatch();
 
   function handleSort(e) {
@@ -11,9 +11,9 @@ export default function SortByPrice({ setOrder, setCurrentPage }) {
     if (e.target.value !== "All") {
       dispatch(actions.sortByPrice(e.target.value));
     } else {
-      dispatch(actions.getAllBeers())();
+      dispatch(actions.getAllBeers());
     }
-    setCurrentPage(1);
+    dispatch(actions.setPage(1));
     setOrder(e.target.value);
   }
 
