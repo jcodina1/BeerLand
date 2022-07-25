@@ -1,11 +1,22 @@
-
-
-
 import {
-  GET_BEERS, GET_BEER_DETAIL, SEARCH_BAR, REMOVE_DETAIL, POST_BEER, GET_TYPE, POST_USER, REMOVE_ONE_FROM_CART, UPDATE_BEER, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS,FILTER_BEER_BY_BREWERY,
+  GET_BEERS,
+  GET_BEER_DETAIL,
+  SEARCH_BAR,
+  REMOVE_DETAIL,
+  POST_BEER,
+  GET_TYPE,
+  POST_USER,
+  REMOVE_ONE_FROM_CART,
+  UPDATE_BEER,
+  REMOVE_ALL_FROM_CART,
+  ADD_TO_CART,
+  GET_CART,
+  TOTAL_PRICE,
+  CHECKOUT_BEERS,
+  FILTER_BEER_BY_BREWERY,
   SORT_BY_NAME,
   SORT_BY_PRICE,
-
+  SET_PAGE,
 } from "../const";
 
 const initialState = {
@@ -16,13 +27,13 @@ const initialState = {
   allBreweries: [],
   userType: [],
   type: [],
+  page: 1,
   filterPlaceholder: [],
   cart: [],
   infoBeers: [],
   infoSoldBeers: [],
   totalPrice: 0,
   user: {},
-
 };
 
 function Reducer(state = initialState, action) {
@@ -32,10 +43,6 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
-
-      };
-
-
       };
 
     case ADD_TO_CART:
@@ -75,7 +82,6 @@ function Reducer(state = initialState, action) {
         cart: JSON.parse(localStorage.getItem("carrito")),
       };
 
-      
     case TOTAL_PRICE:
       return {
         ...state,
@@ -87,7 +93,6 @@ function Reducer(state = initialState, action) {
         ...state,
         infoBeers: action.payload,
       };
-
 
     case REMOVE_DETAIL:
       return {
@@ -101,20 +106,13 @@ function Reducer(state = initialState, action) {
         detail: action.payload,
       };
     }
-    
+
     case GET_TYPE: {
       return {
         ...state,
         type: action.payload,
       };
-    }   
-    
-    case GET_TYPE: {
-      return {
-        ...state,
-        type: action.payload
-      }
-    };
+    }
 
     case SEARCH_BAR: {
       return {
@@ -123,7 +121,7 @@ function Reducer(state = initialState, action) {
         allBeers: action.payload,
       };
     }
-    
+
     case SORT_BY_NAME:
       let sortedByName =
         action.payload === "AtoZ"
@@ -138,8 +136,7 @@ function Reducer(state = initialState, action) {
         beers: sortedByName,
         filterPlaceholder: sortedByName,
       };
-      
-      
+
     case SORT_BY_PRICE:
       let sortedByPrice =
         action.payload === "Low to High"
@@ -167,11 +164,9 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeers,
         filterPlaceholder: filteredBeers,
-        allBeers: action.payload
-      }
-    };
+        allBeers: action.payload,
+      };
 
-    
     case POST_BEER:
       return {
         ...state,
@@ -182,9 +177,14 @@ function Reducer(state = initialState, action) {
         ...state,
       };
 
+    case SET_PAGE:
+      return {
+        ...state,
+        page: action.payload,
+      };
     case UPDATE_BEER:
       return {
-        ...state
+        ...state,
       };
 
     default:
