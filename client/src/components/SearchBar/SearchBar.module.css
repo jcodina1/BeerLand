@@ -1,0 +1,60 @@
+.searchBox{
+    position: inherit;
+    transform: translate(-100%, -100%);
+    background:rgb(254, 244, 233);
+    height: 40px;
+    border-radius: 40px;
+    padding-left: 0px;
+    flex-direction: row;
+    width: 300px;
+    margin: 0px 50px 0 50px;
+    display: flex;
+ }
+ 
+ .searchBtn {
+   cursor: pointer;
+   border: none;
+   color:bisque;
+   float: right;
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;  
+   background-image: url('../../img/searchbutton.png');
+   background-size: contain;
+   background-repeat: no-repeat;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0px 0 0 20px;
+ }
+ 
+ .searchTxt{
+   border: none;
+   background: none;  
+   outline: none;
+   float: left;
+   padding: 0;
+   color: rgb(3, 32, 4);
+   font-size: 18px;
+   transition: 0.4s;
+   line-height: 40px;
+   width: 240px;
+   padding-left: 10px;
+   font-family: 'Trebuchet MS', sans-serif;
+ }
+ .cleanBtn{
+    border: none;
+    border-radius: 10px;
+    color: bisque;
+    background-color: rgb(3, 68, 19);
+    padding: 2px 5px 2px 5px;
+    font-family: 'Trebuchet MS', sans-serif;
+    height: 30px;
+    width: 160px;
+    font-size: small;
+    margin:8px 0 0 10px ;
+
+    
+    
+ }
+

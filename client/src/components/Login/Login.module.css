@@ -1,38 +1,50 @@
-.container{
-    margin: 100px;
-    background-color: brown;
-    padding: 40px 50px 40px 50px;
+.login {
+    display: flex;
+    flex-direction: column;
+    padding: 200px 300px 100px 450px;
+    background-color: rgba(3, 48, 9, 0.5);
+    align-content: center;
+    align-items: inherit;
+    height: fit-content;
+    background-size: cover;
+
+}
+
+.container {
+    margin: 0px 0px 395px 20px;
+    background-color: whitesmoke;
+    padding: 100px 50px 40px 25px;
     display: flex;
     align-content: flex-start;
     flex-direction: column;
-    max-height: 800px;
-    min-height: 300px;
-    min-width: 400px;
-    max-width: 450px;
+    max-height: 1000px;
+    min-height: 600px;
+    min-width: 450px;
+    max-width: 500px;
     border-radius: 20px;
-    color: antiquewhite;
+    color: rgb(3, 44, 14);
+    overflow-y: hidden;
+    box-shadow:  5px 5px 10px  rgba(0,0,0,0.25);
 
 
 }
-.password{
-margin: 20px;
-background-color:None;
-color:antiquewhite;
-font-family: 'Trebuchet MS', sans-serif;
+h1{
+    color: rgb(3, 44, 14);
+    font-weight: bold;
 }
-.submit{
+
+.password {
+    margin: 20px;
+    background-color: None;
+    color: rgb(3, 44, 14);
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+.submit {
     margin: 10px;
 }
-.login{
-    display: flex;
-    flex-direction: column;
-    padding-left: 300px;
-    padding-right: 300px;
-    background-color: rgb(27, 39, 39);
-    align-content: space-between;
-    align-items: inherit;
-}
-.registerbox{
+
+.registerbox {
     display: flex;
     flex-direction: row;
     align-content: center;
@@ -41,9 +53,109 @@ font-family: 'Trebuchet MS', sans-serif;
     padding-right: 100px;
     margin-top: 25px;
 }
-.close{
-    
+
+.close {
+
     display: flex;
     flex-direction: row;
     padding-left: 400px;
+}
+
+.googleIcon {
+    /* background-image: url('../../img/googleLogin.png'); */
+    background-size: contain;
+    padding: 10px;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    border: none;
+    background-color: aliceblue;
+    border-color: black;
+    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    border-radius: 10px;
+    margin: 0 25px 25px 25px;
+    cursor: pointer;
+}
+
+.facebookIcon {
+    background-size: contain;
+    padding: 0px;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin: 0 10px 25px 0px;
+    cursor: pointer;
+    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+}
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+}
+
+.loginBox {
+    background-color: beige;
+    border-radius: 20px;
+    width: 1000px;
+    height: 650px;
+    flex-direction: row;
+    display: flex;
+    padding: 30px;
+
+}
+
+.return {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    left: 80%;
+    padding: 10px;
+}
+
+.boxR {
+    background-color: green;
+    width: 600px;
+    height: 1000px;
+}
+
+.leftBox {
+    background-color: green;
+    width: 600px;
+    height: 400px;
+}
+
+.image {
+    background-size: contain;
+    height: 45vh;
+    width: 350px;
+    margin-right: 50px;
+    background-color: rgba(6, 169, 50, 0.432);
+    margin: 170px 0 0 40px;
+
+
+}
+.button{
+    color: beige;
+    background-color: rgba(3, 48, 9);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    width: 100px;
+}
+.buttonA{
+    color: beige;
+    background-color: rgba(3, 48, 9);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    width: 70px;
+    margin: 2px ;
+    height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    align-items: center;
+
 }
