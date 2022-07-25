@@ -58,24 +58,6 @@ export default function ShowBeers() {
       <SortByPrice setOrder={setOrder} setCurrentPage={dispatch(setPage())} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
-<<<<<<< HEAD
-          {allBeers.length === 0 ? <span>(<Loading setLoading={setLoading} />)</span> : currentBeer?.map(beer => {
-            return (
-              <BeerCard
-                id={beer.id}
-                key={beer.id}
-                name={beer.name}
-                description={beer.description}
-                image={beer.image}
-              // style={beer.style}
-              // origin={beer.origin}
-              />
-            )
-          })}
-          
-            <Pagination beerPerPage={beerPerPage} allBeers={allBeers} currentBeer={currentBeer} page={page} />
-          
-=======
           {allBeers.length === 0 ? (
             <span>
               (<Loading setLoading={setLoading} />)
@@ -102,7 +84,6 @@ export default function ShowBeers() {
             firstPrevControl={firstPrevControl}
             nextLastControl={nextLastControl}
           />
->>>>>>> develop
         </div>
       </div>
     </div>

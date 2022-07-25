@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -22,7 +18,6 @@ export default function NavBar({ setPage }) {
 
   return (
     <nav className={style.navbar}>
-<<<<<<< HEAD
       <div >
         <Link to='/home'>
           <span >
@@ -30,83 +25,29 @@ export default function NavBar({ setPage }) {
           </span>
         </Link>
       </div>
-
       <div className={style.space}>
         <SearchBar setPage={setPage} />
       </div>
+
       <div className={style.infoDistribution}>
         <div className={style.space}>
           <h1>Hello {user ? user.email : ''}</h1>
         </div>
-        
-       <div className={style.buttonlink}>
-       <Link to='/test'>
-          <button className={style.cartBtn}></button>
-        </Link>
-        
-        {user ? '' :
-          <Link to='/login'>
-            <button className={style.button}>Login</button>
+
+        <div className={style.buttonlink}>
+          <Link to='/cart'>
+            <button className={style.cartBtn}></button>
           </Link>
-        }
 
-
-        {/* <Link to='/login'>
-=======
-      <Link to="/home">
-        <span>
-          <img
-            id="BeerLogo"
-            src={BeerLogo}
-            width="120px"
-            height="80px"
-            alt="Beer"
-          />
-        </span>
-      </Link>
-      <SearchBar setPage={setPage} />
-      {user ? (
-        ""
-      ) : (
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-      )}
->>>>>>> develop
-
-      <Link to="/login">
-        <button>Add</button>
-<<<<<<< HEAD
-      </Link> */}
-
-
-        <button className={style.button} onClick={handleLogOut}>LogOut</button>
-
-
-        {/*       <button onClick={() => setCart(true)}>Cart</button>
-      {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
- */}
-       </div>
-
-       
+          {user ? '' :
+            <Link to='/login'>
+              <button className={style.button}>Login</button>
+            </Link>
+          }
+          <button className={style.button} onClick={handleLogOut}>LogOut</button>
+        </div>
       </div>
 
-
-
-=======
-      </Link>
-
-      <h1>Hello {user ? user.email : ""}</h1>
-      <button onClick={handleLogOut}>LogOut</button>
-
-      {/*       <button onClick={() => setCart(true)}>Cart</button>
-      {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
- */}
-
-      <Link to="/cart">
-        <button>Cart</button>
-      </Link>
->>>>>>> develop
     </nav>
-  );
+  )
 }
