@@ -38,7 +38,7 @@ export default function BeerDetail(props) {
               </Link>
               <Link to="/update">
                 <button>Update</button>
-              </Link> 
+              </Link>
               {/* //este botón es para la ruta de put para el vendedor */}
             </div>
             <div className={style.box}>
@@ -64,6 +64,9 @@ export default function BeerDetail(props) {
                   <span className={style.textBox}>{beer.stock}</span>
 
                 </p>
+                <div>
+                  <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
+                </div>
               </div>
             </div>
 
