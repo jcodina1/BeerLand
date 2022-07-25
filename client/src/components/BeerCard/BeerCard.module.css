@@ -2,7 +2,7 @@
     background-color: brown;
     width: 15vw;
     height: 17rem;
-    margin: 10px;
+    margin: 20px 20px 100px 20px;
     display: flex;
     font-size: large;
     font-family: 'Trebuchet MS', sans-serif;
@@ -23,4 +23,22 @@
 
 .cardImg {
     width: 45%;
+}
+.button{
+    background-color: bisque;
+    color: rgb(2, 32, 10);
+    font-family: 'Trebuchet MS',  sans-serif;
+    border-radius: 5px;
+    margin: 0 5px 0 5px;
+    border: none;
+    height: 30px;
+    left:60%;
+}
+.textbox{
+    color:rgb(2, 32, 10);
+    font-family: 'Trebuchet MS', sans-serif;
+}
+p{
+    font-family: 'Trebuchet MS', sans-serif;
+
 }

@@ -18,40 +18,36 @@ export default function NavBar({ setPage }) {
 
   return (
     <nav className={style.navbar}>
-      <Link to="/home">
-        <span>
-          <img
-            id="BeerLogo"
-            src={BeerLogo}
-            width="120px"
-            height="80px"
-            alt="Beer"
-          />
-        </span>
-      </Link>
-      <SearchBar setPage={setPage} />
-      {user ? (
-        ""
-      ) : (
-        <Link to="/login">
-          <button>Login</button>
+      <div >
+        <Link to='/home'>
+          <span >
+            <img className={style.logo} id='BeerLogo' src={BeerLogo} alt='Beer' />
+          </span>
         </Link>
-      )}
+      </div>
+      <div className={style.space}>
+        <SearchBar setPage={setPage} />
+      </div>
 
-      <Link to="/login">
-        <button>Add</button>
-      </Link>
+      <div className={style.infoDistribution}>
+        <div className={style.space}>
+          <h1>Hello {user ? user.email : ''}</h1>
+        </div>
 
-      <h1>Hello {user ? user.email : ""}</h1>
-      <button onClick={handleLogOut}>LogOut</button>
+        <div className={style.buttonlink}>
+          <Link to='/cart'>
+            <button className={style.cartBtn}></button>
+          </Link>
 
-      {/*       <button onClick={() => setCart(true)}>Cart</button>
-      {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
- */}
+          {user ? '' :
+            <Link to='/login'>
+              <button className={style.button}>Login</button>
+            </Link>
+          }
+          <button className={style.button} onClick={handleLogOut}>LogOut</button>
+        </div>
+      </div>
 
-      <Link to="/cart">
-        <button>Cart</button>
-      </Link>
     </nav>
-  );
+  )
 }
