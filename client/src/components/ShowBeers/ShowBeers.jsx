@@ -6,14 +6,17 @@ import Loading from "../Loading/Loading";
 import BeerCard from "../BeerCard/BeerCard";
 import Pagination from "../Pagination/Pagination";
 import { setPage } from "../../redux/actions";
+import SortByName from "./components/SortByName";
+import FilterByBrewery from "./components/FilterByBrewery";
+import SortByPrice from "./components/SortByPrice";
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
   const allBeers = useSelector((state) => state.allBeers);
   const allBeers1 = useSelector((state) => state.search);
   const styles = useSelector((state) => state.styles);
-  var page = useSelector((state) => state.page);
-
+  let page = useSelector((state) => state.page);
+  const [, setOrder] = useState("");
   const beersPerPage = 9;
 
   var lastIndex = page * beersPerPage; //indice incial para metodo slice
@@ -50,6 +53,9 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
+      <SortByName setOrder={setOrder} setCurrentPage={dispatch(setPage())} />
+      {/* <FilterByBrewery /> */}
+      <SortByPrice setOrder={setOrder} setCurrentPage={dispatch(setPage())} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (

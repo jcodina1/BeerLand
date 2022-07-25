@@ -7,17 +7,71 @@ import {
   GET_BEER_DETAIL,
   REMOVE_DETAIL,
   SEARCH_BAR,
+  UPDATE_BEER,
   POST_BEER,
   POST_USER,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  ADD_TO_CART,
+  GET_CART,
+  TOTAL_PRICE,
+  CHECKOUT_BEERS,
+  SORT_BY_NAME,
+  SORT_BY_PRICE,
+  FILTER_BEER_BY_BREWERY,
+  GET_ALL_BREWERIES,
   SET_PAGE,
 } from "../const";
 
+export function addToCart(id) {
+  return {
+    type: ADD_TO_CART,
+    payload: id,
+  };
+}
+
+export function removeAllFromCart() {
+  return {
+    type: REMOVE_ALL_FROM_CART,
+  };
+}
+
+export function removeOneFromCart(id) {
+  console.log(id);
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    payload: id,
+  };
+}
+
+export function getCart() {
+  return { type: GET_CART };
+}
+
+export function totalPrice(payload) {
+  return { type: TOTAL_PRICE, payload };
+}
+
+export function infoBeers(payload) {
+  return { type: CHECKOUT_BEERS, payload };
+}
+
 export function getAllBeers() {
   return async function (dispatch) {
-    var allBeers = await axios.get(ALL_API);
+    let allBeers = await axios.get(ALL_API);
     return dispatch({
       type: GET_BEERS,
       payload: allBeers.data,
+    });
+  };
+}
+
+export function getAllBreweries() {
+  return async function (dispatch) {
+    let allBreweries = await axios.get("http://localhost:3001/seller");
+    return dispatch({
+      type: GET_ALL_BREWERIES,
+      payload: allBreweries.data,
     });
   };
 }
@@ -87,5 +141,37 @@ export function setPage(num) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function sortByName(payload) {
+  return {
+    type: SORT_BY_NAME,
+    payload,
+  };
+}
+
+export function sortByPrice(payload) {
+  return {
+    type: SORT_BY_PRICE,
+    payload,
+  };
+}
+
+export function filterBeersByBrewery(payload) {
+  return {
+    type: FILTER_BEER_BY_BREWERY,
+    payload,
+  };
+}
+
+export function updateBeer(data, id) {
+  return (dispatch) => {
+    axios
+      .put(`http://localhost:3001/beer/update/${id}`, data)
+      .then((response) => dispatch({ type: UPDATE_BEER }))
+      .catch((e) => {
+        console.log(e);
+      });
   };
 }

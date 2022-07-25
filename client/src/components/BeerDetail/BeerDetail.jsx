@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBeerDetail, removeDetail } from "../../redux/actions/index";
+import { getBeerDetail, removeDetail, addToCart } from "../../redux/actions/index";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import DetailCompra from '../DetailCompra/DetailCompra';
 
 export default function BeerDetail(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-
   const beer = useSelector((state) => state.detail);
   console.log(beer);
 
@@ -38,18 +38,23 @@ export default function BeerDetail(props) {
                 <strong>Description: </strong>
                 {beer.description}
               </p>
-              <p>
+             {/*  <p>
                 <strong>Price: </strong>
                 {beer.price}
               </p>
               <p>
                 <strong>Stock: </strong>
                 {beer.stock}
-              </p>
+              </p> */}
             </div>
           </div>
+          <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
+
           <Link to="/home">
             <button>Back</button>
+          </Link>
+          <Link to="/update">
+            <button>Update</button>
           </Link>
         </div>
       )}

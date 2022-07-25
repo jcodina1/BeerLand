@@ -4,14 +4,12 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "../NavBar/NavBar.module.css";
 import BeerLogo from "../../img/BeerLogo.png";
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../context/contestautenticacion";
 import Cart from "../Cart/Cart";
 
 export default function NavBar({ setPage }) {
   const { salir, user } = useAuth();
-
   console.log(user);
-
   const [cart, setCart] = useState(false);
 
   const handleLogOut = async () => {
@@ -40,7 +38,7 @@ export default function NavBar({ setPage }) {
         </Link>
       )}
 
-      <Link to="/add">
+      <Link to="/login">
         <button>Add</button>
       </Link>
 
@@ -51,7 +49,7 @@ export default function NavBar({ setPage }) {
       {cart ? <><Cart/><button onClick={() => setCart(false)}>X</button></> : ''}
  */}
 
-      <Link to="/test">
+      <Link to="/cart">
         <button>Cart</button>
       </Link>
     </nav>
