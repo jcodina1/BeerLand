@@ -1,46 +1,60 @@
 import axios from "axios";
 import {
-
-  ALL_API, ALL_ID, ALL_NAME, GET_BEERS, GET_BEER_DETAIL, REMOVE_DETAIL, SEARCH_BAR, UPDATE_BEER,
-  POST_BEER, POST_USER, REMOVE_ONE_FROM_CART, REMOVE_ALL_FROM_CART, ADD_TO_CART, GET_CART, TOTAL_PRICE, CHECKOUT_BEERS,  SORT_BY_NAME,
+  ALL_API,
+  ALL_ID,
+  ALL_NAME,
+  GET_BEERS,
+  GET_BEER_DETAIL,
+  REMOVE_DETAIL,
+  SEARCH_BAR,
+  UPDATE_BEER,
+  POST_BEER,
+  POST_USER,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  ADD_TO_CART,
+  GET_CART,
+  TOTAL_PRICE,
+  CHECKOUT_BEERS,
+  SORT_BY_NAME,
   SORT_BY_PRICE,
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
-
+  SET_PAGE,
 } from "../const";
 
 export function addToCart(id) {
-  return { 
-    type: ADD_TO_CART, 
-    payload: id 
+  return {
+    type: ADD_TO_CART,
+    payload: id,
   };
-};
+}
 
 export function removeAllFromCart() {
-  return { 
-    type: REMOVE_ALL_FROM_CART 
+  return {
+    type: REMOVE_ALL_FROM_CART,
   };
-};
+}
 
 export function removeOneFromCart(id) {
   console.log(id);
-  return { 
-    type: REMOVE_ONE_FROM_CART, 
-    payload: id 
+  return {
+    type: REMOVE_ONE_FROM_CART,
+    payload: id,
   };
-};
+}
 
 export function getCart() {
   return { type: GET_CART };
-};
+}
 
 export function totalPrice(payload) {
   return { type: TOTAL_PRICE, payload };
-};
+}
 
 export function infoBeers(payload) {
   return { type: CHECKOUT_BEERS, payload };
-};
+}
 
 export function getAllBeers() {
   return async function (dispatch) {
@@ -50,7 +64,7 @@ export function getAllBeers() {
       payload: allBeers.data,
     });
   };
-};
+}
 
 export function getAllBreweries() {
   return async function (dispatch) {
@@ -117,7 +131,16 @@ export function postUser(payload) {
         return alert(error.response.data);
       }
     }
+  };
+}
 
+export function setPage(num) {
+  return async function (dispatch) {
+    try {
+      return dispatch({ type: SET_PAGE, payload: num });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -142,7 +165,6 @@ export function filterBeersByBrewery(payload) {
   };
 }
 
-
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
@@ -153,4 +175,3 @@ export function updateBeer(data, id) {
       });
   };
 }
-
