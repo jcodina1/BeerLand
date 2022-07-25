@@ -11,6 +11,7 @@ import Login from "../Login/login2";
 import Swal from "sweetalert2";
 
 
+
 export default function Checkout() {
   const dispatch = useDispatch();
   const infoBeer = useSelector((state) => state.infoBeers);
@@ -108,6 +109,8 @@ export default function Checkout() {
             <Paypal/>
 
           </div>
+
+
         </div>
       </div>
       <Footer />
