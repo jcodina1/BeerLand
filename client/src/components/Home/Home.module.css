@@ -1,6 +1,17 @@
 .homeContainer{
-    height: 100%;
+    height: fit-content;
     width: 100%;
     flex: inherit;
     flex-direction: column;
+    padding: 0, 400px, 0, 400px ;
+    background-color: rgb(253, 249, 243);
+}
+.beerBox{
+    padding-top:150px;
+    padding: 150px 100px 0 100px; 
+    /* background-color: aqua; */
+}
+.paginate{
+    margin: 100px 0 10px 0;
+    background-color: brown;
 }

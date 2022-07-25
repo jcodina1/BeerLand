@@ -11,6 +11,7 @@ import Login from "../Login/login2";
 import Swal from "sweetalert2";
 
 
+
 export default function Checkout() {
   const dispatch = useDispatch();
   const infoBeer = useSelector((state) => state.infoBeers);
@@ -25,6 +26,7 @@ export default function Checkout() {
   useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
+
 
   const createOrder = (data, actions) => {
     if (user.hasOwnProperty("name")) {
@@ -105,7 +107,10 @@ export default function Checkout() {
           <h3>Total: ${preciototal} </h3>
           <div className="paypal">
             <Paypal/>
+
           </div>
+
+
         </div>
       </div>
       <Footer />

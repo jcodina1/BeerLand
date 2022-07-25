@@ -8,9 +8,9 @@ import { Login } from "./components/Login/login2";
 import { AuthProvider } from "./components/context/contestautenticacion";
 import AddProduct from "./components/AddProduct/AddProduct";
 // import Cart from "./components/Cart/Cart";
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Checkout from './components/Checkout/Checkout'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Checkout from "./components/Checkout/Checkout";
 import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 import ValidacionUSer from "./components/validacion/validacionUsuario";
