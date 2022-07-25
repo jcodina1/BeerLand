@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+
 import style from '../Cart/Cart.module.css';
+
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { removeAllFromCart, getCart, totalPrice, infoBeers, addToCart } from '../../redux/actions/index';
@@ -7,6 +9,9 @@ import Item from "../Item/Item.jsx";
 import Footer from '../Footer/Footer.jsx'
 
 export default function Cart() {
+
+
+
   const [checkout, setCheckout] = useState(false)
   const cantidad = Math.floor(Math.random() * 15) + 1
   const dispatch = useDispatch();
@@ -123,6 +128,7 @@ export default function Cart() {
               <h1>Oops, Your Cart is Empty!</h1>
               <p>Looks like you haven't added anything to your cart yet</p>
               <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" />
+
             </div>
           )}
         </div>
@@ -136,3 +142,4 @@ export default function Cart() {
     </div >
   );
 }
+

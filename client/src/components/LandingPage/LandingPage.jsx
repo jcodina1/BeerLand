@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Modal from "./LandingModal";
+import style from '../LandingPage/LandingPage.module.css'
 
 export default function LandingPage() {
   const [openModal, setOpenModal] = useState(false);
 
   return (
-    <div>
-      <div>
+    <div className={style.landingbox} >
+      <div className={style.box}>
         <div>
-          <h1>Welcome to BeerLand</h1>
+          <div className={style.titleintro}>Welcome to BeerLand!!!</div>
           <button
-            className="modal-btn"
-            onClick={() => {
+            className={style.modalbtn}
+              onClick={() => {
               setOpenModal(true);
             }}
           >

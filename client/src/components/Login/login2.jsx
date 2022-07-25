@@ -1,74 +1,90 @@
-import React, { useReducer, useState } from "react";
-// import { useAuth } from "../context/authContext";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
-import NavBar from "../NavBar/NavBar";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../context/contestautenticacion";
+import beertest from '../../img/beertest.png'
 import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
-import beertest from '../../img/beertest.png'
-
-export  function Login2() {
-
-    // const { login, logingWithGoogle, resetPassword } = useAuth()
+export function Login() {
 
     const history = useHistory()
-    const [error, setError] = useState('')
+    const {login} = useAuth()
 
+    const [error,setError] = useState('')
     const [user, SetUser] = useState({
-        email: '',
-        password: ''
-    })
+                email:'',
+                password: '',
+                User:'user'
+               
+            })
+             console.log(user)
+        
+        //     function verifica_seleccion(check){
+        //         if(!check.checked){
+        //             check.checked=1;
+        //         }
+        //     }
+        
+            const handleChange = (e) => {
+                SetUser({
+                    ...user,
+                    [e.target.name]: e.target.value
+                })
+            }
+        
+        
+        
+             const handleSubmit = async (e) => {
+                e.preventDefault()
+                console.log(user)
+                try {
+                    await login(user.email, user.password)
+                    history.push('/home')  
+                } catch (error) {
+                    console.log(error.message)
+                    setError(error.message)
+                    swal(error.message)
+                }
+            }
+        
+        
+        //     const handleGoogle = async ()=>{
+        //        try {
+        //         user.User = user.User
+        //           const google =  await  logingWithGoogle()
+        //           console.log(google)
+        //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
+        //           dispatch(postUser(userdata))
+        //           history.push('/home')
+        
+        //          } catch (error) {
+        //              console.log(error.message)
+        //              setError(error.message)
+        //              swal(error.message)
+        //          }
+             
+        //     }
+        
+        //     const handelResetPassword =async ()=>{
+        //         if (!user.email) return swal("please enter your mail")
+        //         try {
+        //             await resetPassword(user.email)
+        //             swal('We sent you an mail with a link to reset you password')
+        //         } catch (error) {
+        //             setError(error.message)
+        //         }
+                
+        //     }
 
-    const handleChange = (e) => {
-        SetUser({
-            ...user,
-            [e.target.name]: e.target.value
-        })
-    }
 
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        console.log(user)
-        // try {
-        //     await login(user.email, user.password)
-        //     history.push('/home')
-        // } catch (error) {
-        //     console.log(error.message)
-        //     setError(error.message)
-        //     swal(error.message)
-        // }
-    }
 
 
-    const handleGoogle = async () => {
-        // try {
-        //     await logingWithGoogle()
-        //     history.push('/home')
-        // } catch (error) {
-        //     console.log(error.message)
-        //     setError(error.message)
-        //     swal(error.message)
-        // }
-        console.log("google");
 
-    }
-
-    const handelResetPassword = async () => {
-        // if (!user.email) return swal("please enter your mail")
-        // try {
-        //     await resetPassword(user.email)
-        //     swal('We sent you an mail with a link to reset you password')
-        // } catch (error) {
-        //     setError(error.message)
-        // }
-        console.log("reset");
-    }
-
-
-    return (
-        <div className={style.login}>
+        return (
+            <div className={style.login}>
 
 
             <div className={style.loginBox}>
@@ -97,7 +113,7 @@ export  function Login2() {
                             <button  className={style.button} onClick={handleSubmit} >Login</button>
                         </div>
                         <a href='#!'
-                            onClick={handelResetPassword}
+                            
                         >
                             Forgot Password
                         </a>
@@ -109,7 +125,7 @@ export  function Login2() {
                         <div className={style.registerbox}>
 
                             <div>
-                                <Link onClick={handleGoogle}>
+                                <Link to='/login'>
                                     <span>
                                         <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} alt='Beer' />
                                     </span>
@@ -117,7 +133,7 @@ export  function Login2() {
                                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
                             </div>
                             <div>
-                                <Link onClick={handleGoogle}>
+                                <Link to='/login'>
                                     <span>
                                         <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} alt='Beer' />
                                     </span>
@@ -141,7 +157,7 @@ export  function Login2() {
             </div>
 
         </div>
+            
     )
-
+    
 }
-
