@@ -1,0 +1,51 @@
+.containerPag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerPag ul {
+  padding: 0;
+  margin: 0.5rem;
+}
+.containerPag ul .pagButton,
+.containerPag ul .disable {
+  margin: 5px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  background-color: #d35e5e;
+  color: white;
+  padding: 5px;
+  outline: none;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.containerPag ul .disable {
+  background-color: gray;
+  cursor: default;
+}
+.paginate ul {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+}
+.paginate ul li {
+  padding: 0 0.3rem;
+}
+.paginate ul li h5 {
+  font-size: 20px;
+  color: #6e6e6e;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0;
+}
+.paginate ul li h5:hover {
+  color: #f5b3b3;
+  cursor: pointer;
+}
+.currentPage {
+  color: gray;
+}
+.currentPage h5 {
+  background-color: #c9c9c9;
+}

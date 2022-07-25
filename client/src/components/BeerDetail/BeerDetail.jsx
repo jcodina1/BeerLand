@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBeerDetail, removeDetail } from "../../redux/actions/index";
+import { getBeerDetail, removeDetail, addToCart } from "../../redux/actions/index";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import style from '../BeerDetail/BeerDetail.module.css'
 import NavBar from "../NavBar/NavBar";
+import DetailCompra from '../DetailCompra/DetailCompra';
 
 export default function BeerDetail(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-
   const beer = useSelector((state) => state.detail);
   console.log(beer);
 
@@ -36,6 +36,10 @@ export default function BeerDetail(props) {
               <Link to="/home">
                 <button className={style.button}>Back</button>
               </Link>
+              <Link to="/update">
+                <button>Update</button>
+              </Link> 
+              {/* //este botón es para la ruta de put para el vendedor */}
             </div>
             <div className={style.box}>
               <div className={style.leftContainer}>
@@ -58,7 +62,7 @@ export default function BeerDetail(props) {
                 <p>
                   <strong>Stock: </strong>
                   <span className={style.textBox}>{beer.stock}</span>
-                  
+
                 </p>
               </div>
             </div>
