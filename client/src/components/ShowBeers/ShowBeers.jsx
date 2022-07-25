@@ -53,9 +53,9 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
-      <SortByName setOrder={setOrder} setCurrentPage={dispatch(setPage())} />
+      <SortByName setOrder={setOrder} />
       {/* <FilterByBrewery /> */}
-      <SortByPrice setOrder={setOrder} setCurrentPage={dispatch(setPage())} />
+      <SortByPrice setOrder={setOrder} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (
