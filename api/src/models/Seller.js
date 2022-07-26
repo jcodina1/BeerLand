@@ -5,24 +5,23 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("seller", {
     id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
+      type: DataTypes.INTEGER,      
       primaryKey: true
     },
     name: {
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     mail: {
       type: DataTypes.STRING,
     },
-    password: {
+    image: {
       type: DataTypes.STRING,
     },
     dni: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     }
   });
 };
