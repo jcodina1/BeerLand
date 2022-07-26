@@ -4,9 +4,11 @@ import NavBar from "../NavBar/NavBar";
 import ShowBeers from "../ShowBeers/ShowBeers";
 import style from "../Home/Home.module.css";
 import Footer from "../Footer/Footer";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   /* const [userType, setUserType] = useState('') */
+  const carga=useSelector(state=>state)
 
   return (
     <div className={style.homeContainer}>

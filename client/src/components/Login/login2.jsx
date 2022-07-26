@@ -3,20 +3,22 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import beertest from '../../img/beertest.png'
 import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
+import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
+import { app } from "../../firebase";
 export function Login() {
-
+    const firestore = getFirestore(app)
     const history = useHistory()
-    const {login} = useAuth()
+    const {login, logingWithGoogle, resetPassword, logingWithFacebook } = useAuth()
 
     const [error,setError] = useState('')
     const [user, SetUser] = useState({
-                email:'',
-                password: '',
-                User:'user'
+        email:'',
+        password: '',
+        rol:'user'
                
             })
              console.log(user)
@@ -49,34 +51,57 @@ export function Login() {
                 }
             }
         
-        
-        //     const handleGoogle = async ()=>{
-        //        try {
-        //         user.User = user.User
-        //           const google =  await  logingWithGoogle()
-        //           console.log(google)
-        //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
-        //           dispatch(postUser(userdata))
-        //           history.push('/home')
-        
-        //          } catch (error) {
-        //              console.log(error.message)
-        //              setError(error.message)
-        //              swal(error.message)
-        //          }
+            const handleGoogle = async ()=>{
+               try {              
+                  const google =  await logingWithGoogle().then((usuarioGoogle)=>{
+                    return usuarioGoogle
+                  })
+                    console.log(user.rol)
+                  const docuRef= doc(firestore, `usuarios/${google.user.uid}`)
+                  setDoc(docuRef, {email:user.email, user:user.rol})
+
+                 
+                //   dispatch(postUser(userdata))
+                  history.push('/home')
+                 } catch (error) {
+                     console.log(error.message)
+                     setError(error.message)
+                     swal(error.message)
+                 }
              
-        //     }
+            }
         
-        //     const handelResetPassword =async ()=>{
-        //         if (!user.email) return swal("please enter your mail")
-        //         try {
-        //             await resetPassword(user.email)
-        //             swal('We sent you an mail with a link to reset you password')
-        //         } catch (error) {
-        //             setError(error.message)
-        //         }
+            const handelResetPassword =async ()=>{
+                if (!user.email) return swal("please enter your mail")
+                try {
+                    await resetPassword(user.email)
+                    swal('We sent you an mail with a link to reset you password')
+                } catch (error) {
+                    setError(error.message)
+                }
                 
-        //     }
+            }
+
+
+            const handleFacebook = async ()=>{
+                try {
+                    const facebook =  await logingWithFacebook().then((usuarioFacebook)=>{
+                        return usuarioFacebook
+                      })
+                        console.log(user.rol)
+                      const docuRef= doc(firestore, `usuarios/${facebook.user.uid}`)
+                      setDoc(docuRef, {email:user.email, user:user.rol})
+ 
+                  
+                 //   dispatch(postUser(userdata))
+                   history.push('/home')
+                  } catch (error) {
+                      console.log(error.message)
+                      setError(error.message)
+                      swal(error.message)
+                  }
+              
+             }
 
 
 
@@ -112,9 +137,7 @@ export function Login() {
                         <div className={style.submit}>
                             <button  className={style.button} onClick={handleSubmit} >Login</button>
                         </div>
-                        <a href='#!'
-                            
-                        >
+                        <a href='#!' onClick={e=>handelResetPassword(e)}>
                             Forgot Password
                         </a>
 
@@ -127,7 +150,7 @@ export function Login() {
                             <div>
                                 <Link to='/login'>
                                     <span>
-                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} alt='Beer' />
+                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} onClick={e=>handleFacebook(e)} alt='Beer' />
                                     </span>
                                 </Link>
                                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
@@ -135,10 +158,10 @@ export function Login() {
                             <div>
                                 <Link to='/login'>
                                     <span>
-                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} alt='Beer' />
+                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle}  alt='Beer' />
                                     </span>
                                 </Link>
-                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button>  */}
                             </div>
                         </div>
                         <Link to='/register'>

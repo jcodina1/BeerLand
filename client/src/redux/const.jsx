@@ -1,11 +1,12 @@
-export const ALL_API = "http://localhost:3001/beer";
-export const ALL_ID = "http://localhost:3001/beer/id/";
-// export const ALL_STYLES = 'http://localhost:3001/temperaments';
+export const ALL_API = "/beer";
+export const ALL_ID = "/beer/id/";
+// export const ALL_STYLES = '/temperaments';
 
-export const ALL_NAME = "http://localhost:3001/beer?name=";
-export const POST_BEER = "http://localhost:3001/beer";
-export const POST_USER = "http://localhost:3001/user";
-export const UPDATE_BEER = "http://localhost:3001/beer/update/";
+export const ALL_NAME = "/beer?name=";
+export const POST_BEER = "/beer";
+export const POST_USER = "/user";
+export const UPDATE_BEER = "/beer/update/";
+export const POST_SELLER = "/seller";
 
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";

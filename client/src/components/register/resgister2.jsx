@@ -3,7 +3,7 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 
 
 export function Register() {
@@ -83,7 +83,7 @@ export function Register() {
         return (
         <div className={style.container}>
             <form>
-                <h1>Login</h1>
+                <h1>Sing In</h1>
             <div className={style.password}>
                 <label>Email: </label>
                 <input name='email'
@@ -108,21 +108,19 @@ export function Register() {
 
             </form>
             <div className={style.submit}>
-                <button onClick={handleSubmit} >Login</button>
+                <button onClick={handleSubmit} >Sing In</button>
             </div>
             {/* <div>
                 <button onClick={handleGoogle}>Google Login</button>
             </div> */}
+
+
 <div>
-            <label>Don't have an Account  . </label>
-            <Link to='/register'>
-                <button>Register</button>
-            </Link>
-</div>
             <label>Register as a company : </label>
             <Link to='/registerCompany'>
-                <button>Register</button>
+                <button>Sing In</button>
             </Link>
+    </div>        
            <div>
              <Link to='/home'>
                 <button>Return</button>

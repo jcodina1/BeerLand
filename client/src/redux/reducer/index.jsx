@@ -18,6 +18,7 @@ import {
   SORT_BY_PRICE,
   SET_PAGE,
   FILTER_BEER_BY_TYPE,
+  POST_SELLER,
 } from "../const";
 
 const initialState = {
@@ -223,6 +224,10 @@ function Reducer(state = initialState, action) {
         page: action.payload,
       };
     case UPDATE_BEER:
+      return {
+        ...state,
+      };
+    case POST_SELLER:
       return {
         ...state,
       };

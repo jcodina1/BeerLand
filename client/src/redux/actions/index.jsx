@@ -22,6 +22,7 @@ import {
   GET_ALL_BREWERIES,
   SET_PAGE,
   FILTER_BEER_BY_TYPE,
+  POST_SELLER,
 } from "../const";
 
 export function addToCart(id) {
@@ -181,5 +182,18 @@ export function updateBeer(data, id) {
       .catch((e) => {
         console.log(e);
       });
+  };
+}
+
+export function postSeller(payload) {
+  return async function (dispatch) {
+    try {
+      const post = await axios.post(POST_SELLER, payload);
+      return post;
+    } catch (error) {
+      if (error.response) {
+        return alert(error.response.data);
+      }
+    }
   };
 }
