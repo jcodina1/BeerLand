@@ -7,16 +7,18 @@ import { useAuth } from "../Context/Contestautenticacion";
 import beertest from '../../img/beertest.png'
 import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
+import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
+import { app } from "../../firebase";
 export function Login() {
-
+    const firestore = getFirestore(app)
     const history = useHistory()
     const {login, logingWithGoogle, resetPassword, logingWithFacebook } = useAuth()
 
     const [error,setError] = useState('')
     const [user, SetUser] = useState({
-                email:'',
-                password: '',
-                User:'user'
+        email:'',
+        password: '',
+        rol:'user'
                
             })
              console.log(user)
@@ -49,11 +51,14 @@ export function Login() {
                 }
             }
         
-        
             const handleGoogle = async ()=>{
-               try {
-                user.User = user.User
-                  const google =  await logingWithGoogle()
+               try {              
+                  const google =  await logingWithGoogle().then((usuarioGoogle)=>{
+                    return usuarioGoogle
+                  })
+                    console.log(user.rol)
+                  const docuRef= doc(firestore, `usuarios/${google.user.uid}`)
+                  setDoc(docuRef, {email:user.email, user:user.rol})
 
                  
                 //   dispatch(postUser(userdata))
@@ -80,10 +85,12 @@ export function Login() {
 
             const handleFacebook = async ()=>{
                 try {
-                 user.User = user.User
-                   const facebook =  await logingWithFacebook()
-          
-                   console.log(facebook)
+                    const facebook =  await logingWithFacebook().then((usuarioFacebook)=>{
+                        return usuarioFacebook
+                      })
+                        console.log(user.rol)
+                      const docuRef= doc(firestore, `usuarios/${facebook.user.uid}`)
+                      setDoc(docuRef, {email:user.email, user:user.rol})
  
                   
                  //   dispatch(postUser(userdata))

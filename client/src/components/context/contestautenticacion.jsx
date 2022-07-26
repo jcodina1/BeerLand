@@ -56,6 +56,7 @@ export function AuthProvider({children}) {
                 onAuthStateChanged(auth, currentUser=>{ 
                     if (currentUser) {
                         getRol(currentUser.uid).then((rol)=>{
+                            console.log(rol)
                             const userdata ={
                                 uid:currentUser.uid,
                                 email: currentUser.email,
@@ -72,6 +73,6 @@ export function AuthProvider({children}) {
 
 
 
-    return <authContext.Provider value={{user, login, signup ,salir, logingWithGoogle, logingWithFacebook}}>{children}</authContext.Provider>
+    return <authContext.Provider value={{user, login, signup ,salir, logingWithGoogle, logingWithFacebook }}>{children}</authContext.Provider>
     
 }

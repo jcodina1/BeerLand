@@ -9,7 +9,7 @@ export default function ValidacionUSer() {
     return (
         <div>
             {
-                 user === null ? <Home/> : user.rol === 'user' ?<Home/> : <HomeAdmin/>
+                 user === null ? <Home/> : user.rol === "user" ?<Home/> : <HomeAdmin/>
             }
         </div>
     )

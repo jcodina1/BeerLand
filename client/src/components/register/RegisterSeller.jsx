@@ -41,7 +41,7 @@ export default function RegisterSeller() {
         try {
            
             if (user.password === user.confirmation){
-            await signup(user.email, user.password, user)
+            await signup(user.email, user.password, user.rol)
             dispatch(postSeller(user))
             console.log(user, 'holaaa')
             history.push('/home')
