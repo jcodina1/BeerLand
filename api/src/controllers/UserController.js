@@ -11,7 +11,7 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-    const { id, name, surname, address, email } = req.body;
+    const { id, name, surname, address, email, rol } = req.body;
     try {
         let newUser = await User.create(
             {
@@ -19,12 +19,13 @@ async function postUser(req, res, next) {
                 name,
                 surname,
                 address,
-                email
+                email,
+                rol
             },
             {
-                fields: ["id", "name", "surname", "address", "email"],
+                fields: ["id", "name", "surname", "address", "email", "rol"],
             }
-        );
+            );
         return res.json(newUser);
     } catch (error) {
         next(error)
@@ -33,7 +34,9 @@ async function postUser(req, res, next) {
 
 
 
+
 module.exports = {
     getAllUsers,
-    postUser
+    postUser,
+    postFavorite
 }

@@ -83,7 +83,6 @@ export default function Pagination({
           disabled={nextLastControl}
           className={nextLastControl ? styles.disable : styles.pagButton}
           onClick={(e) => paginate(e, "next")}
-          e
           name="next"
         >
           {">>"}
