@@ -6,6 +6,7 @@ export const ALL_NAME = "/beer?name=";
 export const POST_BEER = "/beer";
 export const POST_USER = "/user";
 export const UPDATE_BEER = "/beer/update/";
+export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
 
 export const SEARCH_BAR = "SEARCH_BAR";
@@ -30,4 +31,4 @@ export const CHECKOUT_BEERS = "CHECKOUT_BEERS";
 export const FILTER_BEER_BY_BREWERY = "FILTER_BEER_BY_BREWERY";
 export const SORT_BY_PRICE = "SORT_BY_PRICE";
 export const SORT_BY_NAME = "SORT_BY_NAME";
-export const GET_ALL_BREWERIES = "GET_ALL_BREWERIES";
+export const GET_ALL_SELLERS = "GET_ALL_SELLERS";

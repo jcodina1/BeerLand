@@ -19,10 +19,10 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   FILTER_BEER_BY_BREWERY,
-  GET_ALL_BREWERIES,
   SET_PAGE,
   FILTER_BEER_BY_TYPE,
-  POST_SELLER,
+  SELLER,
+  GET_ALL_SELLERS,
 } from "../const";
 
 export function addToCart(id) {
@@ -68,12 +68,12 @@ export function getAllBeers() {
   };
 }
 
-export function getAllBreweries() {
+export function getAllSellers() {
   return async function (dispatch) {
-    let allBreweries = await axios.get("http://localhost:3001/seller");
+    const allSellers = await axios.get(SELLER);
     return dispatch({
-      type: GET_ALL_BREWERIES,
-      payload: allBreweries.data,
+      type: GET_ALL_SELLERS,
+      payload: allSellers.data,
     });
   };
 }
@@ -188,7 +188,7 @@ export function updateBeer(data, id) {
 export function postSeller(payload) {
   return async function (dispatch) {
     try {
-      const post = await axios.post(POST_SELLER, payload);
+      const post = await axios.post(SELLER, payload);
       return post;
     } catch (error) {
       if (error.response) {

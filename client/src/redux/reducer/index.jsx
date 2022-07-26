@@ -19,6 +19,7 @@ import {
   SET_PAGE,
   FILTER_BEER_BY_TYPE,
   POST_SELLER,
+  GET_ALL_SELLERS,
 } from "../const";
 
 const initialState = {
@@ -45,6 +46,12 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
+      };
+
+    case GET_ALL_SELLERS:
+      return {
+        ...state,
+        allBreweries: action.payload,
       };
 
     case ADD_TO_CART:

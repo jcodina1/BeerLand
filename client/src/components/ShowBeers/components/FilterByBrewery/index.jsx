@@ -15,6 +15,7 @@ export default function FilterByBrewery() {
       dispatch(actions.getAllBeers());
     }
   }
+  console.log(allBreweries);
   return (
     <div>
       <select className={styles.select} onChange={(e) => handleFilter(e)}>
