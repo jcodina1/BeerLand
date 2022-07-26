@@ -13,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Checkout from "./components/Checkout/Checkout";
 import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
-import ValidacionUSer from "./components/validacion/ValidacionUsuario";
+import ValidacionUSer from "./components/validacion/validacionUsuario";
 import RegisterSeller from "./components/register/RegisterSeller";
 import axios from 'axios';
 require('dotenv').config()
