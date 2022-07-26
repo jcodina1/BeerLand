@@ -123,14 +123,27 @@ function Reducer(state = initialState, action) {
     }
 
     case SORT_BY_NAME:
-      let sortedByName =
-        action.payload === "AtoZ"
-          ? state.allBeers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
-          : state.allBeers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+      let sortedByName = [];
+      if (state.allBeers.length === state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.allBeers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.beers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.beers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
       return {
         ...state,
         beers: sortedByName,
@@ -138,14 +151,27 @@ function Reducer(state = initialState, action) {
       };
 
     case SORT_BY_PRICE:
-      let sortedByPrice =
-        action.payload === "Low to High"
-          ? state.allBeers.sort(function (a, b) {
-              return a.price - b.price;
-            })
-          : state.allBeers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+      let sortedByPrice = [];
+      if (state.allBeers.length === state.beers.length) {
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.allBeers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.beers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.beers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
       return {
         ...state,
         beers: sortedByPrice,
