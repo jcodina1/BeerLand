@@ -9,7 +9,7 @@ export default function Pagination({
   firstPrevControl,
   nextLastControl,
 }) {
-  var pages = {
+  let pages = {
     prepre: 0,
     pre: 0,
     page: page,
@@ -83,7 +83,6 @@ export default function Pagination({
           disabled={nextLastControl}
           className={nextLastControl ? styles.disable : styles.pagButton}
           onClick={(e) => paginate(e, "next")}
-          e
           name="next"
         >
           {">>"}

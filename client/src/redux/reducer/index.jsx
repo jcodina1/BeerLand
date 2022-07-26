@@ -197,16 +197,21 @@ function Reducer(state = initialState, action) {
         allBeers: action.payload,
       };
 
-    // case FILTER_BEER_BY_TYPE:
-    //   const preFilteredBeersByType = state.allBeers;
-    //   const filteredBeersByType = action.payload === "All"; ?  preFilteredBeersByType : preFilteredBeersByType.filter((beer) => beer.type.find((type) => bre))
+    case FILTER_BEER_BY_TYPE:
+      const preFilteredBeersByType = state.allBeers;
+      const filteredBeersByType =
+        action.payload === "All"
+          ? preFilteredBeersByType
+          : preFilteredBeersByType.filter((beer) =>
+              beer.tipo.find((type) => type === action.payload)
+            );
 
-    //   return {
-    //     ...state,
-    //     beers: filteredBeersByType,
-    //     filterPlaceholder: filteredBeersByType,
-    //     allBeers: action.payload,
-    //   };
+      return {
+        ...state,
+        beers: filteredBeersByType,
+        filterPlaceholder: filteredBeersByType,
+        allBeers: action.payload,
+      };
 
     case POST_BEER:
       return {
