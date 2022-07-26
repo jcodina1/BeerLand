@@ -21,6 +21,8 @@ import {
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
   SET_PAGE,
+  ALL_SELLERS,
+  GET_SELLERS,
   POST_SELLER
 } from "../const";
 
@@ -177,6 +179,15 @@ export function updateBeer(data, id) {
   };
 }
 
+export function getSellers() {
+  return async function (dispatch) {
+    let allSellers = await axios.get(ALL_SELLERS);
+    return dispatch({
+      type: GET_SELLERS,
+      payload: allSellers.data,
+    });
+  };
+}
 
 export function postSeller(payload){
   return async function(dispatch){
