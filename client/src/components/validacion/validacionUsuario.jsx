@@ -2,7 +2,6 @@ import { useAuth } from "../Context/Contestautenticacion";
 import Home from "../Home/Home";
 import HomeAdmin from "./HomeAdmin";
 
-
 export default function ValidacionUSer() {
     const {user} = useAuth()
 
