@@ -27,17 +27,21 @@ async function createdAllBeers(req, res, next) {
 async function getAllBeers(req, res, next) {
     const { name } = req.query
     try {
-        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas2.json')
         const beersData = beers.data.cervezas
         await beersData.forEach((b) => {
             Beer.findOrCreate({
                 where: {
                     name: b.name ? b.name : "It does not contain name",
                     description: b.description ? b.description : "It does not contain description",
-                    price: b.price ? b.price : "It does not contain price",
-                    stock: b.stock ? b.stock : "It does not contain stock",
+                    price: b.price,
+                    stock: b.stock ,
+                    grade:b.grade,
+                    origin:b.origin?b.origin:"España",
+                    tipo:b.tipo?b.tipo:'No se le ha asignado tipo',
+                    ibu:b.ibu,
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
-                    sellerId: b.sellerId
+                    sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
                 }
             })
         })

@@ -58,32 +58,37 @@ export default function ShowBeers() {
       <SortByPrice setOrder={setOrder} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
-          {allBeers.length === 0 ? (
+          {
+          allBeers.length === 0 ?
+           (
             <span>
               (<Loading setLoading={setLoading} />)
-            </span>
-          ) : (
-            currentBeer?.map((beer) => {
+            </span> ) 
+            : <>
+            {currentBeer?.map((beer) => {
               return (
                 <BeerCard
                   id={beer.id}
                   key={beer.id}
                   name={beer.name}
-                  description={beer.description}
-                  image={beer.image}
+                  price={beer.price}
+                  image={beer.image?beer.image:false}
                   // style={beer.style}
                   // origin={beer.origin}
                 />
               );
-            })
-          )}
-          <Pagination
+            })}
+            <Pagination
             page={page}
             paginate={paginate}
             limitPage={limitPage}
             firstPrevControl={firstPrevControl}
             nextLastControl={nextLastControl}
           />
+            </>
+            
+          }
+          
         </div>
       </div>
     </div>
