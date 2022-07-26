@@ -1,6 +1,6 @@
 import { createContext , useContext} from "react";
 import { auth, app } from "../../firebase";
-import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signOut, sendPasswordResetEmail, signInWithPopup } from "firebase/auth";
+import { onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signOut, sendPasswordResetEmail, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 import { useState, useEffect } from "react";
 import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
 
@@ -47,6 +47,11 @@ export function AuthProvider({children}) {
         sendPasswordResetEmail(auth, email)
     }
 
+    const logingWithFacebook = () => {
+        const provider = new FacebookAuthProvider()
+        return signInWithPopup(auth, provider)
+    }
+
     useEffect(()=>{ 
                 onAuthStateChanged(auth, currentUser=>{ 
                     if (currentUser) {
@@ -67,6 +72,6 @@ export function AuthProvider({children}) {
 
 
 
-    return <authContext.Provider value={{user, login, signup,salir, logingWithGoogle}}>{children}</authContext.Provider>
+    return <authContext.Provider value={{user, login, signup ,salir, logingWithGoogle, logingWithFacebook}}>{children}</authContext.Provider>
     
 }

@@ -3,14 +3,14 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import beertest from '../../img/beertest.png'
 import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
 export function Login() {
 
     const history = useHistory()
-    const {login, logingWithGoogle} = useAuth()
+    const {login, logingWithGoogle, resetPassword, logingWithFacebook } = useAuth()
 
     const [error,setError] = useState('')
     const [user, SetUser] = useState({
@@ -53,9 +53,9 @@ export function Login() {
             const handleGoogle = async ()=>{
                try {
                 user.User = user.User
-                  const google =  await  logingWithGoogle()
-                  console.log(google)
-                  const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
+                  const google =  await logingWithGoogle()
+
+                 
                 //   dispatch(postUser(userdata))
                   history.push('/home')
                  } catch (error) {
@@ -66,16 +66,35 @@ export function Login() {
              
             }
         
-        //     const handelResetPassword =async ()=>{
-        //         if (!user.email) return swal("please enter your mail")
-        //         try {
-        //             await resetPassword(user.email)
-        //             swal('We sent you an mail with a link to reset you password')
-        //         } catch (error) {
-        //             setError(error.message)
-        //         }
+            const handelResetPassword =async ()=>{
+                if (!user.email) return swal("please enter your mail")
+                try {
+                    await resetPassword(user.email)
+                    swal('We sent you an mail with a link to reset you password')
+                } catch (error) {
+                    setError(error.message)
+                }
                 
-        //     }
+            }
+
+
+            const handleFacebook = async ()=>{
+                try {
+                 user.User = user.User
+                   const facebook =  await logingWithFacebook()
+          
+                   console.log(facebook)
+ 
+                  
+                 //   dispatch(postUser(userdata))
+                   history.push('/home')
+                  } catch (error) {
+                      console.log(error.message)
+                      setError(error.message)
+                      swal(error.message)
+                  }
+              
+             }
 
 
 
@@ -111,9 +130,7 @@ export function Login() {
                         <div className={style.submit}>
                             <button  className={style.button} onClick={handleSubmit} >Login</button>
                         </div>
-                        <a href='#!'
-                            
-                        >
+                        <a href='#!' onClick={e=>handelResetPassword(e)}>
                             Forgot Password
                         </a>
 
@@ -126,7 +143,7 @@ export function Login() {
                             <div>
                                 <Link to='/login'>
                                     <span>
-                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} alt='Beer' />
+                                        <img className={style.facebookIcon} id='GoogleLogo' src={facebookLogo} onClick={e=>handleFacebook(e)} alt='Beer' />
                                     </span>
                                 </Link>
                                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
@@ -134,7 +151,7 @@ export function Login() {
                             <div>
                                 <Link to='/login'>
                                     <span>
-                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle} alt='Beer' />
+                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle}  alt='Beer' />
                                     </span>
                                 </Link>
                                  {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button>  */}
