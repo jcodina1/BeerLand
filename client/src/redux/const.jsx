@@ -9,6 +9,7 @@ export const UPDATE_BEER = '/beer/update/'
 export const POST_SELLER ='/seller';
 
 
+
 export const SEARCH_BAR = 'SEARCH_BAR';
 export const SET_PAGE = 'SET_PAGE';
 export const SET_DETAILS = 'SET_DETAILS';
