@@ -79,6 +79,9 @@ Beer.belongsToMany(Purchases, { through: 'PurchasesBeer' })
 User.hasMany(Purchases, { foreignKey: 'userId', sourceKey: "id" })
 Purchases.belongsTo(User, { foreignKey: 'userId', targetId: "id" })
 
+User.belongsToMany(Beer, { through: 'Favorites' })
+Beer.belongsToMany(User, { through: 'Favorites' })
+
 
 // Model.belongsToMany(otherModel, { through: 'activities_countries' });
 
