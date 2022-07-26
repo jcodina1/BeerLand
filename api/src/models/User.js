@@ -20,6 +20,9 @@ module.exports = (sequelize) => {
     },
     email: {
       type: DataTypes.STRING,
+    },
+    rol:{
+      type: DataTypes.STRING,
     }
   }, { timestamps: false });
 };
