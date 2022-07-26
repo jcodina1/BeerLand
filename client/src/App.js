@@ -14,7 +14,9 @@ import Checkout from "./components/Checkout/Checkout";
 import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 import ValidacionUSer from "./components/validacion/validacionUsuario";
-
+import axios from 'axios';
+require('dotenv').config()
+axios.defaults.baseURL= process.env.REACT_APP_API||"http://localhost:3001";//
 
 function App() {
   return (

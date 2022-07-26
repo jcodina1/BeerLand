@@ -7,7 +7,7 @@ import style from "../BeerCard/BeerCard.module.css";
 export default function BeerCard({
   id,
   name,
-  description,
+  price,
   image,
   // type,
   // origin,
@@ -17,7 +17,7 @@ export default function BeerCard({
       <div className={style.cardContainer}>
         <h2>{name}</h2>
         <img className={style.cardImg} src={image} alt="No img found :(" />
-        <h4>{description}</h4>
+        <h4>Price: $ {price}</h4>
         {/* <h4 className={style.content}>{type}</h4>
         <h4 className={style.content}>{origin}</h4> */}
       </div>
