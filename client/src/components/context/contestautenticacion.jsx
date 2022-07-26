@@ -57,7 +57,6 @@ export function AuthProvider({children}) {
                                 rol:rol
                             }
                             setUser(userdata)
-                            console.log(userdata)
                         })
                     }else{
                         setUser(null)
@@ -68,6 +67,6 @@ export function AuthProvider({children}) {
 
 
 
-    return <authContext.Provider value={{user, login, signup,salir}}>{children}</authContext.Provider>
+    return <authContext.Provider value={{user, login, signup,salir, logingWithGoogle}}>{children}</authContext.Provider>
     
 }

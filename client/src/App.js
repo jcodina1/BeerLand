@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import BeerDetail from "./components/BeerDetail/BeerDetail";
 import { Register } from "./components/register/resgister2";
 import { Login } from "./components/Login/login2";
-import { AuthProvider } from "./components/context/contestautenticacion";
+import { AuthProvider } from "./components/Context/Contestautenticacion";
 import AddProduct from "./components/AddProduct/AddProduct";
 // import Cart from "./components/Cart/Cart";
 import "bootstrap";
@@ -13,7 +13,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Checkout from "./components/Checkout/Checkout";
 import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
-import ValidacionUSer from "./components/validacion/validacionUsuario";
+import ValidacionUSer from "./components/validacion/ValidacionUsuario";
+import RegisterSeller from "./components/register/RegisterSeller";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path="/register" component={Register} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/cart" component={Cart} />
+            <Route path="/registerCompany" component={RegisterSeller} /> 
           </Switch>
         </AuthProvider>
       </div>

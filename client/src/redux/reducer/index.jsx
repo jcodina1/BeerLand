@@ -17,6 +17,7 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
+  POST_SELLER,
 } from "../const";
 
 const initialState = {
@@ -186,6 +187,10 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
       };
+      case POST_SELLER:
+        return {
+          ...state
+        };
 
     default:
       return { ...state };

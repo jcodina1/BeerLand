@@ -10,7 +10,7 @@ import facebookLogo from '../../img/facebookLogin.png'
 export function Login() {
 
     const history = useHistory()
-    const {login} = useAuth()
+    const {login, logingWithGoogle} = useAuth()
 
     const [error,setError] = useState('')
     const [user, SetUser] = useState({
@@ -50,22 +50,21 @@ export function Login() {
             }
         
         
-        //     const handleGoogle = async ()=>{
-        //        try {
-        //         user.User = user.User
-        //           const google =  await  logingWithGoogle()
-        //           console.log(google)
-        //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
-        //           dispatch(postUser(userdata))
-        //           history.push('/home')
-        
-        //          } catch (error) {
-        //              console.log(error.message)
-        //              setError(error.message)
-        //              swal(error.message)
-        //          }
+            const handleGoogle = async ()=>{
+               try {
+                user.User = user.User
+                  const google =  await  logingWithGoogle()
+                  console.log(google)
+                  const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
+                //   dispatch(postUser(userdata))
+                  history.push('/home')
+                 } catch (error) {
+                     console.log(error.message)
+                     setError(error.message)
+                     swal(error.message)
+                 }
              
-        //     }
+            }
         
         //     const handelResetPassword =async ()=>{
         //         if (!user.email) return swal("please enter your mail")
@@ -135,10 +134,10 @@ export function Login() {
                             <div>
                                 <Link to='/login'>
                                     <span>
-                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} alt='Beer' />
+                                        <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle} alt='Beer' />
                                     </span>
                                 </Link>
-                                {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
+                                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button>  */}
                             </div>
                         </div>
                         <Link to='/register'>
