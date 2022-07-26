@@ -153,6 +153,7 @@ function Reducer(state = initialState, action) {
     case SORT_BY_PRICE:
       let sortedByPrice = [];
       if (state.allBeers.length === state.beers.length) {
+        //revisa si allBeers tiene el mismo largo que beers, para ver si ha habido o no algun filtrado
         sortedByPrice =
           action.payload === "Low to High"
             ? state.allBeers.sort(function (a, b) {
@@ -163,6 +164,7 @@ function Reducer(state = initialState, action) {
               });
       }
       if (state.allBeers.length !== state.beers.length) {
+        //misma logica de arriba, caso opuesto
         sortedByPrice =
           action.payload === "Low to High"
             ? state.beers.sort(function (a, b) {
