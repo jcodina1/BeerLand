@@ -21,6 +21,7 @@ import {
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
   SET_PAGE,
+  FILTER_BEER_BY_TYPE,
 } from "../const";
 
 export function addToCart(id) {
@@ -161,6 +162,13 @@ export function sortByPrice(payload) {
 export function filterBeersByBrewery(payload) {
   return {
     type: FILTER_BEER_BY_BREWERY,
+    payload,
+  };
+}
+
+export function filterBeersByType(payload) {
+  return {
+    type: FILTER_BEER_BY_TYPE,
     payload,
   };
 }

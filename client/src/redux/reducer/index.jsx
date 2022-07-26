@@ -17,6 +17,7 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
+  FILTER_BEER_BY_TYPE,
 } from "../const";
 
 const initialState = {
@@ -181,19 +182,30 @@ function Reducer(state = initialState, action) {
       };
 
     case FILTER_BEER_BY_BREWERY:
-      const preFilteredBeers = state.allBeers;
-      const filteredBeers =
+      const preFilteredBeersByBrewery = state.allBeers;
+      const filteredBeersByBrewery =
         action.payload === "All"
-          ? preFilteredBeers
-          : preFilteredBeers.filter((beer) =>
+          ? preFilteredBeersByBrewery
+          : preFilteredBeersByBrewery.filter((beer) =>
               beer.brewery.find((brewery) => brewery.name === action.payload)
             );
       return {
         ...state,
-        beers: filteredBeers,
-        filterPlaceholder: filteredBeers,
+        beers: filteredBeersByBrewery,
+        filterPlaceholder: filteredBeersByBrewery,
         allBeers: action.payload,
       };
+
+    // case FILTER_BEER_BY_TYPE:
+    //   const preFilteredBeersByType = state.allBeers;
+    //   const filteredBeersByType = action.payload === "All"; ?  preFilteredBeersByType : preFilteredBeersByType.filter((beer) => beer.type.find((type) => bre))
+
+    //   return {
+    //     ...state,
+    //     beers: filteredBeersByType,
+    //     filterPlaceholder: filteredBeersByType,
+    //     allBeers: action.payload,
+    //   };
 
     case POST_BEER:
       return {

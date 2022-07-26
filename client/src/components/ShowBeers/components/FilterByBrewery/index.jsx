@@ -18,7 +18,7 @@ export default function FilterByBrewery() {
   return (
     <div>
       <select className={styles.select} onChange={(e) => handleFilter(e)}>
-        <option value="All">Sort by Activities</option>
+        <option value="All">Filter by Brewery</option>
 
         {allBreweries.map((brewery) => {
           return (

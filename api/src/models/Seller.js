@@ -6,24 +6,23 @@ module.exports = (sequelize) => {
   sequelize.define("seller", {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     name: {
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     mail: {
       type: DataTypes.STRING,
     },
-    password: {
+    image: {
       type: DataTypes.STRING,
     },
     dni: {
-      type: DataTypes.STRING,
-    }
+      type: DataTypes.INTEGER,
+    },
   });
 };
 //AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA
