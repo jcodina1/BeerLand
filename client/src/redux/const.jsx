@@ -6,6 +6,7 @@ export const POST_BEER = '/beer';
 export const POST_USER = '/user';
 export const UPDATE_BEER = '/beer/update/'
 export const ALL_SELLERS = '/sellers'
+export const POST_SELLER ='/seller';
 
 export const SEARCH_BAR = 'SEARCH_BAR';
 export const SET_PAGE = 'SET_PAGE';

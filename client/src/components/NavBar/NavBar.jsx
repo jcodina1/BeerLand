@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "../NavBar/NavBar.module.css";
 import BeerLogo from "../../img/BeerLogo.png";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import Cart from "../Cart/Cart";
 
 export default function NavBar({ setPage }) {
@@ -44,8 +44,10 @@ export default function NavBar({ setPage }) {
               <button className={style.button}>Login</button>
             </Link>
           }
+           { !user ? '' :
           <button className={style.button} onClick={handleLogOut}>LogOut</button>
-        </div>
+        }
+          </div>
       </div>
 
     </nav>

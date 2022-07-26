@@ -23,6 +23,7 @@ import {
   SET_PAGE,
   ALL_SELLERS,
   GET_SELLERS,
+  POST_SELLER
 } from "../const";
 
 export function addToCart(id) {
@@ -187,3 +188,16 @@ export function getSellers() {
     });
   };
 }
+
+export function postSeller(payload){
+  return async function(dispatch){
+    try{
+      const post = await axios.post(POST_SELLER, payload);
+      return post;
+    }catch(error){
+      if(error.response){
+        return alert(error.response.data)
+      }
+    }
+  }
+};
