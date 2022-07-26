@@ -111,7 +111,7 @@ export default function RegisterSeller() {
             onChange={handleChange} />
     </div>
 
-            <button className={style.password} onClick={handleSubmit} >Register</button>
+            <button className={style.password} onClick={handleSubmit}>Register</button>
         </form>
         <Link to='/home'>
                 <button>Return</button>
