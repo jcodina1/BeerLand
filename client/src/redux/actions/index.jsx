@@ -21,16 +21,12 @@ import {
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
   SET_PAGE,
-
   ALL_SELLERS,
   GET_SELLERS,
-  POST_SELLER
-
- 
+  POST_SELLER,
   POST_FAVS,
   GET_FAVS,
   FAVS,
-
 } from "../const";
 
 export function addToCart(id) {
@@ -186,7 +182,6 @@ export function updateBeer(data, id) {
   };
 }
 
-
 export function getSellers() {
   return async function (dispatch) {
     let allSellers = await axios.get(ALL_SELLERS);
@@ -197,10 +192,9 @@ export function getSellers() {
   };
 }
 
-export function postSeller(payload){
-  return async function(dispatch){
-    try{
-
+export function postSeller(payload) {
+  return async function (dispatch) {
+    try {
       const post = await axios.post(POST_SELLER, payload);
       return post;
     } catch (error) {
@@ -208,7 +202,6 @@ export function postSeller(payload){
         return alert(error.response.data);
       }
     }
-
   };
 }
 
@@ -233,4 +226,3 @@ export function getFavs(user) {
     }
   };
 }
-
