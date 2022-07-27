@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getAllBeers, getBeerID, updateBeer, deleteBeer, postBeer, postComment } = require('../controllers/BeerController');
+const { getAllBeers, getBeerID, updateBeer, deleteBeer, postBeer } = require('../controllers/BeerController');
 
 const router = Router();
 
