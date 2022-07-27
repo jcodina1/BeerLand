@@ -4,6 +4,11 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 
+import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+
+import Swal from "sweetalert2";
+
 export default function BeerCard({
   id,
   name,
