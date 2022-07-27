@@ -209,8 +209,8 @@ function Reducer(state = initialState, action) {
       const filteredBeersByType =
         action.payload === "All"
           ? preFilteredBeersByType
-          : preFilteredBeersByType.filter((beer) =>
-              beer.tipo.find((type) => type === action.payload)
+          : preFilteredBeersByType.filter(
+              (beer) => beer.tipo === action.payload
             );
 
       return {

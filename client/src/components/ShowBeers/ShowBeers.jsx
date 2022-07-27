@@ -8,7 +8,7 @@ import Pagination from "../Pagination/Pagination";
 import { setPage } from "../../redux/actions";
 import SortByName from "./components/SortByName";
 import FilterByBrewery from "./components/FilterByBrewery";
-// import FilterByType from "./components/FilterByType";
+import FilterByType from "./components/FilterByType";
 import SortByPrice from "./components/SortByPrice";
 
 export default function ShowBeers() {
@@ -56,7 +56,7 @@ export default function ShowBeers() {
     <div className={style.showBeers}>
       <SortByName setOrder={setOrder} />
       <FilterByBrewery />
-      {/* <FilterByType /> */}
+      <FilterByType />
       <SortByPrice setOrder={setOrder} />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
