@@ -107,10 +107,7 @@ export default function Checkout() {
           <h3>Total: ${preciototal} </h3>
           <div className="paypal">
             <Paypal/>
-
           </div>
-
-
         </div>
       </div>
       <Footer />
