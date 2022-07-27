@@ -18,6 +18,7 @@ import {
   SORT_BY_PRICE,
   SET_PAGE,
   POST_SELLER,
+  POST_FAVS,
 } from "../const";
 
 const initialState = {
@@ -35,6 +36,7 @@ const initialState = {
   infoSoldBeers: [],
   totalPrice: 0,
   user: {},
+  favs: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -187,10 +189,16 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
       };
-      case POST_SELLER:
-        return {
-          ...state
-        };
+    case POST_SELLER:
+      return {
+        ...state,
+      };
+
+    case POST_FAVS:
+      return {
+        ...state,
+        favs: action.payload,
+      };
 
     default:
       return { ...state };
