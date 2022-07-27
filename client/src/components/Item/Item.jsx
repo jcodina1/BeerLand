@@ -31,7 +31,7 @@ export default function Item({ id, name, image, price, stock, handleItem, newDel
     return (
         <div>
             <div >
-                <img src={image} alt={name} />
+                <img src={image} alt={name} width='15%' height='15%'/>
                 <div>
                     <h4>{name}</h4>
                 </div>

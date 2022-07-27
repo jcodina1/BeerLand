@@ -32,7 +32,8 @@ async function getAllSellers(req, res, next) {
           mail: b.mail,
           image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
           dni: b.dni
-        }
+        },
+        order:[['id','ASC']]
       })
     })
     const sellersDb = await Seller.findAll()
@@ -66,8 +67,8 @@ async function getAllSellers2(req, res, next) {
       })
     })
     const sellersDb = await Seller.findAll()
-  } catch (error) {
-
+  }catch(error){
+    next(error)
   }
 }
 
