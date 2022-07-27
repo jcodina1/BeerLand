@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import { useAuth } from "../Context/Contestautenticacion";
+import { useAuth } from "../context/Contestautenticacion";
 import { useHistory } from "react-router-dom";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
