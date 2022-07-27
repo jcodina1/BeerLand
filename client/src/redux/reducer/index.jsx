@@ -201,7 +201,6 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeersByBrewery,
         filterPlaceholder: filteredBeersByBrewery,
-        allBeers: action.payload,
       };
 
     case FILTER_BEER_BY_TYPE:
@@ -217,7 +216,6 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeersByType,
         filterPlaceholder: filteredBeersByType,
-        allBeers: action.payload,
       };
 
     case POST_BEER:
