@@ -6,19 +6,17 @@ import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postSeller } from "../../redux/actions";
-import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { app } from "../../firebase";
-import googleLogo from '../../img/googleLogin.png'
+import googleLogo from "../../img/googleLogin.png";
 
 export default function RegisterSeller() {
-    
-    const dispatch = useDispatch()
-    
-    const firestore = getFirestore(app)
-    const {signup, logingWithGoogle} = useAuth()
-    const history = useHistory()
-    const [error,setError] = useState('')
+  const dispatch = useDispatch();
 
+  const firestore = getFirestore(app);
+  const { signup, logingWithGoogle } = useAuth();
+  const history = useHistory();
+  const [error, setError] = useState("");
 
   const [user, SetUser] = useState({
     name: "",
@@ -39,58 +37,57 @@ export default function RegisterSeller() {
     console.log(e.target.value);
   };
 
-
-    const handleGoogle = async ()=>{
-        try {              
-           const google =  await logingWithGoogle().then((usuarioGoogle)=>{
-             return usuarioGoogle
-           })
-           console.log(google)
-           const user2 = {
-            id:245,
-             mail:google.user.email,
-             name:google._tokenResponse.firstName,
-             surname:google._tokenResponse.lastName,
-             description:'',
-             dni:0,
-             rol:'admin'
-           }
-           console.log(user2)
-           const docuRef= doc(firestore, `usuarios/${google.user.uid}`)
-           setDoc(docuRef, {email:user2.mail, name:user2.name,surname:user2.surname, user:user2.rol, login:'google'})
-           dispatch(postSeller(user2))
-           history.push('/home')
-          } catch (error) {
-              console.log(error.message)
-              setError(error.message)
-              swal(error.message)
-          }
-      
-     }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        try {
-           
-            if (user.password === user.confirmation){
-            await signup(user.mail, user.password, user.rol)
-            dispatch(postSeller(user))
-            console.log(user, 'holaaa')
-            history.push('/home')
-            }else{
-                swal('Passwords do not match')
-            }
-           
-           
-            
-        } catch (error) {
-            console.log(error.message)
-            setError(error.message)
-            swal(error.message)
-        }
-
+  const handleGoogle = async () => {
+    try {
+      const google = await logingWithGoogle().then((usuarioGoogle) => {
+        return usuarioGoogle;
+      });
+      console.log(google);
+      const user2 = {
+        id: 245,
+        mail: google.user.email,
+        name: google._tokenResponse.firstName,
+        surname: google._tokenResponse.lastName,
+        description: "",
+        dni: 0,
+        rol: "admin",
+      };
+      console.log(user2);
+      const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
+      setDoc(docuRef, {
+        email: user2.mail,
+        name: user2.name,
+        surname: user2.surname,
+        user: user2.rol,
+        login: "google",
+      });
+      dispatch(postSeller(user2));
+      history.push("/home");
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+      swal(error.message);
     }
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (user.password === user.confirmation) {
+        await signup(user.mail, user.password, user.rol);
+        dispatch(postSeller(user));
+        console.log(user, "holaaa");
+        history.push("/home");
+      } else {
+        swal("Passwords do not match");
+      }
+    } catch (error) {
+      console.log(error.message);
+      setError(error.message);
+      swal(error.message);
+    }
+  };
+
   return (
     <div className={style.container}>
       <form>
@@ -115,15 +112,15 @@ export default function RegisterSeller() {
           />
         </div>
 
-
-     <div className={style.password}>
-            <label>dni: </label>
-            <input name='dni' 
-            type="number" 
-            placeholder='youremail@company.com' 
-            onChange={handleChange} />
-     </div>
-             
+        <div className={style.password}>
+          <label>dni: </label>
+          <input
+            name="dni"
+            type="number"
+            placeholder="youremail@company.com"
+            onChange={handleChange}
+          />
+        </div>
 
         <div className={style.password}>
           <label>Email: </label>
@@ -134,7 +131,6 @@ export default function RegisterSeller() {
             onChange={handleChange}
           />
         </div>
-
 
         <div className={style.password}>
           <label>Password: </label>
@@ -147,21 +143,29 @@ export default function RegisterSeller() {
           />
         </div>
 
-    <div className={style.password}>
-             <label>Confirmation: </label>
-            <input name='confirmation' 
-            type='password' id="confirmation" 
-            placeholder='confirmation' 
-            onChange={handleChange} />
-    </div>
-                <div>
-                    <Link to='/registerCompany'>
-                        <span>
-                            <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle} alt='Beer' />
-                        </span>
-                    </Link>
-                </div>                
-
+        <div className={style.password}>
+          <label>Confirmation: </label>
+          <input
+            name="confirmation"
+            type="password"
+            id="confirmation"
+            placeholder="confirmation"
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <Link to="/registerCompany">
+            <span>
+              <img
+                className={style.googleIcon}
+                id="GoogleLogo"
+                src={googleLogo}
+                onClick={handleGoogle}
+                alt="Beer"
+              />
+            </span>
+          </Link>
+        </div>
 
         <button className={style.password} onClick={handleSubmit}>
           Register
