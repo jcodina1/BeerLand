@@ -3,7 +3,7 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/Contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import { postUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
 

@@ -1,4 +1,4 @@
-import { useAuth } from "../context/Contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import Home from "../Home/Home";
 import HomeAdmin from "./HomeAdmin";
 
