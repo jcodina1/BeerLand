@@ -1,15 +1,14 @@
 import React, { useReducer, useState } from "react";
 import { useAuth } from "../Context/Contestautenticacion";
 import { useHistory } from "react-router-dom";
-import style from '../Login/Login.module.css'
-import swal from 'sweetalert'
+import style from "../Login/Login.module.css";
+import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postSeller } from "../../redux/actions";
 import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
 import { app } from "../../firebase";
 import googleLogo from '../../img/googleLogin.png'
-
 
 export default function RegisterSeller() {
     
@@ -20,25 +19,26 @@ export default function RegisterSeller() {
     const history = useHistory()
     const [error,setError] = useState('')
 
-    const [user, SetUser] = useState({
-        name:'',
-        description:'',
-        dni:'',
-        mail:'',
-        password: '',
-        confirmation:'',
-        rol:'admin'
-    })
-    console.log(user)
 
-    const handleChange = (e) => {
-        SetUser({
-            ...user,
-            [e.target.name]: e.target.value
-            
-        })
-        console.log(e.target.value)
-    }
+  const [user, SetUser] = useState({
+    name: "",
+    description: "",
+    dni: "",
+    mail: "",
+    password: "",
+    confirmation: "",
+    rol: "admin",
+  });
+  console.log(user);
+
+  const handleChange = (e) => {
+    SetUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+    console.log(e.target.value);
+  };
+
 
     const handleGoogle = async ()=>{
         try {              
@@ -88,26 +88,32 @@ export default function RegisterSeller() {
             setError(error.message)
             swal(error.message)
         }
+
     }
-    return (
+  };
+  return (
     <div className={style.container}>
-        <form>
+      <form>
         <h1>Sign In</h1>
         <div className={style.password}>
-            <label>Name: </label>
-            <input name='name' 
-            type="name" 
-            placeholder='youremail@company.com' 
-            onChange={handleChange} />
-     </div>
+          <label>Name: </label>
+          <input
+            name="name"
+            type="name"
+            placeholder="youremail@company.com"
+            onChange={handleChange}
+          />
+        </div>
 
-     <div className={style.password}>
-            <label>description: </label>
-            <input name='description' 
-            type="description" 
-            placeholder='youremail@company.com' 
-            onChange={handleChange} />
-     </div>
+        <div className={style.password}>
+          <label>description: </label>
+          <input
+            name="description"
+            type="description"
+            placeholder="youremail@company.com"
+            onChange={handleChange}
+          />
+        </div>
 
 
      <div className={style.password}>
@@ -117,23 +123,29 @@ export default function RegisterSeller() {
             placeholder='youremail@company.com' 
             onChange={handleChange} />
      </div>
-        
-        <div className={style.password}>
-            <label>Email: </label>
-            <input 
-            name='mail' 
-            type="email" 
-            placeholder='youremail@company.com' 
-            onChange={handleChange} />
-     </div>
+             
 
-     <div className={style.password}>
-            <label>Password: </label>
-            <input name='password' 
-            type='password' id="password" 
-            placeholder='password' 
-            onChange={handleChange} />
-    </div>
+        <div className={style.password}>
+          <label>Email: </label>
+          <input
+            name="mail"
+            type="email"
+            placeholder="youremail@company.com"
+            onChange={handleChange}
+          />
+        </div>
+
+
+        <div className={style.password}>
+          <label>Password: </label>
+          <input
+            name="password"
+            type="password"
+            id="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
+        </div>
 
     <div className={style.password}>
              <label>Confirmation: </label>
@@ -148,16 +160,16 @@ export default function RegisterSeller() {
                             <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle} alt='Beer' />
                         </span>
                     </Link>
-                </div>
-                
+                </div>                
 
-            <button className={style.password} onClick={handleSubmit}>Register</button>
-        </form>
-        <Link to='/home'>
-                <button>Return</button>
-            </Link>
 
+        <button className={style.password} onClick={handleSubmit}>
+          Register
+        </button>
+      </form>
+      <Link to="/home">
+        <button>Return</button>
+      </Link>
     </div>
-    )
-
+  );
 }

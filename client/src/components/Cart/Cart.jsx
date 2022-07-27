@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-import style from '../Cart/Cart.module.css';
+import style from "../Cart/Cart.module.css";
 
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
-import { removeAllFromCart, getCart, totalPrice, infoBeers, addToCart } from '../../redux/actions/index';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeAllFromCart,
+  getCart,
+  totalPrice,
+  infoBeers,
+  addToCart,
+} from "../../redux/actions/index";
 import Item from "../Item/Item.jsx";
-import Footer from '../Footer/Footer.jsx'
+import Footer from "../Footer/Footer.jsx";
 
 export default function Cart() {
+
   const [checkout, setCheckout] = useState(false)
   const cantidad = Math.floor(Math.random() * 15) + 1
+
   const dispatch = useDispatch();
   const beerCarts = useSelector((state) => state.cart);
-  let localstorage = JSON.parse(localStorage.getItem("carrito"))
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('carrito')));
+  let localstorage = JSON.parse(localStorage.getItem("carrito"));
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("carrito"))
+  );
   const [del, setDel] = useState(true);
   const [add, setAdd] = useState(false);
 
@@ -44,7 +54,7 @@ export default function Cart() {
       }
       return e;
     });
-    localStorage.setItem("carrito", JSON.stringify(newBeers))
+    localStorage.setItem("carrito", JSON.stringify(newBeers));
     console.log(newBeers);
     setItems(newBeers);
     let total = 0;
@@ -55,7 +65,7 @@ export default function Cart() {
     return total;
   }
 
-/*   function handleAddItems() {
+  /*   function handleAddItems() {
     let newItems = localstorage?.map((e) => e?.total);
     let firstItems = localstorage?.map((e) => e.price);
     console.log("first item", firstItems)
@@ -91,24 +101,24 @@ export default function Cart() {
       return a + b;
     }, 0);
   } */
-  
+
   return (
-      <div className="cartContainer">
-        <div className="cart">
-          {JSON.parse(localStorage.getItem("carrito"))?.length ? (
-            <div className="items">
-              {beerCarts?.map((e) => (
-                <Item
-                  id={e.id}
-                  name={e.name}
-                  image={e.image}
-                  price={e.price}
-                  stock={e.stock}
-                  handleItem={handleItem}
-                  newDel={newDel}
-                />
-              ))}
-{/*               <div className="subTotal">
+    <div className="cartContainer">
+      <div className="cart">
+        {JSON.parse(localStorage.getItem("carrito"))?.length ? (
+          <div className="items">
+            {beerCarts?.map((e) => (
+              <Item
+                id={e.id}
+                name={e.name}
+                image={e.image}
+                price={e.price}
+                stock={e.stock}
+                handleItem={handleItem}
+                newDel={newDel}
+              />
+            ))}
+            {/*               <div className="subTotal">
                 {
                   <ul>
                   </ul>
@@ -118,15 +128,15 @@ export default function Cart() {
                 </h3>
                 <p>${handleAddItems()},00</p>
               </div> */}
-              <div className="continue subTotal">
-                <Link to="/home">
-                  <p className="keep">Keep Shopping</p>
-                </Link>
-                <Link to="/checkout">
-                  <button className="checkout">Checkout</button>
-                </Link>
-              </div>
+            <div className="continue subTotal">
+              <Link to="/home">
+                <p className="keep">Keep Shopping</p>
+              </Link>
+              <Link to="/checkout">
+                <button className="checkout">Checkout</button>
+              </Link>
             </div>
+
           ) : (
             <div className="empty">
               <h1>Oops, Your Cart is Empty!</h1>
@@ -140,9 +150,9 @@ export default function Cart() {
          {/* {beerCarts
                 .map((p) => parseInt(p.price))
                 .reduce((prev, curr) => prev + curr)} */}
+
       </div>
-      <Footer/>
-    </div >
+      <Footer />
+    </div>
   );
 }
-
