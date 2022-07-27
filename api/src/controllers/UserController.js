@@ -1,5 +1,5 @@
 const axios = require('axios')
-const { Seller, Beer, User, Purchases } = require('../db.js')
+const { Seller, Beer, User, Purchases,Comment } = require('../db.js')
 
 async function getAllUsers(req, res, next) {
     try {
@@ -14,7 +14,8 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-    const { name, surname, address, email} = req.body;
+
+    const { id, name, surname, address, email, rol } = req.body;
     try {
         let newUser = await User.create(
             {
@@ -22,16 +23,30 @@ async function postUser(req, res, next) {
                 surname,
                 address,
                 email,
+                rol
             },
             {
-                fields: ["name", "surname", "address", "email"],
+                fields: ["id", "name", "surname", "address", "email", "rol"],
             }
-        );
+            );
         return res.json(newUser);
     } catch (error) {
         next(error)
     }
 }
+ async function getUserId(req,res,next){
+    const {id}=req.params
+    try {
+        const user= await User.findOne({
+            where:{id:id},
+            include:Beer    
+        })
+        
+        res.status(200).send(user)
+    } catch (error) {
+        next(error)
+    }
+ }
 
 async function postFavorite(req, res, next) {
     const { idUser, idBeer } = req.body
@@ -45,9 +60,24 @@ async function postFavorite(req, res, next) {
         next(error)
     }
 }
+async function deleteFavorite(req,res,next){
+    const {idUser, idBeer}=req.body
+    try {
+        let beer = await Beer.findAll({where: { id: idBeer}})
+        let user = await User.findOne({where: { id: idUser}})
+        await user.removeBeer(beer)
+        res.status(200).send("Se elimino de favoritos")
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 module.exports = {
     getAllUsers,
     postUser,
+    getUserId,
     postFavorite,
+    deleteFavorite
+
 }

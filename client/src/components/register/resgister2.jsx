@@ -3,28 +3,26 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../Context/Contestautenticacion";
+import { useAuth } from "../context/Contestautenticacion";
+import { postUser } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 
 export function Register() {
-
+    const dispatch = useDispatch()
     const history = useHistory()
     const {signup} = useAuth()
 
     const [error,setError] = useState('')
     const [user, SetUser] = useState({
-                email:'',
-                password: '',
-                rol:'user'
-               
-            })
-             console.log(user)
-        
-        //     function verifica_seleccion(check){
-        //         if(!check.checked){
-        //             check.checked=1;
-        //         }
-        //     }
+            email:'',
+            password: '',
+            confirmation:'',
+            name:'',
+            surname:'',
+            address:'',
+            rol:'user'
+    })      
         
             const handleChange = (e) => {
                 SetUser({
@@ -39,7 +37,7 @@ export function Register() {
                 e.preventDefault()
                 try {
                     await signup(user.email, user.password, user.rol)
-                    console.log('enviado',user.email, user.password, user )
+                    dispatch(postUser(user))
                 } catch (error) {
                     setError(error.message)
                     swal(error.message)
@@ -83,22 +81,56 @@ export function Register() {
         return (
         <div className={style.container}>
             <form>
-                <h1>Sing In</h1>
-            <div className={style.password}>
-                <label>Email: </label>
-                <input name='email'
-                    type="email"
-                    placeholder='youremail@company.com'
-                    onChange={handleChange} />
-            </div>
+            <h1>Sign In</h1>
+        <div className={style.password}>
+            <label>Name: </label>
+            <input name='name' 
+            type="name" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
 
-            <div className={style.password}>
-                <label>Password: </label>
-                <input name='password'
-                    type='password' id="password"
-                    placeholder='******'
-                    onChange={handleChange} />
-            </div>
+     <div className={style.password}>
+            <label>Surname: </label>
+            <input name='surname' 
+            type="surname" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+
+
+     <div className={style.password}>
+            <label>Address: </label>
+            <input name='address' 
+            type="address" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+        
+        <div className={style.password}>
+            <label>Email: </label>
+            <input 
+            name='email' 
+            type="email" 
+            placeholder='youremail@company.com' 
+            onChange={handleChange} />
+     </div>
+
+     <div className={style.password}>
+            <label>Password: </label>
+            <input name='password' 
+            type='password' id="password" 
+            placeholder='password' 
+            onChange={handleChange} />
+    </div>
+
+    <div className={style.password}>
+             <label>Confirmation: </label>
+            <input name='confirmation' 
+            type='password' id="confirmation" 
+            placeholder='confirmation' 
+            onChange={handleChange} />
+    </div>
 
             
 

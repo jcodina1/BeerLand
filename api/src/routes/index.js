@@ -4,6 +4,7 @@ const user = require('./UserRoutes.js')
 const beer = require('./BeerRoutes.js');
 const seller = require('./SellerRoutes')
 const purchases = require('./PurchasesRoutes');
+const comment=require('./CommentRoutes')
 const score = require('./ScoreRoutes');
 
 const router = Router();

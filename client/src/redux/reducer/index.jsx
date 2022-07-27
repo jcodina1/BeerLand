@@ -19,7 +19,7 @@ import {
   SET_PAGE,
   GET_SELLERS,
   POST_SELLER,
-
+  POST_FAVS,
 } from "../const";
 
 const initialState = {
@@ -38,6 +38,8 @@ const initialState = {
   totalPrice: 0,
   user: {},
   sellers: [],
+  favs: [],
+
 };
 
 function Reducer(state = initialState, action) {
@@ -190,10 +192,16 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
       };
-      case POST_SELLER:
-        return {
-          ...state
-        };
+    case POST_SELLER:
+      return {
+        ...state,
+      };
+
+    case POST_FAVS:
+      return {
+        ...state,
+        favs: action.payload,
+      };
 
     case GET_SELLERS:
       return {

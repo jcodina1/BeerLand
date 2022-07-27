@@ -1,4 +1,4 @@
-import { useAuth } from "../Context/Contestautenticacion"
+import { useAuth } from "../context/Contestautenticacion"
 
 export default function HomeAdmin() {
     const {user, salir} = useAuth()

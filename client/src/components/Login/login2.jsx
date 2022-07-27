@@ -3,7 +3,7 @@ import { useState } from "react";
 import style from '../Login/Login.module.css'
 import swal from 'sweetalert'
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../Context/Contestautenticacion";
+import { useAuth } from "../context/Contestautenticacion";
 import beertest from '../../img/beertest.png'
 import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
@@ -87,7 +87,9 @@ export function Login() {
                 try {
                     const facebook =  await logingWithFacebook().then((usuarioFacebook)=>{
                         return usuarioFacebook
+                        
                       })
+                      console.log(facebook)
                         console.log(user.rol)
                       const docuRef= doc(firestore, `usuarios/${facebook.user.uid}`)
                       setDoc(docuRef, {email:user.email, user:user.rol})
