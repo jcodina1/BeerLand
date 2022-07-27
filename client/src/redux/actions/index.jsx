@@ -21,6 +21,15 @@ import {
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
   SET_PAGE,
+  ALL_SELLERS,
+  GET_SELLERS,
+  POST_SELLER,
+  POST_FAVS,
+  GET_FAVS,
+  FAVS,
+  DELETE_FAVS,
+  GET_USER,
+  ALL_USERS,
 } from "../const";
 
 export function addToCart(id) {
@@ -173,5 +182,73 @@ export function updateBeer(data, id) {
       .catch((e) => {
         console.log(e);
       });
+  };
+}
+
+export function getSellers() {
+  return async function (dispatch) {
+    let allSellers = await axios.get(ALL_SELLERS);
+    return dispatch({
+      type: GET_SELLERS,
+      payload: allSellers.data,
+    });
+  };
+}
+
+export function postSeller(payload) {
+  return async function (dispatch) {
+    try {
+      const post = await axios.post(POST_SELLER, payload);
+      return post;
+    } catch (error) {
+      if (error.response) {
+        return alert(error.response.data);
+      }
+    }
+  };
+}
+
+export function postFavs(obj) {
+  console.log(obj);
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(FAVS, obj);
+      return dispatch({ type: POST_FAVS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getFavs(user) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(FAVS);
+      return dispatch({ type: GET_FAVS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function deleteFavs(user, beer) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.delete(FAVS);
+      return dispatch({ type: DELETE_FAVS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getUser() {
+  return async function (dispatch) {
+    let allUser = await axios.get(GET_USER);
+    console.log(allUser);
+    return dispatch({
+      type: ALL_USERS,
+      payload: allUser.data,
+    });
   };
 }

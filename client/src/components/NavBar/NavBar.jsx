@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "../NavBar/NavBar.module.css";
 import BeerLogo from "../../img/BeerLogo.png";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
 import Cart from "../Cart/Cart";
 
 export default function NavBar({ setPage }) {
@@ -18,10 +18,15 @@ export default function NavBar({ setPage }) {
 
   return (
     <nav className={style.navbar}>
-      <div >
-        <Link to='/home'>
-          <span >
-            <img className={style.logo} id='BeerLogo' src={BeerLogo} alt='Beer' />
+      <div>
+        <Link to="/home">
+          <span>
+            <img
+              className={style.logo}
+              id="BeerLogo"
+              src={BeerLogo}
+              alt="Beer"
+            />
           </span>
         </Link>
       </div>
@@ -31,23 +36,30 @@ export default function NavBar({ setPage }) {
 
       <div className={style.infoDistribution}>
         <div className={style.space}>
-          <h1>Hello {user ? user.email : ''}</h1>
+          <h1>Hello {user ? user.email : ""}</h1>
         </div>
 
         <div className={style.buttonlink}>
-          <Link to='/cart'>
+          <Link to="/cart">
             <button className={style.cartBtn}></button>
           </Link>
 
-          {user ? '' :
-            <Link to='/login'>
+          {user ? (
+            ""
+          ) : (
+            <Link to="/login">
               <button className={style.button}>Login</button>
             </Link>
-          }
-          <button className={style.button} onClick={handleLogOut}>LogOut</button>
+          )}
+          {!user ? (
+            ""
+          ) : (
+            <button className={style.button} onClick={handleLogOut}>
+              LogOut
+            </button>
+          )}
         </div>
       </div>
-
     </nav>
-  )
+  );
 }
