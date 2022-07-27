@@ -7,6 +7,7 @@ import Loading from "../Loading/Loading";
 import style from '../BeerDetail/BeerDetail.module.css'
 import NavBar from "../NavBar/NavBar";
 import DetailCompra from '../DetailCompra/DetailCompra';
+import Score from '../Score/Score';
 
 export default function BeerDetail(props) {
   const { id } = useParams();
@@ -51,19 +52,19 @@ export default function BeerDetail(props) {
                 </div>
               </div>
               <div className={style.containerR}>
-                <p>
+{/*                 <p>
                   <strong>Description: </strong>
                   <span className={style.textBox}>{beer.description}</span>
-                </p>
-                <p>
+                </p> */}
+{/*                 <p>
                   <strong>Price: </strong>
                   <span className={style.textBox}>{beer.price}</span>
                 </p>
                 <p>
                   <strong>Stock: </strong>
                   <span className={style.textBox}>{beer.stock}</span>
-
-                </p>
+                </p> */}
+                <Score/>
                 <div>
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>

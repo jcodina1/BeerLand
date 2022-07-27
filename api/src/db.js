@@ -67,7 +67,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Beer, Seller, Purchases, User, Comment} = sequelize.models;
+const { Beer, Seller, Purchases, User, Comment, Score} = sequelize.models;
 
 // Aca vendrian las relaciones
 
@@ -91,15 +91,28 @@ User.belongsToMany(Beer, { through: 'Favorites' })
 Beer.belongsToMany(User, { through: 'Favorites' })
 ///////////////////////////////////////////////////////////////////
 
+
 ////////////////////////////Relacion UserComment///////////////////
 User.hasMany(Comment,{foreignKey:"userId",sourceKey:"id"})
 Comment.belongsTo(User, { foreignKey: "userId", targetId: "id" })
 //////////////////////////////////////////////////////////////////
 
-////////////////////////////Relacion BeerComment///////////////////
+////////////////////////////Relacion BeerComment//////////////////
 Beer.hasMany(Comment,{foreignKey:"beerId",sourceKey:"id"})
 Comment.belongsTo(Beer, { foreignKey: "beerId", targetId: "id" })
 //////////////////////////////////////////////////////////////////
+
+////////////////////////////Relacion UserScore////////////////////
+User.hasMany(Score, { foreignKey: 'userId', sourceKey: "id" })
+Score.belongsTo(User, { foreignKey: 'userId', targetId: "id" })
+//////////////////////////////////////////////////////////////////
+
+////////////////////////////Relacion BeerScore///////////////////
+Beer.hasMany(Score, { foreignKey: 'beerId', sourceKey: "id" })
+Score.belongsTo(Beer, { foreignKey: 'beerId', targetId: "id" })
+/////////////////////////////////////////////////////////////////
+
+
 
 
 module.exports = {

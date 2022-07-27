@@ -1,6 +1,7 @@
-const axios = require("axios");
-const { Op } = require("sequelize");
-const { Beer, Seller, Comment } = require("../db.js");
+const axios = require('axios')
+const { Op } = require('sequelize')
+const { Beer, Seller , Comment, Score} = require('../db.js')
+
 
 async function createdAllBeers(req, res, next) {
   try {
@@ -31,49 +32,43 @@ async function createdAllBeers(req, res, next) {
 }
 
 async function getAllBeers(req, res, next) {
-  const { name } = req.query;
-  try {
-    const beers = await axios.get(
-      "https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json"
-    );
-    const beersData = beers.data.cervezas;
-    await beersData.forEach((b) => {
-      Beer.findOrCreate({
-        where: {
-          name: b.name ? b.name : "It does not contain name",
-          description: b.description
-            ? b.description
-            : "It does not contain description",
-          price: b.price,
-          stock: b.stock,
-          grade: b.grade,
-          origin: b.origin ? b.origin : "España",
-          tipo: b.tipo ? b.tipo : "No se le ha asignado tipo",
-          ibu: b.ibu,
-          image: b.image
-            ? b.image
-            : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
-          sellerId: b.sellerid ? b.sellerid : Math.floor(Math.random() * 51),
-        },
-        order: [["id", "ASC"]],
-      });
-    });
-    const BeersDb = await Beer.findAll();
-    if (name) {
-      let BeerName = BeersDb.filter((el) =>
-        el.name.toLowerCase().includes(name.toLowerCase())
-      );
-      BeerName.length
-        ? res.status(200).json(BeerName)
-        : res.status(404).send("Beer not found");
-    } else {
-      const BeersDb = await Beer.findAll();
-      res.status(200).send(BeersDb);
+
+    const { name } = req.query
+    try {
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
+        const beersData = beers.data.cervezas
+        await beersData.forEach((b) => {
+            Beer.findOrCreate({
+                where: {
+                    name: b.name ? b.name : "It does not contain name",
+                    description: b.description ? b.description : "It does not contain description",
+                    price: b.price,
+                    stock: b.stock,
+                    grade: b.grade,
+                    origin: b.origin ? b.origin : "España",
+                    tipo: b.tipo ? b.tipo : 'No se le ha asignado tipo',
+                    ibu: b.ibu,
+                    image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+                    sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
+                },
+                order:[['id','ASC']]
+
+            })
+        })
+        const BeersDb = await Beer.findAll()
+        if (name) {
+            let BeerName = BeersDb.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            BeerName.length ?
+                res.status(200).json(BeerName) :
+                res.status(404).send('Beer not found');
+        } else {
+            const BeersDb = await Beer.findAll()
+            res.status(200).send(BeersDb)
+        }
+    } catch (error) {
+        next(error)
     }
-  } catch (error) {
-    next(error);
-  }
-}
+  
 
 /* const getBeerID =  */
 async function getBeerID(req, res, next) {

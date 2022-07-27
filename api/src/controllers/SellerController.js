@@ -2,20 +2,18 @@ const axios = require("axios");
 const { Seller, Beer } = require("../db.js");
 
 async function postSellers(req, res, next) {
-  const { name, description, mail, password, dni } = req.body;
+  const {id, name, description, mail, dni } = req.body;
   try {
-    let newSeller = await Seller.create(
-      {
-        name,
-        description,
-        mail,
-        password,
-        dni,
-      },
-      {
-        fields: ["name", "description", "mail", "password", "dni"],
+
+    let newSeller = await Seller.findOrCreate({
+      where: {       
+        name: name,
+        description: description,
+        mail: mail,
+        dni: dni
+
       }
-    );
+    });
     return res.json(newSeller);
   } catch (error) {
     next(error);
