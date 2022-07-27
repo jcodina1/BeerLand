@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "../NavBar/NavBar.module.css";
 import BeerLogo from "../../img/BeerLogo.png";
-import { useAuth } from "../Context/Contestautenticacion";
+import { useAuth } from "../context/Contestautenticacion";
 import Cart from "../Cart/Cart";
 
 export default function NavBar({ setPage }) {

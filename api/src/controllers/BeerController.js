@@ -1,6 +1,6 @@
 const axios = require('axios')
 const { Op } = require('sequelize')
-const { Beer, Seller } = require('../db.js')
+const { Beer, Seller ,Comment} = require('../db.js')
 
 async function createdAllBeers(req, res, next) {
     try {
@@ -42,7 +42,8 @@ async function getAllBeers(req, res, next) {
                     ibu:b.ibu,
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
-                }
+                },
+                order:[['id','ASC']]
             })
         })
         const BeersDb = await Beer.findAll()
@@ -99,24 +100,22 @@ async function deleteBeer(req, res, next) {
 async function postBeer(req, res, next) {
     const { name, description, price, stock, image, sellerId } = req.body;
     try {
-        let newBeer = await Beer.create(
-            {
-                name,
-                description,
-                price,
-                stock,
-                image,
-                sellerId,
-            },
-            {
-                fields: ["name", "description", "price", "stock", "image"],
-            }
-        );
+        let newBeer = await Beer.findOrCreate({
+                where:{
+                name:name,
+                description:description,
+                price:price,
+                stock:stock,
+                image:image,
+                sellerId:sellerId,
+                }
+            });
         return res.json(newBeer);
     } catch (error) {
         next(error)
     }
 }
+
 
 module.exports = {
     createdAllBeers,
@@ -125,4 +124,5 @@ module.exports = {
     postBeer,
     updateBeer,
     deleteBeer,
+    
 }
