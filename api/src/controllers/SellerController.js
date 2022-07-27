@@ -2,20 +2,16 @@ const axios = require('axios')
 const { Seller, Beer } = require('../db.js')
 
 async function postSellers(req, res, next) {
-  const { name, description, mail, password, dni } = req.body;
+  const { name, description, mail, dni } = req.body;
   try {
-    let newSeller = await Seller.create(
-      {
-        name,
-        description,
-        mail,
-        password,
-        dni
-      },
-      {
-        fields: ["name", "description", "mail", "password", "dni"],
+    let newSeller = await Seller.findOrCreate({
+      where: {
+        name: name,
+        description: description,
+        mail: mail,
+        dni: dni
       }
-    );
+    });
     return res.json(newSeller);
   } catch (error) {
     next(error)
@@ -30,7 +26,7 @@ async function getAllSellers(req, res, next) {
     await sellersData.forEach((b) => {
       Seller.findOrCreate({
         where: {
-          id:b.id,
+          id: b.id,
           name: b.name ? b.name : "It does not contain name",
           description: b.description ? b.description : "It does not contain description",
           mail: b.mail,
@@ -61,7 +57,7 @@ async function getAllSellers2(req, res, next) {
     await sellersData.forEach((b) => {
       Seller.findOrCreate({
         where: {
-          id:b.id,
+          id: b.id,
           name: b.name ? b.name : "It does not contain name",
           description: b.description ? b.description : "It does not contain description",
           mail: b.mail,
@@ -71,7 +67,7 @@ async function getAllSellers2(req, res, next) {
       })
     })
     const sellersDb = await Seller.findAll()
-  }catch(error){
+  } catch (error) {
 
   }
 }
