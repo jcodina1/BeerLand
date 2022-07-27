@@ -1,6 +1,7 @@
 const axios = require('axios')
 const { Op } = require('sequelize')
-const { Beer, Seller ,Comment} = require('../db.js')
+const { Beer, Seller , Comment, Score} = require('../db.js')
+
 
 async function createdAllBeers(req, res, next) {
     try {
@@ -27,7 +28,7 @@ async function createdAllBeers(req, res, next) {
 async function getAllBeers(req, res, next) {
     const { name } = req.query
     try {
-        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas2.json')
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
         const beersData = beers.data.cervezas
         await beersData.forEach((b) => {
             Beer.findOrCreate({
@@ -35,15 +36,16 @@ async function getAllBeers(req, res, next) {
                     name: b.name ? b.name : "It does not contain name",
                     description: b.description ? b.description : "It does not contain description",
                     price: b.price,
-                    stock: b.stock ,
-                    grade:b.grade,
-                    origin:b.origin?b.origin:"España",
-                    tipo:b.tipo?b.tipo:'No se le ha asignado tipo',
-                    ibu:b.ibu,
+                    stock: b.stock,
+                    grade: b.grade,
+                    origin: b.origin ? b.origin : "España",
+                    tipo: b.tipo ? b.tipo : 'No se le ha asignado tipo',
+                    ibu: b.ibu,
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
                 },
                 order:[['id','ASC']]
+
             })
         })
         const BeersDb = await Beer.findAll()
