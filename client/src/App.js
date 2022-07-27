@@ -5,7 +5,7 @@ import Home from "./components/Home/Home";
 import BeerDetail from "./components/BeerDetail/BeerDetail";
 import { Register } from "./components/register/resgister2";
 import { Login } from "./components/Login/login2";
-import { AuthProvider } from "./components/Context/Contestautenticacion";
+import { AuthProvider } from "./components/Context/contestautenticacion";
 import AddProduct from "./components/AddProduct/AddProduct";
 // import Cart from "./components/Cart/Cart";
 import "bootstrap";
