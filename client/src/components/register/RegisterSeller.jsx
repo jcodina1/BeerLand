@@ -6,13 +6,17 @@ import swal from 'sweetalert'
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { postSeller } from "../../redux/actions";
+import {getFirestore, doc, setDoc, getDoc} from "firebase/firestore"
+import { app } from "../../firebase";
+import googleLogo from '../../img/googleLogin.png'
 
 
 export default function RegisterSeller() {
-
+    
     const dispatch = useDispatch()
-
-    const {signup} = useAuth()
+    
+    const firestore = getFirestore(app)
+    const {signup, logingWithGoogle} = useAuth()
     const history = useHistory()
     const [error,setError] = useState('')
 
@@ -35,6 +39,34 @@ export default function RegisterSeller() {
         })
         console.log(e.target.value)
     }
+
+    const handleGoogle = async ()=>{
+        try {              
+           const google =  await logingWithGoogle().then((usuarioGoogle)=>{
+             return usuarioGoogle
+           })
+           console.log(google)
+           const user2 = {
+            id:245,
+             mail:google.user.email,
+             name:google._tokenResponse.firstName,
+             surname:google._tokenResponse.lastName,
+             description:'',
+             dni:0,
+             rol:'admin'
+           }
+           console.log(user2)
+           const docuRef= doc(firestore, `usuarios/${google.user.uid}`)
+           setDoc(docuRef, {email:user2.mail, name:user2.name,surname:user2.surname, user:user2.rol, login:'google'})
+           dispatch(postSeller(user2))
+           history.push('/home')
+          } catch (error) {
+              console.log(error.message)
+              setError(error.message)
+              swal(error.message)
+          }
+      
+     }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -81,7 +113,7 @@ export default function RegisterSeller() {
      <div className={style.password}>
             <label>dni: </label>
             <input name='dni' 
-            type="dni" 
+            type="number" 
             placeholder='youremail@company.com' 
             onChange={handleChange} />
      </div>
@@ -110,6 +142,14 @@ export default function RegisterSeller() {
             placeholder='confirmation' 
             onChange={handleChange} />
     </div>
+                <div>
+                    <Link to='/registerCompany'>
+                        <span>
+                            <img className={style.googleIcon} id='GoogleLogo' src={googleLogo} onClick={handleGoogle} alt='Beer' />
+                        </span>
+                    </Link>
+                </div>
+                
 
             <button className={style.password} onClick={handleSubmit}>Register</button>
         </form>

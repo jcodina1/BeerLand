@@ -17,18 +17,17 @@ async function postUser(req, res, next) {
 
     const { id, name, surname, address, email, rol } = req.body;
     try {
-        let newUser = await User.create(
-            {
-                name,
-                surname,
-                address,
-                email,
-                rol
-            },
-            {
-                fields: ["id", "name", "surname", "address", "email", "rol"],
+        let newUser = await User.findOrCreate({
+            where:{
+                name:name,
+                surname:surname,
+                address:address,
+                email:email,
+                rol:rol
+
             }
-            );
+        })
+           
         return res.json(newUser);
     } catch (error) {
         next(error)
