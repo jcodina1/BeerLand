@@ -17,6 +17,7 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
+  GET_SELLERS,
   POST_SELLER,
   POST_FAVS,
 } from "../const";
@@ -26,7 +27,7 @@ const initialState = {
   beers: [],
   allBeers: [],
   detail: {},
-  allBreweries: [],
+  allSellers: [],
   userType: [],
   type: [],
   page: 1,
@@ -36,7 +37,9 @@ const initialState = {
   infoSoldBeers: [],
   totalPrice: 0,
   user: {},
+  sellers: [],
   favs: [],
+
 };
 
 function Reducer(state = initialState, action) {
@@ -129,11 +132,11 @@ function Reducer(state = initialState, action) {
       let sortedByName =
         action.payload === "AtoZ"
           ? state.allBeers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
+            return a.name.localeCompare(b.name);
+          })
           : state.allBeers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+            return b.name.localeCompare(a.name);
+          });
       return {
         ...state,
         beers: sortedByName,
@@ -144,11 +147,11 @@ function Reducer(state = initialState, action) {
       let sortedByPrice =
         action.payload === "Low to High"
           ? state.allBeers.sort(function (a, b) {
-              return a.price - b.price;
-            })
+            return a.price - b.price;
+          })
           : state.allBeers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+            return b.price - a.price;
+          });
       return {
         ...state,
         beers: sortedByPrice,
@@ -161,8 +164,8 @@ function Reducer(state = initialState, action) {
         action.payload === "All"
           ? preFilteredBeers
           : preFilteredBeers.filter((beer) =>
-              beer.brewery.find((brewery) => brewery.name === action.payload)
-            );
+            beer.brewery.find((brewery) => brewery.name === action.payload)
+          );
       return {
         ...state,
         beers: filteredBeers,
@@ -198,6 +201,13 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         favs: action.payload,
+      };
+
+    case GET_SELLERS:
+      return {
+        ...state,
+        allSellers: action.payload,
+        sellers: action.payload,
       };
 
     default:

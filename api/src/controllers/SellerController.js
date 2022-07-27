@@ -54,7 +54,30 @@ async function getAllSellers(req, res, next) {
   }
 }
 
+async function getAllSellers2(req, res, next) {
+  try {
+    const sellers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/seller/sellers.json')
+    const sellersData = sellers.data
+    await sellersData.forEach((b) => {
+      Seller.findOrCreate({
+        where: {
+          id:b.id,
+          name: b.name ? b.name : "It does not contain name",
+          description: b.description ? b.description : "It does not contain description",
+          mail: b.mail,
+          image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+          dni: b.dni
+        }
+      })
+    })
+    const sellersDb = await Seller.findAll()
+  }catch(error){
+
+  }
+}
+
 module.exports = {
   getAllSellers,
-  postSellers
+  postSellers,
+  getAllSellers2
 }
