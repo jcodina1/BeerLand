@@ -28,7 +28,7 @@ async function createdAllBeers(req, res, next) {
 async function getAllBeers(req, res, next) {
     const { name } = req.query
     try {
-        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas2.json')
+        const beers = await axios.get('https://beerland-42137-default-rtdb.firebaseio.com/cervezas.json')
         const beersData = beers.data.cervezas
         await beersData.forEach((b) => {
             Beer.findOrCreate({
