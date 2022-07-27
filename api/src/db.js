@@ -66,7 +66,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Beer, Seller, Purchases, User } = sequelize.models;
+const { Beer, Seller, Purchases, User, Score } = sequelize.models;
 
 // Aca vendrian las relaciones
 
@@ -81,6 +81,12 @@ Purchases.belongsTo(User, { foreignKey: 'userId', targetId: "id" })
 
 User.belongsToMany(Beer, { through: 'Favorites' })
 Beer.belongsToMany(User, { through: 'Favorites' })
+
+User.hasMany(Score, { foreignKey: 'userId', sourceKey: "id" })
+Score.belongsTo(User, { foreignKey: 'userId', targetId: "id" })
+
+Beer.hasMany(Score, { foreignKey: 'beerId', sourceKey: "id" })
+Score.belongsTo(Beer, { foreignKey: 'beerId', targetId: "id" })
 
 
 // Model.belongsToMany(otherModel, { through: 'activities_countries' });
