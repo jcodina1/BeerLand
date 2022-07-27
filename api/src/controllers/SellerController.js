@@ -73,7 +73,7 @@ async function getAllSellers2(req, res, next) {
     })
     const sellersDb = await Seller.findAll()
   }catch(error){
-
+    next(error)
   }
 }
 

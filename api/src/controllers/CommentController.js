@@ -12,55 +12,60 @@ async function getComment(req, res, next) {
     }
 }
 
-async function getAllComentBeer(req, res, next) {
+async function getAllCommentBeer(req, res, next) {
     const { beer } = req.params
     try {
-        let comments = await Comment.findAll({where:{id:beer}})
+        let comments = await Comment.findAll({ where: { id: beer } })
         res.send(comments)
     } catch (error) {
         next()
     }
- }
+}
 
-async function getAllComentUser(req, res, next) {
+async function getAllCommentUser(req, res, next) {
     const { user } = req.params
     try {
-        let comments = await Comment.findAll({where:{id:user}})
+        let comments = await Comment.findAll({ where: { id: user } })
         res.send(comments)
     } catch (error) {
-        next()
+        next(error)
     }
- }
+}
 
-async function getAllComent(req, res, next) {
+async function getAllComment(req, res, next) {
     try {
-        
+        let comments = Comment.findAll()
+        res.status(200).send(comments)
     } catch (error) {
-        
+        next(error)
     }
- }
+}
 
 async function postComment(req, res, next) {
     const { comment, userId, beerId } = req.body
 
     try {
-        let newBeer = await Comment.findOrCreate({
+        let [newComment, create] = await Comment.findOrCreate({
             where: {
                 comment: comment,
                 userId: userId,
                 beerId: beerId
             }
         });
-        return res.json(newBeer);
-        return res.json(newComment);
+        if (!create) {
+            return res.json(newComment);
+        } else {
+            res.status(200).send("El comentario ya esta")
+        }
+
     } catch (error) {
-        next()
+        next(error)
     }
 }
 module.exports = {
     postComment,
-    getAllComent,
-    getAllComentBeer,
-    getAllComentUser,
+    getAllComment,
+    getAllCommentBeer,
+    getAllCommentUser,
     getComment
 }

@@ -8,7 +8,7 @@ router.get('/', getAllBeers)
 router.post('/', postBeer)
 router.put('/update/:id', updateBeer)
 router.delete('/', deleteBeer)
-router.post('/comment',postComment)
+
 
 
 module.exports = router;

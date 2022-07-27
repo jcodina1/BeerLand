@@ -24,7 +24,7 @@ import {
 
   ALL_SELLERS,
   GET_SELLERS,
-  POST_SELLER
+  POST_SELLER,
 
  
   POST_FAVS,
