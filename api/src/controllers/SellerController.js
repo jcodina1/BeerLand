@@ -36,7 +36,8 @@ async function getAllSellers(req, res, next) {
           mail: b.mail,
           image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
           dni: b.dni
-        }
+        },
+        order:[['id','ASC']]
       })
     })
     const sellersDb = await Seller.findAll()

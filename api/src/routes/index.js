@@ -4,6 +4,7 @@ const user = require('./UserRoutes.js')
 const beer = require('./BeerRoutes.js');
 const seller = require('./SellerRoutes')
 const purchases = require('./PurchasesRoutes');
+const comment=require('./CommentRoutes')
 
 
 const router = Router();
@@ -14,6 +15,7 @@ router.use('/user', user)
 router.use('/beer', beer)
 router.use('/seller', seller)
 router.use('/purchases', purchases)
+router.use('/comment',comment)
 
 
 module.exports = router;

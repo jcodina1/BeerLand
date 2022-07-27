@@ -42,7 +42,8 @@ async function getAllBeers(req, res, next) {
                     ibu:b.ibu,
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
-                }
+                },
+                order:[['id','ASC']]
             })
         })
         const BeersDb = await Beer.findAll()
@@ -114,21 +115,7 @@ async function postBeer(req, res, next) {
         next(error)
     }
 }
-async function postComment(req,res,next){
-    const{comment,userId,beerId}=req.body
-try {
-    let newComment= await Comment.findOrCreate({
-        where:{
-            comment:comment,
-            userId:userId,
-            beerId:beerId
-        }
-    })
-    return res.json(newComment);
-} catch (error) {
-    next()
-}
-}
+
 
 module.exports = {
     createdAllBeers,
@@ -137,5 +124,5 @@ module.exports = {
     postBeer,
     updateBeer,
     deleteBeer,
-    postComment
+    
 }
