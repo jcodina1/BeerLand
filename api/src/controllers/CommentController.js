@@ -34,7 +34,7 @@ async function getAllCommentUser(req, res, next) {
 
 async function getAllComment(req, res, next) {
     try {
-        let comments = Comment.findAll()
+        let comments =await Comment.findAll()
         res.status(200).send(comments)
     } catch (error) {
         next(error)
