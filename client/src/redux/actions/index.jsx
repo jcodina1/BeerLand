@@ -21,7 +21,13 @@ import {
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
   SET_PAGE,
-  POST_SELLER
+  ALL_SELLERS,
+  GET_SELLERS,
+  POST_SELLER,
+
+  POST_FAVS,
+  GET_FAVS,
+  FAVS,
 } from "../const";
 
 export function addToCart(id) {
@@ -177,16 +183,47 @@ export function updateBeer(data, id) {
   };
 }
 
+export function getSellers() {
+  return async function (dispatch) {
+    let allSellers = await axios.get(ALL_SELLERS);
+    return dispatch({
+      type: GET_SELLERS,
+      payload: allSellers.data,
+    });
+  };
+}
 
-export function postSeller(payload){
-  return async function(dispatch){
-    try{
+export function postSeller(payload) {
+  return async function (dispatch) {
+    try {
       const post = await axios.post(POST_SELLER, payload);
       return post;
-    }catch(error){
-      if(error.response){
-        return alert(error.response.data)
+    } catch (error) {
+      if (error.response) {
+        return alert(error.response.data);
       }
     }
-  }
-};
+  };
+}
+
+export function postFavs(obj) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(FAVS, obj);
+      return dispatch({ type: POST_FAVS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getFavs(user) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(FAVS);
+      return dispatch({ type: GET_FAVS, payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

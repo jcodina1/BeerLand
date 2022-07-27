@@ -87,7 +87,9 @@ export function Login() {
                 try {
                     const facebook =  await logingWithFacebook().then((usuarioFacebook)=>{
                         return usuarioFacebook
+                        
                       })
+                      console.log(facebook)
                         console.log(user.rol)
                       const docuRef= doc(firestore, `usuarios/${facebook.user.uid}`)
                       setDoc(docuRef, {email:user.email, user:user.rol})
