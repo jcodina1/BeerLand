@@ -30,7 +30,7 @@ async function getAllSellers(req, res, next) {
     await sellersData.forEach((b) => {
       Seller.findOrCreate({
         where: {
-          id:b.id,
+          
           name: b.name ? b.name : "It does not contain name",
           description: b.description ? b.description : "It does not contain description",
           mail: b.mail,
@@ -62,7 +62,7 @@ async function getAllSellers2(req, res, next) {
     await sellersData.forEach((b) => {
       Seller.findOrCreate({
         where: {
-          id:b.id,
+          
           name: b.name ? b.name : "It does not contain name",
           description: b.description ? b.description : "It does not contain description",
           mail: b.mail,
