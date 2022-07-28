@@ -52,11 +52,11 @@ export default function BeerDetail(props) {
                 </div>
               </div>
               <div className={style.containerR}>
-{/*                 <p>
+                {/*                 <p>
                   <strong>Description: </strong>
                   <span className={style.textBox}>{beer.description}</span>
                 </p> */}
-{/*                 <p>
+                {/*                 <p>
                   <strong>Price: </strong>
                   <span className={style.textBox}>{beer.price}</span>
                 </p>
@@ -64,7 +64,7 @@ export default function BeerDetail(props) {
                   <strong>Stock: </strong>
                   <span className={style.textBox}>{beer.stock}</span>
                 </p> */}
-                <Score/>
+                <Score />
                 <div>
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>

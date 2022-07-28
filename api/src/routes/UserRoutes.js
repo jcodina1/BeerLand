@@ -7,8 +7,8 @@ const router = Router();
 router.get('/', getAllUsers)
 router.post('/', postUser)
 router.post('/fav', postFavorite)
-router.get('/id/:id',getUserId)
-router.delete('/fav',deleteFavorite)
-router.get('/fav/beer',Favorites)
+router.get('/id/:id', getUserId)
+router.delete('/fav', deleteFavorite)
+router.get('/fav/beer', Favorites)
 
 module.exports = router;

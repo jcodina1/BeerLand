@@ -59,36 +59,36 @@ export default function ShowBeers() {
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {
-          allBeers.length === 0 ?
-           (
-            <span>
-              (<Loading setLoading={setLoading} />)
-            </span> ) 
-            : <>
-            {currentBeer?.map((beer) => {
-              return (
-                <BeerCard
-                  id={beer.id}
-                  key={beer.id}
-                  name={beer.name}
-                  price={beer.price}
-                  image={beer.image?beer.image:false}
-                  // style={beer.style}
-                  // origin={beer.origin}
+            allBeers.length === 0 ?
+              (
+                <span>
+                  (<Loading setLoading={setLoading} />)
+                </span>)
+              : <>
+                {currentBeer?.map((beer) => {
+                  return (
+                    <BeerCard
+                      id={beer.id}
+                      key={beer.id}
+                      name={beer.name}
+                      price={beer.price}
+                      image={beer.image ? beer.image : false}
+                    // style={beer.style}
+                    // origin={beer.origin}
+                    />
+                  );
+                })}
+                <Pagination
+                  page={page}
+                  paginate={paginate}
+                  limitPage={limitPage}
+                  firstPrevControl={firstPrevControl}
+                  nextLastControl={nextLastControl}
                 />
-              );
-            })}
-            <Pagination
-            page={page}
-            paginate={paginate}
-            limitPage={limitPage}
-            firstPrevControl={firstPrevControl}
-            nextLastControl={nextLastControl}
-          />
-            </>
-            
+              </>
+
           }
-          
+
         </div>
       </div>
     </div>
