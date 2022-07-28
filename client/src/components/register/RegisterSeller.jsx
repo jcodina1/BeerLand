@@ -29,6 +29,7 @@ export default function RegisterSeller() {
   });
   console.log(user);
 
+
   const handleChange = (e) => {
     SetUser({
       ...user,
@@ -69,6 +70,7 @@ export default function RegisterSeller() {
       swal(error.message);
     }
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

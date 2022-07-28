@@ -35,7 +35,9 @@ export const FILTER_BEER_BY_BREWERY = "FILTER_BEER_BY_BREWERY";
 export const SORT_BY_PRICE = "SORT_BY_PRICE";
 export const SORT_BY_NAME = "SORT_BY_NAME";
 export const GET_ALL_BREWERIES = "GET_ALL_BREWERIES";
+
 export const GET_BREWERY_DETAIL ="GET_BREWERY_DETAIL"
+
 export const GET_SELLERS = "GET_SELLERS";
 export const POST_FAVS = "POST_FAVS";
 export const GET_FAVS = "GET_FAVS";

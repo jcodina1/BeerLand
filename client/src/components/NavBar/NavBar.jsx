@@ -9,7 +9,6 @@ import Cart from "../Cart/Cart";
 
 export default function NavBar({ setPage }) {
   const { salir, user } = useAuth();
-  console.log(user);
   const [cart, setCart] = useState(false);
 
   const handleLogOut = async () => {

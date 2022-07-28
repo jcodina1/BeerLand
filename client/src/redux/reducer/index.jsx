@@ -24,7 +24,6 @@ import {
   ALL_USERS,
   DELETE_FAVS,
   GET_BREWERY_DETAIL,
-
 } from "../const";
 
 const initialState = {
@@ -220,6 +219,11 @@ function Reducer(state = initialState, action) {
         allSellers: action.payload,
         sellers: action.payload,
       };
+      case ALL_USERS:
+        return {
+          ...state,
+          user: action.payload,
+        };
 
     case ALL_USERS:
       return {
