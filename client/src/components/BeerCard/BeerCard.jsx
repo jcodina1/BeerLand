@@ -26,16 +26,19 @@ export default function BeerCard({
   const user2 = useSelector((state) => state.user);
 
   const { user } = useAuth();
-  const filtrado = user2.filter((e) => e.email === user.email);
 
   const [loggedIn, setLoggeddIn] = useState(false);
   const [isFav, setIsFav] = useState(false);
+  console.log(isFav, "estado general");
 
-  if (user2.length !== 0) {
-    var obj = {
-      idUser: filtrado[0].id,
-      idBeer: id,
-    };
+  if (user !== null) {
+    var filtrado = user2.filter((e) => e.email === user.email);
+    if (user2.length !== 0) {
+      var obj = {
+        idUser: filtrado[0].id,
+        idBeer: id,
+      };
+    }
   }
 
   useEffect(() => {
@@ -43,20 +46,22 @@ export default function BeerCard({
   }, [dispatch]);
 
   useEffect(() => {
-    if (Object.keys(user) !== 0) {
+    if (Object.keys(user2) !== 0) {
       setLoggeddIn(true);
     }
-    if (Object.keys(user) === 0) {
+    if (Object.keys(user2) === 0) {
       setLoggeddIn(false);
     }
-  }, [id, user]);
+  }, [id, user2]);
 
   function handleFav() {
+    console.log(isFav, "handle");
     if (isFav == false) {
       if (loggedIn) {
         dispatch(postFavs(obj));
 
         setIsFav(true);
+        console.log(isFav, "cambio de estasdo a true, deberia");
       } else
         Swal.fire({
           icon: "error",
@@ -65,10 +70,10 @@ export default function BeerCard({
         });
     }
     if (isFav == true) {
-      dispatch(deleteFavs(user.idUser, id));
+      dispatch(deleteFavs(obj.idUser, obj.idBeer));
       setIsFav(false);
+      console.log(isFav, "cambio de estasdo a false, deberia");
     }
-    console.log(obj);
   }
 
   return (
@@ -83,7 +88,7 @@ export default function BeerCard({
         </div>
       </Link>
       <div style={{ justifySelf: "flex-end" }}>
-        {isFav ? (
+        {isFav == true ? (
           <AiFillHeart size={35} onClick={handleFav} />
         ) : (
           <AiOutlineHeart size={35} onClick={handleFav} />

@@ -221,7 +221,7 @@ export function postSeller(payload) {
 }
 
 export function postFavs(obj) {
-  console.log(obj);
+  // console.log(obj);
   return async function (dispatch) {
     try {
       const response = await axios.post(FAVS, obj);
@@ -243,10 +243,12 @@ export function getFavs(user) {
   };
 }
 
-export function deleteFavs(user, beer) {
+export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
     try {
-      const response = await axios.delete(FAVS);
+      const response = await axios.delete(
+        FAVS + `?idUser=${idUser}&idBeer=${idBeer}`
+      );
       return dispatch({ type: DELETE_FAVS, payload: response.data });
     } catch (error) {
       console.log(error);
