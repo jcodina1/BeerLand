@@ -79,10 +79,11 @@ export default function BeerCard({
   return (
     <div className={style.card}>
       <div className={style.circle}>
+      <img src={image} alt="No img found " />
       <Link to={`/beers/detail/${id}`}>
         <div className={style.content}>
           <h2>{name}</h2>
-          <img src={image} alt="No img found :(" />
+         
           <h4>Price: $ {price}</h4>
         
         </div>
