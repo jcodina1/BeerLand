@@ -11,6 +11,7 @@ export const ALL_SELLERS = "/sellers";
 export const POST_SELLER = "/seller";
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
+export const COMMENTS="/comment"
 
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
@@ -34,9 +35,12 @@ export const FILTER_BEER_BY_BREWERY = "FILTER_BEER_BY_BREWERY";
 export const SORT_BY_PRICE = "SORT_BY_PRICE";
 export const SORT_BY_NAME = "SORT_BY_NAME";
 export const GET_ALL_BREWERIES = "GET_ALL_BREWERIES";
+
 export const GET_BREWERY_DETAIL ="GET_BREWERY_DETAIL"
+
 export const GET_SELLERS = "GET_SELLERS";
 export const POST_FAVS = "POST_FAVS";
 export const GET_FAVS = "GET_FAVS";
 export const DELETE_FAVS = "DELETE_FAVS";
 export const ALL_USERS = "ALL_USERS";
+export const ALL_COMMENT=""

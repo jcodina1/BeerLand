@@ -2,7 +2,7 @@ const axios = require("axios");
 const { Seller, Beer } = require("../db.js");
 
 async function postSellers(req, res, next) {
-  const {id, name, description, mail, dni } = req.body;
+  const {name, description, mail, dni } = req.body;
   try {
 
     let newSeller = await Seller.findOrCreate({
@@ -82,6 +82,7 @@ async function getAllSellers2(req, res, next) {
       });
     });
     const sellersDb = await Seller.findAll();
+    console.log("ya se guardaron los seller");
   } catch (error) {
     next(error);
   }
