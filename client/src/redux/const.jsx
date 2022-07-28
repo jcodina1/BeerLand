@@ -13,7 +13,7 @@ export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
 
 export const COMMENTS = "/comment";
-
+export const POST_COMMENT = "POST_COMMENT";
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
 export const SET_DETAILS = "SET_DETAILS";
@@ -53,4 +53,4 @@ export const POST_FAVS = "POST_FAVS";
 export const GET_FAVS = "GET_FAVS";
 export const DELETE_FAVS = "DELETE_FAVS";
 export const ALL_USERS = "ALL_USERS";
-export const ALL_COMMENT = "";
+export const GET_COMMENTS_BEER = "GET_COMMENTS_BEER";

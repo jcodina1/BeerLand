@@ -26,6 +26,7 @@ import {
   GET_SELLERS,
   DELETE_FAVS,
   GET_BREWERY_DETAIL,
+  POST_COMMENT,
 } from "../const";
 
 const initialState = {
@@ -46,6 +47,7 @@ const initialState = {
   user: [],
   sellers: [],
   favs: [],
+  comments: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -279,6 +281,11 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         breweryDetail: action.payload,
+      };
+    case POST_COMMENT:
+      return {
+        ...state,
+        comments: action.payload,
       };
 
     default:

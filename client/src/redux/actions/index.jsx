@@ -35,6 +35,9 @@ import {
   GET_USER,
   ALL_USERS,
   SELLERS_ID,
+  GET_COMMENTS_BEER,
+  POST_COMMENT,
+  COMMENTS,
 } from "../const";
 
 export function addToCart(id) {
@@ -280,4 +283,30 @@ export async function helpCall(url) {
   return axios.get(`http://localhost:3001${url}`).then((res) => {
     return res.data;
   });
+}
+
+export async function postComment(comment) {
+  return async function (dispatch) {
+    try {
+      await axios.post(COMMENTS, comment);
+      return dispatch({
+        type: POST_COMMENT,
+        payload: comment,
+      });
+    } catch (error) {
+      if (error.response) {
+        return alert(error.response.data);
+      }
+    }
+  };
+}
+
+export function getCommentsBeer(idBeer) {
+  return async function (dispatch) {
+    const commentBeer = await axios.get(COMMENTS / idBeer);
+    return dispatch({
+      type: GET_COMMENTS_BEER,
+      payload: commentBeer.data,
+    });
+  };
 }
