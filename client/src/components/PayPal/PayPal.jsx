@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { async } from "@firebase/util";
 
 export default function Paypal({ user }) {
   //   const paypal = useRef();
