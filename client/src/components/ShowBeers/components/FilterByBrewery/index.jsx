@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 export default function FilterByBrewery() {
   const dispatch = useDispatch();
-  const allBreweries = useSelector((state) => state.allBreweries);
+  const allSellers = useSelector((state) => state.allSellers);
 
   function handleFilter(e) {
     e.preventDefault();
@@ -15,13 +15,13 @@ export default function FilterByBrewery() {
       dispatch(actions.getAllBeers());
     }
   }
-  console.log(allBreweries);
+  console.log(allSellers);
   return (
     <div>
       <select className={styles.select} onChange={(e) => handleFilter(e)}>
         <option value="All">Filter by Brewery</option>
 
-        {allBreweries.map((brewery) => {
+        {allSellers.map((brewery) => {
           return (
             <option value={brewery.name}>{brewery.name.toLowerCase()}</option>
           );
