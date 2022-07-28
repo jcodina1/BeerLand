@@ -20,7 +20,8 @@ export default function UserFavs() {
   
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+  }, [dispatch]);
+
 
   return (
     <div>
@@ -28,6 +29,7 @@ export default function UserFavs() {
       <div>
         <h2>My Favourites</h2>
       </div>
+
       <div className="hola" >
         {
           filtrado && filtrado[0] ? filtrado[0].beers.map(e=>{
@@ -37,10 +39,11 @@ export default function UserFavs() {
               />
             )
           })
-        :'holaputo'
+        :'hola'
         }
         <Link to='/home'>
           <button>Return</button>
+
         </Link>
       </div>
     </div>

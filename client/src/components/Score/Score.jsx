@@ -1,5 +1,51 @@
-import React from 'react'
-import { AiFillStar } from "react-icons/ai"
+import React, { useState } from 'react';
+import { FaStar } from 'react-icons/fa';
+import Style from '../Score/Score.module.css'
+
+const Star = () => {
+    const [rating, setRating] = useState(null);
+    const [hover, setHover] = useState(null);
+
+    return <div>
+        {[...Array(5)].map((star, i) => {
+            const ratingValue = i + 1;
+
+            return (
+                <label>
+                    <input
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        onClick={() => setRating(ratingValue)}
+                        className={Style.input}
+                    />
+                    <FaStar
+                        className={Style.star}
+                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} size={24}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                    />
+                </label>
+            )
+        })}
+        <p>Your score is: {rating}</p>
+    </div>
+}
+
+export default Star
+
+
+
+
+
+
+
+
+
+
+
+
+/* import { AiFillStar } from "react-icons/ai"
 import { AiOutlineStar } from "react-icons/ai"
 
 export default function Stars({ score }) {
@@ -12,4 +58,4 @@ export default function Stars({ score }) {
             {stars.map((e, i) => e ? <AiFillStar key={i} className="stars" /> : <AiOutlineStar key={i} />)}
         </div>
     )
-}
+} */

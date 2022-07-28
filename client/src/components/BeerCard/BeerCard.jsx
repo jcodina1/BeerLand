@@ -4,20 +4,25 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
+
 import { helpCall } from "../../redux/actions";
+
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { getUser } from "../../redux/actions";
 
 import Swal from "sweetalert2";
 import { deleteFavs, postFavs } from "../../redux/actions";
+
 import { logEvent } from "firebase/analytics";
+
 
 export default function BeerCard({
   id,
   name,
   price,
   image,
+  
   // type,
   // origin,
 }) {
@@ -26,6 +31,7 @@ export default function BeerCard({
   const user2 = useSelector((state) => state.user);
 
   const { user } = useAuth();
+
   const [loggedIn, setLoggeddIn] = useState(false);
   const [isFav, setIsFav] = useState(false);
 
@@ -48,36 +54,33 @@ export default function BeerCard({
   }, [dispatch]);
 
 
-
   useEffect(() => {
     if (Object.keys(user2) !== 0) {
       setLoggeddIn(true);
-
     }
     if (Object.keys(user2) === 0) {
       setLoggeddIn(false);
     }
-  }, [id, user]);
-
-
+  }, [id, user2]);
 
   function handleFav() {
+    console.log(isFav, "handle");
     if (isFav == false) {
-      console.log(loggedIn)
       if (loggedIn) {
         dispatch(postFavs(obj));
         setIsFav(true);
+        console.log(isFav, "cambio de estasdo a true, deberia");
       } else
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "You must login first to do this!",
         });
-        console.log(isFav)
     }
     if (isFav == true) {
       dispatch(deleteFavs(obj.idBeer, obj.idUser));
       setIsFav(false);
+
     }
   }
 
@@ -94,11 +97,13 @@ export default function BeerCard({
       </Link>
       <div style={{ justifySelf: "flex-end" }}>
         {isFav ? (
+
           <AiFillHeart size={35} onClick={handleFav} />
         ) : (
           <AiOutlineHeart size={35} onClick={handleFav} />
         )}
       </div>
+
     </div>
   );
 }
