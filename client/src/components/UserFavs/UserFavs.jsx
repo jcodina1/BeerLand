@@ -3,16 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import BeerCard from "../BeerCard/BeerCard";
 import NavBar from "../NavBar/NavBar.jsx";
-import { getFavs } from "../../redux/actions";
+import { getFavs, getUser } from "../../redux/actions";
+import { useAuth } from "../Context/Contestautenticacion";
+import '../UserFavs/userFavs.css'
+
 
 export default function UserFavs() {
-  const user = useSelector((state) => state.user);
+  const user2 = useSelector((state) => state.user);
   const favs = useSelector((state) => state.favs);
-
+  const {user} = useAuth()
   const dispatch = useDispatch();
 
+  if (user !== null) {
+    var filtrado = user2.filter((e) => e.email === user.email);
+  }
+  
   useEffect(() => {
-    dispatch(getFavs(user.id));
+    dispatch(getUser());
   }, []);
 
   return (
@@ -21,22 +28,20 @@ export default function UserFavs() {
       <div>
         <h2>My Favourites</h2>
       </div>
-      <div>
-        {favs.length !== 0 ? (
-          favs.map((beer) => {
-            return (
+      <div className="hola" >
+        {
+          filtrado && filtrado[0] ? filtrado[0].beers.map(e=>{
+            return(
               <BeerCard
-                name={beer.name}
-                image={beer.image}
-                author={beer.author}
-                price={beer.price}
-                id={beer.id}
-              ></BeerCard>
-            );
+                name={e.name} id={e.id} price={e.price} image={e.image}
+              />
+            )
           })
-        ) : (
-          <h3>You have no favorites</h3>
-        )}
+        :'holaputo'
+        }
+        <Link to='/home'>
+          <button>Return</button>
+        </Link>
       </div>
     </div>
   );

@@ -20,6 +20,8 @@ import {
   GET_SELLERS,
   POST_SELLER,
   POST_FAVS,
+  ALL_USERS,
+  DELETE_FAVS
 } from "../const";
 
 const initialState = {
@@ -36,7 +38,7 @@ const initialState = {
   infoBeers: [],
   infoSoldBeers: [],
   totalPrice: 0,
-  user: {},
+  user: [],
   sellers: [],
   favs: [],
 
@@ -203,12 +205,23 @@ function Reducer(state = initialState, action) {
         favs: action.payload,
       };
 
+      case DELETE_FAVS:
+      return {
+        ...state,
+        favs: action.payload,
+      };
+
     case GET_SELLERS:
       return {
         ...state,
         allSellers: action.payload,
         sellers: action.payload,
       };
+      case ALL_USERS:
+        return {
+          ...state,
+          user: action.payload,
+        };
 
     default:
       return { ...state };
