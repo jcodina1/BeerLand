@@ -20,6 +20,7 @@ import {
   SORT_BY_PRICE,
   FILTER_BEER_BY_BREWERY,
   GET_ALL_BREWERIES,
+  GET_BREWERY_DETAIL,
   SET_PAGE,
   ALL_SELLERS,
   GET_SELLERS,
@@ -30,6 +31,7 @@ import {
   DELETE_FAVS,
   GET_USER,
   ALL_USERS,
+  SELLERS_ID,
 } from "../const";
 
 export function addToCart(id) {
@@ -93,6 +95,16 @@ export function getBeerDetail(id) {
       payload: beerById.data,
     });
   };
+}
+
+export function getBreweryDetail(id) {
+  return async function (dispatch) {
+    const breweryById = await axios.get(SELLERS_ID + id);
+    return dispatch({
+      type: GET_BREWERY_DETAIL,
+      payload: breweryById.data,
+    })
+  }
 }
 
 export const removeDetail = () => {
@@ -252,3 +264,4 @@ export function getUser() {
     });
   };
 }
+
