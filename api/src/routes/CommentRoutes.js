@@ -12,7 +12,6 @@ const router = Router();
 router.post("/", postComment);
 router.get("/", getAllComment);
 router.get("/:id", getComment);
-router.get("/:beer", getAllBeers);
 router.get("/:user", getAllCommentUser);
 
 module.exports = router;
