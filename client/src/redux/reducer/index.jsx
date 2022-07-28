@@ -24,6 +24,8 @@ import {
   ALL_USERS,
   FILTER_BEER_BY_TYPE,
   GET_SELLERS,
+  DELETE_FAVS,
+  GET_BREWERY_DETAIL,
 } from "../const";
 
 const initialState = {
@@ -32,6 +34,7 @@ const initialState = {
   allBeers: [],
   detail: {},
   allSellers: [],
+  breweryDetail: [],
   userType: [],
   type: [],
   page: 1,
@@ -254,6 +257,12 @@ function Reducer(state = initialState, action) {
         favs: action.payload,
       };
 
+    case DELETE_FAVS:
+      return {
+        ...state,
+        favs: action.payload,
+      };
+
     case GET_SELLERS:
       return {
         ...state,
@@ -265,6 +274,12 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      };
+
+    case GET_BREWERY_DETAIL:
+      return {
+        ...state,
+        breweryDetail: action.payload,
       };
 
     default:

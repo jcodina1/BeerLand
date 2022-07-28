@@ -19,6 +19,8 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   FILTER_BEER_BY_BREWERY,
+  GET_ALL_BREWERIES,
+  GET_BREWERY_DETAIL,
   SET_PAGE,
   FILTER_BEER_BY_TYPE,
   SELLER,
@@ -32,6 +34,7 @@ import {
   DELETE_FAVS,
   GET_USER,
   ALL_USERS,
+  SELLERS_ID,
 } from "../const";
 
 export function addToCart(id) {
@@ -93,6 +96,16 @@ export function getBeerDetail(id) {
     return dispatch({
       type: GET_BEER_DETAIL,
       payload: beerById.data,
+    });
+  };
+}
+
+export function getBreweryDetail(id) {
+  return async function (dispatch) {
+    const breweryById = await axios.get(SELLERS_ID + id);
+    return dispatch({
+      type: GET_BREWERY_DETAIL,
+      payload: breweryById.data,
     });
   };
 }
@@ -218,7 +231,7 @@ export function postSeller(payload) {
 }
 
 export function postFavs(obj) {
-  console.log(obj);
+  // console.log(obj);
   return async function (dispatch) {
     try {
       const response = await axios.post(FAVS, obj);
@@ -240,10 +253,12 @@ export function getFavs(user) {
   };
 }
 
-export function deleteFavs(user, beer) {
+export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
     try {
-      const response = await axios.delete(FAVS);
+      const response = await axios.delete(
+        FAVS + `?idUser=${idUser}&idBeer=${idBeer}`
+      );
       return dispatch({ type: DELETE_FAVS, payload: response.data });
     } catch (error) {
       console.log(error);
