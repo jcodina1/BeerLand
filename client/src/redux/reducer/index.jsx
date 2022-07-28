@@ -17,11 +17,13 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
-  GET_SELLERS,
+  GET_ALL_SELLERS,
   POST_SELLER,
   POST_FAVS,
   GET_USER,
   ALL_USERS,
+  FILTER_BEER_BY_TYPE,
+  GET_SELLERS,
 } from "../const";
 
 const initialState = {

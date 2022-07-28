@@ -20,11 +20,9 @@ import {
   SORT_BY_PRICE,
   FILTER_BEER_BY_BREWERY,
   SET_PAGE,
-<<<<<<< HEAD
   FILTER_BEER_BY_TYPE,
   SELLER,
   GET_ALL_SELLERS,
-=======
   ALL_SELLERS,
   GET_SELLERS,
   POST_SELLER,
@@ -34,7 +32,6 @@ import {
   DELETE_FAVS,
   GET_USER,
   ALL_USERS,
->>>>>>> origin/develop
 } from "../const";
 
 export function addToCart(id) {
@@ -197,12 +194,6 @@ export function updateBeer(data, id) {
   };
 }
 
-<<<<<<< HEAD
-export function postSeller(payload) {
-  return async function (dispatch) {
-    try {
-      const post = await axios.post(SELLER, payload);
-=======
 export function getSellers() {
   return async function (dispatch) {
     let allSellers = await axios.get(ALL_SELLERS);
@@ -217,7 +208,6 @@ export function postSeller(payload) {
   return async function (dispatch) {
     try {
       const post = await axios.post(POST_SELLER, payload);
->>>>>>> origin/develop
       return post;
     } catch (error) {
       if (error.response) {
@@ -226,8 +216,6 @@ export function postSeller(payload) {
     }
   };
 }
-<<<<<<< HEAD
-=======
 
 export function postFavs(obj) {
   console.log(obj);
@@ -273,4 +261,3 @@ export function getUser() {
     });
   };
 }
->>>>>>> origin/develop

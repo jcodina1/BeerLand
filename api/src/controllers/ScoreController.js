@@ -4,13 +4,12 @@ const { Beer, Score } = require('../db.js')
 
 async function getScore(req, res, next) {
     try {
-        const { score } = req.query
-        const beers = await Beer.findAll({
+        const { score } = req.body
+        const beers = await Score.findAll(/* {
             where: {
                 score: score,
             },
-            /* limit: 5 */
-        });
+        } */);
         return res.json(beers);
     } catch (error) {
         next(error)
