@@ -17,7 +17,7 @@ export default function BeerCard({
   name,
   price,
   image,
-  
+
   // type,
   // origin,
 }) {
@@ -59,7 +59,6 @@ export default function BeerCard({
     if (isFav == false) {
       if (loggedIn) {
         dispatch(postFavs(obj));
-
         setIsFav(true);
         console.log(isFav, "cambio de estasdo a true, deberia");
       } else
@@ -79,23 +78,21 @@ export default function BeerCard({
   return (
     <div className={style.card}>
       <div className={style.circle}>
-      <Link to={`/beers/detail/${id}`}>
-        <div className={style.content}>
-          <h2>{name}</h2>
-          <img src={image} alt="No img found :(" />
-          <h4>Price: $ {price}</h4>
-        
+          <div className={style.content}>
+        <Link to={`/beers/detail/${id}`}>
+            <h2>{name}</h2>
+            <img src={image} alt="No img found :(" />
+            <h4>Price: $ {price}</h4>
+        </Link>
+        <div style={{ justifySelf: "flex-end" }}>
+          {isFav == true ? (
+            <AiFillHeart size={35} onClick={handleFav} />
+          ) : (
+            <AiOutlineHeart size={35} onClick={handleFav} />
+          )}
         </div>
-      </Link>
-      <div style={{ justifySelf: "flex-end" }}>
-        {isFav == true ? (
-          <AiFillHeart size={35} onClick={handleFav} />
-        ) : (
-          <AiOutlineHeart size={35} onClick={handleFav} />
-        )}
+          </div>
       </div>
-      </div>
-      
     </div>
   );
 }
