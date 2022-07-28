@@ -303,7 +303,7 @@ export async function postComment(comment) {
 
 export function getCommentsBeer(idBeer) {
   return async function (dispatch) {
-    const commentBeer = await axios.get(COMMENTS / idBeer);
+    const commentBeer = await axios.get(`/comment/beer/${idBeer}`);
     return dispatch({
       type: GET_COMMENTS_BEER,
       payload: commentBeer.data,

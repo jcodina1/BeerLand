@@ -15,7 +15,7 @@ async function getComment(req, res, next) {
 async function getAllCommentBeer(req, res, next) {
   const { beer } = req.params;
   try {
-    let comments = await Comment.findAll({ where: { id: beer } });
+    let comments = await Comment.findAll({ where: { beerId: beer } });
     res.send(comments);
   } catch (error) {
     next();

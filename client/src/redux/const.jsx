@@ -12,7 +12,7 @@ export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
 
-export const COMMENTS = "/comment";
+export const COMMENTS = "/comment/";
 export const POST_COMMENT = "POST_COMMENT";
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
