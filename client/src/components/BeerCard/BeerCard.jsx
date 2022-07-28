@@ -31,6 +31,7 @@ export default function BeerCard({
   const user2 = useSelector((state) => state.user);
 
   const { user } = useAuth();
+  console.log(user)
 
   const [loggedIn, setLoggeddIn] = useState(false);
   const [isFav, setIsFav] = useState(false);
@@ -38,6 +39,7 @@ export default function BeerCard({
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
+    console.log(filtrado)
     if (user2.length !== 0) {
     var obj = {
       idUser: filtrado[0].id,
@@ -85,25 +87,25 @@ export default function BeerCard({
   }
 
   return (
-    <div>
+    <div className={style.card}>
+      <div className={style.circle}>
       <Link to={`/beers/detail/${id}`}>
-        <div className={style.cardContainer}>
+        <div className={style.content}>
           <h2>{name}</h2>
-          <img className={style.cardImg} src={image} alt="No img found :(" />
+          <img src={image} alt="No img found :(" />
           <h4>Price: $ {price}</h4>
-          {/* <h4 className={style.content}>{type}</h4>
-        <h4 className={style.content}>{origin}</h4> */}
+        
         </div>
       </Link>
       <div style={{ justifySelf: "flex-end" }}>
-        {isFav ? (
-
+        {isFav == true ? (
           <AiFillHeart size={35} onClick={handleFav} />
         ) : (
           <AiOutlineHeart size={35} onClick={handleFav} />
         )}
       </div>
-
+      </div>
+      
     </div>
   );
 }
