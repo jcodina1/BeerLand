@@ -14,24 +14,23 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-    const { id, name, surname, address, email, rol } = req.body;
-    try {
-        let newUser = await User.findOrCreate({
-            where:{
-                name:name,
-                surname:surname,
-                address:address,
-                email:email,
-                rol:rol
+  const { id, name, surname, address, email, rol } = req.body;
+  try {
+    let newUser = await User.findOrCreate({
+      where: {
+        name: name,
+        surname: surname,
+        address: address,
+        email: email,
+        rol: rol,
+      },
+    });
 
-            }
-        })
-           
-        return res.json(newUser);
-    } catch (error) {
-        next(error)
-    }
-    }
+    return res.json(newUser);
+  } catch (error) {
+    next(error);
+  }
+}
 async function getUserId(req, res, next) {
   const { id } = req.params;
   try {
@@ -44,11 +43,11 @@ async function getUserId(req, res, next) {
   } catch (error) {
     next(error);
   }
-
 }
 
 async function postFavorite(req, res, next) {
   const { idUser, idBeer } = req.body;
+  console.log(idUser, idBeer);
   try {
     let beer = await Beer.findAll({ where: { id: idBeer } });
     let user = await User.findOne({ where: { id: idUser } });
@@ -60,7 +59,8 @@ async function postFavorite(req, res, next) {
   }
 }
 async function deleteFavorite(req, res, next) {
-  const { idUser, idBeer } = req.body;
+  const { idUser, idBeer } = req.query;
+  console.log(idUser, idBeer);
   try {
     let beer = await Beer.findAll({ where: { id: idBeer } });
     let user = await User.findOne({ where: { id: idUser } });
