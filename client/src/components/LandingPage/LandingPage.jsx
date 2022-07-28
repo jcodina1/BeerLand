@@ -13,7 +13,7 @@ export default function LandingPage() {
           <div className={style.titleintro}>Welcome to BeerLand!!!</div>
           <button
             className={style.modalbtn}
-              onClick={() => {
+            onClick={() => {
               setOpenModal(true);
             }}
           >

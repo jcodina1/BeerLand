@@ -17,13 +17,16 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
-  GET_SELLERS,
+  GET_ALL_SELLERS,
   POST_SELLER,
   POST_FAVS,
   GET_USER,
   ALL_USERS,
+  FILTER_BEER_BY_TYPE,
+  GET_SELLERS,
   DELETE_FAVS,
   GET_BREWERY_DETAIL,
+  POST_COMMENT,
 } from "../const";
 
 const initialState = {
@@ -32,7 +35,7 @@ const initialState = {
   allBeers: [],
   detail: {},
   allSellers: [],
-  breweryDetail:[],
+  breweryDetail: [],
   userType: [],
   type: [],
   page: 1,
@@ -44,6 +47,7 @@ const initialState = {
   user: [],
   sellers: [],
   favs: [],
+  comments: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -53,6 +57,12 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
+      };
+
+    case GET_ALL_SELLERS:
+      return {
+        ...state,
+        allBreweries: action.payload,
       };
 
     case ADD_TO_CART:
@@ -133,14 +143,27 @@ function Reducer(state = initialState, action) {
     }
 
     case SORT_BY_NAME:
-      let sortedByName =
-        action.payload === "AtoZ"
-          ? state.allBeers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
-          : state.allBeers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+      let sortedByName = [];
+      if (state.allBeers.length === state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.allBeers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.beers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.beers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
       return {
         ...state,
         beers: sortedByName,
@@ -148,14 +171,29 @@ function Reducer(state = initialState, action) {
       };
 
     case SORT_BY_PRICE:
-      let sortedByPrice =
-        action.payload === "Low to High"
-          ? state.allBeers.sort(function (a, b) {
-              return a.price - b.price;
-            })
-          : state.allBeers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+      let sortedByPrice = [];
+      if (state.allBeers.length === state.beers.length) {
+        //revisa si allBeers tiene el mismo largo que beers, para ver si ha habido o no algun filtrado
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.allBeers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        //misma logica de arriba, caso opuesto
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.beers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.beers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
       return {
         ...state,
         beers: sortedByPrice,
@@ -163,18 +201,32 @@ function Reducer(state = initialState, action) {
       };
 
     case FILTER_BEER_BY_BREWERY:
-      const preFilteredBeers = state.allBeers;
-      const filteredBeers =
+      const preFilteredBeersByBrewery = state.allBeers;
+      const filteredBeersByBrewery =
         action.payload === "All"
-          ? preFilteredBeers
-          : preFilteredBeers.filter((beer) =>
+          ? preFilteredBeersByBrewery
+          : preFilteredBeersByBrewery.filter((beer) =>
               beer.brewery.find((brewery) => brewery.name === action.payload)
             );
       return {
         ...state,
-        beers: filteredBeers,
-        filterPlaceholder: filteredBeers,
-        allBeers: action.payload,
+        beers: filteredBeersByBrewery,
+        filterPlaceholder: filteredBeersByBrewery,
+      };
+
+    case FILTER_BEER_BY_TYPE:
+      const preFilteredBeersByType = state.allBeers;
+      const filteredBeersByType =
+        action.payload === "All"
+          ? preFilteredBeersByType
+          : preFilteredBeersByType.filter(
+              (beer) => beer.tipo === action.payload
+            );
+
+      return {
+        ...state,
+        beers: filteredBeersByType,
+        filterPlaceholder: filteredBeersByType,
       };
 
     case POST_BEER:
@@ -219,12 +271,6 @@ function Reducer(state = initialState, action) {
         allSellers: action.payload,
         sellers: action.payload,
       };
-      case ALL_USERS:
-        return {
-          ...state,
-          user: action.payload,
-        };
-
     case ALL_USERS:
       return {
         ...state,
@@ -232,10 +278,15 @@ function Reducer(state = initialState, action) {
       };
 
     case GET_BREWERY_DETAIL:
-      return{
+      return {
         ...state,
         breweryDetail: action.payload,
-      }
+      };
+    case POST_COMMENT:
+      return {
+        ...state,
+        comments: action.payload,
+      };
 
     default:
       return { ...state };

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   /* const [userType, setUserType] = useState('') */
-  const carga=useSelector(state=>state)
+  const carga = useSelector(state => state)
 
   return (
     <div className={style.homeContainer}>

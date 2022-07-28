@@ -11,13 +11,13 @@ import '../UserFavs/userFavs.css'
 export default function UserFavs() {
   const user2 = useSelector((state) => state.user);
   const favs = useSelector((state) => state.favs);
-  const {user} = useAuth()
+  const { user } = useAuth()
   const dispatch = useDispatch();
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
   }
-  
+
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
@@ -32,14 +32,14 @@ export default function UserFavs() {
 
       <div className="hola" >
         {
-          filtrado && filtrado[0] ? filtrado[0].beers.map(e=>{
-            return(
+          filtrado && filtrado[0] ? filtrado[0].beers.map(e => {
+            return (
               <BeerCard
                 name={e.name} id={e.id} price={e.price} image={e.image}
               />
             )
           })
-        :'hola'
+            : 'hola'
         }
         <Link to='/home'>
           <button>Return</button>

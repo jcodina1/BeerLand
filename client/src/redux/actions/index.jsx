@@ -22,6 +22,9 @@ import {
   GET_ALL_BREWERIES,
   GET_BREWERY_DETAIL,
   SET_PAGE,
+  FILTER_BEER_BY_TYPE,
+  SELLER,
+  GET_ALL_SELLERS,
   ALL_SELLERS,
   GET_SELLERS,
   POST_SELLER,
@@ -32,6 +35,9 @@ import {
   GET_USER,
   ALL_USERS,
   SELLERS_ID,
+  GET_COMMENTS_BEER,
+  POST_COMMENT,
+  COMMENTS,
 } from "../const";
 
 export function addToCart(id) {
@@ -76,12 +82,12 @@ export function getAllBeers() {
   };
 }
 
-export function getAllBreweries() {
+export function getAllSellers() {
   return async function (dispatch) {
-    let allBreweries = await axios.get("http://localhost:3001/seller");
+    const allSellers = await axios.get(SELLER);
     return dispatch({
-      type: GET_ALL_BREWERIES,
-      payload: allBreweries.data,
+      type: GET_ALL_SELLERS,
+      payload: allSellers.data,
     });
   };
 }
@@ -102,8 +108,8 @@ export function getBreweryDetail(id) {
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,
-    })
-  }
+    });
+  };
 }
 
 export const removeDetail = () => {
@@ -185,6 +191,13 @@ export function filterBeersByBrewery(payload) {
   };
 }
 
+export function filterBeersByType(payload) {
+  return {
+    type: FILTER_BEER_BY_TYPE,
+    payload,
+  };
+}
+
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
@@ -242,7 +255,6 @@ export function getFavs(user) {
   };
 }
 
-
 export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
     try {
@@ -267,10 +279,34 @@ export function getUser() {
   };
 }
 
-
 export async function helpCall(url) {
   return axios.get(`http://localhost:3001${url}`).then((res) => {
     return res.data;
   });
 }
 
+export async function postComment(comment) {
+  return async function (dispatch) {
+    try {
+      await axios.post(COMMENTS, comment);
+      return dispatch({
+        type: POST_COMMENT,
+        payload: comment,
+      });
+    } catch (error) {
+      if (error.response) {
+        return alert(error.response.data);
+      }
+    }
+  };
+}
+
+export function getCommentsBeer(idBeer) {
+  return async function (dispatch) {
+    const commentBeer = await axios.get(COMMENTS / idBeer);
+    return dispatch({
+      type: GET_COMMENTS_BEER,
+      payload: commentBeer.data,
+    });
+  };
+}
