@@ -17,9 +17,11 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
-  FILTER_BEER_BY_TYPE,
+  GET_SELLERS,
   POST_SELLER,
-  GET_ALL_SELLERS,
+  POST_FAVS,
+  GET_USER,
+  ALL_USERS,
 } from "../const";
 
 const initialState = {
@@ -27,7 +29,7 @@ const initialState = {
   beers: [],
   allBeers: [],
   detail: {},
-  allBreweries: [],
+  allSellers: [],
   userType: [],
   type: [],
   page: 1,
@@ -36,7 +38,9 @@ const initialState = {
   infoBeers: [],
   infoSoldBeers: [],
   totalPrice: 0,
-  user: {},
+  user: [],
+  sellers: [],
+  favs: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -240,6 +244,25 @@ function Reducer(state = initialState, action) {
     case POST_SELLER:
       return {
         ...state,
+      };
+
+    case POST_FAVS:
+      return {
+        ...state,
+        favs: action.payload,
+      };
+
+    case GET_SELLERS:
+      return {
+        ...state,
+        allSellers: action.payload,
+        sellers: action.payload,
+      };
+
+    case ALL_USERS:
+      return {
+        ...state,
+        user: action.payload,
       };
 
     default:
