@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
 
+import { helpCall } from "../../redux/actions";
+
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { getUser } from "../../redux/actions";
@@ -12,12 +14,15 @@ import { getUser } from "../../redux/actions";
 import Swal from "sweetalert2";
 import { deleteFavs, postFavs } from "../../redux/actions";
 
+import { logEvent } from "firebase/analytics";
+
+
 export default function BeerCard({
   id,
   name,
   price,
   image,
-  
+
   // type,
   // origin,
 }) {
@@ -29,21 +34,25 @@ export default function BeerCard({
 
   const [loggedIn, setLoggeddIn] = useState(false);
   const [isFav, setIsFav] = useState(false);
-  console.log(isFav, "estado general");
+
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
     if (user2.length !== 0) {
       var obj = {
         idUser: filtrado[0].id,
-        idBeer: id,
+        idBeer: id
       };
+      helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
+        .then(res => setIsFav(res))
     }
   }
+
 
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
+
 
   useEffect(() => {
     if (Object.keys(user2) !== 0) {
@@ -59,7 +68,6 @@ export default function BeerCard({
     if (isFav == false) {
       if (loggedIn) {
         dispatch(postFavs(obj));
-
         setIsFav(true);
         console.log(isFav, "cambio de estasdo a true, deberia");
       } else
@@ -70,32 +78,30 @@ export default function BeerCard({
         });
     }
     if (isFav == true) {
-      dispatch(deleteFavs(obj.idUser, obj.idBeer));
+      dispatch(deleteFavs(obj.idBeer, obj.idUser));
       setIsFav(false);
-      console.log(isFav, "cambio de estasdo a false, deberia");
+
     }
   }
 
   return (
     <div className={style.card}>
       <div className={style.circle}>
-      <Link to={`/beers/detail/${id}`}>
         <div className={style.content}>
-          <h2>{name}</h2>
-          <img src={image} alt="No img found :(" />
-          <h4>Price: $ {price}</h4>
-        
+          <Link to={`/beers/detail/${id}`}>
+            <h2>{name}</h2>
+            <img src={image} alt="No img found :(" />
+            <h4>Price: $ {price}</h4>
+          </Link>
+          <div style={{ justifySelf: "flex-end" }}>
+            {isFav == true ? (
+              <AiFillHeart size={35} onClick={handleFav} />
+            ) : (
+              <AiOutlineHeart size={35} onClick={handleFav} />
+            )}
+          </div>
         </div>
-      </Link>
-      <div style={{ justifySelf: "flex-end" }}>
-        {isFav == true ? (
-          <AiFillHeart size={35} onClick={handleFav} />
-        ) : (
-          <AiOutlineHeart size={35} onClick={handleFav} />
-        )}
       </div>
-      </div>
-      
     </div>
   );
 }

@@ -3,6 +3,7 @@ export const ALL_API = "/beer";
 export const ALL_ID = "/beer/id/";
 
 // export const ALL_STYLES = '/temperaments';
+export const SELLERS_ID = "/sellers/id";
 
 export const ALL_NAME = "/beer?name=";
 export const POST_BEER = "/beer";
@@ -10,6 +11,8 @@ export const POST_USER = "/user";
 export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
+
+export const COMMENTS = "/comment";
 
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
@@ -23,8 +26,6 @@ export const ORDER_ORIG = "ORDER_ORIG";
 export const ORDER_SCORE = "ORDER_SCORE";
 export const REMOVE_DETAIL = "REMOVE_DETAIL";
 export const FILTER_BEER_BY_TYPE = "FILTER_BEER_BY_TYPE";
-
-export const SELLERS_ID = "/sellers/id";
 
 export const ALL_SELLERS = "/sellers";
 
@@ -46,8 +47,10 @@ export const SORT_BY_NAME = "SORT_BY_NAME";
 export const GET_ALL_SELLERS = "GET_ALL_SELLERS";
 export const GET_ALL_BREWERIES = "GET_ALL_BREWERIES";
 export const GET_BREWERY_DETAIL = "GET_BREWERY_DETAIL";
+
 export const GET_SELLERS = "GET_SELLERS";
 export const POST_FAVS = "POST_FAVS";
 export const GET_FAVS = "GET_FAVS";
 export const DELETE_FAVS = "DELETE_FAVS";
 export const ALL_USERS = "ALL_USERS";
+export const ALL_COMMENT = "";

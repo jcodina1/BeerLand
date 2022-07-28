@@ -51,7 +51,6 @@ export function removeAllFromCart() {
 }
 
 export function removeOneFromCart(id) {
-  console.log(id);
   return {
     type: REMOVE_ONE_FROM_CART,
     payload: id,
@@ -253,6 +252,7 @@ export function getFavs(user) {
   };
 }
 
+
 export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
     try {
@@ -276,3 +276,14 @@ export function getUser() {
     });
   };
 }
+<<<<<<< HEAD
+=======
+
+
+export async function helpCall(url) {
+  return axios.get(`http://localhost:3001${url}`).then((res) => {
+    return res.data;
+  });
+}
+
+>>>>>>> origin/develop

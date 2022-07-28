@@ -29,7 +29,7 @@ export default function SearchBar() {
     dispatch(getAllBeers());
     //setPage(1);
   }
-  console.log(value)
+
   return (
     <div className={style.searchBox}>
       <div>

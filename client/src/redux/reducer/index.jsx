@@ -269,7 +269,6 @@ function Reducer(state = initialState, action) {
         allSellers: action.payload,
         sellers: action.payload,
       };
-
     case ALL_USERS:
       return {
         ...state,

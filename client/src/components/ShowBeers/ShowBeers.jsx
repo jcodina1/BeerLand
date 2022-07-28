@@ -67,6 +67,7 @@ export default function ShowBeers() {
       />
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
+<<<<<<< HEAD
           {allBeers.length === 0 ? (
             <span>
               (<Loading setLoading={setLoading} />)
@@ -88,6 +89,39 @@ export default function ShowBeers() {
               })}
             </>
           )}
+=======
+          {
+            allBeers.length === 0 ?
+              (
+                <span>
+                  (<Loading setLoading={setLoading} />)
+                </span>)
+              : <>
+                {currentBeer?.map((beer) => {
+                  return (
+                    <BeerCard
+                      id={beer.id}
+                      key={beer.id}
+                      name={beer.name}
+                      price={beer.price}
+                      image={beer.image ? beer.image : false}
+                    // style={beer.style}
+                    // origin={beer.origin}
+                    />
+                  );
+                })}
+                <Pagination
+                  page={page}
+                  paginate={paginate}
+                  limitPage={limitPage}
+                  firstPrevControl={firstPrevControl}
+                  nextLastControl={nextLastControl}
+                />
+              </>
+
+          }
+
+>>>>>>> origin/develop
         </div>
       </div>
     </div>
