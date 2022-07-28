@@ -82,6 +82,7 @@ async function getAllSellers2(req, res, next) {
       });
     });
     const sellersDb = await Seller.findAll();
+    console.log("ya se guardaron los seller");
   } catch (error) {
     next(error);
   }
