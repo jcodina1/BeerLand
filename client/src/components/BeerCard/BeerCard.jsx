@@ -17,7 +17,7 @@ export default function BeerCard({
   name,
   price,
   image,
-  
+
   // type,
   // origin,
 }) {
@@ -79,24 +79,29 @@ export default function BeerCard({
   return (
     <div className={style.card}>
       <div className={style.circle}>
-      <img src={image} alt="No img found " />
-      <Link to={`/beers/detail/${id}`}>
+      <Link to={`/beers/detail/${id}`} className={style.link}>
+        <img src={image} alt="No img found " />
+      </Link>
+        <Link to={`/beers/detail/${id}`} className={style.link}>
+          <div className={style.content}>
+            <h2>{name}</h2>
+          </div>
+        </Link>
         <div className={style.content}>
-          <h2>{name}</h2>
-         
           <h4>Price: $ {price}</h4>
+          <div className={style.heart}>
+          {isFav == true ? (
+            <AiFillHeart size={35} onClick={handleFav} />
+          ) : (
+            <AiOutlineHeart size={35} onClick={handleFav} />
+          )}
+        </div>
         
         </div>
-      </Link>
-      <div style={{ justifySelf: "flex-end" }}>
-        {isFav == true ? (
-          <AiFillHeart size={35} onClick={handleFav} />
-        ) : (
-          <AiOutlineHeart size={35} onClick={handleFav} />
-        )}
+        
+
       </div>
-      </div>
-      
+
     </div>
   );
 }

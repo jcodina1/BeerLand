@@ -15,6 +15,7 @@
 	align-items: center;
 	transition: 0.5s;
 	margin: 60px 40px 70px 40px;
+	padding: 20px;
 }
 
 .card .circle{
@@ -65,7 +66,8 @@
 	opacity: 0;
 	visibility: hidden;
 	margin-right: 40px;
-	
+	margin-top: 20px;
+	text-decoration: none;
 }
 .card:hover .content{
 	left: 0;
@@ -76,16 +78,21 @@
 .card .content h2{
 	color: antiquewhite;
 	text-transform: uppercase;
-	font-size: 2.5em;
+	font-size: 2.1em;
 	line-height: 1em;
-	margin-bottom: 55px; 
-	
+	margin-bottom: 10px; 
+	font-family: 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+		
+}
+.link{
+	text-decoration: none;
 }
 .card .content h4{
     color: aliceblue;
     font-size: 2em;
     line-height: 1em;
-    margin:5px;
+    margin:2px;
 
 }
 .card .content p{
@@ -106,6 +113,13 @@
 	font-weight: 700;
 	
 }
+.content .heart{
+	background-color: blueviolet;
+	color: yellow;
+	z-index: 4;
+	margin-top: 20px;
+}
+
 
 @media (max-width: 990px){
 	.card{
@@ -138,47 +152,3 @@
 
 
 
-/* .cardContainer {
-    background-color: brown;
-    width: 15vw;
-    height: 17rem;
-    margin: 20px 20px 100px 20px;
-    display: flex;
-    font-size: large;
-    font-family: 'Trebuchet MS', sans-serif;
-    color: aqua;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    align-items: center;
-    padding: 16px;
-    border-radius: 10px;
-
-
-}
-
-.content {
-    margin: 1rem 0 0 0;
-}
-
-.cardImg {
-    width: 45%;
-}
-.button{
-    background-color: bisque;
-    color: rgb(2, 32, 10);
-    font-family: 'Trebuchet MS',  sans-serif;
-    border-radius: 5px;
-    margin: 0 5px 0 5px;
-    border: none;
-    height: 30px;
-    left:60%;
-}
-.textbox{
-    color:rgb(2, 32, 10);
-    font-family: 'Trebuchet MS', sans-serif;
-}
-p{
-    font-family: 'Trebuchet MS', sans-serif;
-
-} */
