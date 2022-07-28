@@ -11,10 +11,10 @@ module.exports = (sequelize) => {
     },
     score: {
         type: DataTypes.INTEGER,
-        validate: {
+/*         validate: {
           min: 1,
           max: 5,
-        }
+        } */
       },
   }, { timestamps: false });
 };

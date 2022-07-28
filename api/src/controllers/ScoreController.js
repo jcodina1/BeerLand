@@ -4,13 +4,12 @@ const { Beer, Score } = require('../db.js')
 
 async function getScore(req, res, next) {
     try {
-        const { score } = req.query
-        const beers = await Beer.findAll({
+        const { score } = req.body
+        const beers = await Score.findAll(/* {
             where: {
                 score: score,
             },
-            /* limit: 5 */
-        });
+        } */);
         return res.json(beers);
     } catch (error) {
         next(error)
@@ -19,16 +18,19 @@ async function getScore(req, res, next) {
 
 async function postScore(req, res, next) {
     try {
-        const { score, beerId, userId } = req.body
-        const newScore = await Score.findOrCreate({
+        const { score, userId, beerId } = req.body
+        const [newScore, create] = await Score.findOrCreate({
             where: {
                 score: score,
                 userId: userId,
                 beerId: beerId
             },
-            /* limit: 5 */
         });
-        res.status(200).send(newScore);
+        if (create === false) {
+            res.status(400).send('Ya esta calificado');
+        } else {
+            res.status(200).send(newScore);
+        }
     } catch (error) {
         next(error)
     }
