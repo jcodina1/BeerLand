@@ -16,5 +16,6 @@ router.use('/beer', beer)
 router.use('/seller', seller)
 router.use('/purchases', purchases)
 router.use('/score', score)
+router.use('/comment',comment)
 
 module.exports = router;
