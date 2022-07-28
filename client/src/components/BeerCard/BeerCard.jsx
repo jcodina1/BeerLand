@@ -87,7 +87,6 @@ export default function BeerCard({
   return (
     <div className={style.card}>
       <div className={style.circle}>
-<<<<<<< HEAD
       <Link to={`/beers/detail/${id}`} className={style.link}>
         <img src={image} alt="No img found " />
       </Link>
@@ -111,23 +110,6 @@ export default function BeerCard({
 
       </div>
 
-=======
-        <div className={style.content}>
-          <Link to={`/beers/detail/${id}`}>
-            <h2>{name}</h2>
-            <img src={image} alt="No img found :(" />
-            <h4>Price: $ {price}</h4>
-          </Link>
-          <div style={{ justifySelf: "flex-end" }}>
-            {isFav == true ? (
-              <AiFillHeart size={35} onClick={handleFav} />
-            ) : (
-              <AiOutlineHeart size={35} onClick={handleFav} />
-            )}
-          </div>
-        </div>
-      </div>
->>>>>>> develop
     </div>
   );
 }
