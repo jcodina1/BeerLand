@@ -62,21 +62,20 @@ export default function Cart() {
     console.log("new item", newItems)
 
     if (firstItems.length) {
-      let totalPrice = firstItems?.reduce(function (a, b) {
+      let priceTotal = firstItems?.reduce(function (a, b) {
         return a + b;
       }, 0);
       let beerInfo = localstorage;
-      dispatch(totalPrice(totalPrice));
+      dispatch(totalPrice(priceTotal));
       dispatch(infoBeers(beerInfo));
 
     } else {
-      let totalPrices = newItems?.reduce(function (a, b) {
+      let pricesTotal = newItems?.reduce(function (a, b) {
         return a + b;
       }, 0);
       let beerInfo = localstorage;
-      dispatch(totalPrice(totalPrices));
+      dispatch(totalPrice(pricesTotal));
       dispatch(infoBeers(beerInfo));
-
     }
     let precio = localstorage.map((e) => e.cant * e.price);
     let preciototal = precio.reduce(function (a, b) {
@@ -91,7 +90,7 @@ export default function Cart() {
       return a + b;
     }, 0);
   } */
-  
+
   return (
       <div className="cartContainer">
         <div className="cart">
