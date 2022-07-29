@@ -4,10 +4,13 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function Paypal({
   precioTotal,
-  userId,
-  sellerId,
+  currentUser,
+  sellerIds,
   purchaseDetails,
 }) {
+  console.log(currentUser);
+  let userId = 1;
+
   return (
     <div>
       <PayPalScriptProvider
@@ -33,13 +36,13 @@ export default function Paypal({
           }}
           onApprove={async (data, actions) => {
             const order = await actions.order.capture();
-            console.log(order);
+            console.log(userId);
             Swal.fire("Payment successful!", "Enjoy your beer");
             const purchaseInfo = {
               data: data,
               totalPrice: precioTotal,
               userId: userId,
-              sellerId: sellerId,
+              sellerIds: sellerIds,
               paymentMethod: data.paymentSource,
               purchaseDetails: purchaseDetails,
               status: "PENDING",

@@ -10,8 +10,10 @@ import {
   infoBeers,
   infoSoldBeers,
   totalPrice,
+  getUser,
 } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
+import { useAuth } from "../Context/Contestautenticacion";
 import Login from "../Login/login2";
 import style from "./styles.module.css";
 import Swal from "sweetalert2";
@@ -21,7 +23,9 @@ export default function Checkout() {
   const infoBeer = useSelector((state) => state.infoBeers);
   const checkoutinfo = JSON.parse(localStorage.getItem("carrito"));
   let precio = checkoutinfo.map((e) => e.cant * e.price);
-  var user = useSelector((state) => state.user);
+  let users = useSelector((state) => state.user);
+  const { user } = useAuth();
+
   let precioTotal = precio.reduce(function (a, b) {
     return a + b;
   }, 0);
@@ -29,15 +33,29 @@ export default function Checkout() {
   const history = useHistory();
 
   useEffect(() => {
+    dispatch(getUser());
+  }, []);
+
+  useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
 
+  // console.log(user.id);
+
+  let currentUser = [];
+  if (user !== null) {
+    currentUser = users.filter((u) => u.email === user.email);
+  }
+  console.log(currentUser);
   console.log(checkoutinfo);
   const purchaseDetails = {};
+  const sellerIds = [];
   checkoutinfo.forEach((beer) => {
     purchaseDetails[`${beer.id}`] = [beer.cant, beer.price];
+    sellerIds.push(beer.sellerId);
   });
   console.log(purchaseDetails);
+  console.log(sellerIds);
 
   return (
     <div className="checkout">
@@ -58,9 +76,10 @@ export default function Checkout() {
           <h3>Total: ${precioTotal} </h3>
           <div className="paypal">
             <Paypal
-              userId={user.id}
+              currentUser={currentUser}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
+              sellerIds={sellerIds}
             />
           </div>
         </div>
