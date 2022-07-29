@@ -1,4 +1,4 @@
-import Paypal from '../PayPal/PayPal'
+import Paypal from './PayPal/PayPal'
 import React from "react";
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
@@ -18,7 +18,7 @@ export default function Checkout() {
   const checkoutinfo = JSON.parse(localStorage.getItem("carrito"));
   let precio = checkoutinfo.map((e) => e.cant * e.price);
   var user = useSelector((state) => state.user);
-  let preciototal = precio.reduce(function (a, b) {
+  let precioTotal = precio.reduce(function (a, b) {
     return a + b;
   }, 0);
   const history = useHistory();
@@ -31,10 +31,20 @@ export default function Checkout() {
   const createOrder = (data, actions) => {
     if (user.hasOwnProperty("name")) {
       return actions.order.create({
+        payer: {
+          email_address: user.address,
+          name: {
+              given_name: user.name,
+              surname: user.surname
+          },
+          address: {
+              country_code: user.address
+          }
+        },
         purchase_units: [
           {
             amount: {
-              value: preciototal,
+              value: precioTotal,
             },
           },
         ],
@@ -104,9 +114,9 @@ export default function Checkout() {
         </div>
         <div className="pay">
           <h1 style={{ textAlign: 'center', fontSize: '30px' }}>Order Total</h1>
-          <h3>Total: ${preciototal} </h3>
+          <h3>Total: ${precioTotal} </h3>
           <div className="paypal">
-            <Paypal/>
+            <Paypal userId={user.id} precioTotal={precioTotal} />
           </div>
         </div>
       </div>

@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import style from '../Footer/Footer.module.css'
-
 
 export default function Footer() {
     return (
@@ -20,7 +18,6 @@ export default function Footer() {
                     <h4>ADITIONAL INFO</h4>
                     <Link to={"/home"} className={style.link}>ANY SUGESTIONS</Link>
                 </div>
-
             </div>
         </nav>
     )

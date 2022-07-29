@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import style from '../Cart/Cart.module.css';
-
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { removeAllFromCart, getCart, totalPrice, infoBeers, addToCart } from '../../redux/actions/index';
 import Item from "../Item/Item.jsx";
 import Footer from '../Footer/Footer.jsx'
+import BeerLogo from "../../img/BeerLogo.png";
 
 export default function Cart() {
   const [checkout, setCheckout] = useState(false)
@@ -23,7 +22,8 @@ export default function Cart() {
   let preciototal = precio.reduce(function (a, b) {
     return a + b;
   }, 0);
-  
+  preciototal = Number(preciototal.toFixed(2));
+
 
   useEffect(() => {
     dispatch(getCart());
@@ -45,14 +45,13 @@ export default function Cart() {
       return e;
     });
     localStorage.setItem("carrito", JSON.stringify(newBeers))
-    console.log(newBeers);
     setItems(newBeers);
     let total = 0;
     newBeers.forEach((e) => {
       total += e.price * e.cant;
     });
     setAdd(true);
-    return total;
+    return total;     
   }
 
 /*   function handleAddItems() {
@@ -93,10 +92,19 @@ export default function Cart() {
   } */
   
   return (
-      <div className="cartContainer">
-        <div className="cart">
+      <div className={style.cartContainer}>
+        <div className={style.header}>
+          <Link to='/home'>
+            <img className={style.logo} id='BeerLogo' src={BeerLogo} alt='Beer' />
+          </Link>
+          <h1 className={style.h1}>Cart</h1>
+          <Link to="/home" className={style.link}>
+            <p className={style.keep}>Keep Shopping</p>
+          </Link>
+        </div>
+        <div className={style.cart}>
           {JSON.parse(localStorage.getItem("carrito"))?.length ? (
-            <div className="items">
+            <div className={style.items}>
               {beerCarts?.map((e) => (
                 <Item
                   id={e.id}
@@ -108,41 +116,24 @@ export default function Cart() {
                   newDel={newDel}
                 />
               ))}
-{/*               <div className="subTotal">
-                {
-                  <ul>
-                  </ul>
-                }
-                <h3 >
-                  subTotal <span>{`(${handleSubItems()} items)`}</span>
-                </h3>
-                <p>${handleAddItems()},00</p>
-              </div> */}
-              <div className="continue subTotal">
-                <Link to="/home">
-                  <p className="keep">Keep Shopping</p>
-                </Link>
-                <Link to="/checkout">
-                  <button className="checkout">Checkout</button>
-                </Link>
-              </div>
+            <div > 
+              <h1 className={style.boxend} >TOTAL: ${preciototal} </h1>
             </div>
+          </div>
           ) : (
-            <div className="empty">
-              <h1>Oops, Your Cart is Empty!</h1>
-              <p>Looks like you haven't added anything to your cart yet</p>
-              <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" />
-            </div>
+          <div className="empty">
+            <h1>Oops, Your Cart is Empty!</h1>
+            <p>Looks like you haven't added anything to your cart yet</p>
+            <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" />
+          </div>
           )}
         </div>
-      <div className={style.boxend}> 
-        <h1>TOTAL: ${preciototal} </h1>
-         {/* {beerCarts
-                .map((p) => parseInt(p.price))
-                .reduce((prev, curr) => prev + curr)} */}
-      </div>
-      <Footer/>
-    </div >
+        <div className={style.checkout}>
+          <Link to="/checkout" className={style.link}>
+            <p className={style.keep}>Checkout</p>
+          </Link>
+        </div>
+      </div >
   );
 }
 
