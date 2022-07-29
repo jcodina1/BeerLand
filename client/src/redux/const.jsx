@@ -11,7 +11,9 @@ export const ALL_SELLERS = "/sellers";
 export const POST_SELLER = "/seller";
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
+export const GET_FAV = '/user/fav/beer/'
 export const COMMENTS="/comment"
+
 
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
@@ -43,4 +45,6 @@ export const POST_FAVS = "POST_FAVS";
 export const GET_FAVS = "GET_FAVS";
 export const DELETE_FAVS = "DELETE_FAVS";
 export const ALL_USERS = "ALL_USERS";
+export const GET_FAV_DETAIL = 'GET_FAV_DETAIL'
 export const ALL_COMMENT=""
+
