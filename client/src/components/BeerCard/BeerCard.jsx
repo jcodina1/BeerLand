@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
 
-import { helpCall } from "../../redux/actions";
+import { getFavDetail, helpCall } from "../../redux/actions";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
@@ -31,7 +31,6 @@ export default function BeerCard({
   const user2 = useSelector((state) => state.user);
 
   const { user } = useAuth();
-  console.log(user)
 
   const [loggedIn, setLoggeddIn] = useState(false);
   const [isFav, setIsFav] = useState(false);
@@ -39,7 +38,6 @@ export default function BeerCard({
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
-    console.log(filtrado)
     if (user2.length !== 0) {
     var obj = {
       idUser: filtrado[0].id,
@@ -53,7 +51,7 @@ export default function BeerCard({
   
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
 
   useEffect(() => {
@@ -65,13 +63,12 @@ export default function BeerCard({
     }
   }, [id, user2]);
 
+
   function handleFav() {
-    console.log(isFav, "handle");
     if (isFav == false) {
-      if (loggedIn) {
+      if (user !== null) {
         dispatch(postFavs(obj));
         setIsFav(true);
-        console.log(isFav, "cambio de estasdo a true, deberia");
       } else
         Swal.fire({
           icon: "error",
@@ -80,9 +77,8 @@ export default function BeerCard({
         });
     }
     if (isFav == true) {
-      dispatch(deleteFavs(obj.idBeer, obj.idUser));
+      dispatch(deleteFavs(obj.idUser, obj.idBeer));
       setIsFav(false);
-
     }
   }
 
@@ -105,7 +101,6 @@ export default function BeerCard({
         )}
       </div>
       </div>
-      
     </div>
   );
 }
