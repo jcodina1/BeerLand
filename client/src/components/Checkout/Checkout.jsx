@@ -8,6 +8,7 @@ import Itemscheckout from "./ItemsCheckout";
 import { getCart, infoBeers, infoSoldBeers, totalPrice } from "../../redux/actions";
 import { useHistory } from "react-router-dom";
 import Login from "../Login/login2";
+import style from './styles.module.css'
 import Swal from "sweetalert2";
 
 
@@ -21,6 +22,7 @@ export default function Checkout() {
   let precioTotal = precio.reduce(function (a, b) {
     return a + b;
   }, 0);
+  precioTotal = Number(precioTotal.toFixed(2));
   const history = useHistory();
 
   useEffect(() => {

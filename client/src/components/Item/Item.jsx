@@ -33,7 +33,7 @@ export default function Item({ id, name, image, price, stock, handleItem, newDel
     return (
         <div>
             <div className={style.item}>
-                <img src={image} alt={name} width='10%' height='10%'/>
+                <img src={image} alt={name} />
                 <h4 className={style.h4}>{name}</h4>
                 <div className={style.box}>
                     <p className={style.p}>${price}</p>

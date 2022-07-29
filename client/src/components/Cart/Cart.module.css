@@ -20,7 +20,7 @@
 
 .cartContainer{
   /* background-image: url("C:\Users\JP\Documents\GitHub\BeerLand\client\src\img\muro.jpg"); */
-  background-color: rgb(245, 230, 230) ;
+  background-color: rgb(254, 254, 254) ;
   background-size: cover;
   position: absolute; 
   background-attachment: fixed;
@@ -33,7 +33,7 @@
 }
 
 .header{
-  background-color: rgba(255, 159, 41, 0.80);
+  background-color: rgb(21, 55, 16);
   height: 5rem;
   width: 80rem;
   border-radius: 20px;
@@ -44,14 +44,15 @@
 }
 
 .h1{
+  color:rgba(255, 159, 41);
   font-size: 60px;
   font-weight: bold;
 }
 
 .keep{
   padding-top: 5px;
-  background-color: rgb(21, 55, 16);
-  color: bisque;
+  background-color: rgba(255, 159, 41);
+  color: rgb(21, 55, 16);
   font-size: 25px;
   font-weight: bold;
   width: 220px;
