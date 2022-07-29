@@ -32,6 +32,7 @@ import {
   GET_USER,
   ALL_USERS,
   SELLERS_ID,
+  GET_FAV
 } from "../const";
 
 export function addToCart(id) {
@@ -48,7 +49,6 @@ export function removeAllFromCart() {
 }
 
 export function removeOneFromCart(id) {
-  console.log(id);
   return {
     type: REMOVE_ONE_FROM_CART,
     payload: id,
@@ -221,7 +221,6 @@ export function postSeller(payload) {
 }
 
 export function postFavs(obj) {
-  // console.log(obj);
   return async function (dispatch) {
     try {
       const response = await axios.post(FAVS, obj);
@@ -242,6 +241,7 @@ export function getFavs(user) {
     }
   };
 }
+
 
 export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
@@ -265,5 +265,22 @@ export function getUser() {
       payload: allUser.data,
     });
   };
+}
+
+
+export async function helpCall(url) {
+  return axios.get(`http://localhost:3001${url}`).then((res) => {
+    return res.data;
+  });
+}
+
+export function getFavDetail(id) {
+  return async function (dispatch) {
+    const Fav = await axios.get(GET_FAV + id);
+    return dispatch({
+      type: 'GET_FAV_DETAIL',
+      payload: Fav.data,
+    })
+  }
 }
 

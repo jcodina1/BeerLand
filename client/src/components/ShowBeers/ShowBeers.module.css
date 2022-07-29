@@ -6,6 +6,7 @@
     gap: 40px;
     max-height: 140vh;
     min-height: 100vh;
+    margin-bottom: 80px;
 }
 
 .cardsBox {
@@ -13,11 +14,20 @@
     flex-wrap: wrap;
     height: 85%;
     justify-content: space-evenly;
-    margin: 1rem, 0;
+    /* margin: 1rem, 0; */
 }
 
 .cardsContainer {
     width: auto;
     height: auto;
-    padding: 0 0 2rem 0;
+    /* padding: 0 0 2rem 0; */
+}
+.filters{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    margin-bottom: 100px;
+}
+.filters .distribution{
+    margin: 0 10px 0px 10px;
 }

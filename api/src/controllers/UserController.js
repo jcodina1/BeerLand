@@ -58,23 +58,58 @@ async function postFavorite(req, res, next) {
     next(error);
   }
 }
+
 async function deleteFavorite(req, res, next) {
-  const { idUser, idBeer } = req.query;
-  console.log(idUser, idBeer);
+  const { idUser, idBeer } = req.query
+
   try {
-    let beer = await Beer.findAll({ where: { id: idBeer } });
-    let user = await User.findOne({ where: { id: idUser } });
-    await user.removeBeer(beer);
-    res.status(200).send("Se elimino de favoritos");
+    const user = await User.findByPk(idUser, { include: Beer });
+    await user.removeBeer(idBeer)
+    let final = await User.findByPk(idUser, { include: Beer });
+    res.status(200).send(final.beers)
+
+  } catch (error) {
+    next(error)
+  }
+}
+
+
+async function Favorites(req, res, next) {
+  const { idUser, idBeer } = req.query
+  let exist = true
+  try {
+    const Userfound = await User.findByPk(idUser)
+    const beer = await Userfound.getBeers({ where: { id: idBeer } })
+    if (beer.length == 0) {
+      exist = false
+    }
+    res.send(exist)
+  } catch (error) {
+    next(error)
+  }
+
+}
+
+async function getUserFav(req, res, next) {
+  const { id } = req.params;
+  try {
+    const user = await User.findOne({
+      where: { id: id },
+      include: Beer,
+    });
+    res.status(200).send(user.beers);
   } catch (error) {
     next(error);
   }
 }
 
 module.exports = {
-  getAllUsers,
-  postUser,
-  postFavorite,
-  deleteFavorite,
-  getUserId,
-};
+    getAllUsers,
+    postUser,
+    getUserId,
+    postFavorite,
+    deleteFavorite,
+    Favorites,
+    getUserFav
+
+}

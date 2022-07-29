@@ -14,10 +14,10 @@ export default function BreweryDetail(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const brewery = useSelector((state) => state.detail);
-  
+
 
   useEffect(() => {
-        dispatch(getBreweryDetail(id));
+    dispatch(getBreweryDetail(id));
   }, [dispatch, id]);
 
   return (
@@ -36,7 +36,7 @@ export default function BreweryDetail(props) {
               <Link to="/home">
                 <button className={style.button}>Back</button>
               </Link>
-            
+
             </div>
             <div className={style.box}>
               <div className={style.leftContainer}>
@@ -51,12 +51,12 @@ export default function BreweryDetail(props) {
                 <p>
                   <strong>Description: </strong>
                   <span className={style.textBox}>{brewery.description}</span>
-                </p> 
+                </p>
 
-               <div>
-                <ShowBeers/>
+                <div>
+                  <ShowBeers />
                 </div>
-              
+
               </div>
             </div>
 

@@ -17,7 +17,7 @@ export default function ShowBeers() {
   const styles = useSelector((state) => state.styles);
   let page = useSelector((state) => state.page);
   const [, setOrder] = useState("");
-  const beersPerPage = 10;
+  const beersPerPage = 9;
 
   var lastIndex = page * beersPerPage; //indice incial para metodo slice
   var firstIndex = lastIndex - beersPerPage; //indice final para metodo slice
@@ -53,42 +53,45 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
-      <SortByName setOrder={setOrder} />
-      {/* <FilterByBrewery /> */}
-      <SortByPrice setOrder={setOrder} />
+     
+      <div className={style.filters}>
+        <div className={style.distribution}><SortByName setOrder={setOrder} /></div>
+        {/* <FilterByBrewery /> */}
+        <div className={style.distribution}><SortByPrice setOrder={setOrder} /></div>
+      </div>
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {
-          allBeers.length === 0 ?
-           (
-            <span>
-              (<Loading setLoading={setLoading} />)
-            </span> ) 
-            : <>
-            {currentBeer?.map((beer) => {
-              return (
-                <BeerCard
-                  id={beer.id}
-                  key={beer.id}
-                  name={beer.name}
-                  price={beer.price}
-                  image={beer.image?beer.image:false}
-                  // style={beer.style}
-                  // origin={beer.origin}
+            allBeers.length === 0 ?
+              (
+                <span>
+                  (<Loading setLoading={setLoading} />)
+                </span>)
+              : <>
+                {currentBeer?.map((beer) => {
+                  return (
+                    <BeerCard
+                      id={beer.id}
+                      key={beer.id}
+                      name={beer.name}
+                      price={beer.price}
+                      image={beer.image ? beer.image : false}
+                    // style={beer.style}
+                    // origin={beer.origin}
+                    />
+                  );
+                })}
+                <Pagination
+                  page={page}
+                  paginate={paginate}
+                  limitPage={limitPage}
+                  firstPrevControl={firstPrevControl}
+                  nextLastControl={nextLastControl}
                 />
-              );
-            })}
-            <Pagination
-            page={page}
-            paginate={paginate}
-            limitPage={limitPage}
-            firstPrevControl={firstPrevControl}
-            nextLastControl={nextLastControl}
-          />
-            </>
-            
+              </>
+
           }
-          
+
         </div>
       </div>
     </div>
