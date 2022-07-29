@@ -8,6 +8,7 @@ import style from '../BeerDetail/BeerDetail.module.css'
 import NavBar from "../NavBar/NavBar";
 import DetailCompra from '../DetailCompra/DetailCompra';
 import Score from '../Score/Score';
+import { Comment } from "../Comment/Comment";
 
 export default function BeerDetail(props) {
   const { id } = useParams();
@@ -46,16 +47,16 @@ export default function BeerDetail(props) {
               <div className={style.leftContainer}>
                 <div>
                   <h1>{beer.name}</h1>
-                </div>
-                <div>
+                <div className={style.image}>
                   <img src={beer.image} alt="" />
+                </div>
                 </div>
               </div>
               <div className={style.containerR}>
-{/*                 <p>
-                  <strong>Description: </strong>
+                 <p>
+                  <h2>Description:</h2>
                   <span className={style.textBox}>{beer.description}</span>
-                </p> */}
+                </p> 
 {/*                 <p>
                   <strong>Price: </strong>
                   <span className={style.textBox}>{beer.price}</span>
@@ -64,13 +65,13 @@ export default function BeerDetail(props) {
                   <strong>Stock: </strong>
                   <span className={style.textBox}>{beer.stock}</span>
                 </p> */}
-                <Score/>
                 <div>
+                  <Score/>
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>
             </div>
-
+                
           </div>
         )}
       </div>

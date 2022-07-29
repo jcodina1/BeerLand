@@ -22,7 +22,7 @@ export default function BeerCard({
   name,
   price,
   image,
-  
+
   // type,
   // origin,
 }) {
@@ -39,16 +39,16 @@ export default function BeerCard({
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
     if (user2.length !== 0) {
-    var obj = {
-      idUser: filtrado[0].id,
-      idBeer: id
-    };
-    helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
-    .then(res => setIsFav(res))
-  }
+      var obj = {
+        idUser: filtrado[0].id,
+        idBeer: id
+      };
+      helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
+        .then(res => setIsFav(res))
+    }
   }
 
-  
+
   useEffect(() => {
     dispatch(getUser());
   }, []);
@@ -85,21 +85,26 @@ export default function BeerCard({
   return (
     <div className={style.card}>
       <div className={style.circle}>
-      <Link to={`/beers/detail/${id}`}>
+      <Link to={`/beers/detail/${id}`} className={style.link}>
+        <img src={image} alt="No img found " />
+      </Link>
+        <Link to={`/beers/detail/${id}`} className={style.link}>
+          <div className={style.content}>
+            <h2>{name}</h2>
+          </div>
+        </Link>
         <div className={style.content}>
-          <h2>{name}</h2>
-          <img src={image} alt="No img found :(" />
           <h4>Price: $ {price}</h4>
+          <div className={style.heart}>
+          {isFav == true ? (
+            <AiFillHeart size={35} onClick={handleFav} />
+          ) : (
+            <AiOutlineHeart size={35} onClick={handleFav} />
+          )}
+        </div>
         
         </div>
-      </Link>
-      <div style={{ justifySelf: "flex-end" }}>
-        {isFav == true ? (
-          <AiFillHeart size={35} onClick={handleFav} />
-        ) : (
-          <AiOutlineHeart size={35} onClick={handleFav} />
-        )}
-      </div>
+        
       </div>
     </div>
   );

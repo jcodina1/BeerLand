@@ -8,7 +8,7 @@ import googleLogo from '../../img/googleLogin.png'
 import facebookLogo from '../../img/facebookLogin.png'
 import beertest from '../../img/beertest.png'
 
-export  function Login2() {
+export function Login2() {
 
     // const { login, logingWithGoogle, resetPassword } = useAuth()
 
@@ -94,7 +94,7 @@ export  function Login2() {
                                 onChange={handleChange} />
                         </div>
                         <div className={style.submit}>
-                            <button  className={style.button} onClick={handleSubmit} >Login</button>
+                            <button className={style.button} onClick={handleSubmit} >Login</button>
                         </div>
                         <a href='#!'
                             onClick={handelResetPassword}
@@ -133,7 +133,7 @@ export  function Login2() {
 
                 </div>
                 <div className={style.buttonA} >
-                    <Link  to='/home' >
+                    <Link to='/home' >
                         <span className={style.buttonA}>Back</span>
                     </Link>
                 </div>

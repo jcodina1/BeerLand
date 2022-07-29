@@ -11,7 +11,7 @@ import '../UserFavs/userFavs.css'
 export default function UserFavs() {
   const user2 = useSelector((state) => state.user);
   const favs = useSelector((state) => state.favs);
-  const {user} = useAuth()
+  const { user } = useAuth()
   const dispatch = useDispatch();
   
 
@@ -19,7 +19,7 @@ export default function UserFavs() {
     var filtrado = user2.filter((e) => e.email === user.email);
     console.log(filtrado)
   }
-  
+
   useEffect(() => {
     dispatch(getUser());
   }, []);
@@ -41,6 +41,7 @@ export default function UserFavs() {
       <div className="hola" >
         
         {
+
           !favs && !favs ? 'hola' : favs.map(e=>{
             return(
               <BeerCard
@@ -48,7 +49,7 @@ export default function UserFavs() {
               />
             )
           })
-       
+
         }
         <Link to='/home'>
           <button>Return</button>

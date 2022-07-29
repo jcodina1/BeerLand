@@ -61,31 +61,33 @@ async function postFavorite(req, res, next) {
 
 async function deleteFavorite(req, res, next) {
   const { idUser, idBeer } = req.query
+
   try {
     const user = await User.findByPk(idUser, { include: Beer });
     await user.removeBeer(idBeer)
     let final = await User.findByPk(idUser, { include: Beer });
     res.status(200).send(final.beers)
+
   } catch (error) {
     next(error)
   }
 }
 
 
-async function Favorites(req,res,next) {
-    const { idUser, idBeer } = req.query
-    let exist =true
-    try {
-        const Userfound= await User.findByPk(idUser)
-        const beer = await Userfound.getBeers({where:{id:idBeer}})
-        if(beer.length==0) {
-            exist=false
-          }
-          res.send(exist)
-    } catch (error) {
-        next(error)
+async function Favorites(req, res, next) {
+  const { idUser, idBeer } = req.query
+  let exist = true
+  try {
+    const Userfound = await User.findByPk(idUser)
+    const beer = await Userfound.getBeers({ where: { id: idBeer } })
+    if (beer.length == 0) {
+      exist = false
     }
-    
+    res.send(exist)
+  } catch (error) {
+    next(error)
+  }
+
 }
 
 async function getUserFav(req, res, next) {
@@ -109,4 +111,5 @@ module.exports = {
     deleteFavorite,
     Favorites,
     getUserFav
+
 }

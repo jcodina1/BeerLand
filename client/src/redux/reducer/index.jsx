@@ -33,7 +33,7 @@ const initialState = {
   allBeers: [],
   detail: {},
   allSellers: [],
-  breweryDetail:[],
+  breweryDetail: [],
   userType: [],
   type: [],
   page: 1,
@@ -137,11 +137,11 @@ function Reducer(state = initialState, action) {
       let sortedByName =
         action.payload === "AtoZ"
           ? state.allBeers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
+            return a.name.localeCompare(b.name);
+          })
           : state.allBeers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+            return b.name.localeCompare(a.name);
+          });
       return {
         ...state,
         beers: sortedByName,
@@ -152,11 +152,11 @@ function Reducer(state = initialState, action) {
       let sortedByPrice =
         action.payload === "Low to High"
           ? state.allBeers.sort(function (a, b) {
-              return a.price - b.price;
-            })
+            return a.price - b.price;
+          })
           : state.allBeers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+            return b.price - a.price;
+          });
       return {
         ...state,
         beers: sortedByPrice,
@@ -169,8 +169,8 @@ function Reducer(state = initialState, action) {
         action.payload === "All"
           ? preFilteredBeers
           : preFilteredBeers.filter((beer) =>
-              beer.brewery.find((brewery) => brewery.name === action.payload)
-            );
+            beer.brewery.find((brewery) => brewery.name === action.payload)
+          );
       return {
         ...state,
         beers: filteredBeers,
@@ -219,11 +219,11 @@ function Reducer(state = initialState, action) {
         allSellers: action.payload,
         sellers: action.payload,
       };
-      case ALL_USERS:
-        return {
-          ...state,
-          user: action.payload,
-        };
+    case ALL_USERS:
+      return {
+        ...state,
+        user: action.payload,
+      };
 
     case ALL_USERS:
       return {
@@ -232,7 +232,7 @@ function Reducer(state = initialState, action) {
       };
 
     case GET_BREWERY_DETAIL:
-      return{
+      return {
         ...state,
         breweryDetail: action.payload,
       }

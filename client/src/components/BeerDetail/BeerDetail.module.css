@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 10% 20% 4% 20%;
+    padding: 5% 5% 4% 5%;;
     margin: 0px;
 }
 
@@ -29,5 +29,22 @@
 .containerR{
     padding: 50px 20px 20px 20px;
     align-items: center;
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+img{
+    width: 70%;
+}
+.containerR p{
+    text-align: left;
+    width: 60%;
+    line-height: 22px
+}
+
+.textBox{
+
+font-size: small;
+line-height: 3px ;
+
 }
