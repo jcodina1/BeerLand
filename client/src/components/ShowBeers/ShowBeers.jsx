@@ -18,7 +18,7 @@ export default function ShowBeers() {
   const styles = useSelector((state) => state.styles);
   let page = useSelector((state) => state.page);
   const [, setOrder] = useState("");
-  const beersPerPage = 10;
+  const beersPerPage = 9;
 
   let lastIndex = page * beersPerPage; //indice incial para metodo slice
   let firstIndex = lastIndex - beersPerPage; //indice final para metodo slice
@@ -54,6 +54,7 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
+<<<<<<< HEAD
       <SortByName setOrder={setOrder} />
       <FilterByBrewery />
       <FilterByType />
@@ -65,6 +66,14 @@ export default function ShowBeers() {
         firstPrevControl={firstPrevControl}
         nextLastControl={nextLastControl}
       />
+=======
+     
+      <div className={style.filters}>
+        <div className={style.distribution}><SortByName setOrder={setOrder} /></div>
+        {/* <FilterByBrewery /> */}
+        <div className={style.distribution}><SortByPrice setOrder={setOrder} /></div>
+      </div>
+>>>>>>> origin/develop
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (

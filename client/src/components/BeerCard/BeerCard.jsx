@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
 
-import { helpCall } from "../../redux/actions";
+import { getFavDetail, helpCall } from "../../redux/actions";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
@@ -51,7 +51,7 @@ export default function BeerCard({
 
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
 
   useEffect(() => {
@@ -63,13 +63,12 @@ export default function BeerCard({
     }
   }, [id, user2]);
 
+
   function handleFav() {
-    console.log(isFav, "handle");
     if (isFav == false) {
-      if (loggedIn) {
+      if (user !== null) {
         dispatch(postFavs(obj));
         setIsFav(true);
-        console.log(isFav, "cambio de estasdo a true, deberia");
       } else
         Swal.fire({
           icon: "error",
@@ -78,29 +77,34 @@ export default function BeerCard({
         });
     }
     if (isFav == true) {
-      dispatch(deleteFavs(obj.idBeer, obj.idUser));
+      dispatch(deleteFavs(obj.idUser, obj.idBeer));
       setIsFav(false);
-
     }
   }
 
   return (
     <div className={style.card}>
       <div className={style.circle}>
-        <div className={style.content}>
-          <Link to={`/beers/detail/${id}`}>
+      <Link to={`/beers/detail/${id}`} className={style.link}>
+        <img src={image} alt="No img found " />
+      </Link>
+        <Link to={`/beers/detail/${id}`} className={style.link}>
+          <div className={style.content}>
             <h2>{name}</h2>
-            <img src={image} alt="No img found :(" />
-            <h4>Price: $ {price}</h4>
-          </Link>
-          <div style={{ justifySelf: "flex-end" }}>
-            {isFav == true ? (
-              <AiFillHeart size={35} onClick={handleFav} />
-            ) : (
-              <AiOutlineHeart size={35} onClick={handleFav} />
-            )}
           </div>
+        </Link>
+        <div className={style.content}>
+          <h4>Price: $ {price}</h4>
+          <div className={style.heart}>
+          {isFav == true ? (
+            <AiFillHeart size={35} onClick={handleFav} />
+          ) : (
+            <AiOutlineHeart size={35} onClick={handleFav} />
+          )}
         </div>
+        
+        </div>
+        
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import BeerCard from "../BeerCard/BeerCard";
 import NavBar from "../NavBar/NavBar.jsx";
-import { getFavs, getUser } from "../../redux/actions";
+import { getFavDetail, getFavs, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
 import '../UserFavs/userFavs.css'
 
@@ -13,15 +13,23 @@ export default function UserFavs() {
   const favs = useSelector((state) => state.favs);
   const { user } = useAuth()
   const dispatch = useDispatch();
+  
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
+    console.log(filtrado)
   }
 
   useEffect(() => {
     dispatch(getUser());
-  }, [dispatch]);
+  }, []);
 
+
+  useEffect(() => {
+    if (user !== null) {
+      dispatch(getFavDetail(filtrado[0].id))
+    }
+  }, [user]);
 
   return (
     <div>
@@ -31,15 +39,17 @@ export default function UserFavs() {
       </div>
 
       <div className="hola" >
+        
         {
-          filtrado && filtrado[0] ? filtrado[0].beers.map(e => {
-            return (
+
+          !favs && !favs ? 'hola' : favs.map(e=>{
+            return(
               <BeerCard
                 name={e.name} id={e.id} price={e.price} image={e.image}
               />
             )
           })
-            : 'hola'
+
         }
         <Link to='/home'>
           <button>Return</button>

@@ -4,13 +4,15 @@ import { useDispatch } from 'react-redux';
 import { AiOutlineMinus } from 'react-icons/ai'
 import { MdOutlineAdd } from 'react-icons/md'
 import { FaRegTrashAlt } from 'react-icons/fa'
+import style from '../Item/Item.module.css';
 
 export default function Item({ id, name, image, price, stock, handleItem, newDel }) {
     const dispatch = useDispatch()
     let beer = JSON.parse(localStorage.getItem("carrito")).filter(e => e.id === id)
     let cantidad = beer[0].cant
     const [cant, setCant] = useState(cantidad); // estado local
-    console.log(stock)
+    const finalPrice = price * (cantidad ? cantidad : 1);
+    const total2 = finalPrice.toFixed(2)
 
     function handlePrice(e, op) {
         if (cant + 1 > stock && op === "sum") {
@@ -30,21 +32,19 @@ export default function Item({ id, name, image, price, stock, handleItem, newDel
 
     return (
         <div>
-            <div >
-                <img src={image} alt={name} width='15%' height='15%' />
-                <div>
-                    <h4>{name}</h4>
+            <div className={style.item}>
+                <img src={image} alt={name} />
+                <h4 className={style.h4}>{name}</h4>
+                <div className={style.box}>
+                    <p className={style.p}>${price}</p>
+                    <div className={style.amount2}>
+                        <button  onClick={e => handlePrice(e, "men")}><AiOutlineMinus size={30} /></button>
+                        <input type="number" value={cantidad} readOnly id="" />
+                        <button  onClick={e => handlePrice(e, "sum")}><MdOutlineAdd size={30} /></button>
+                    </div>
+                    <p className={style.p2}>${total2}</p>
                 </div>
-            </div>
-            <div>
-                <p>${price}</p>
-                <div>
-                    <button className='icon' onClick={e => handlePrice(e, "men")}><AiOutlineMinus size={20} /></button>
-                    <input type="number" value={cantidad} readOnly id="" />
-                    <button className='icon' onClick={e => handlePrice(e, "sum")}><MdOutlineAdd size={20} /></button>
-                </div>
-                <p>${price * (cantidad ? cantidad : 1)}</p>
-                <button onClick={handleDelete}><FaRegTrashAlt size={30} /></button>
+                <button className={style.trash} onClick={handleDelete}><FaRegTrashAlt size={30} /></button>
             </div>
         </div>
     )

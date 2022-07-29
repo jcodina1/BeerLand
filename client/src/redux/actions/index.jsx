@@ -38,6 +38,7 @@ import {
   GET_COMMENTS_BEER,
   POST_COMMENT,
   COMMENTS,
+  GET_FAV,
 } from "../const";
 
 export function addToCart(id) {
@@ -233,7 +234,6 @@ export function postSeller(payload) {
 }
 
 export function postFavs(obj) {
-  // console.log(obj);
   return async function (dispatch) {
     try {
       const response = await axios.post(FAVS, obj);
@@ -307,6 +307,15 @@ export function getCommentsBeer(idBeer) {
     return dispatch({
       type: GET_COMMENTS_BEER,
       payload: commentBeer.data,
+    });
+  };
+}
+export function getFavDetail(id) {
+  return async function (dispatch) {
+    const Fav = await axios.get(GET_FAV + id);
+    return dispatch({
+      type: "GET_FAV_DETAIL",
+      payload: Fav.data,
     });
   };
 }
