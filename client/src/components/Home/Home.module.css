@@ -1,17 +1,36 @@
-.homeContainer{
+.navbar{
+    margin: 3% 8% 2% 2%;
+    background-color: rgb(253, 249, 243);
     height: fit-content;
     width: 100%;
-    flex: inherit;
+    background-size: inherit;
+    display: flex;
     flex-direction: column;
-    padding: 0, 400px, 0, 400px ;
-    background-color: rgb(253, 249, 243);
+    min-height: 100%;
+    width: 100%;
+
+
+}
+.homeContainer{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px, 400px, 0, 400px ;
+   /*  background-color: rgb(253, 249, 243); */
+    align-items: center;
+    align-content: center;
+   
 }
 .beerBox{
-    padding-top:150px;
-    padding: 150px 100px 0 100px; 
+    padding: 80px 100px 0 100px; 
     /* background-color: aqua; */
 }
 .paginate{
     margin: 100px 0 10px 0;
-    background-color: brown;
+    
 }
+.footer{
+    margin-top: 8%;
+}
+
