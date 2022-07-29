@@ -4,6 +4,11 @@
     align-items: center;
 }
 
+.item img{
+    width: 10%;
+    height: 10%;
+}
+
 .trash{
     border: 2px solid rgb(26, 77, 46);
     position: absolute;
