@@ -9,3 +9,83 @@
   flex-direction: row;
   justify-content: center;
 }
+
+.logo {
+  height: 4rem;
+  width: 7rem;
+  position: absolute;
+  top: 10%;
+  margin-left: -38rem;
+}
+
+.cartContainer{
+  /* background-image: url("C:\Users\JP\Documents\GitHub\BeerLand\client\src\img\muro.jpg"); */
+  background-color: rgb(245, 230, 230) ;
+  background-size: cover;
+  position: absolute; 
+  background-attachment: fixed;
+  overflow-y:hidden;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.header{
+  background-color: rgba(255, 159, 41, 0.80);
+  height: 5rem;
+  width: 80rem;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.h1{
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.keep{
+  padding-top: 5px;
+  background-color: rgb(21, 55, 16);
+  color: bisque;
+  font-size: 25px;
+  font-weight: bold;
+  width: 220px;
+  height: 50px;
+  border-radius: 20px;
+  margin-left: 1020px;
+  margin-top: -65px;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.cart{
+  background-color: rgba(250, 243, 227, 0.80);;
+  height: auto;
+  width: 80rem;
+  border-radius: 20px;
+  position: relative;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 10px 20px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.items{
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout{
+  height:5rem;
+  width: 15rem;
+  margin: 100px -340px 10px ;
+}
