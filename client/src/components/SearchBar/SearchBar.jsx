@@ -31,34 +31,41 @@ export default function SearchBar() {
   }
 
   return (
+
     <div className={style.searchBox}>
-      <div>
+      <div className={style.complete}>
         <input className={style.searchTxt} type="text" value={value} onChange={onChange} />
+
+        <div className={style.autocomplete}>
+          {allBeersx2?.filter((item) => {
+            const searchTerm = value.toLowerCase();
+            const beerName = item.name.toLowerCase();
+            return (
+              searchTerm &&
+              beerName.startsWith(searchTerm) &&      //no termino de entender esto!
+              beerName !== searchTerm
+            );
+          })
+            .slice(0, 3)
+            .map((item) => (
+              <li
+                onClick={() => onSearch2(item.name)}
+                key={item.name}
+              >
+                {item.name}
+              </li>
+            ))}
+        </div>
+
       </div>
-      <div>
+      <div className={style.buttonsAlign}>
         <button className={style.searchBtn} onClick={() => onSearch(value)}></button>
+        <button className={style.cleanBtn} onClick={handleBack}>Clear</button>
       </div>
-      <div>
-        {allBeersx2?.filter((item) => {
-          const searchTerm = value.toLowerCase();
-          const beerName = item.name.toLowerCase();
-          return (
-            searchTerm &&
-            beerName.startsWith(searchTerm) &&      //no termino de entender esto!
-            beerName !== searchTerm
-          );
-        })
-          .slice(0, 3)
-          .map((item) => (
-            <li
-              onClick={() => onSearch2(item.name)}
-              key={item.name}
-            >
-              {item.name}
-            </li>
-          ))}
-      </div>
-      <button className={style.cleanBtn} onClick={handleBack}>Clear</button>
+
     </div>
+
+
+
   );
 }

@@ -8,7 +8,7 @@
 .card{
 	position: relative;
 	width: 600px;
-	height: 350px;
+	height: 400px;
 	/* background: blue; */
 	border-radius: 20px;
 	display: flex;
@@ -55,6 +55,7 @@
 .card:hover img{
 	left: 75%;
 	height: 700px;
+	width: 580px;
 		
 }
 .card .content{
@@ -80,7 +81,7 @@
 	text-transform: uppercase;
 	font-size: 2.1em;
 	line-height: 1em;
-	margin-bottom: 10px; 
+	/* margin-bottom: 10px;  */
 	font-family: 'Trebuchet MS', sans-serif;
 	font-weight: 700;
 		
@@ -117,7 +118,7 @@
 	background-color: blueviolet;
 	color: yellow;
 	z-index: 4;
-	margin-top: 20px;
+	margin-top: 25px;
 }
 
 
