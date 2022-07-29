@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateBeer } from "../../redux/actions";
 
 
-export default function UpdateBeer(){
+export default function UpdateBeer() {
   const dispatch = useDispatch();
   const detail = useSelector(state => state.detail);
   const [currentDetail, setCurrentDetail] = useState({
@@ -14,7 +14,8 @@ export default function UpdateBeer(){
     image: detail.image,
     price: detail.price,
     description: detail.description,
-    stock: detail.stock});
+    stock: detail.stock
+  });
   const [sentForm, changeSentForm] = useState(false);
   // const [input, setInput] = useState({
   //   name: "",
@@ -110,7 +111,7 @@ export default function UpdateBeer(){
               <div>
                 <label htmlFor="price">Previous price: ${currentDetail.price}</label>
                 <label htmlFor="price">Current price: </label>
-                <Field type="number" id="price" name="price" min='1'/>
+                <Field type="number" id="price" name="price" min='1' />
                 <ErrorMessage
                   name="price"
                   component={() => (
@@ -120,9 +121,9 @@ export default function UpdateBeer(){
               </div>
 
               <div>
-              <label htmlFor="stock">Previous stock: {currentDetail.stock}</label>
+                <label htmlFor="stock">Previous stock: {currentDetail.stock}</label>
                 <label htmlFor="stock">Current stock: </label>
-                <Field type="number" id="stock" name="stock" min='1' max='4000000'/>
+                <Field type="number" id="stock" name="stock" min='1' max='4000000' />
                 <ErrorMessage
                   name="stock"
                   component={() => (

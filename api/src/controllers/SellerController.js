@@ -2,11 +2,11 @@ const axios = require("axios");
 const { Seller, Beer } = require("../db.js");
 
 async function postSellers(req, res, next) {
-  const {name, description, mail, dni } = req.body;
+  const { name, description, mail, dni } = req.body;
   try {
 
     let newSeller = await Seller.findOrCreate({
-      where: {       
+      where: {
         name: name,
         description: description,
         mail: mail,
