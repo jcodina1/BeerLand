@@ -9,7 +9,7 @@ export default function Itemscheckout({ name, image, price, cant }) {
           <div>
             <h4>{name}</h4>
             <p>Quantity: {cant}</p>
-            <p>Price per unit: ${price/cant}</p>
+            <p>Price per unit: ${price / cant}</p>
           </div>
         </div>
         <div className="prices">

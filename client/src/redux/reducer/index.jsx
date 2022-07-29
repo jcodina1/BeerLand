@@ -20,6 +20,11 @@ import {
   GET_SELLERS,
   POST_SELLER,
   POST_FAVS,
+  GET_USER,
+  ALL_USERS,
+  DELETE_FAVS,
+  GET_BREWERY_DETAIL,
+  GET_FAV_DETAIL
 } from "../const";
 
 const initialState = {
@@ -28,6 +33,7 @@ const initialState = {
   allBeers: [],
   detail: {},
   allSellers: [],
+  breweryDetail: [],
   userType: [],
   type: [],
   page: 1,
@@ -36,10 +42,9 @@ const initialState = {
   infoBeers: [],
   infoSoldBeers: [],
   totalPrice: 0,
-  user: {},
+  user: [],
   sellers: [],
   favs: [],
-
 };
 
 function Reducer(state = initialState, action) {
@@ -200,7 +205,12 @@ function Reducer(state = initialState, action) {
     case POST_FAVS:
       return {
         ...state,
-        favs: action.payload,
+      };
+
+    case DELETE_FAVS:
+      return {
+        ...state,
+        favs:action.payload
       };
 
     case GET_SELLERS:
@@ -209,6 +219,29 @@ function Reducer(state = initialState, action) {
         allSellers: action.payload,
         sellers: action.payload,
       };
+    case ALL_USERS:
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case ALL_USERS:
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    case GET_BREWERY_DETAIL:
+      return {
+        ...state,
+        breweryDetail: action.payload,
+      }
+
+      case GET_FAV_DETAIL:
+      return{
+        ...state,
+        favs: action.payload,
+      }
 
     default:
       return { ...state };

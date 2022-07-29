@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from "react";
 import style from '../Cart/Cart.module.css';
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux'
-import { removeAllFromCart, getCart, totalPrice, infoBeers, addToCart } from '../../redux/actions/index';
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeAllFromCart,
+  getCart,
+  totalPrice,
+  infoBeers,
+  addToCart,
+} from "../../redux/actions/index";
 import Item from "../Item/Item.jsx";
 import Footer from '../Footer/Footer.jsx'
 import BeerLogo from "../../img/BeerLogo.png";
 
 export default function Cart() {
-  const [checkout, setCheckout] = useState(false)
-  const cantidad = Math.floor(Math.random() * 15) + 1
+  const [checkout, setCheckout] = useState(false);
+  const cantidad = Math.floor(Math.random() * 15) + 1;
+
   const dispatch = useDispatch();
   const beerCarts = useSelector((state) => state.cart);
-  let localstorage = JSON.parse(localStorage.getItem("carrito"))
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('carrito')));
+  let localstorage = JSON.parse(localStorage.getItem("carrito"));
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("carrito"))
+  );
   const [del, setDel] = useState(true);
   const [add, setAdd] = useState(false);
 
@@ -45,6 +54,7 @@ export default function Cart() {
       return e;
     });
     localStorage.setItem("carrito", JSON.stringify(newBeers))
+    localStorage.setItem("carrito", JSON.stringify(newBeers));
     setItems(newBeers);
     let total = 0;
     newBeers.forEach((e) => {
@@ -54,28 +64,27 @@ export default function Cart() {
     return total;     
   }
 
-/*   function handleAddItems() {
+  /*   function handleAddItems() {
     let newItems = localstorage?.map((e) => e?.total);
     let firstItems = localstorage?.map((e) => e.price);
     console.log("first item", firstItems)
     console.log("new item", newItems)
 
     if (firstItems.length) {
-      let totalPrice = firstItems?.reduce(function (a, b) {
+      let priceTotal = firstItems?.reduce(function (a, b) {
         return a + b;
       }, 0);
       let beerInfo = localstorage;
-      dispatch(totalPrice(totalPrice));
+      dispatch(totalPrice(priceTotal));
       dispatch(infoBeers(beerInfo));
 
     } else {
-      let totalPrices = newItems?.reduce(function (a, b) {
+      let pricesTotal = newItems?.reduce(function (a, b) {
         return a + b;
       }, 0);
       let beerInfo = localstorage;
-      dispatch(totalPrice(totalPrices));
+      dispatch(totalPrice(pricesTotal));
       dispatch(infoBeers(beerInfo));
-
     }
     let precio = localstorage.map((e) => e.cant * e.price);
     let preciototal = precio.reduce(function (a, b) {
@@ -90,7 +99,7 @@ export default function Cart() {
       return a + b;
     }, 0);
   } */
-  
+
   return (
       <div className={style.cartContainer}>
         <div className={style.header}>
@@ -136,4 +145,3 @@ export default function Cart() {
       </div >
   );
 }
-

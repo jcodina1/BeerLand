@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { getScore, postScore} = require('../controllers/ScoreController');
+const { getScore, postScore } = require('../controllers/ScoreController');
 
 const router = Router();
 
