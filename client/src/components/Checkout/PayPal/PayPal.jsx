@@ -2,7 +2,12 @@ import React from "react";
 import Swal from "sweetalert2";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function Paypal({ precioTotal, userId }) {
+export default function Paypal({
+  precioTotal,
+  userId,
+  sellerId,
+  purchaseDetails,
+}) {
   return (
     <div>
       <PayPalScriptProvider
@@ -28,11 +33,16 @@ export default function Paypal({ precioTotal, userId }) {
           }}
           onApprove={async (data, actions) => {
             const order = await actions.order.capture();
+            console.log(order);
             Swal.fire("Payment successful!", "Enjoy your beer");
             const purchaseInfo = {
               data: data,
               totalPrice: precioTotal,
               userId: userId,
+              sellerId: sellerId,
+              paymentMethod: data.paymentSource,
+              purchaseDetails: purchaseDetails,
+              status: "PENDING",
             };
             console.log(purchaseInfo);
           }}
@@ -41,3 +51,9 @@ export default function Paypal({ precioTotal, userId }) {
     </div>
   );
 }
+
+//      beerQuantityExample = {
+//             'id1' : [cantidad,precio]
+//                   ...
+//             'idN' : [cantidad,precio]
+//               }

@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       purchaseDetail: {
         type: DataTypes.JSONB,
       },
-      totalValue: {
+      totalPrice: {
         type: DataTypes.INTEGER,
       },
       paymentMethod: {
@@ -28,6 +28,9 @@ module.exports = (sequelize) => {
       },
       delivery: {
         type: DataTypes.BOOLEAN,
+      },
+      status: {
+        type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
       },
     },
 

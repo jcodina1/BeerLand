@@ -54,26 +54,15 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
-<<<<<<< HEAD
-      <SortByName setOrder={setOrder} />
-      <FilterByBrewery />
-      <FilterByType />
-      <SortByPrice setOrder={setOrder} />
-      <Pagination
-        page={page}
-        paginate={paginate}
-        limitPage={limitPage}
-        firstPrevControl={firstPrevControl}
-        nextLastControl={nextLastControl}
-      />
-=======
-     
       <div className={style.filters}>
-        <div className={style.distribution}><SortByName setOrder={setOrder} /></div>
+        <div className={style.distribution}>
+          <SortByName setOrder={setOrder} />
+        </div>
         {/* <FilterByBrewery /> */}
-        <div className={style.distribution}><SortByPrice setOrder={setOrder} /></div>
+        <div className={style.distribution}>
+          <SortByPrice setOrder={setOrder} />
+        </div>
       </div>
->>>>>>> origin/develop
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (
