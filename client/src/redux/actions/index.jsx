@@ -319,3 +319,13 @@ export function getFavDetail(id) {
     });
   };
 }
+
+export function postPurchase(purchaseInfo) {
+  return async function (dispatch) {
+    try {
+      await axios.post();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

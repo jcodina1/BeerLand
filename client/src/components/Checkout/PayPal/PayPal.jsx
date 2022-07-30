@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function Paypal({
   precioTotal,
-  currentUser,
+  userId,
   sellerIds,
   purchaseDetails,
 }) {
-  console.log(currentUser);
-  let userId = 1;
+  const [approved, setApproved] = useState(false);
+
+  if (approved === true) {
+    const purchaseInfo = {
+      totalPrice: precioTotal,
+      userId: userId,
+      sellerIds: sellerIds,
+      purchaseDetails: purchaseDetails,
+      status: "PENDING",
+    };
+    console.log(purchaseInfo);
+
+    setApproved(false);
+  }
 
   return (
     <div>
@@ -36,18 +48,8 @@ export default function Paypal({
           }}
           onApprove={async (data, actions) => {
             const order = await actions.order.capture();
-            console.log(userId);
+            setApproved(true);
             Swal.fire("Payment successful!", "Enjoy your beer");
-            const purchaseInfo = {
-              data: data,
-              totalPrice: precioTotal,
-              userId: userId,
-              sellerIds: sellerIds,
-              paymentMethod: data.paymentSource,
-              purchaseDetails: purchaseDetails,
-              status: "PENDING",
-            };
-            console.log(purchaseInfo);
           }}
         />
       </PayPalScriptProvider>
