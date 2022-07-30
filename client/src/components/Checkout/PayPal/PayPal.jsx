@@ -19,7 +19,6 @@ export default function Paypal({
       status: "PENDING",
     };
     console.log(purchaseInfo);
-
     setApproved(false);
   }
 
