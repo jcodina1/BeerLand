@@ -23,12 +23,6 @@ module.exports = (sequelize) => {
       totalPrice: {
         type: DataTypes.INTEGER,
       },
-      paymentMethod: {
-        type: DataTypes.STRING,
-      },
-      delivery: {
-        type: DataTypes.BOOLEAN,
-      },
       status: {
         type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
       },
@@ -39,7 +33,7 @@ module.exports = (sequelize) => {
 };
 
 //      beerQuantityExample = {
-//             'id1' : [cantidad,precio]
+//             'id1' : [cantidad,precio_unitario]
 //                   ...
-//             'idN' : [cantidad,precio]
+//             'idN' : [cantidad,precio_unitario]
 //               }

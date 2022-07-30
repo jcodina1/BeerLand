@@ -43,11 +43,15 @@ export default function Checkout() {
   // console.log(user.id);
 
   let currentUser = [];
+  const userId = [];
   if (user !== null) {
     currentUser = users.filter((u) => u.email === user.email);
+    userId.push(currentUser[0].id);
   }
+
   console.log(currentUser);
-  console.log(checkoutinfo);
+  console.log(userId);
+
   const purchaseDetails = {};
   const sellerIds = [];
   checkoutinfo.forEach((beer) => {
@@ -55,8 +59,6 @@ export default function Checkout() {
     sellerIds.push(beer.sellerId);
   });
   console.log(purchaseDetails);
-  console.log(sellerIds);
-
   return (
     <div className="checkout">
       <div className="checkoutCont">
@@ -76,7 +78,7 @@ export default function Checkout() {
           <h3>Total: ${precioTotal} </h3>
           <div className="paypal">
             <Paypal
-              currentUser={currentUser}
+              userId={userId}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
               sellerIds={sellerIds}
