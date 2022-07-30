@@ -24,3 +24,21 @@
     direction: flex;
     flex-direction: row
 }
+
+.itemBeer{
+    display: flex;
+    flex-direction: row;
+}
+
+.itemBeer img{
+    width: 30%;
+    height: 30%;
+}
+
+.itemContainer{
+    width: 40%;
+    height: 40%;
+    padding: 20px;
+    border: solid red 2px;
+    justify-content: space-evenly;
+}
