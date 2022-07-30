@@ -63,7 +63,6 @@ export default function PostBeer() {
             dispatch(postBeer(values));
             changeSentForm(true);
             setTimeout(() => changeSentForm(false), 5000);
-            console.log(values);
           }}
         >
           {({

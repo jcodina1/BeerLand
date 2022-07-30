@@ -6,23 +6,19 @@ import { getCommentsBeer, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
 import styles from "./styles.module.css";
 export function Comment() {
-
-  const i = useSelector(state => state.detail.id)
-  const comments = useSelector(state => state.comments)
-  const { user } = useAuth()
-  const user2 = useSelector(state => state.user)
+  const i = useSelector((state) => state.detail.id);
+  const comments = useSelector((state) => state.comments);
+  const { user } = useAuth();
+  const user2 = useSelector((state) => state.user);
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
   }
 
-
-
-  console.log(user2);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUser())
-    dispatch(getCommentsBeer(1))
-  }, [dispatch])
+    dispatch(getUser());
+    dispatch(getCommentsBeer(1));
+  }, [dispatch]);
 
   return (
     <div>
@@ -36,8 +32,9 @@ export function Comment() {
         <div className={styles.commentsContainer}>
           <h4>Comments:</h4>
           {
-           <div><p>{}</p></div>
-
+            <div>
+              <p>{}</p>
+            </div>
           }
         </div>
       </div>

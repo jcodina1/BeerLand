@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBeers } from "../../redux/actions";
+import { getAllBeers, getAllSellers } from "../../redux/actions";
 import style from "../ShowBeers/ShowBeers.module.css";
 import Loading from "../Loading/Loading";
 import BeerCard from "../BeerCard/BeerCard";
@@ -35,6 +35,8 @@ export default function ShowBeers() {
   // pageControl realiza el control del paginado, recibe la información del evento y renderiza mediante el componente Paginated.
   // setea las páginas segun el botón clickeado.
 
+  console.log(allBeers);
+
   const paginate = (e, pageNumber) => {
     if (pageNumber === "next" && page + 1 <= limitPage) {
       dispatch(setPage(page + 1));
@@ -49,8 +51,9 @@ export default function ShowBeers() {
   useEffect(() => {
     if (!allBeers1.length) {
       dispatch(getAllBeers());
+      dispatch(getAllSellers());
     }
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className={style.showBeers}>
@@ -58,9 +61,14 @@ export default function ShowBeers() {
         <div className={style.distribution}>
           <SortByName setOrder={setOrder} />
         </div>
-        {/* <FilterByBrewery /> */}
+        <div className={style.distribution}>
+          <FilterByBrewery />
+        </div>
         <div className={style.distribution}>
           <SortByPrice setOrder={setOrder} />
+        </div>
+        <div className={style.distribution}>
+          <FilterByType />
         </div>
       </div>
       <div className={style.cardsContainer}>

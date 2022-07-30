@@ -12,7 +12,6 @@ export default function FilterByType() {
 
   function handleChange(e) {
     e.preventDefault();
-    console.log(e.target.value);
     dispatch(action.filterBeersByType(e.target.value));
     dispatch(action.setPage(1));
   }
