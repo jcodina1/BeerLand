@@ -25,6 +25,7 @@ async function postUser(req, res, next) {
         rol: rol,
       },
     });
+    
 
     return res.json(newUser);
   } catch (error) {
@@ -87,7 +88,6 @@ async function Favorites(req, res, next) {
   } catch (error) {
     next(error)
   }
-
 }
 
 async function getUserFav(req, res, next) {

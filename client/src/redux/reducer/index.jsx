@@ -24,7 +24,8 @@ import {
   ALL_USERS,
   DELETE_FAVS,
   GET_BREWERY_DETAIL,
-  GET_FAV_DETAIL
+  GET_FAV_DETAIL,
+  POST_SCORE
 } from "../const";
 
 const initialState = {
@@ -242,6 +243,12 @@ function Reducer(state = initialState, action) {
         ...state,
         favs: action.payload,
       }
+
+      case POST_SCORE:
+        return {
+          ...state,
+        };
+  
 
     default:
       return { ...state };
