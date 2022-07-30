@@ -19,6 +19,7 @@ export const GET_FAV = '/user/fav/beer/'
 export const POST_SCORE="/score"
 
 
+
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
 export const SET_DETAILS = "SET_DETAILS";

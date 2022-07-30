@@ -311,10 +311,10 @@ export function getFavDetail(id) {
   return async function (dispatch) {
     const Fav = await axios.get(GET_FAV + id);
     return dispatch({
-      type: 'GET_FAV_DETAIL',
+      type: "GET_FAV_DETAIL",
       payload: Fav.data,
-    })
-  }
+    });
+  };
 }
 
 export function postScore(obj) {
@@ -323,6 +323,7 @@ export function postScore(obj) {
     try {
       const response = await axios.post(POST_SCORE,obj);
       return dispatch({ type: 'POST_SCORE', payload: response.data });
+
     } catch (error) {
       console.log(error);
     }
@@ -335,3 +336,7 @@ export async function helpCallScores(url) {
   });
 }
 
+// export function postPurchase(purchaseInfo) {
+//   return async function (dispatch) {
+//     try {
+//       await axios.post();

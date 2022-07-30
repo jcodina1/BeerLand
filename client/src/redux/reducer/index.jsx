@@ -264,7 +264,7 @@ function Reducer(state = initialState, action) {
     case DELETE_FAVS:
       return {
         ...state,
-        favs:action.payload
+        favs: action.payload,
       };
 
     case GET_SELLERS:
@@ -295,11 +295,11 @@ function Reducer(state = initialState, action) {
         }
       
 
-      case GET_FAV_DETAIL:
-      return{
+    case GET_FAV_DETAIL:
+      return {
         ...state,
         favs: action.payload,
-      }
+      };
 
       case POST_SCORE:
         return {

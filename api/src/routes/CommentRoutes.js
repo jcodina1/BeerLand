@@ -13,7 +13,6 @@ const router = Router();
 router.post("/beer/:beerId", postComment);
 router.get("/", getAllComment);
 router.get("/:id", getComment);
-router.get("/beer/:beer",getAllCommentBeer)
 router.get("/:user", getAllCommentUser);
 
 module.exports = router;
