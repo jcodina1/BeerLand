@@ -2,9 +2,12 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCommentsBeer, getUser } from "../../redux/actions";
+import { getCommentsBeer, getUser, postComment } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
 import styles from "./styles.module.css";
+import InputEmoji from "react-input-emoji";
+
+
 export function Comment() {
 
   const i = useSelector(state => state.detail.id)
@@ -17,29 +20,42 @@ export function Comment() {
 
 
 
-  console.log(user2);
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getUser())
     dispatch(getCommentsBeer(1))
   }, [dispatch])
 
+  const [text, setText] = useState("");
+
+  function handleOnEnter(text) {
+    dispatch(postComment(text,))
+  }
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.commentsform}>
         <div className={styles.input}>
-          <input />
+        <InputEmoji
+      value={text}
+      onChange={setText}
+      cleanOnEnter
+      onEnter={handleOnEnter}
+      placeholder="Type a message"
+    />
         </div>
         <div className={styles.button}>
-          <button onClick="handlesubmit">Submit Comment</button>
+          <button onClick="handlesubmit">Send</button>
         </div>
-        <div className={styles.commentsContainer}>
-          <h4>Comments:</h4>
-          {
-           <div><p>{}</p></div>
-
-          }
-        </div>
+      </div>
+      <div className={styles.commentsContainer}>
+        <h4>Comments:</h4>
+        {
+          <div className={styles.comment}>{comments.map(e =>
+            <div key={e.id} >
+              <h5>{e.user.name}</h5>
+              <p>{e.comment}</p>
+            </div>)}
+          </div>
+        }
       </div>
     </div>
   );

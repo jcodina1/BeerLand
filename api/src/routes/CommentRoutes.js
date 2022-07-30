@@ -10,7 +10,7 @@ const {
 
 const router = Router();
 
-router.post("/", postComment);
+router.post("/beer/:beerId", postComment);
 router.get("/", getAllComment);
 router.get("/:id", getComment);
 router.get("/beer/:beer",getAllCommentBeer)

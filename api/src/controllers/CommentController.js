@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
-const { Beer, Seller, Comment } = require("../db.js");
+const { Beer, Seller, Comment,User } = require("../db.js");
 
 async function getComment(req, res, next) {
   const { id } = req.params;
@@ -15,7 +15,7 @@ async function getComment(req, res, next) {
 async function getAllCommentBeer(req, res, next) {
   const { beer } = req.params;
   try {
-    let comments = await Comment.findAll({ where: { beerId: beer } });
+    let comments = await Comment.findAll({ where: { beerId: beer },include:User });
     res.send(comments);
   } catch (error) {
     next();
@@ -42,7 +42,8 @@ async function getAllComment(req, res, next) {
 }
 
 async function postComment(req, res, next) {
-  const { comment, userId, beerId } = req.body;
+  const{ beerId}=req.params
+  const { comment, userId } = req.body;
 
   try {
     let [newComment, create] = await Comment.findOrCreate({
@@ -53,9 +54,9 @@ async function postComment(req, res, next) {
       },
     });
     if (!create) {
-      return res.json(newComment);
-    } else {
       res.status(200).send("El comentario ya esta");
+    } else {
+      return res.json(newComment);
     }
   } catch (error) {
     next(error);
