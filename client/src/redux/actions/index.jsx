@@ -286,18 +286,14 @@ export async function helpCall(url) {
   });
 }
 
-export async function postComment(comment) {
+export function postComment(obj,id) {
+  console.log(obj)
   return async function (dispatch) {
     try {
-      await axios.post(COMMENTS, comment);
-      return dispatch({
-        type: POST_COMMENT,
-        payload: comment,
-      });
+      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
+      return dispatch({ type: 'POST_SCORE', payload: response.data });
     } catch (error) {
-      if (error.response) {
-        return alert(error.response.data);
-      }
+      console.log(error);
     }
   };
 }

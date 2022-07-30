@@ -74,7 +74,7 @@ export default function BeerDetail(props) {
                 
           </div>
         )}
-      <Comment/>
+      <Comment id={id}/>
       </div>
     </div>
   );

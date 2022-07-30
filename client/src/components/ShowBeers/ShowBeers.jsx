@@ -59,6 +59,7 @@ export default function ShowBeers() {
         <div className={style.distribution}><SortByName setOrder={setOrder} /></div>
         {/* <FilterByBrewery /> */}
         <div className={style.distribution}><SortByPrice setOrder={setOrder} /></div>
+        
       </div>
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>

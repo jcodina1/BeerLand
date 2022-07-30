@@ -89,7 +89,7 @@ const Star = ({id}) => {
             const ratingValue = i + 1;
 
             return (
-                <div>
+                <div key={i}>
                 <label>
                     <input
                         type="radio"

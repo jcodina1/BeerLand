@@ -13,7 +13,6 @@ export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
 
 export const COMMENTS = "/comment";
-export const POST_COMMENT = "POST_COMMENT";
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
 export const GET_FAV = '/user/fav/beer/'
@@ -59,5 +58,5 @@ export const DELETE_FAVS = "DELETE_FAVS";
 export const ALL_USERS = "ALL_USERS";
 export const GET_COMMENTS_BEER = "GET_COMMENTS_BEER";
 export const GET_FAV_DETAIL = 'GET_FAV_DETAIL'
-export const ALL_COMMENT=""
+export const POST_COMMENT = "POST_COMMENT";
 
