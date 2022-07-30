@@ -13,6 +13,7 @@ export const FAVS = "/user/fav";
 export const GET_USER = "/user";
 export const GET_FAV = '/user/fav/beer/'
 export const COMMENTS="/comment"
+export const POST_SCORE="/score"
 
 
 export const SEARCH_BAR = "SEARCH_BAR";
