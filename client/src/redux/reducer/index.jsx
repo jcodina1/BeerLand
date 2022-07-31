@@ -54,6 +54,7 @@ const initialState = {
   favs: [],
   comments: [],
   allPurchases: [],
+  
 };
 
 function Reducer(state = initialState, action) {
@@ -218,6 +219,7 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeersByBrewery,
         filterPlaceholder: filteredBeersByBrewery,
+        
       };
 
     case FILTER_BEER_BY_TYPE:
