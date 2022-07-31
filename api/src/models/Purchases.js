@@ -11,9 +11,6 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },     
-      purchaseDetail: {
-        type: DataTypes.JSONB,
-      },
       totalPrice: {
         type: DataTypes.INTEGER,
       },
