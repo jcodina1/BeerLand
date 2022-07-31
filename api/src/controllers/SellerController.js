@@ -85,9 +85,19 @@ async function getAllSellers2(req, res, next) {
     next(error);
   }
 }
+async function getAllSellersId(req, res, next) {
+  try {
+    const {id}=req.params
+  const sellersDb = await Seller.findByPk(id);
+  res.send(sellersDb)
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   getAllSellers,
   postSellers,
   getAllSellers2,
+  getAllSellersId
 };

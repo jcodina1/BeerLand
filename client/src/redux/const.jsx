@@ -5,7 +5,7 @@ export const ALL_SELLERS = "/sellers";
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
 // export const ALL_STYLES = '/temperaments';
-export const SELLERS_ID = "/sellers/id";
+export const SELLERS_ID = "/seller/";
 export const ALL_NAME = "/beer?name=";
 export const POST_BEER = "/beer";
 export const POST_USER = "/user";
