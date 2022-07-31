@@ -1,26 +1,16 @@
 import Paypal from "./PayPal/PayPal";
 import React from "react";
-import ReactDOM from "react-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
-import {
-  getCart,
-  infoBeers,
-  infoSoldBeers,
-  totalPrice,
-  getUser,
-} from "../../redux/actions";
-import { useHistory } from "react-router-dom";
+import { getCart, getUser } from "../../redux/actions";
+
 import { useAuth } from "../Context/Contestautenticacion";
-import Login from "../Login/login2";
-import style from "./styles.module.css";
-import Swal from "sweetalert2";
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const infoBeer = useSelector((state) => state.infoBeers);
+
   const checkoutinfo = JSON.parse(localStorage.getItem("carrito"));
   let precio = checkoutinfo.map((e) => e.cant * e.price);
   let users = useSelector((state) => state.user);
@@ -30,35 +20,27 @@ export default function Checkout() {
     return a + b;
   }, 0);
   precioTotal = Number(precioTotal.toFixed(2));
-  const history = useHistory();
 
   useEffect(() => {
     dispatch(getUser());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
 
-  // console.log(user.id);
-
   let currentUser = [];
-  const userId = [];
+  let userId;
   if (user !== null) {
     currentUser = users.filter((u) => u.email === user.email);
-    userId.push(currentUser[0].id);
+    userId = currentUser[0].id;
   }
 
-  console.log(currentUser);
-  console.log(userId);
-
-  const purchaseDetails = {};
-  const sellerIds = [];
+  const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails[`${beer.id}`] = [beer.cant, beer.price];
-    sellerIds.push(beer.sellerId);
+    purchaseDetails.push(beer.id);
   });
-  console.log(purchaseDetails);
+
   return (
     <div className="checkout">
       <div className="checkoutCont">
@@ -81,7 +63,6 @@ export default function Checkout() {
               userId={userId}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
-              sellerIds={sellerIds}
             />
           </div>
         </div>

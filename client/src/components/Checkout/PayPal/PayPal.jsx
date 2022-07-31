@@ -3,13 +3,9 @@ import Swal from "sweetalert2";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from 'react-router-dom';
 
-export default function Paypal({
-  precioTotal,
-  userId,
-  sellerIds,
-  purchaseDetails,
-}) {
-  
+
+export default function Paypal({ precioTotal, userId, purchaseDetails }) {
+
   const [approved, setApproved] = useState(false);
   const nav = useHistory();
   function navigateToHome(){
@@ -21,7 +17,6 @@ export default function Paypal({
     const purchaseInfo = {
       totalPrice: precioTotal,
       userId: userId,
-      sellerIds: sellerIds,
       purchaseDetails: purchaseDetails,
       status: "PENDING",
     };

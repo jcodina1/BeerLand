@@ -67,7 +67,7 @@ function Reducer(state = initialState, action) {
     case GET_ALL_SELLERS:
       return {
         ...state,
-        allBreweries: action.payload,
+        allSellers: action.payload,
       };
 
     case ADD_TO_CART:
@@ -210,8 +210,8 @@ function Reducer(state = initialState, action) {
       const filteredBeersByBrewery =
         action.payload === "All"
           ? preFilteredBeersByBrewery
-          : preFilteredBeersByBrewery.filter((beer) =>
-              beer.brewery.find((brewery) => brewery.name === action.payload)
+          : preFilteredBeersByBrewery.filter(
+              (beer) => parseInt(beer.sellerId) === parseInt(action.payload)
             );
       return {
         ...state,
