@@ -1,17 +1,22 @@
+.navBox{
+    padding: 20% 20% 0 5%;
+}
 .navbar {
-    width: auto;
+    width: 95%;
     max-height: 10vh;
-    min-height: 12vh;
-    background-color: rgb(2, 32, 10);
+    min-height: 10vh;
+    background-color: black;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    position: inherit;
-    margin-bottom: 0px;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 10px;
+    position:absolute;
+    margin-bottom: 30px 30px 0 30px;
+    padding-left: 0%;
+    padding-right: 10%;
+    padding-top: 2px;
+    border-radius: 20px;
+
 }
 
 .space {
@@ -21,12 +26,12 @@
 }
 
 .logo {
-    height: 9vh;
-    width: 250px;
-    background-color: blue;
+    height: 36%;
+    width: 36%;
+   /*  background-color: blue; */
     position: inherit;
     top: 50%;
-    margin-left: 5%;
+    margin-left: -15%;
     margin-right: 80px;
 
 

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchBar, getAllBeers } from '../../redux/actions/index';
 import { useLocalStorege } from '../../Hooks/useLocalStorage';
 import style from '../SearchBar/SearchBar.module.css'
+import { setPage } from '../../redux/actions/index';
 
 
 export default function SearchBar() {
@@ -19,10 +20,13 @@ export default function SearchBar() {
     setValue(searchTerm)
     dispatch(searchBar(value));
     setValue('')
+    dispatch(setPage(1))
+
   };
 
   const onSearch2 = (payload) => {
     dispatch(searchBar(payload));
+    dispatch(setPage(1))
   }
 
   function handleBack() {
@@ -31,34 +35,41 @@ export default function SearchBar() {
   }
 
   return (
+
     <div className={style.searchBox}>
-      <div>
+      <div className={style.complete}>
         <input className={style.searchTxt} type="text" value={value} onChange={onChange} />
+
+        <div className={style.autocomplete}>
+          {allBeersx2?.filter((item) => {
+            const searchTerm = value.toLowerCase();
+            const beerName = item.name.toLowerCase();
+            return (
+              searchTerm &&
+              beerName.startsWith(searchTerm) &&      //no termino de entender esto!
+              beerName !== searchTerm
+            );
+          })
+            .slice(0, 3)
+            .map((item) => (
+              <li
+                onClick={() => onSearch2(item.name)}
+                key={item.name}
+              >
+                {item.name}
+              </li>
+            ))}
+        </div>
+
       </div>
-      <div>
+      <div className={style.buttonsAlign}>
         <button className={style.searchBtn} onClick={() => onSearch(value)}></button>
+        <button className={style.cleanBtn} onClick={handleBack}>Clear</button>
       </div>
-      <div>
-        {allBeersx2?.filter((item) => {
-          const searchTerm = value.toLowerCase();
-          const beerName = item.name.toLowerCase();
-          return (
-            searchTerm &&
-            beerName.startsWith(searchTerm) &&      //no termino de entender esto!
-            beerName !== searchTerm
-          );
-        })
-          .slice(0, 3)
-          .map((item) => (
-            <li
-              onClick={() => onSearch2(item.name)}
-              key={item.name}
-            >
-              {item.name}
-            </li>
-          ))}
-      </div>
-      <button className={style.cleanBtn} onClick={handleBack}>Clear</button>
+
     </div>
+
+
+
   );
 }

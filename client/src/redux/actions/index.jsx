@@ -32,7 +32,8 @@ import {
   GET_USER,
   ALL_USERS,
   SELLERS_ID,
-  GET_FAV
+  GET_FAV,
+  POST_SCORE
 } from "../const";
 
 export function addToCart(id) {
@@ -81,7 +82,7 @@ export function getAllBreweries() {
   return async function (dispatch) {
     let allBreweries = await axios.get("http://localhost:3001/seller");
     return dispatch({
-      type: GET_ALL_BREWERIES,
+      type: GET_SELLERS,
       payload: allBreweries.data,
     });
   };
@@ -259,7 +260,6 @@ export function deleteFavs(idUser, idBeer) {
 export function getUser() {
   return async function (dispatch) {
     let allUser = await axios.get(GET_USER);
-    console.log(allUser);
     return dispatch({
       type: ALL_USERS,
       payload: allUser.data,
@@ -282,5 +282,22 @@ export function getFavDetail(id) {
       payload: Fav.data,
     })
   }
+}
+
+export function postScore(obj) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(POST_SCORE,obj);
+      return dispatch({ type: 'POST_SCORE', payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export async function helpCallScores(url) {
+  return axios.get(`http://localhost:3001${url}`).then((res) => {
+    return res.data;
+  });
 }
 

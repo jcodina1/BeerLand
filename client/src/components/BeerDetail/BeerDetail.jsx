@@ -15,7 +15,6 @@ export default function BeerDetail(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const beer = useSelector((state) => state.detail);
-  console.log(beer);
 
   useEffect(() => {
     dispatch(removeDetail());
@@ -66,7 +65,7 @@ export default function BeerDetail(props) {
                   <span className={style.textBox}>{beer.stock}</span>
                 </p> */}
                 <div>
-                  <Score/>
+                  <Score id={beer.id}/>
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>

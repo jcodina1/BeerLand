@@ -11,16 +11,23 @@ export default function Home() {
   const carga = useSelector(state => state)
 
   return (
-    <div className={style.homeContainer}>
-      <div>
+    <div >
+      <div className={style.navbar}>
         <NavBar />
       </div>
-      <div >
-        <div className={style.beerBox}><ShowBeers /></div>
+
+      <div className={style.homeContainer}>
+
+        <div >
+          <div className={style.beerBox}><ShowBeers /></div>
+        </div>
+        
       </div>
-      <div>
-        <Footer />
-      </div>
+      <div className={style.footer}>
+          <Footer className={style.footer}/>
+        </div>
     </div>
+
+
   );
 }

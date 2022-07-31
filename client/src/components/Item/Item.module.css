@@ -1,0 +1,76 @@
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.item img{
+    width: 10%;
+    height: 10%;
+}
+
+.trash{
+    border: 2px solid rgb(26, 77, 46);
+    position: absolute;
+    margin-left: 1100px;
+    height: 4rem;
+    width: 4rem;
+    background-color: rgb(26, 77, 46);
+    color: rgba(255, 159, 41);
+    border-radius: 50px;
+}
+
+.h4{
+    height: 4rem;
+    width: 18rem;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: rgb(26, 77, 46);
+}
+
+.p{
+    color: rgb(26, 77, 46);
+    font-size: 30px;
+    padding: 20px 20px;
+}
+
+.p2{
+    color: rgb(26, 77, 46);
+    font-size: 40px;
+    padding: 20px 20px;
+    font-weight: bold;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    margin-left: 60px;
+    /* margin-right: 50%; */
+}
+
+.amount2{
+    padding: 20px 20px;
+}
+
+.amount2 button{
+    font-weight: bold;
+    color: rgba(255, 159, 41);
+    background-color: rgb(26, 77, 46);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border : 2px solid rgb(26, 77, 46);
+}
+
+.amount2 input{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 159, 41, 0.20) ;
+    color: rgba(26, 77, 46);
+    height: 3rem;
+    width: 3rem;
+    margin: 0px 10px 0px 10px;
+    border : rgba(255, 159, 41, 0.20) 2px;
+}
