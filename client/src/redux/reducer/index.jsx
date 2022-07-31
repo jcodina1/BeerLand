@@ -32,6 +32,8 @@ import {
   POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
+  POST_PURCHASE,
+  GET_PURCHASES_BY_USER
 } from "../const";
 
 const initialState = {
@@ -54,6 +56,7 @@ const initialState = {
   favs: [],
   comments: [],
   allPurchases: [],
+  userPurchases: []
 };
 
 function Reducer(state = initialState, action) {
@@ -315,6 +318,17 @@ function Reducer(state = initialState, action) {
         allPurchases: action.payload,
       
       };
+
+      case POST_PURCHASE:
+      return {
+        ...state,
+      };
+
+      case GET_PURCHASES_BY_USER:
+        return {
+          ...state,
+          userPurchases: action.payload
+        };
 
     default:
       return { ...state };
