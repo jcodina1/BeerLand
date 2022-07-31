@@ -39,6 +39,8 @@ import {
   POST_COMMENT,
   COMMENTS,
   GET_FAV,
+  ALL_PURCHASES,
+  GET_PURCHASES,
 } from "../const";
 
 export function addToCart(id) {
@@ -327,5 +329,15 @@ export function postPurchase(purchaseInfo) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function getAllPurchases() {
+  return async function (dispatch) {
+    let allPurchases = await axios.get(ALL_PURCHASES);
+    return dispatch({
+      type: GET_PURCHASES,
+      payload: allPurchases.data,
+    });
   };
 }

@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useHistory } from 'react-router-dom';
+
 
 export default function Paypal({ precioTotal, userId, purchaseDetails }) {
+
   const [approved, setApproved] = useState(false);
+  const nav = useHistory();
+  function navigateToHome(){
+    nav.push('/home')
+  }
+
 
   if (approved === true) {
     const purchaseInfo = {
@@ -15,7 +23,6 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
     console.log(purchaseInfo);
     setApproved(false);
   }
-
   return (
     <div>
       <PayPalScriptProvider
@@ -43,8 +50,8 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
             const order = await actions.order.capture();
             setApproved(true);
             Swal.fire("Payment successful!", "Enjoy your beer");
-          }}
-        />
+            navigateToHome()
+          }}/>
       </PayPalScriptProvider>
     </div>
   );

@@ -29,6 +29,8 @@ import {
   POST_COMMENT,
   GET_COMMENTS_BEER,
   GET_FAV_DETAIL,
+  ALL_PURCHASES,
+  GET_PURCHASES,
 } from "../const";
 
 const initialState = {
@@ -50,6 +52,7 @@ const initialState = {
   sellers: [],
   favs: [],
   comments: [],
+  allPurchases: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -298,6 +301,13 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         favs: action.payload,
+      };
+
+    case GET_PURCHASES:
+      return {
+        ...state,
+        allPurchases: action.payload,
+      
       };
 
     default:
