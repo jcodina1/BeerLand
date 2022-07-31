@@ -32,6 +32,8 @@ import {
   POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
+  SELLERBEERS,
+  SET_DETAIL_SELLER
 } from "../const";
 
 const initialState = {
@@ -54,6 +56,7 @@ const initialState = {
   favs: [],
   comments: [],
   allPurchases: [],
+
   
 };
 
@@ -317,6 +320,19 @@ function Reducer(state = initialState, action) {
         allPurchases: action.payload,
       
       };
+     case SELLERBEERS:
+      return{
+        ...state,
+        filterPlaceholder:action.payload
+      }
+
+      case SET_DETAIL_SELLER:
+        return {
+          ...state,
+          breweryDetail: action.payload,
+        };
+
+
 
     default:
       return { ...state };

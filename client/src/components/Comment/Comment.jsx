@@ -48,7 +48,7 @@ export function Comment({id}) {
     
   }
   function handleOnEnter(text) {
-    console.log("enter", text);
+    
     let obj=
       { 
         "comment":text,

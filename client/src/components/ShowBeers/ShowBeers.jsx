@@ -36,7 +36,6 @@ export default function ShowBeers() {
   // pageControl realiza el control del paginado, recibe la información del evento y renderiza mediante el componente Paginated.
   // setea las páginas segun el botón clickeado.
 
-  console.log(allBeers);
 
   const paginate = (e, pageNumber) => {
     if (pageNumber === "next" && page + 1 <= limitPage) {

@@ -20,7 +20,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
       purchaseDetails: purchaseDetails,
       status: "PENDING",
     };
-    console.log(purchaseInfo);
+    
     setApproved(false);
   }
   return (
