@@ -108,7 +108,7 @@ export function getBeerDetail(id) {
 
 export function getBreweryDetail(id) {
   return async function (dispatch) {
-    const breweryById = await axios.get(SELLERS_ID + id);
+    const breweryById = await axios.get(SELLERS_ID +id);
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,

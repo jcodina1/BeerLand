@@ -10,6 +10,7 @@ import SortByName from "./components/SortByName";
 import FilterByBrewery from "./components/FilterByBrewery";
 import FilterByType from "./components/FilterByType";
 import SortByPrice from "./components/SortByPrice";
+import { Link } from "react-router-dom";
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
@@ -58,11 +59,14 @@ export default function ShowBeers() {
   return (
     <div className={style.showBeers}>
       <div className={style.filters}>
+
+
         <div className={style.distribution}>
           <SortByName setOrder={setOrder} />
         </div>
         <div className={style.distribution}>
           <FilterByBrewery />
+          <Link to="/sellers" >See More</Link>
         </div>
         <div className={style.distribution}>
           <SortByPrice setOrder={setOrder} />
@@ -70,6 +74,7 @@ export default function ShowBeers() {
         <div className={style.distribution}>
           <FilterByType />
         </div>
+
       </div>
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
@@ -87,21 +92,22 @@ export default function ShowBeers() {
                     name={beer.name}
                     price={beer.price}
                     image={beer.image ? beer.image : false}
-                    // style={beer.style}
-                    // origin={beer.origin}
+                  // style={beer.style}
+                  // origin={beer.origin}
                   />
                 );
               })}
-              <Pagination
-                page={page}
-                paginate={paginate}
-                limitPage={limitPage}
-                firstPrevControl={firstPrevControl}
-                nextLastControl={nextLastControl}
-              />
+
             </>
           )}
         </div>
+        <Pagination
+          page={page}
+          paginate={paginate}
+          limitPage={limitPage}
+          firstPrevControl={firstPrevControl}
+          nextLastControl={nextLastControl}
+        />
       </div>
     </div>
   );
