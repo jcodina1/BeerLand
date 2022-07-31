@@ -26,7 +26,6 @@ export function Login() {
     password: "",
     rol: "user",
   });
-  console.log(user);
 
   //     function verifica_seleccion(check){
   //         if(!check.checked){
@@ -43,12 +42,11 @@ export function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+
     try {
       await login(user.email, user.password);
       history.push("/home");
     } catch (error) {
-      console.log(error.message);
       setError(error.message);
       swal(error.message);
     }
@@ -79,7 +77,6 @@ export function Login() {
       //   dispatch(postUser(userdata))
       history.push("/home");
     } catch (error) {
-      console.log(error.message);
       setError(error.message);
       swal(error.message);
     }
@@ -100,15 +97,13 @@ export function Login() {
       const facebook = await logingWithFacebook().then((usuarioFacebook) => {
         return usuarioFacebook;
       });
-      console.log(facebook);
-      console.log(user.rol);
+
       const docuRef = doc(firestore, `usuarios/${facebook.user.uid}`);
       setDoc(docuRef, { email: user.email, user: user.rol });
 
       //   dispatch(postUser(userdata))
       history.push("/home");
     } catch (error) {
-      console.log(error.message);
       setError(error.message);
       swal(error.message);
     }
