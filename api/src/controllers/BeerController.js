@@ -44,7 +44,8 @@ async function getAllBeers(req, res, next) {
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
                     sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
                 },
-                order:[['id','ASC']]
+                order:[['id','ASC']],
+                
 
             })
         })
@@ -55,7 +56,7 @@ async function getAllBeers(req, res, next) {
                 res.status(200).json(BeerName) :
                 res.status(404).send('Beer not found');
         } else {
-            const BeersDb = await Beer.findAll()
+            const BeersDb = await Beer.findAll({include:{model:Seller}})
             res.status(200).send(BeersDb)
         }
     } catch (error) {

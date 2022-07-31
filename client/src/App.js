@@ -16,6 +16,7 @@ import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 import ValidacionUSer from "./components/validacion/validacionUsuario";
 import RegisterSeller from "./components/register/RegisterSeller";
+import Purchases from "./components/Purchases/AllPurchases"
 import axios from "axios";
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
@@ -37,6 +38,7 @@ function App() {
             <Route path="/cart" component={Cart} />
             <Route path="/registerCompany" component={RegisterSeller} />
             <Route path="/user/fav" component={UserFavs} />
+            <Route path='/purchases' component={Purchases} />
           </Switch>
         </AuthProvider>
       </div>
