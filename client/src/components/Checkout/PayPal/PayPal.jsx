@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function Paypal({
-  precioTotal,
-  userId,
-  sellerIds,
-  purchaseDetails,
-}) {
+export default function Paypal({ precioTotal, userId, purchaseDetails }) {
   const [approved, setApproved] = useState(false);
 
   if (approved === true) {
     const purchaseInfo = {
       totalPrice: precioTotal,
       userId: userId,
-      sellerIds: sellerIds,
       purchaseDetails: purchaseDetails,
       status: "PENDING",
     };

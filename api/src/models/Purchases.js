@@ -31,9 +31,3 @@ module.exports = (sequelize) => {
     { paranoid: true }
   );
 };
-
-//      beerQuantityExample = {
-//             'id1' : [cantidad,precio_unitario]
-//                   ...
-//             'idN' : [cantidad,precio_unitario]
-//               }
