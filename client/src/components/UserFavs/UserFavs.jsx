@@ -32,30 +32,34 @@ export default function UserFavs() {
   }, [user]);
 
   return (
-    <div>
-      <NavBar />
-      <div>
-        <h2>My Favourites</h2>
-      </div>
-
-      <div className="hola" >
-        
+    
+    <>
+    <NavBar />
+    {user ?
+    <>
+    <h2>My favorites</h2>
+    <div className='catalogue'>
         {
-
-          !favs && !favs ? 'hola' : favs.map(e=>{
-            return(
-              <BeerCard
-                name={e.name} id={e.id} price={e.price} image={e.image}
-              />
-            )
-          })
-
+            favs.length !==0?
+             favs.map(e => {
+                return (
+                  <BeerCard
+                  key={e.id} name={e.name} id={e.id} price={e.price} image={e.image}
+                />
+                )
+            })
+            :
+            <h3>You have no favorites</h3>
         }
-        <Link to='/home'>
-          <button>Return</button>
-
-        </Link>
-      </div>
     </div>
-  );
+    </>:
+    <div  className="aviso">
+    <h2>You need to be logged in to access here</h2>
+    <Link to={`/home`}>
+    <button className='minimize'>Back home</button>
+    </Link>
+    </div>}
+
+</>
+)
 }

@@ -13,11 +13,13 @@
     padding-right: 5%;
     padding-top: 10px;
 }
-.space{
+
+.space {
     margin-left: 15%;
     margin-top: 5%;
-    
+
 }
+
 .logo {
     height: 9vh;
     width: 250px;
@@ -26,29 +28,33 @@
     top: 50%;
     margin-left: 5%;
     margin-right: 80px;
-    
-    
+
+
 }
-.buttonlink{
+
+.buttonlink {
     margin: 20px 15px 10px 10px;
     display: flex;
     flex-direction: row;
     align-content: space-around;
 
+
 }
-.button{
+
+.button {
     background-color: bisque;
     color: rgb(2, 32, 10);
-    font-family: 'Trebuchet MS',  sans-serif;
+    font-family: 'Trebuchet MS', sans-serif;
     border-radius: 5px;
     margin: 0 5px 0 5px;
     border: none;
     height: 30px;
 }
-.cartBtn{
+
+.cartBtn {
     border: none;
     border-radius: 5px;
-    margin: 0 5px 0 5px;
+    margin: 108px 5px 0 5px;
     background-image: url('../../img/cartIcon.png');
     width: 30px;
     height: 30px;
@@ -56,8 +62,22 @@
     background-color: bisque;
     padding: 2px;
 }
-.infoDistribution{
+
+.infoDistribution {
     display: flex;
     flex-direction: row;
-    
+
+}
+
+.log {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    color: #dfdfdf;
+    margin: 50px 20px 0 30px;
+    align-items: center;
+}
+
+.log:hover {
+    cursor: pointer
 }

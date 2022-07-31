@@ -36,7 +36,7 @@ function App() {
             <Route path="/checkout" component={Checkout} />
             <Route path="/cart" component={Cart} />
             <Route path="/registerCompany" component={RegisterSeller} />
-            <Route path="/user/fav" component={UserFavs} />
+            <Route path="/user/favourites" component={UserFavs} />
           </Switch>
         </AuthProvider>
       </div>
