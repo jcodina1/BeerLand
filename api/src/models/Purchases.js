@@ -10,13 +10,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-      },
-      userId: {
-        type: DataTypes.INTEGER,
-      },
-      sellerId: {
-        type: DataTypes.INTEGER,
-      },
+      },     
       purchaseDetail: {
         type: DataTypes.JSONB,
       },
@@ -31,9 +25,3 @@ module.exports = (sequelize) => {
     { paranoid: true }
   );
 };
-
-//      beerQuantityExample = {
-//             'id1' : [cantidad,precio_unitario]
-//                   ...
-//             'idN' : [cantidad,precio_unitario]
-//               }

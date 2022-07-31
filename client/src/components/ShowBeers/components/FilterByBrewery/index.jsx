@@ -5,26 +5,26 @@ import styles from "./styles.module.css";
 export default function FilterByBrewery() {
   const dispatch = useDispatch();
   const allSellers = useSelector((state) => state.allSellers);
-
+  console.log(allSellers);
   function handleFilter(e) {
     e.preventDefault();
-    console.log(e.target.value);
+
     if (e.target.value !== "All") {
+      console.log(e.target.value);
       dispatch(actions.filterBeersByBrewery(e.target.value));
     } else {
+      console.log(e.target.value);
       dispatch(actions.getAllBeers());
     }
   }
-  console.log(allSellers);
+
   return (
     <div>
       <select className={styles.select} onChange={(e) => handleFilter(e)}>
         <option value="All">Filter by Brewery</option>
 
-        {allSellers.map((brewery) => {
-          return (
-            <option value={brewery.name}>{brewery.name.toLowerCase()}</option>
-          );
+        {allSellers.map((seller) => {
+          return <option value={seller.id.toString()}>{seller.name}</option>;
         })}
       </select>
     </div>

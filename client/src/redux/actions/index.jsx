@@ -39,7 +39,9 @@ import {
   POST_COMMENT,
   COMMENTS,
   GET_FAV,
-  POST_SCORE
+  POST_SCORE,
+  ALL_PURCHASES,
+  GET_PURCHASES,
 } from "../const";
 
 export function addToCart(id) {
@@ -340,3 +342,12 @@ export async function helpCallScores(url) {
 //   return async function (dispatch) {
 //     try {
 //       await axios.post();
+export function getAllPurchases() {
+  return async function (dispatch) {
+    let allPurchases = await axios.get(ALL_PURCHASES);
+    return dispatch({
+      type: GET_PURCHASES,
+      payload: allPurchases.data,
+    });
+  };
+}
