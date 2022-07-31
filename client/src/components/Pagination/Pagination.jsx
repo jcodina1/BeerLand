@@ -9,7 +9,7 @@ export default function Pagination({
   firstPrevControl,
   nextLastControl,
 }) {
-  var pages = {
+  let pages = {
     prepre: 0,
     pre: 0,
     page: page,
@@ -38,7 +38,7 @@ export default function Pagination({
     pages.nextnext = page + 2;
   }
 
-  var numerPages = [pages.prepre, pages.pre, page, pages.next, pages.nextnext];
+  let numerPages = [pages.prepre, pages.pre, page, pages.next, pages.nextnext];
 
   return (
     <div className={styles.containerPag}>

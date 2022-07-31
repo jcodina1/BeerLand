@@ -11,11 +11,11 @@
 }
 
 .logo {
-  height: 4rem;
-  width: 7rem;
+  height: 70%;
+  width: 20%;
   position: absolute;
   top: 10%;
-  margin-left: -38rem;
+  margin-left: -48%;
 }
 
 .cartContainer{
@@ -34,11 +34,11 @@
 
 .header{
   background-color: rgb(21, 55, 16);
-  height: 5rem;
-  width: 80rem;
+  height: 14%;
+  width: 85%;
   border-radius: 20px;
   position: relative;
-  margin-top: 2rem;
+  margin-top: 2%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -50,16 +50,16 @@
 }
 
 .keep{
-  padding-top: 5px;
+  padding-top: 0.5%;
   background-color: rgba(255, 159, 41);
   color: rgb(21, 55, 16);
   font-size: 25px;
   font-weight: bold;
   width: 220px;
-  height: 50px;
-  border-radius: 20px;
-  margin-left: 1020px;
-  margin-top: -65px;
+  height: 70%;
+  border-radius: 10px;
+  margin-left: 82%;
+  margin-top: -5.4%;
 }
 
 .link{
@@ -69,7 +69,7 @@
 .cart{
   background-color: rgba(250, 243, 227, 0.80);;
   height: auto;
-  width: 80rem;
+  width: 85%;
   border-radius: 20px;
   position: relative;
   margin-top: 2rem;
@@ -86,7 +86,7 @@
 }
 
 .checkout{
-  height:5rem;
+  height: 6rem;
   width: 15rem;
-  margin: 100px -340px 10px ;
+  margin: 50px 460px;
 }

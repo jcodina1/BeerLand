@@ -45,13 +45,13 @@ export function Register() {
   //        try {
   //         user.User = user.User
   //           const google =  await  logingWithGoogle()
-  //           console.log(google)
+  //
   //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
   //           dispatch(postUser(userdata))
   //           history.push('/home')
 
   //          } catch (error) {
-  //              console.log(error.message)
+  //
   //              setError(error.message)
   //              swal(error.message)
   //          }
