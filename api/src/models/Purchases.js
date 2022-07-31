@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },     
       totalPrice: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       status: {
         type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
