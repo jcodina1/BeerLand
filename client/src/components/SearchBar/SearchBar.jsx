@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchBar, getAllBeers } from '../../redux/actions/index';
 import { useLocalStorege } from '../../Hooks/useLocalStorage';
 import style from '../SearchBar/SearchBar.module.css'
+import { setPage } from '../../redux/actions/index';
 
 
 export default function SearchBar() {
@@ -19,10 +20,13 @@ export default function SearchBar() {
     setValue(searchTerm)
     dispatch(searchBar(value));
     setValue('')
+    dispatch(setPage(1))
+
   };
 
   const onSearch2 = (payload) => {
     dispatch(searchBar(payload));
+    dispatch(setPage(1))
   }
 
   function handleBack() {

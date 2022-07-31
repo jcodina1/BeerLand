@@ -16,47 +16,50 @@ async function getScore(req, res, next) {
     }
 }
 
-async function postScore(req, res, next) {
-    try {
-        const { score, userId, beerId } = req.body
-        const newScore = await Score.findOrCreate({
-            where: {
-                score: score,
-                userId: userId,
-                beerId: beerId
-            },
-        });
-        // if (create === false) {
-        //     res.status(400).send('Ya esta calificado');
-        // } if {
-            res.status(200).send(newScore);
-        // }
-    } catch (error) {
-        next(error)
-    }
-}
+// async function postScore(req, res, next) {
+//     try {
+//         const { score, userId, beerId } = req.body
+//         const newScore = await Score.findOrCreate({
+//             where: {
+//                 score: score,
+//                 userId: userId,
+//                 beerId: beerId
+//             },
+//         });
+//         // if (create === false) {
+//         //     res.status(400).send('Ya esta calificado');
+//         // } if {
+//             res.status(200).send(newScore);
+//         // }
+//     } catch (error) {
+//         next(error)
+//     }
+// }
 
 async function postScore(req, res, next) {
     const { score, userId, beerId } = req.body
     try {
         const Userfound = await User.findByPk(userId)
-        const scoreBeer = await Userfound.getScores({ where: { id: beerId } })
+        const scoreBeer = await Userfound.getScores({ where: { beerId: beerId } })
         if (scoreBeer.length == 0) {
             const newScore = await Score.findOrCreate({
                 where: {
-                    score: score,
                     userId: userId,
-                    beerId: beerId
+                    beerId: beerId,
+                    score: score,
                 },
             });
+            console.log(newScore, 'hizo post')
             res.send(newScore)
         }else{
+            console.log(score,userId,beerId)
            const scoreUpdate =  await Score.update({ score: score }, {
-                where: {
-                    userId: userId,
-                    beerId: beerId
-                }
-               });
+            where: {
+                userId: userId,
+                beerId: beerId,
+            }
+           });
+            console.log(scoreUpdate, 'hizo update')
             res.send(scoreUpdate)
         }
     } catch (error) {
@@ -67,17 +70,15 @@ async function postScore(req, res, next) {
 
   async function getScoreId(req, res, next) {
     const { idUser, idBeer } = req.query;
-    let exist
-    let scorees;
     try {
       const scores = await User.findByPk(idUser);
-      const beer = await scores.getScores({ where: { id: idBeer } })
-      console.log(beer)
+      const beer = await scores.getScores({ where:{beerId:idBeer } })
       if (beer.length == 0) {
-          exist = null
+          const exist = null
          res.status(200).send(exist);
         }else{
-            scorees = {score: beer[0].score}
+           const scorees = {score: beer[0].score}
+           console.log(scorees)
             res.status(200).send(scorees);
         }     
     } catch (error) {

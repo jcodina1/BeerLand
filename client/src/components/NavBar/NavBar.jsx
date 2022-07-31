@@ -35,7 +35,7 @@ export default function NavBar({ setPage }) {
 
       <div className={style.infoDistribution}>
         <div className={style.space}>
-          <h1>Hello {user ? user.email : ""}</h1>
+          <h1>Hello </h1>
         </div>
 
         <div className={style.buttonlink}>

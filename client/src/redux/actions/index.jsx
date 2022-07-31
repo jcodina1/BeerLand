@@ -82,7 +82,7 @@ export function getAllBreweries() {
   return async function (dispatch) {
     let allBreweries = await axios.get("http://localhost:3001/seller");
     return dispatch({
-      type: GET_ALL_BREWERIES,
+      type: GET_SELLERS,
       payload: allBreweries.data,
     });
   };
@@ -260,7 +260,6 @@ export function deleteFavs(idUser, idBeer) {
 export function getUser() {
   return async function (dispatch) {
     let allUser = await axios.get(GET_USER);
-    console.log(allUser);
     return dispatch({
       type: ALL_USERS,
       payload: allUser.data,
@@ -286,7 +285,6 @@ export function getFavDetail(id) {
 }
 
 export function postScore(obj) {
-  console.log(obj)
   return async function (dispatch) {
     try {
       const response = await axios.post(POST_SCORE,obj);
