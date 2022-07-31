@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const { Seller, Beer, Purchases } = require("../db.js");
+const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
   const { userId, purchaseDetails, totalPrice,  status } = req.body;
@@ -11,9 +11,14 @@ async function postPurchases(req, res, next) {
       totalPrice: totalPrice,
       status: status,
     });
-    let beer = await Beer.findAll({ where: { id: beerId } ,include:{model: Seller}});
+    
+    let beer = await Beer.findAll({ where: { id: purchaseDetails } ,include:{model: Seller}});
     newPurchases.addBeer(beer);
-    res.send(newPurchases);
+    const purchases = Purchases.findAll({
+       where: {id: newPurchases.id},
+       include: {model: Beer,
+        include: {model: Seller}}});
+    res.send(purchases);
   } catch (error) {
     next(error);
   }
@@ -23,7 +28,8 @@ async function getAllPurchases(req, res, next) {
   try {
     const UsersDb = await Purchases.findAll({
       order: [["id", "ASC"]],
-      include: { model: Beer },  
+      include: [{ model: Beer,
+        include: {model: Seller}}, { model: User}]
     });
 
     res.status(200).send(UsersDb);
