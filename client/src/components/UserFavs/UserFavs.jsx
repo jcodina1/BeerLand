@@ -5,57 +5,57 @@ import BeerCard from "../BeerCard/BeerCard";
 import NavBar from "../NavBar/NavBar.jsx";
 import { getFavDetail, getFavs, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
-import '../UserFavs/userFavs.css'
-
+import "../UserFavs/userFavs.css";
 
 export default function UserFavs() {
   const user2 = useSelector((state) => state.user);
   const favs = useSelector((state) => state.favs);
-  const { user } = useAuth()
+  const { user } = useAuth();
   const dispatch = useDispatch();
-  
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
-    console.log(filtrado)
   }
 
   useEffect(() => {
     dispatch(getUser());
   }, []);
 
-
   useEffect(() => {
     if (user !== null) {
-      dispatch(getFavDetail(filtrado[0].id))
+      dispatch(getFavDetail(filtrado[0].id));
     }
   }, [user]);
 
   return (
-    <div>
-      <NavBar />
-      <div>
-        <h2>My Favourites</h2>
-      </div>
-
-      <div className="hola" >
-        
+    
+    <>
+    <NavBar />
+    {user ?
+    <>
+    <h2>My favorites</h2>
+    <div className='catalogue'>
         {
-
-          !favs && !favs ? 'hola' : favs.map(e=>{
-            return(
-              <BeerCard
-                name={e.name} id={e.id} price={e.price} image={e.image}
-              />
-            )
-          })
-
+            favs.length !==0?
+             favs.map(e => {
+                return (
+                  <BeerCard
+                  key={e.id} name={e.name} id={e.id} price={e.price} image={e.image}
+                />
+                )
+            })
+            :
+            <h3>You have no favorites</h3>
         }
-        <Link to='/home'>
-          <button>Return</button>
-
-        </Link>
-      </div>
     </div>
-  );
+    </>:
+    <div  className="aviso">
+    <h2>You need to be logged in to access here</h2>
+    <Link to={`/home`}>
+    <button className='minimize'>Back home</button>
+    </Link>
+    </div>}
+
+</>
+)
 }

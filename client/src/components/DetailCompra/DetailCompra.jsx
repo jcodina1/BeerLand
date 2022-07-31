@@ -5,9 +5,11 @@ import { addToCart } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import { BsCartPlus } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
+import Swal from 'sweetalert2'
+
 /* import './styles.css' */
 
-export default function Compra({ id, price, stock }) {
+export default function Compra({ id, name, price, stock }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [cartIcon, setCartIcon] = useState(
@@ -19,8 +21,24 @@ export default function Compra({ id, price, stock }) {
 
   function handleClick() {
     if (!beerinCart?.length) {
-      dispatch(addToCart(id));
-      setCartIcon(<BsCartCheckFill size={25} className="done" />);
+      dispatch(addToCart(id))
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: `Added "${name}" to cart`,
+      })
+      setCartIcon(<BsCartCheckFill size={25} className="done" />)
     }
   }
 

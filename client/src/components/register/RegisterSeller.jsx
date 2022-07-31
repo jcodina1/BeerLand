@@ -27,15 +27,12 @@ export default function RegisterSeller() {
     confirmation: "",
     rol: "admin",
   });
-  console.log(user);
-
 
   const handleChange = (e) => {
     SetUser({
       ...user,
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value);
   };
 
   const handleGoogle = async () => {
@@ -43,7 +40,7 @@ export default function RegisterSeller() {
       const google = await logingWithGoogle().then((usuarioGoogle) => {
         return usuarioGoogle;
       });
-      console.log(google);
+
       const user2 = {
         id: 245,
         mail: google.user.email,
@@ -53,7 +50,7 @@ export default function RegisterSeller() {
         dni: 0,
         rol: "admin",
       };
-      console.log(user2);
+
       const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
       setDoc(docuRef, {
         email: user2.mail,
@@ -65,12 +62,10 @@ export default function RegisterSeller() {
       dispatch(postSeller(user2));
       history.push("/home");
     } catch (error) {
-      console.log(error.message);
       setError(error.message);
       swal(error.message);
     }
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,13 +73,12 @@ export default function RegisterSeller() {
       if (user.password === user.confirmation) {
         await signup(user.mail, user.password, user.rol);
         dispatch(postSeller(user));
-        console.log(user, "holaaa");
+
         history.push("/home");
       } else {
         swal("Passwords do not match");
       }
     } catch (error) {
-      console.log(error.message);
       setError(error.message);
       swal(error.message);
     }
