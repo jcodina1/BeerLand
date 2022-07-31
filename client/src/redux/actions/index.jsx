@@ -91,7 +91,7 @@ export function getAllSellers() {
     const allSellers = await axios.get(SELLER);
     return dispatch({
       type: GET_SELLERS,
-      payload: allBreweries.data,
+      payload: allSellers.data,
     });
   };
 }

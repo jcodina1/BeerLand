@@ -13,33 +13,16 @@ async function getComment(req, res, next) {
 }
 
 async function getAllCommentBeer(req, res, next) {
-  const { beer } = req.params;
+  const { beerId } = req.params;
   try {
-    let comments = await Comment.findAll({ where: { beerId: beer },include:User });
+    let comments = await Comment.findAll({ where: { beerId: beerId },include:User });
     res.send(comments);
   } catch (error) {
     next();
   }
 }
 
-async function getAllCommentUser(req, res, next) {
-  const { user } = req.params;
-  try {
-    let comments = await Comment.findAll({ where: { id: user } });
-    res.send(comments);
-  } catch (error) {
-    next(error);
-  }
-}
 
-async function getAllComment(req, res, next) {
-  try {
-    let comments = await Comment.findAll();
-    res.status(200).send(comments);
-  } catch (error) {
-    next(error);
-  }
-}
 
 async function postComment(req, res, next) {
   const{ beerId}=req.params
@@ -64,8 +47,6 @@ async function postComment(req, res, next) {
 }
 module.exports = {
   postComment,
-  getAllComment,
-  getAllCommentBeer,
-  getAllCommentUser,
-  getComment,
+  getAllCommentBeer, 
+  
 };
