@@ -39,6 +39,7 @@ import {
   POST_COMMENT,
   COMMENTS,
   GET_FAV,
+  POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
 } from "../const";
@@ -89,7 +90,7 @@ export function getAllSellers() {
   return async function (dispatch) {
     const allSellers = await axios.get(SELLER);
     return dispatch({
-      type: GET_ALL_SELLERS,
+      type: GET_SELLERS,
       payload: allSellers.data,
     });
   };
@@ -273,7 +274,6 @@ export function deleteFavs(idUser, idBeer) {
 export function getUser() {
   return async function (dispatch) {
     let allUser = await axios.get(GET_USER);
-    console.log(allUser);
     return dispatch({
       type: ALL_USERS,
       payload: allUser.data,
@@ -287,18 +287,14 @@ export async function helpCall(url) {
   });
 }
 
-export async function postComment(comment) {
+export function postComment(obj,id) {
+  console.log(obj)
   return async function (dispatch) {
     try {
-      await axios.post(COMMENTS, comment);
-      return dispatch({
-        type: POST_COMMENT,
-        payload: comment,
-      });
+      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
+      return dispatch({ type: 'POST_SCORE', payload: response.data });
     } catch (error) {
-      if (error.response) {
-        return alert(error.response.data);
-      }
+      console.log(error);
     }
   };
 }
@@ -322,16 +318,28 @@ export function getFavDetail(id) {
   };
 }
 
-export function postPurchase(purchaseInfo) {
+export function postScore(obj) {
   return async function (dispatch) {
     try {
-      await axios.post();
+      const response = await axios.post(POST_SCORE,obj);
+      return dispatch({ type: 'POST_SCORE', payload: response.data });
+
     } catch (error) {
       console.log(error);
     }
   };
 }
 
+export async function helpCallScores(url) {
+  return axios.get(`http://localhost:3001${url}`).then((res) => {
+    return res.data;
+  });
+}
+
+// export function postPurchase(purchaseInfo) {
+//   return async function (dispatch) {
+//     try {
+//       await axios.post();
 export function getAllPurchases() {
   return async function (dispatch) {
     let allPurchases = await axios.get(ALL_PURCHASES);

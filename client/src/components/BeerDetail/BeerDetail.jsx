@@ -69,19 +69,14 @@ export default function BeerDetail(props) {
                   <span className={style.textBox}>{beer.stock}</span>
                 </p> */}
                 <div>
-                  <Score />
-                  <DetailCompra
-                    name={beer.name}
-                    price={beer.price}
-                    id={beer.id}
-                    stock={beer.stock}
-                  ></DetailCompra>
+                  <Score id={beer.id}/>
+                  <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>
             </div>
           </div>
         )}
-        <Comment />
+      <Comment id={id}/>
       </div>
     </div>
   );

@@ -12,9 +12,13 @@ export const POST_USER = "/user";
 export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
-export const COMMENTS = "/comment/";
-export const POST_COMMENT = "POST_COMMENT";
-export const GET_FAV = "/user/fav/beer/";
+
+export const COMMENTS = "/comment";
+
+export const GET_FAV = '/user/fav/beer/'
+export const POST_SCORE="/score"
+
+
 
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
@@ -50,3 +54,4 @@ export const GET_COMMENTS_BEER = "GET_COMMENTS_BEER";
 export const GET_FAV_DETAIL = "GET_FAV_DETAIL";
 export const ALL_COMMENT = "";
 export const GET_PURCHASES = 'GET_PURCHASES'
+export const POST_COMMENT = "POST_COMMENT";

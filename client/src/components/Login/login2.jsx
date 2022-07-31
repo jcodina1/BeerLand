@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import style from "../Login/Login.module.css";
+import  style from "../Login/Login.module.css";
 import swal from "sweetalert";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../Context/Contestautenticacion";
@@ -11,6 +11,7 @@ import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { app } from "../../firebase";
 import { postUser } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+import "./Login.css"
 
 export function Login() {
   const dispatch = useDispatch();
@@ -109,30 +110,30 @@ export function Login() {
   };
 
   return (
-    <div className={style.login}>
-      <div className={style.loginBox}>
-        <img className={style.image} src={beertest} alt="beercharacter" />
+    // <div className={style.login}>
+      <div >
+        {/* <img className={style.image} src={beertest} alt="beercharacter" /> */}
 
-        <div className={style.container}>
-          <form>
+        
+          <form className={style.LoginForm}>
             <h1>Login</h1>
-            <div className={style.password}>
-              <label>Email: </label>
+            <div className={style.fieldLog}>
+              
               <input
                 name="email"
                 type="email"
-                placeholder="youremail@company.com"
+                placeholder="E-mail"
                 onChange={handleChange}
               />
             </div>
 
-            <div className={style.password}>
-              <label>Password: </label>
+            <div className={style.fieldLog}>
+             
               <input
                 name="password"
                 type="password"
                 id="password"
-                placeholder="******"
+                placeholder="Password"
                 onChange={handleChange}
               />
             </div>
@@ -141,14 +142,21 @@ export function Login() {
                 Login
               </button>
             </div>
+           
             <a href="#!" onClick={(e) => handelResetPassword(e)}>
               Forgot Password
             </a>
           </form>
+            <label className={style.footer}>Don't have an Account?</label>
 
+            <div>
+            <Link to="/register">
+              <button className={style.button}>Register</button>
+            </Link>
+            </div>
           <div className={style.footer}>
-            <label className={style.footer}>Don't have an Account</label>
             <div className={style.registerbox}>
+              
               <div>
                 <Link to="/login">
                   <span>
@@ -164,7 +172,8 @@ export function Login() {
                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button> */}
               </div>
               <div>
-                <Link to="/login">
+                
+                {/* <Link to="/login"> */}
                   <span>
                     <img
                       className={style.googleIcon}
@@ -174,21 +183,15 @@ export function Login() {
                       alt="Beer"
                     />
                   </span>
-                </Link>
+                {/* </Link> */}
                 {/* <button className={style.googleIcon} onClick={handleGoogle}>Google Login</button>  */}
               </div>
             </div>
-            <Link to="/register">
-              <button className={style.button}>Register</button>
-            </Link>
+            
           </div>
-        </div>
-        <div className={style.buttonA}>
-          <Link to="/home">
-            <span className={style.buttonA}>Back</span>
-          </Link>
-        </div>
-      </div>
+        
+        
+      {/* </div> */}
     </div>
   );
 }

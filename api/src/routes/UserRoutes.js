@@ -1,6 +1,5 @@
 const { Router } = require("express");
 
-const { routes } = require("../app");
 const {
   getAllUsers,
   Favorites,

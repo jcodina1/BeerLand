@@ -29,6 +29,7 @@ import {
   POST_COMMENT,
   GET_COMMENTS_BEER,
   GET_FAV_DETAIL,
+  POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
 } from "../const";
@@ -286,16 +287,16 @@ function Reducer(state = initialState, action) {
         ...state,
         breweryDetail: action.payload,
       };
-    // case POST_COMMENT:
-    //   return {
-    //     ...state,
-    //     comments: action.payload,
-    //   };
-    case GET_COMMENTS_BEER:
+    case POST_COMMENT:
       return {
-        ...state,
-        comments: action.payload,
+        ...state 
       };
+      case GET_COMMENTS_BEER:
+        return{
+          ...state,
+          comments:action.payload
+        }
+      
 
     case GET_FAV_DETAIL:
       return {
@@ -303,6 +304,11 @@ function Reducer(state = initialState, action) {
         favs: action.payload,
       };
 
+      case POST_SCORE:
+        return {
+          ...state,
+        };
+  
     case GET_PURCHASES:
       return {
         ...state,
