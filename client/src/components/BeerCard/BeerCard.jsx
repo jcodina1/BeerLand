@@ -4,16 +4,12 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
-
 import { getFavDetail, helpCall } from "../../redux/actions";
-
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { getUser } from "../../redux/actions";
-
 import Swal from "sweetalert2";
 import { deleteFavs, postFavs } from "../../redux/actions";
-
 import { logEvent } from "firebase/analytics";
 
 

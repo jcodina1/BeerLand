@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .navbar{
-    margin: 3% 8% 2% 2%;
-    background-color: rgb(253, 249, 243);
+    /* margin: 3% 8% 2% 2%; */
+    /* background: rgb(253, 249, 243); */
     height: fit-content;
     width: 100%;
     background-size: inherit;
@@ -20,7 +23,17 @@
    /*  background-color: rgb(253, 249, 243); */
     align-items: center;
     align-content: center;
-   
+    color: rgb(35,20,10) ;
+
+      
+}
+h1{
+    /* font-family: 'Staatliches', cursive; */
+    font-family: 'Palanquin Dark', sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    margin-top: 25px;
+    color: rgb(35,20,10) ;
 }
 .beerBox{
     padding: 80px 100px 0 100px; 
@@ -33,4 +46,6 @@
 .footer{
     margin-top: 8%;
 }
-
+.tittle{
+    font-size: 50px;
+}

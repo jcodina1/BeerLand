@@ -1,0 +1,38 @@
+.container {
+  background-color: aliceblue;
+}
+
+.commentWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.commentsform {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+}
+
+.input {
+  width: 70%;
+}
+
+.button{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: center;
+ 
+}
+.button button{
+  color: #4b4b4b;
+  text-rendering: optimizeLegibility;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 21px;
+  width: 50%;
+   box-sizing: border-box; 
+  
+}

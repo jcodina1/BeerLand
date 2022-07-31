@@ -1,0 +1,24 @@
+.showBrewery {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    gap: 40px;
+    max-height: 140vh;
+    min-height: 100vh;
+    margin-bottom: 80px;
+}
+
+.cardsBox {
+    display: flex;
+    flex-wrap: wrap;
+    height: 5%;
+    justify-content: 0;
+    
+}
+
+.cardsContainer {
+  margin-top: 100px;
+    width: 100%;
+    height: 90%;
+}
