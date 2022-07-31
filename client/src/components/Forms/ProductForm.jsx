@@ -9,7 +9,7 @@ import React, { Fragment, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ProductForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBreweries, postBeer } from "../../redux/actions";
+import { getAllSellers, postBeer } from "../../redux/actions";
 import { storage } from "../../firebase";
 import { v4 } from "uuid";
 import { useEffect } from "react";
@@ -25,7 +25,7 @@ export default function PostBeer() {
   const [imageUrls, setImageUrls] = useState();
 
   useEffect(() => {
-    dispatch(getAllBreweries());
+    dispatch(getAllSellers());
   }, []);
 
   const { user } = useAuth()
