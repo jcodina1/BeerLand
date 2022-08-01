@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import style from "../BeerCard/BeerCard.module.css";
 import { useAuth } from "../Context/Contestautenticacion";
-import { getFavDetail, helpCall } from "../../redux/actions";
+import { addToCart, getFavDetail, helpCall } from "../../redux/actions";
 import { AiOutlineHeart } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 import { getUser } from "../../redux/actions";
 import Swal from "sweetalert2";
 import { deleteFavs, postFavs } from "../../redux/actions";
 import { logEvent } from "firebase/analytics";
+import { BsCartCheckFill, BsCartPlus } from "react-icons/bs";
 
 
 export default function BeerCard({
@@ -78,6 +79,37 @@ export default function BeerCard({
     }
   }
 
+  const cart = useSelector((state) => state.cart);
+  const [cartIcon, setCartIcon] = useState(
+    <BsCartPlus size={25} onClick={handleClick} className="icon" />
+  );
+  let beerinCart = JSON.parse(localStorage.getItem("carrito"))?.filter(
+    (e) => e.id === id
+  );
+
+  function handleClick() {
+    if (!beerinCart?.length) {
+      dispatch(addToCart(id))
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: `Added "${name}" to cart`,
+      })
+      setCartIcon(<BsCartCheckFill size={25} className="done" />)
+    }
+  }
+
   return (
     <div className={style.card}>
       <div className={style.circle}>
@@ -98,7 +130,16 @@ export default function BeerCard({
             <AiOutlineHeart size={35} onClick={handleFav} />
           )}
         </div>
-        
+        <div className={style.addTo}>
+            <p>Add to Cart</p>
+            <button>
+              {beerinCart?.length ? (
+                <BsCartCheckFill size={25} className={style.done} />
+              ) : (
+                cartIcon
+              )}
+            </button>
+          </div>
         </div>
         
       </div>

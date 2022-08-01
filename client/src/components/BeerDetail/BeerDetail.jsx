@@ -49,27 +49,33 @@ export default function BeerDetail(props) {
             <div className={style.box}>
               <div className={style.leftContainer}>
                 <div>
-                  <h1>{beer.name}</h1>
+                  <div className={style.dis}>
+                    <h1>{beer.name}</h1>
+                  </div>
                   <div className={style.image}>
                     <img src={beer.image} alt="" />
                   </div>
                 </div>
               </div>
+
               <div className={style.containerR}>
+
                 <p>
                   <h2>Description:</h2>
                   <span className={style.textBox}>{beer.description}</span>
                 </p>
-                
+
                 <div>
-                  <Score id={beer.id}/>
+                  <Score id={beer.id} />
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>
             </div>
           </div>
         )}
-      <Comment id={id}/>
+        <div className={style.comments}>
+          <Comment className={style.comments} id={id} />
+        </div>
       </div>
     </div>
   );

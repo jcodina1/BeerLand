@@ -65,7 +65,7 @@ export default function BreweryDetail() {
               </div>
             </div>
            <div className={style.beers}>
-            <h2>Nuestras Cervezas:</h2>
+            <h2>OUR BEERS</h2>
            <div className={style.cardsContainer}>
                     <div className={style.cardsBox}>
                       {

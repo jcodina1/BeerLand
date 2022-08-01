@@ -2,15 +2,7 @@ const axios = require("axios");
 const { Op } = require("sequelize");
 const { Beer, Seller, Comment,User } = require("../db.js");
 
-async function getComment(req, res, next) {
-  const { id } = req.params;
-  try {
-    let comment = await Comment.findByPk(id);
-    res.send(comment);
-  } catch (error) {
-    next();
-  }
-}
+
 
 async function getAllCommentBeer(req, res, next) {
   const { beerId } = req.params;

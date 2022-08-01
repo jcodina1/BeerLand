@@ -17,6 +17,7 @@ const Star = ({id}) => {
     
    if (user !== null) {
         var filtrado = user2.filter((e) => e.email === user.email);
+        console.log(filtrado);
     }
 
     function HandleSubmit() {
@@ -52,13 +53,14 @@ const Star = ({id}) => {
             idUser:filtrado[0].id,
             idBeer:id
         }
+        
         helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
         .then(res => setRating(res.score))
     }
   }, [user]);
  
 
-    return <div>
+    return <div className={Style.dis}>
         {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 
@@ -75,7 +77,7 @@ const Star = ({id}) => {
                     />
                     <FaStar
                         className={Style.star}
-                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} size={24}
+                        color={ratingValue <= (hover || rating) ? "#c68308" : "#624c3d"} size={24}
                         onMouseEnter={() => setHover(ratingValue)}
                         onMouseLeave={() => setHover(null)}
                     />
@@ -85,7 +87,7 @@ const Star = ({id}) => {
             )
         })}
         {/* <p>Your rating is: {rating}</p> */}
-         <button type='submit' onClick={e=>HandleSubmit(e)}>Rate</button>
+         <button className={Style.button} type='submit' onClick={e=>HandleSubmit(e)}>Rate</button>
     </div>
 }
 

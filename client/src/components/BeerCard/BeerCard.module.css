@@ -8,13 +8,13 @@
 .card{
 	position: relative;
 	width: 600px;
-	height: 400px;
+	height: 380px;
 	/* background: blue; */
 	border-radius: 10px;
 	display: flex;
 	align-items: center;
 	transition: 0.5s;
-	margin: 40px 20px 50px 20px;
+	margin: 40px 0px 50px 0px;
 	padding: 20px;
 }
 
@@ -39,7 +39,7 @@
 	transition: 0.5s;
 }
 .card:hover .circle:before{
-	background: rgb(70, 40, 5);
+	background:#704021;
 	clip-path: circle(400px at center);
 	border-radius: 20px;
 }
@@ -48,14 +48,15 @@
 	top: 32%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	height: 500px;
+	height: 450px;
 	pointer-events: none;
 	transition: 0.5s;
+	
 }
 .card:hover img{
 	left: 75%;
-	height: 700px;
-	width: 580px;
+	height: 650px;
+	width: 540px;
 		
 }
 .card .content{
@@ -67,7 +68,7 @@
 	opacity: 0;
 	visibility: hidden;
 	margin-right: 40px;
-	margin-top: 20px;
+	margin-top: -7px;
 	text-decoration: none;
 }
 .card:hover .content{
@@ -115,8 +116,8 @@
 	
 }
 .content .heart{
-	background-color: blueviolet;
-	color: yellow;
+	/*background-color: blueviolet;*/
+	color: rgb(185,155,103);
 	z-index: 4;
 	margin-top: 25px;
 }
