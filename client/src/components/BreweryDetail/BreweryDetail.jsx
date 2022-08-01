@@ -8,6 +8,8 @@ import style from './BreweryDetail.module.css'
 import NavBar from "../NavBar/NavBar";
 import ShowBeers from "../ShowBeers/ShowBeers";
 import BeerCard from "../BeerCard/BeerCard";
+import { getBeerSeller } from "../../redux/actions/index";
+import { SetSellerDetail } from "../../redux/actions/index";
 
 
 export default function BreweryDetail() {
@@ -16,12 +18,17 @@ export default function BreweryDetail() {
   const [loading, setLoading] = useState(true);
   const brewery = useSelector((state) => state.breweryDetail);
   const allBeers = useSelector((state) => state.beers);
+  const sellerBeer = useSelector((state)=> state.filterPlaceholder)
 
   useEffect(() => {
-    dispatch(getAllBeers()).then(res => dispatch(getBreweryDetail(id)))
-      .then(res => dispatch(filterBeersByBrewery(id)))
-
+    dispatch(getBreweryDetail(id))
+    dispatch(getBeerSeller(id))
+      return () => dispatch(SetSellerDetail())
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getBeerSeller(id))
+  }, []);
 
   return (
     <div>
@@ -62,11 +69,11 @@ export default function BreweryDetail() {
            <div className={style.cardsContainer}>
                     <div className={style.cardsBox}>
                       {
-                        allBeers.length === 0 ?
+                        sellerBeer.length === 0 ?
                           <span>
                             (<Loading setLoading={setLoading} />)
                           </span> :
-                          allBeers?.map((beer) =>
+                          sellerBeer?.map((beer) =>
                           <BeerCard
                                 id={beer.id}
                                 key={beer.id}
