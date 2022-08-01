@@ -1,6 +1,6 @@
 .footer {
-    background-color:  rgb(26, 77, 46);
-    height: 10vh;
+    background-color:  #140c09;
+    height: 13vh;
 
 }
 
@@ -10,8 +10,6 @@
     align-content: flex-end;
     padding: 20px 50px 20px 50px;
     justify-content: space-between;
-
-
 }
 
 .info {

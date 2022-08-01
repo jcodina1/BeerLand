@@ -5,24 +5,24 @@
     transform: translate(-150%, -130%);
     background:rgb(254, 244, 233);
     height: 40px;
-    border-radius: 40px;
+    border-radius: 0px;
     padding-left: 0px;
     flex-direction: column;
     width: 300px;
-    margin: 0px 50px 0 50px;
+    margin: 0px 70px 0 50px;
     display: flex;
     flex-direction: row;
     
  }
  .autocomplete{
   list-style: none;
-  background-color: rgb(223, 255, 226);
-  margin: 5px;
+  background-color: rgb(255, 241, 223);
+  margin: 0px;
   width: 300px;
   height: auto;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
+  border-radius: 0px;
 
 }
  
@@ -33,7 +33,7 @@
   /*  float: right; */
    width: 40px;
    height: 40px;
-   border-radius: 50%;  
+   border-radius: 0%;  
    background-image: url('../../img/searchbutton.png');
    background-size: contain;
    background-repeat: no-repeat;
@@ -51,7 +51,7 @@
    outline: none;
    float: left;
    padding: 0;
-   color: rgb(3, 32, 4);
+   color: rgb(35, 20, 10);
    font-size: 18px;
    transition: 0.4s;
    line-height: 40px;
@@ -61,15 +61,15 @@
  }
  .cleanBtn{
     border: none;
-    border-radius: 10px;
+    border-radius: 0px;
     color: bisque;
-    background-color: rgb(3, 68, 19);
+    background-color: #704021;
     padding: 2px 5px 2px 5px;
     font-family: 'Trebuchet MS', sans-serif;
-    height: 30px;
+    height: 40px;
     width: 80px;
-    font-size: small;
-    margin:8px 0 0 10px ;
+    font-size: 20px;
+    margin:0px 0 0 10px ;
 
     
     

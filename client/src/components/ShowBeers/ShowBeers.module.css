@@ -22,11 +22,16 @@
     height: auto;
     /* padding: 0 0 2rem 0; */
 }
+.distance{
+    margin: 200px;
+}
 .filters{
     display: flex;
     flex-direction: row;
-    align-content: space-around;
+    align-content: space-evenly;
     margin-bottom: 100px;
+    left:40%;
+    justify-content: space-evenly;
 }
 .filters .distribution{
     margin: 0 10px 0px 10px;

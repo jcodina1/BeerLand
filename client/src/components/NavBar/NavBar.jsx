@@ -6,9 +6,9 @@ import style from "../NavBar/NavBar.module.css";
 import BeerLogo from "../../img/BeerLogo.png";
 import { useAuth } from "../Context/Contestautenticacion";
 import Cart from "../Cart/Cart";
-import {useModals} from "../../Hooks/useModals";
+import { useModals } from "../../Hooks/useModals";
 import Modal from "../Modal/Modal.jsx"
-import {Login} from "../Login/login2"
+import { Login } from "../Login/login2"
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
@@ -18,7 +18,7 @@ import { FaShoppingBag } from "react-icons/fa";
 
 import Swal from "sweetalert2";
 import { IoMdContact } from "react-icons/io";
-import {MdShoppingCart }from "react-icons/md"
+import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
 
 export default function NavBar({ setPage }) {
@@ -68,7 +68,7 @@ export default function NavBar({ setPage }) {
   }
 
 
-  
+
   // const handleLogOut = async () => {
   //   await salir();
   //   setIsLogged(false)
@@ -93,35 +93,37 @@ export default function NavBar({ setPage }) {
       </div>
 
       <div className={style.infoDistribution}>
-        <div className={style.space}>
-          <h1>Hello </h1>
+        <div className={style.space2}>
+          {/* <h3>Hello </h3> */}
         </div>
 
         <div className={style.buttonlink}>
-          <Link to="/cart">
-            {/* <button className={style.cartBtn}></button> */}
-            <MdShoppingCart size={45} style={{ fill: '#dfdfdf' }}/>
-          </Link>
-
+          <div className={style.cartbtn}>
+            <Link to="/cart">
+              {/* <button className={style.cartBtn}></button> */}
+              <MdShoppingCart size={45} style={{ fill: '#dfdfdf' }} />
+            </Link>
+          </div>
           {!isLogged && (
             <div className={style.log}>
-            <IoMdContact size={45} onClick={openModal} />
-            <Modal isOpen={isOpenModal} closeModal={closeModal}>
-              <Login />
-            </Modal>
-          </div>
+              <IoMdContact size={45} onClick={openModal} />
+              <Modal isOpen={isOpenModal} closeModal={closeModal}>
+                <Login />
+              </Modal>
+            </div>
           )}
 
           {isLogged && (
-            <div className="sideBar">
+            <div className={style.sideBar}>
               <IoMdContact
                 onClick={showSideBar}
                 style={{ cursor: "pointer" }}
-                size={40}
-                color={"yellow"}
+                size={45}
+                color={"rgb(209,56,0)"}
                 className="menu"
               />
               <ProSidebar
+                className={style.sidePosition}
                 collapsed={sideBar}
                 width={210}
                 collapsedWidth={"0px"}
@@ -140,15 +142,15 @@ export default function NavBar({ setPage }) {
 
                   <MenuItem icon={<CgLogOut />} onClick={handleLogOut}>
                     LogOut
-                    
+
                   </MenuItem>
 
-                  
-                  </Menu>
-                  </ProSidebar>
-                  </div>
-          )}                  
-          
+
+                </Menu>
+              </ProSidebar>
+            </div>
+          )}
+
         </div>
       </div>
     </nav>
