@@ -137,7 +137,7 @@ export default function Cart() {
       </div>
       <div className={style.checkout}>
         <Link to="/checkout" className={style.link}>
-          <p className={style.keep}>Checkout</p>
+          <p className={style.check2}>Checkout</p>
         </Link>
       </div>
     </div>
