@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
 import { getCart, getUser } from "../../redux/actions";
-
 import { useAuth } from "../Context/Contestautenticacion";
 
 export default function Checkout() {

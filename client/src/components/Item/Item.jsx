@@ -34,7 +34,7 @@ export default function Item({ id, name, image, price, stock, handleItem, newDel
         <div>
             <div className={style.item}>
                 <img src={image} alt={name} />
-                <h4 className={style.h4}>{name}</h4>
+                <h2 className={style.h2}>{name}</h2>
                 <div className={style.box}>
                     <p className={style.p}>${price}</p>
                     <div className={style.amount2}>
