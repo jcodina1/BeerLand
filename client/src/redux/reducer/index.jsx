@@ -148,7 +148,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         search: action.payload,
-        allBeers: action.payload,
+        beers: action.payload,
       };
     }
 
