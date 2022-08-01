@@ -17,6 +17,7 @@ const Star = ({id}) => {
     
    if (user !== null) {
         var filtrado = user2.filter((e) => e.email === user.email);
+        console.log(filtrado);
     }
 
     function HandleSubmit() {
@@ -52,6 +53,7 @@ const Star = ({id}) => {
             idUser:filtrado[0].id,
             idBeer:id
         }
+        
         helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
         .then(res => setRating(res.score))
     }
