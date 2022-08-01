@@ -120,6 +120,17 @@ async function postBeer(req, res, next) {
 }
 
 
+async function Beerbrewery(req, res, next) {
+    const { sellerId } = req.query
+    try {
+      const beer = await Beer.findAll({ where: { sellerId: sellerId } })
+      res.send(beer)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
 module.exports = {
     createdAllBeers,
     getAllBeers,
@@ -127,5 +138,6 @@ module.exports = {
     postBeer,
     updateBeer,
     deleteBeer,
+    Beerbrewery
     
 }

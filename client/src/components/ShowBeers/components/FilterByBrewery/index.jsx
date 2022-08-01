@@ -5,15 +5,15 @@ import styles from "./styles.module.css";
 export default function FilterByBrewery() {
   const dispatch = useDispatch();
   const allSellers = useSelector((state) => state.allSellers);
-  console.log(allSellers);
+  
   function handleFilter(e) {
     e.preventDefault();
 
     if (e.target.value !== "All") {
-      console.log(e.target.value);
+      
       dispatch(actions.filterBeersByBrewery(e.target.value));
     } else {
-      console.log(e.target.value);
+      
       dispatch(actions.getAllBeers());
     }
   }
@@ -24,7 +24,7 @@ export default function FilterByBrewery() {
         <option value="All">Filter by Brewery</option>
 
         {allSellers.map((seller) => {
-          return <option value={seller.id.toString()}>{seller.name}</option>;
+          return <option key={seller.id} value={seller.id.toString()}>{seller.name}</option>;
         })}
       </select>
     </div>

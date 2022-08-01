@@ -36,7 +36,6 @@ export default function ShowBeers() {
   // pageControl realiza el control del paginado, recibe la información del evento y renderiza mediante el componente Paginated.
   // setea las páginas segun el botón clickeado.
 
-  console.log(allBeers);
 
   const paginate = (e, pageNumber) => {
     if (pageNumber === "next" && page + 1 <= limitPage) {
@@ -58,9 +57,8 @@ export default function ShowBeers() {
 
   return (
     <div className={style.showBeers}>
+      <div className={style.distance}>
       <div className={style.filters}>
-
-
         <div className={style.distribution}>
           <SortByName setOrder={setOrder} />
         </div>
@@ -74,8 +72,10 @@ export default function ShowBeers() {
         <div className={style.distribution}>
           <FilterByType />
         </div>
-
       </div>
+    </div> 
+      
+      
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (

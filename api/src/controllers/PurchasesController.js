@@ -37,8 +37,24 @@ async function getAllPurchases(req, res, next) {
     next(error);
   }
 }
+async function getAllPurchasesByUser(req,res,next){
+const {userId}=req.query
+try {
+  const UsersDb = await Purchases.findAll({
+    where:{userId:userId},
+    order: [["id", "ASC"]],
+    include: [{ model: Beer,
+      include: {model: Seller}}, { model: User}]
+  });
+
+  res.status(200).send(UsersDb);
+} catch (error) {
+  next(error)
+}
+}
 
 module.exports = {
   postPurchases,
   getAllPurchases,
+  getAllPurchasesByUser
 };

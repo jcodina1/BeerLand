@@ -42,6 +42,11 @@ import {
   POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
+  SELLERBEERS,
+  SELLERBEER,
+  SET_DETAIL_SELLER,
+  POST_PURCHASE,
+  GET_PURCHASES_BY_USER
 } from "../const";
 
 export function addToCart(id) {
@@ -336,10 +341,21 @@ export async function helpCallScores(url) {
   });
 }
 
-// export function postPurchase(purchaseInfo) {
-//   return async function (dispatch) {
-//     try {
-//       await axios.post();
+export function postPurchase(purchaseInfo){
+  return async function(dispatch){
+    try {
+      const res = await axios.post(ALL_PURCHASES + '/user', purchaseInfo)
+      return dispatch({type : POST_PURCHASE, payload: res.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+}
+
+
+
+
 export function getAllPurchases() {
   return async function (dispatch) {
     let allPurchases = await axios.get(ALL_PURCHASES);
@@ -349,3 +365,39 @@ export function getAllPurchases() {
     });
   };
 }
+
+
+export function getBeerSeller(id) {
+  return async function (dispatch) {
+    const beers = await axios.get(SELLERBEER + id);
+    return dispatch({
+      type: SELLERBEERS,
+      payload: beers.data,
+    });
+  };
+}
+
+
+export function SetSellerDetail() {
+  return {
+      type: SET_DETAIL_SELLER,
+      payload: []
+  }
+
+}
+
+
+export function getPurchasesByUserId(userId){
+  try {
+    return async function(dispatch){
+      const userPurchases = await axios.get(ALL_PURCHASES + `/user?userId=${userId}`)
+      return dispatch({
+        type: GET_PURCHASES_BY_USER,
+        payload: userPurchases.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+

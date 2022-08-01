@@ -31,6 +31,7 @@ export default function SearchBar() {
 
   function handleBack() {
     dispatch(getAllBeers());
+    setValue("")
     //setPage(1);
   }
 
