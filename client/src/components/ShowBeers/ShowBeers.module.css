@@ -5,8 +5,8 @@
     flex-direction: column;
     gap: 40px;
     max-height: 140vh;
-    min-height: 100vh;
-    margin-bottom: 80px;
+    min-height: 140vh;
+    margin-bottom: 400px;
 }
 
 .cardsBox {
@@ -23,16 +23,25 @@
     /* padding: 0 0 2rem 0; */
 }
 .distance{
-    margin: 200px;
-}
+    margin: 5px 0 100px 0;
+} 
 .filters{
     display: flex;
     flex-direction: row;
     align-content: space-evenly;
-    margin-bottom: 100px;
     left:40%;
     justify-content: space-evenly;
 }
 .filters .distribution{
     margin: 0 10px 0px 10px;
+}
+.buttonB{
+    text-decoration: none;
+    color: antiquewhite;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: #704021;
+    padding: 2px 10px 2px 10px;
+    cursor: pointer;
 }

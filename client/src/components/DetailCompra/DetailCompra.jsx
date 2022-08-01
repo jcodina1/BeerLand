@@ -60,7 +60,7 @@ export default function Compra({ id, name, price, stock }) {
         <div style={{ marginTop: "-20px" }}>
           <div className={style.addTo}>
             <p>Available Stock:</p>
-            <p style={{ marginRight: "10px" }}>{stock}</p>
+            <p className={style.spaceL}>{stock}</p>
           </div>
           <div className={style.addTo}>
             <p>Add to Cart</p>
