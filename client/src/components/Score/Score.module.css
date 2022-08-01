@@ -5,4 +5,12 @@
 .star {
     cursor: pointer;
     transition: color 200ms;
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+}
+.dis{
+    display: flex;
+    flex-direction: row;
+    align-content: space-evenly;
 }

@@ -58,7 +58,7 @@ const Star = ({id}) => {
   }, [user]);
  
 
-    return <div>
+    return <div className={Style.dis}>
         {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 

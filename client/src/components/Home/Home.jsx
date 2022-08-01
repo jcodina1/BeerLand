@@ -16,9 +16,9 @@ export default function Home() {
     <div className={style.navbar}>
       <div><NavBar /></div>
       <div><Slider /></div>
-
+      <div className={style.h1Tittle}>Our Products</div>  
       <div className={style.homeContainer}>
-        <h1>OUR PRODUCTS</h1>  
+       
         <div >
           <div className={style.beerBox}><ShowBeers /></div>
         </div>

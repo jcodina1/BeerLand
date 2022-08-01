@@ -40,8 +40,10 @@ function App() {
             <Route path="/cart" component={Cart} />
             <Route path="/registerCompany" component={RegisterSeller} />
             <Route path="/user/favourites" component={UserFavs} />
+            <Route path="/purchases" component={Purchases} />
             <Route path="/sellers" component={ShowBrewery}/>
             <Route path="/seller/detail/:id" component={BreweryDetail}/>
+
           </Switch>
         </AuthProvider>
       </div>

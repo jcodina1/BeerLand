@@ -23,6 +23,9 @@ module.exports = (sequelize) => {
     },
     dni: {
       type: DataTypes.INTEGER,
+    },
+    rol:{
+      type: DataTypes.STRING,
     }
   });
 };
