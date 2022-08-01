@@ -42,6 +42,9 @@ import {
   POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
+  SELLERBEERS,
+  SELLERBEER,
+  SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER
 } from "../const";
@@ -364,6 +367,26 @@ export function getAllPurchases() {
 }
 
 
+export function getBeerSeller(id) {
+  return async function (dispatch) {
+    const beers = await axios.get(SELLERBEER + id);
+    return dispatch({
+      type: SELLERBEERS,
+      payload: beers.data,
+    });
+  };
+}
+
+
+export function SetSellerDetail() {
+  return {
+      type: SET_DETAIL_SELLER,
+      payload: []
+  }
+
+}
+
+
 export function getPurchasesByUserId(userId){
   try {
     return async function(dispatch){
@@ -377,3 +400,4 @@ export function getPurchasesByUserId(userId){
     console.log(error)
   }
 }
+

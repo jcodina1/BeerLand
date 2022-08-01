@@ -6,6 +6,7 @@ const {
   updateBeer,
   deleteBeer,
   postBeer,
+  Beerbrewery
 } = require("../controllers/BeerController");
 
 const router = Router();
@@ -15,5 +16,6 @@ router.get("/", getAllBeers);
 router.post("/", postBeer);
 router.put("/update/:id", updateBeer);
 router.delete("/", deleteBeer);
+router.get("/beers",Beerbrewery)
 
 module.exports = router;

@@ -1,0 +1,44 @@
+.detailCompra {
+    display: block;
+    padding: 1rem;
+    border: 0.1rem solid #c4c4c4;
+    border-radius: 10px;
+    margin: 1rem auto;
+  }
+  .detailCompra .addTo {
+    display: flex;
+    justify-content: space-between;
+  }
+  .detailCompra .addTo button {
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+  }
+  .detailCompra .addTo button .icon {
+    transition: transform 0.5s;
+  }
+  .detailCompra .addTo button .icon:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+  }
+  .detailCompra .buy {
+    padding: 0.5rem;
+    font-size: 16px;
+    font-family: 'Merriweather', serif;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: antiquewhite;
+    transition: transform 0.5s;
+  }
+  .detailCompra .buy:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: azure;
+    color: #440808;
+  }
+  .detailCompra h3 {
+    font-family: 'Roboto Flex', sans-serif;
+    font-size: 20px;
+    text-align: left;
+  }

@@ -21,7 +21,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
       purchaseDetails: purchaseDetails,
       status: "PENDING",
     };
-    console.log(purchaseInfo);
+
     dispatch(actions.postPurchase(purchaseInfo))
     setApproved(false);
   }

@@ -29,7 +29,7 @@ export default function PostBeer() {
   }, []);
 
   const { user } = useAuth()
-  console.log(user2)
+  
   let filtrado;
   const idSeller = []
   if (user !== null) {
@@ -43,7 +43,7 @@ export default function PostBeer() {
       if (imageUpload == null) return;
       const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
       await uploadBytes(imageRef, imageUpload).then((snapshot) => {
-        console.log(snapshot, 'subio!!!!!!!!!!!!')
+        
         getDownloadURL(snapshot.ref).then((url) => {
           setImageUrls(url);
         });
@@ -57,7 +57,7 @@ export default function PostBeer() {
   function post(values) {
     values.image = imageUrls
     values.sellerId = idSeller[0]
-    console.log(values)
+    
     dispatch(postBeer(values))
   }
 

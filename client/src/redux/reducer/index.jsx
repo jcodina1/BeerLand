@@ -32,6 +32,8 @@ import {
   POST_SCORE,
   ALL_PURCHASES,
   GET_PURCHASES,
+  SELLERBEERS,
+  SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER
 } from "../const";
@@ -147,7 +149,7 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         search: action.payload,
-        allBeers: action.payload,
+        beers: action.payload,
       };
     }
 
@@ -319,6 +321,19 @@ function Reducer(state = initialState, action) {
         allPurchases: action.payload,
       
       };
+     case SELLERBEERS:
+      return{
+        ...state,
+        filterPlaceholder:action.payload
+      }
+
+      case SET_DETAIL_SELLER:
+        return {
+          ...state,
+          breweryDetail: action.payload,
+        };
+
+
 
       case POST_PURCHASE:
       return {
