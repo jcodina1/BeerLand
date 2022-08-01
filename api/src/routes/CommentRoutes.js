@@ -1,14 +1,14 @@
-const { Router } = require('express');
+const { Router } = require("express");
 
-const { postComment, getComment, getAllComment, getAllCommentUser } = require('../controllers/CommentController');
-
-
+const {
+  postComment, 
+  getAllCommentBeer
+} = require("../controllers/CommentController");
 
 const router = Router();
 
-router.post('/', postComment)
-router.get('/', getAllComment)
-router.get('/:id', getComment)
-router.get('/:user', getAllCommentUser)
+router.post("/beer/:beerId", postComment);
+router.get("/beer/:beerId", getAllCommentBeer);
 
-module.exports = router
+
+module.exports = router;

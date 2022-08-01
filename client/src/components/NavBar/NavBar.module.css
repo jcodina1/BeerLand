@@ -1,68 +1,115 @@
 .navBox{
     padding: 20% 20% 0 5%;
+    position: absolute;
 }
 .navbar {
-    width: 95%;
+    width: 100%;
     max-height: 10vh;
     min-height: 10vh;
-    background-color: black;
+    background-color: #140c09;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     position:absolute;
-    margin-bottom: 30px 30px 0 30px;
+    /* margin: 30px 30px 0 30px; */
     padding-left: 0%;
     padding-right: 10%;
     padding-top: 2px;
-    border-radius: 20px;
+   /*  border-radius: 20px; */
+    z-index: 1;
 
 }
-.space{
+
+.space {
     margin-left: 15%;
     margin-top: 5%;
-    
+
 }
+.space h3{
+    margin-left: -100%;
+    margin-top: -20%;
+}
+
 .logo {
-    height: 36%;
-    width: 36%;
+    height: 34%;
+    width: 34%;
    /*  background-color: blue; */
     position: inherit;
     top: 50%;
     margin-left: -15%;
     margin-right: 80px;
-    
-    
-}
-.buttonlink{
-    margin: 20px 15px 10px 10px;
-    display: flex;
-    flex-direction: row;
-    align-content: space-around;
+
 
 }
-.button{
+
+
+.buttonlink {
+    margin: 0px 15px 10px 10px;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    align-content: space-between;
+    position: absolute;
+
+
+}
+
+.button {
     background-color: bisque;
-    color: rgb(2, 32, 10);
-    font-family: 'Trebuchet MS',  sans-serif;
+    color: #704021;
+    font-family: 'Trebuchet MS', sans-serif;
     border-radius: 5px;
     margin: 0 5px 0 5px;
     border: none;
     height: 30px;
 }
-.cartBtn{
+
+.cartBtn {
     border: none;
     border-radius: 5px;
-    margin: 0 5px 0 5px;
     background-image: url('../../img/cartIcon.png');
     width: 30px;
     height: 30px;
     background-size: contain;
     background-color: bisque;
     padding: 2px;
+    z-index: 1;
 }
-.infoDistribution{
+
+.infoDistribution {
     display: flex;
     flex-direction: row;
-    
+
+}
+
+.log {
+    display: block;
+    position: absolute;
+    width: auto;
+    height: fit-content;
+    color: #dfdfdf;
+    margin: -20px 0px 0 -20px;
+    align-items: center;
+    align-content: center;
+}
+
+.log:hover {
+    cursor: pointer
+}
+.buttonlink .sideBar{
+    margin: -20px 0px 20px -20px;
+    /* background-color: blue; */
+    display: flexbox;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 180px;
+    z-index: 2;
+    position: absolute;
+
+}
+.buttonlink .cartbtn{
+ margin: -20px 40px 0 -80px;   
+}
+.sidePosition{
+    margin: -20px -100px 0 -40px;
 }

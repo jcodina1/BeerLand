@@ -2,50 +2,55 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    height: 350px;
+    width: 100%;
 }
 
 .item img{
-    width: 10%;
-    height: 10%;
+    height: 100%;
 }
 
 .trash{
-    border: 2px solid rgb(26, 77, 46);
+    border: 2px solid rgb(35,20,10);
     position: absolute;
-    margin-left: 1100px;
+    margin-left: 1250px;
     height: 4rem;
     width: 4rem;
-    background-color: rgb(26, 77, 46);
-    color: rgba(255, 159, 41);
+    background-color: rgb(35,20,10);
+    color: rgb(185,155,103);
     border-radius: 50px;
 }
 
-.h4{
-    height: 4rem;
-    width: 18rem;
-    font-size: 30px;
+.h2{
+    height: auto;
+    width: 500px;
+    font-size: 40px;
     font-family: 'Trebuchet MS', sans-serif;
-    color: rgb(26, 77, 46);
+    color: rgb(35,20,10);
 }
 
 .p{
-    color: rgb(26, 77, 46);
+    color: rgb(35,20,10);
     font-size: 30px;
-    padding: 20px 20px;
+    font-weight: bold;
+    height: 80px;
+    width: 120px;
 }
 
 .p2{
-    color: rgb(26, 77, 46);
+    color: rgb(35,20,10);
     font-size: 40px;
-    padding: 20px 20px;
+    height: 80px;
+    width: 120px;
     font-weight: bold;
 }
 
 .box{
     display: flex;
     flex-direction: row;
-    margin-left: 60px;
-    /* margin-right: 50%; */
+    align-items: center;
+    height: 80px;
+    width: 460px;
 }
 
 .amount2{
@@ -54,12 +59,12 @@
 
 .amount2 button{
     font-weight: bold;
-    color: rgba(255, 159, 41);
-    background-color: rgb(26, 77, 46);
+    color: rgb(185,155,103);
+    background-color: rgb(35,20,10);
     height: 3rem;
     width: 3rem;
     border-radius: 50%;
-    border : 2px solid rgb(26, 77, 46);
+    border : 2px solid rgb(35,20,10);
 }
 
 .amount2 input{
@@ -68,7 +73,7 @@
     text-align: center;
     border-radius: 50%;
     background-color: rgba(255, 159, 41, 0.20) ;
-    color: rgba(26, 77, 46);
+    color: rgb(35,20,10);
     height: 3rem;
     width: 3rem;
     margin: 0px 10px 0px 10px;

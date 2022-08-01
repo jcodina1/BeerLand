@@ -17,15 +17,25 @@ import {
   SORT_BY_NAME,
   SORT_BY_PRICE,
   SET_PAGE,
-  GET_SELLERS,
+  GET_ALL_SELLERS,
   POST_SELLER,
   POST_FAVS,
   GET_USER,
   ALL_USERS,
+  FILTER_BEER_BY_TYPE,
+  GET_SELLERS,
   DELETE_FAVS,
   GET_BREWERY_DETAIL,
+  POST_COMMENT,
+  GET_COMMENTS_BEER,
   GET_FAV_DETAIL,
-  POST_SCORE
+  POST_SCORE,
+  ALL_PURCHASES,
+  GET_PURCHASES,
+  SELLERBEERS,
+  SET_DETAIL_SELLER,
+  POST_PURCHASE,
+  GET_PURCHASES_BY_USER
 } from "../const";
 
 const initialState = {
@@ -46,6 +56,9 @@ const initialState = {
   user: [],
   sellers: [],
   favs: [],
+  comments: [],
+  allPurchases: [],
+  userPurchases: []
 };
 
 function Reducer(state = initialState, action) {
@@ -55,6 +68,12 @@ function Reducer(state = initialState, action) {
         ...state,
         allBeers: action.payload,
         beers: action.payload,
+      };
+
+    case GET_ALL_SELLERS:
+      return {
+        ...state,
+        allSellers: action.payload,
       };
 
     case ADD_TO_CART:
@@ -130,19 +149,32 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         search: action.payload,
-        allBeers: action.payload,
+        beers: action.payload,
       };
     }
 
     case SORT_BY_NAME:
-      let sortedByName =
-        action.payload === "AtoZ"
-          ? state.allBeers.sort(function (a, b) {
-            return a.name.localeCompare(b.name);
-          })
-          : state.allBeers.sort(function (a, b) {
-            return b.name.localeCompare(a.name);
-          });
+      let sortedByName = [];
+      if (state.allBeers.length === state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.allBeers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        sortedByName =
+          action.payload === "AtoZ"
+            ? state.beers.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+              })
+            : state.beers.sort(function (a, b) {
+                return b.name.localeCompare(a.name);
+              });
+      }
       return {
         ...state,
         beers: sortedByName,
@@ -150,14 +182,29 @@ function Reducer(state = initialState, action) {
       };
 
     case SORT_BY_PRICE:
-      let sortedByPrice =
-        action.payload === "Low to High"
-          ? state.allBeers.sort(function (a, b) {
-            return a.price - b.price;
-          })
-          : state.allBeers.sort(function (a, b) {
-            return b.price - a.price;
-          });
+      let sortedByPrice = [];
+      if (state.allBeers.length === state.beers.length) {
+        //revisa si allBeers tiene el mismo largo que beers, para ver si ha habido o no algun filtrado
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.allBeers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.allBeers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
+      if (state.allBeers.length !== state.beers.length) {
+        //misma logica de arriba, caso opuesto
+        sortedByPrice =
+          action.payload === "Low to High"
+            ? state.beers.sort(function (a, b) {
+                return a.price - b.price;
+              })
+            : state.beers.sort(function (a, b) {
+                return b.price - a.price;
+              });
+      }
       return {
         ...state,
         beers: sortedByPrice,
@@ -165,18 +212,33 @@ function Reducer(state = initialState, action) {
       };
 
     case FILTER_BEER_BY_BREWERY:
-      const preFilteredBeers = state.allBeers;
-      const filteredBeers =
+      const preFilteredBeersByBrewery = state.allBeers;
+      const filteredBeersByBrewery =
         action.payload === "All"
-          ? preFilteredBeers
-          : preFilteredBeers.filter((beer) =>
-            beer.brewery.find((brewery) => brewery.name === action.payload)
-          );
+          ? preFilteredBeersByBrewery
+          : preFilteredBeersByBrewery.filter(
+              (beer) => parseInt(beer.sellerId) === parseInt(action.payload)
+            );
       return {
         ...state,
-        beers: filteredBeers,
-        filterPlaceholder: filteredBeers,
-        allBeers: action.payload,
+        beers: filteredBeersByBrewery,
+        filterPlaceholder: filteredBeersByBrewery,
+        
+      };
+
+    case FILTER_BEER_BY_TYPE:
+      const preFilteredBeersByType = state.allBeers;
+      const filteredBeersByType =
+        action.payload === "All"
+          ? preFilteredBeersByType
+          : preFilteredBeersByType.filter(
+              (beer) => beer.tipo === action.payload
+            );
+
+      return {
+        ...state,
+        beers: filteredBeersByType,
+        filterPlaceholder: filteredBeersByType,
       };
 
     case POST_BEER:
@@ -211,7 +273,7 @@ function Reducer(state = initialState, action) {
     case DELETE_FAVS:
       return {
         ...state,
-        favs:action.payload
+        favs: action.payload,
       };
 
     case GET_SELLERS:
@@ -226,29 +288,63 @@ function Reducer(state = initialState, action) {
         user: action.payload,
       };
 
-    case ALL_USERS:
-      return {
-        ...state,
-        user: action.payload,
-      };
-
     case GET_BREWERY_DETAIL:
       return {
         ...state,
         breweryDetail: action.payload,
-      }
+      };
+    case POST_COMMENT:
+      return {
+        ...state 
+      };
+      case GET_COMMENTS_BEER:
+        return{
+          ...state,
+          comments:action.payload
+        }
+      
 
-      case GET_FAV_DETAIL:
-      return{
+    case GET_FAV_DETAIL:
+      return {
         ...state,
         favs: action.payload,
-      }
+      };
 
       case POST_SCORE:
         return {
           ...state,
         };
   
+    case GET_PURCHASES:
+      return {
+        ...state,
+        allPurchases: action.payload,
+      
+      };
+     case SELLERBEERS:
+      return{
+        ...state,
+        filterPlaceholder:action.payload
+      }
+
+      case SET_DETAIL_SELLER:
+        return {
+          ...state,
+          breweryDetail: action.payload,
+        };
+
+
+
+      case POST_PURCHASE:
+      return {
+        ...state,
+      };
+
+      case GET_PURCHASES_BY_USER:
+        return {
+          ...state,
+          userPurchases: action.payload
+        };
 
     default:
       return { ...state };

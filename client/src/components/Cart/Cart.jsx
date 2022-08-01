@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import style from '../Cart/Cart.module.css';
+import style from "../Cart/Cart.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,7 +10,7 @@ import {
   addToCart,
 } from "../../redux/actions/index";
 import Item from "../Item/Item.jsx";
-import Footer from '../Footer/Footer.jsx'
+import Footer from "../Footer/Footer.jsx";
 import BeerLogo from "../../img/BeerLogo.png";
 
 export default function Cart() {
@@ -33,7 +33,6 @@ export default function Cart() {
   }, 0);
   preciototal = Number(preciototal.toFixed(2));
 
-
   useEffect(() => {
     dispatch(getCart());
   }, [dispatch]);
@@ -53,7 +52,7 @@ export default function Cart() {
       }
       return e;
     });
-    localStorage.setItem("carrito", JSON.stringify(newBeers))
+    localStorage.setItem("carrito", JSON.stringify(newBeers));
     localStorage.setItem("carrito", JSON.stringify(newBeers));
     setItems(newBeers);
     let total = 0;
@@ -61,14 +60,13 @@ export default function Cart() {
       total += e.price * e.cant;
     });
     setAdd(true);
-    return total;     
+    return total;
   }
 
   /*   function handleAddItems() {
     let newItems = localstorage?.map((e) => e?.total);
     let firstItems = localstorage?.map((e) => e.price);
-    console.log("first item", firstItems)
-    console.log("new item", newItems)
+
 
     if (firstItems.length) {
       let priceTotal = firstItems?.reduce(function (a, b) {
@@ -101,47 +99,47 @@ export default function Cart() {
   } */
 
   return (
-      <div className={style.cartContainer}>
-        <div className={style.header}>
-          <Link to='/home'>
-            <img className={style.logo} id='BeerLogo' src={BeerLogo} alt='Beer' />
-          </Link>
-          <h1 className={style.h1}>Cart</h1>
-          <Link to="/home" className={style.link}>
-            <p className={style.keep}>Keep Shopping</p>
-          </Link>
-        </div>
-        <div className={style.cart}>
-          {JSON.parse(localStorage.getItem("carrito"))?.length ? (
-            <div className={style.items}>
-              {beerCarts?.map((e) => (
-                <Item
-                  id={e.id}
-                  name={e.name}
-                  image={e.image}
-                  price={e.price}
-                  stock={e.stock}
-                  handleItem={handleItem}
-                  newDel={newDel}
-                />
-              ))}
-            <div > 
-              <h1 className={style.boxend} >TOTAL: ${preciototal} </h1>
+    <div className={style.cartContainer}>
+      <div className={style.header}>
+        <Link to="/home">
+          <img className={style.logo} id="BeerLogo" src={BeerLogo} alt="Beer" />
+        </Link>
+        <h1 className={style.h1}>Cart</h1>
+        <Link to="/home" className={style.link}>
+          <p className={style.keep}>Keep Shopping</p>
+        </Link>
+      </div>
+      <div className={style.cart}>
+        {JSON.parse(localStorage.getItem("carrito"))?.length ? (
+          <div className={style.items}>
+            {beerCarts?.map((e) => (
+              <Item
+                id={e.id}
+                name={e.name}
+                image={e.image}
+                price={e.price}
+                stock={e.stock}
+                handleItem={handleItem}
+                newDel={newDel}
+              />
+            ))}
+            <div>
+              <h1 className={style.boxend}>TOTAL: ${preciototal} </h1>
             </div>
           </div>
-          ) : (
+        ) : (
           <div className="empty">
             <h1>Oops, Your Cart is Empty!</h1>
             <p>Looks like you haven't added anything to your cart yet</p>
             <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" />
           </div>
-          )}
-        </div>
-        <div className={style.checkout}>
-          <Link to="/checkout" className={style.link}>
-            <p className={style.keep}>Checkout</p>
-          </Link>
-        </div>
-      </div >
+        )}
+      </div>
+      <div className={style.checkout}>
+        <Link to="/checkout" className={style.link}>
+          <p className={style.check2}>Checkout</p>
+        </Link>
+      </div>
+    </div>
   );
 }

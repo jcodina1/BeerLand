@@ -5,9 +5,12 @@ import { addToCart } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import { BsCartPlus } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
+import Swal from 'sweetalert2'
+import style from "../DetailCompra/DetailCompra.module.css"
+
 /* import './styles.css' */
 
-export default function Compra({ id, price, stock }) {
+export default function Compra({ id, name, price, stock }) {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [cartIcon, setCartIcon] = useState(
@@ -19,13 +22,29 @@ export default function Compra({ id, price, stock }) {
 
   function handleClick() {
     if (!beerinCart?.length) {
-      dispatch(addToCart(id));
-      setCartIcon(<BsCartCheckFill size={25} className="done" />);
+      dispatch(addToCart(id))
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-start',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: `Added "${name}" to cart`,
+      })
+      setCartIcon(<BsCartCheckFill size={25} className="done" />)
     }
   }
 
   return (
-    <div className="detailCompra">
+    <div className={style.detailCompra}>
       <h3
         style={{
           borderBottom: "1px solid gray",
@@ -39,15 +58,15 @@ export default function Compra({ id, price, stock }) {
         <h3>No more stock</h3>
       ) : (
         <div style={{ marginTop: "-20px" }}>
-          <div className="addTo">
+          <div className={style.addTo}>
             <p>Available Stock:</p>
-            <p style={{ marginRight: "10px" }}>{stock}</p>
+            <p className={style.spaceL}>{stock}</p>
           </div>
-          <div className="addTo">
+          <div className={style.addTo}>
             <p>Add to Cart</p>
             <button>
               {beerinCart?.length ? (
-                <BsCartCheckFill size={25} className="done" />
+                <BsCartCheckFill size={25} className={style.done} />
               ) : (
                 cartIcon
               )}
@@ -57,7 +76,7 @@ export default function Compra({ id, price, stock }) {
       )}
       {stock == 0 ? null : (
         <Link to={"/cart"}>
-          <button onClick={handleClick} className="buy">
+          <button onClick={handleClick} className={style.buy}>
             Buy This Beer
           </button>
         </Link>

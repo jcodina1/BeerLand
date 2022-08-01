@@ -1,37 +1,88 @@
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
 import React, { Fragment, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import styles from "./ProductForm.module.css";
-import { useDispatch } from "react-redux";
-import { postBeer } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSellers, postBeer } from "../../redux/actions";
+import { storage } from "../../firebase";
+import { v4 } from "uuid";
+import { useEffect } from "react";
+import { useAuth } from "../Context/Contestautenticacion";
 
 export default function PostBeer() {
   const dispatch = useDispatch();
+  const user2 = useSelector((state) => state.allSellers)
 
   const [sentForm, changeSentForm] = useState(false);
-  // const [input, setInput] = useState({
-  //   name: "",
-  //   image: "",
-  //   price: 0,
-  //   description: "",
-  //   stock: 0,
-  // });
+  const [validate, setValidate] = useState(false);
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState();
+
+  useEffect(() => {
+    dispatch(getAllSellers());
+  }, []);
+
+  const { user } = useAuth()
+  
+  let filtrado;
+  const idSeller = []
+  if (user !== null) {
+    filtrado = user2.filter((e) => e.mail === user.email);
+    idSeller.push(filtrado[0].id)
+  }
+
+
+  const uploadFile = async () => {
+    try {
+      if (imageUpload == null) return;
+      const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+      await uploadBytes(imageRef, imageUpload).then((snapshot) => {
+        
+        getDownloadURL(snapshot.ref).then((url) => {
+          setImageUrls(url);
+        });
+      });
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
+  function post(values) {
+    values.image = imageUrls
+    values.sellerId = idSeller[0]
+    
+    dispatch(postBeer(values))
+  }
 
   return (
     <Fragment>
       <div className={styles.container}>
         <Formik
+
           initialValues={{
             name: "",
+            price: "",
             image: "",
-            price: 0,
             description: "",
             stock: 0,
+            sellerId: 0
+
           }}
+
+
           validate={(values) => {
             let errores = {};
 
             if (!values.name) {
               errores.name = "Please enter a name";
+              console.log(idSeller)
             } else if (!/[a-zA-ZñÑ\s]{2,50}/.test(values.name)) {
               errores.name = "Only letters and spaces";
             }
@@ -39,11 +90,11 @@ export default function PostBeer() {
             if (!values.image) {
               errores.image = "Please enter an image";
             }
-            //  else if (
-            //   !/([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/.test(values.image)
-            // ) {
-            //   errores.image = "Image must be valid jpg or png file";
-            // }
+            else if (
+              !/([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/.test(values.image)
+            ) {
+              errores.image = "Image must be valid jpg or png file";
+            }
 
             if (!values.price) {
               errores.price = "Please enter a price";
@@ -60,10 +111,9 @@ export default function PostBeer() {
           }}
           onSubmit={(values, { resetForm }) => {
             resetForm();
-            dispatch(postBeer(values));
+            post(values)
             changeSentForm(true);
             setTimeout(() => changeSentForm(false), 5000);
-            console.log(values);
           }}
         >
           {({
@@ -93,11 +143,8 @@ export default function PostBeer() {
                   type="file"
                   id="image"
                   name="image"
-                  //value={values.image}
-                  // onChange={handleChange}
-                  //onBlur={handleBlur}
                   onChange={(event) =>
-                    setFieldValue("image", event.currentTarget.files[0])
+                    setImageUpload(event.target.files[0])
                   }
                 />
                 <ErrorMessage
@@ -106,10 +153,11 @@ export default function PostBeer() {
                     <div className={styles.error}>{errors.image}</div>
                   )}
                 />
+                <button type='button' onClick={e => uploadFile(e)}>Upload Image</button>
               </div>
               <div>
                 <label htmlFor="price">Price: </label>
-                <Field type="number" id="price" name="price" />
+                <Field type="text" id="price" name="price" />
                 <ErrorMessage
                   name="price"
                   component={() => (

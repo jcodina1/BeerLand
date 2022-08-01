@@ -1,22 +1,27 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
-import style from "../BeerCard/BeerCard.module.css";
+import style from "../BreweryCard/BreweryCard.module.css";
 
 export default function BreweryCard({
   id,
   name,
-  description,
   image,
  
 }) {
   return (
-    <Link to={`/sellers/detail/${id}`}>
-      <div className={style.cardContainer}>
-        <h1>{name}</h1>
-        <img className={style.cardImg} src={image} alt="No img found :(" />
-        <p>{description}</p>
+    <div className={style.card}>
+      <div className={style.circle}>
+      <Link to={`/seller/detail/${id}`} className={style.link}>
+        <img src={image} alt="No img found " />
+      </Link>
+        <Link to={`/seller/detail/${id}`} className={style.link}>
+          <div className={style.content}>
+            <h2>{name}</h2>
+          </div>
+        </Link>
        
+        
       </div>
-    </Link>
+    </div>
   );
 }

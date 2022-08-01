@@ -14,26 +14,11 @@ const Star = ({id}) => {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const {user} = useAuth()
-    console.log(user)
     
    if (user !== null) {
         var filtrado = user2.filter((e) => e.email === user.email);
-        console.log(filtrado)
-        // var obje = {
-        //             idUser:filtrado[0].id,
-        //             idBeer:id
-        //         }
-        // helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
-        // .then(res => setRating(res.score))
+        console.log(filtrado);
     }
- 
-    // function handleChange(e) {
-    //     setRating({
-    //       ...rating,
-    //       [e.target.rating]: e.target.value,
-    //     });
-    // }
-    console.log(rating)
 
     function HandleSubmit() {
         if (user !== null) {
@@ -56,19 +41,9 @@ const Star = ({id}) => {
         });
     }
 
-        
-    
     
   useEffect(() => {
     dispatch(getUser());
-    // if (user!== null) {
-    //     var obje = {
-    //         idUser:filtrado[0].id,
-    //         idBeer:id
-    //     }
-    //     helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
-    //     .then(res => setRating(res.score))
-
   }, []);
 
   useEffect(() => {
@@ -78,18 +53,19 @@ const Star = ({id}) => {
             idUser:filtrado[0].id,
             idBeer:id
         }
+        
         helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
         .then(res => setRating(res.score))
     }
   }, [user]);
  
 
-    return <div>
+    return <div className={Style.dis}>
         {[...Array(5)].map((star, i) => {
             const ratingValue = i + 1;
 
             return (
-                <div>
+                <div key={i}>
                 <label>
                     <input
                         type="radio"
@@ -101,7 +77,7 @@ const Star = ({id}) => {
                     />
                     <FaStar
                         className={Style.star}
-                        color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"} size={24}
+                        color={ratingValue <= (hover || rating) ? "#c68308" : "#624c3d"} size={24}
                         onMouseEnter={() => setHover(ratingValue)}
                         onMouseLeave={() => setHover(null)}
                     />
@@ -110,8 +86,8 @@ const Star = ({id}) => {
                 </div>
             )
         })}
-        <p>Your rating is: {rating}</p>
-         <button type='submit' onClick={e=>HandleSubmit(e)}>Rate</button>
+        {/* <p>Your rating is: {rating}</p> */}
+         <button className={Style.button} type='submit' onClick={e=>HandleSubmit(e)}>Rate</button>
     </div>
 }
 

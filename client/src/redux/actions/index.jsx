@@ -22,6 +22,9 @@ import {
   GET_ALL_BREWERIES,
   GET_BREWERY_DETAIL,
   SET_PAGE,
+  FILTER_BEER_BY_TYPE,
+  SELLER,
+  GET_ALL_SELLERS,
   ALL_SELLERS,
   GET_SELLERS,
   POST_SELLER,
@@ -32,8 +35,18 @@ import {
   GET_USER,
   ALL_USERS,
   SELLERS_ID,
+  GET_COMMENTS_BEER,
+  POST_COMMENT,
+  COMMENTS,
   GET_FAV,
-  POST_SCORE
+  POST_SCORE,
+  ALL_PURCHASES,
+  GET_PURCHASES,
+  SELLERBEERS,
+  SELLERBEER,
+  SET_DETAIL_SELLER,
+  POST_PURCHASE,
+  GET_PURCHASES_BY_USER
 } from "../const";
 
 export function addToCart(id) {
@@ -78,12 +91,12 @@ export function getAllBeers() {
   };
 }
 
-export function getAllBreweries() {
+export function getAllSellers() {
   return async function (dispatch) {
-    let allBreweries = await axios.get("http://localhost:3001/seller");
+    const allSellers = await axios.get(SELLER);
     return dispatch({
-      type: GET_ALL_BREWERIES,
-      payload: allBreweries.data,
+      type: GET_SELLERS,
+      payload: allSellers.data,
     });
   };
 }
@@ -100,12 +113,12 @@ export function getBeerDetail(id) {
 
 export function getBreweryDetail(id) {
   return async function (dispatch) {
-    const breweryById = await axios.get(SELLERS_ID + id);
+    const breweryById = await axios.get(SELLERS_ID +id);
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,
-    })
-  }
+    });
+  };
 }
 
 export const removeDetail = () => {
@@ -187,6 +200,13 @@ export function filterBeersByBrewery(payload) {
   };
 }
 
+export function filterBeersByType(payload) {
+  return {
+    type: FILTER_BEER_BY_TYPE,
+    payload,
+  };
+}
+
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
@@ -243,7 +263,6 @@ export function getFavs(user) {
   };
 }
 
-
 export function deleteFavs(idUser, idBeer) {
   return async function (dispatch) {
     try {
@@ -260,7 +279,6 @@ export function deleteFavs(idUser, idBeer) {
 export function getUser() {
   return async function (dispatch) {
     let allUser = await axios.get(GET_USER);
-    console.log(allUser);
     return dispatch({
       type: ALL_USERS,
       payload: allUser.data,
@@ -268,29 +286,49 @@ export function getUser() {
   };
 }
 
-
 export async function helpCall(url) {
   return axios.get(`http://localhost:3001${url}`).then((res) => {
     return res.data;
   });
 }
 
+export function postComment(obj,id) {
+  console.log(obj)
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
+      return dispatch({ type: 'POST_SCORE', payload: response.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getCommentsBeer(idBeer) {
+  return async function (dispatch) {
+    const commentBeer = await axios.get(`/comment/beer/${idBeer}`);
+    return dispatch({
+      type: GET_COMMENTS_BEER,
+      payload: commentBeer.data,
+    });
+  };
+}
 export function getFavDetail(id) {
   return async function (dispatch) {
     const Fav = await axios.get(GET_FAV + id);
     return dispatch({
-      type: 'GET_FAV_DETAIL',
+      type: "GET_FAV_DETAIL",
       payload: Fav.data,
-    })
-  }
+    });
+  };
 }
 
 export function postScore(obj) {
-  console.log(obj)
   return async function (dispatch) {
     try {
       const response = await axios.post(POST_SCORE,obj);
       return dispatch({ type: 'POST_SCORE', payload: response.data });
+
     } catch (error) {
       console.log(error);
     }
@@ -301,5 +339,65 @@ export async function helpCallScores(url) {
   return axios.get(`http://localhost:3001${url}`).then((res) => {
     return res.data;
   });
+}
+
+export function postPurchase(purchaseInfo){
+  return async function(dispatch){
+    try {
+      const res = await axios.post(ALL_PURCHASES + '/user', purchaseInfo)
+      return dispatch({type : POST_PURCHASE, payload: res.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+}
+
+
+
+
+export function getAllPurchases() {
+  return async function (dispatch) {
+    let allPurchases = await axios.get(ALL_PURCHASES);
+    return dispatch({
+      type: GET_PURCHASES,
+      payload: allPurchases.data,
+    });
+  };
+}
+
+
+export function getBeerSeller(id) {
+  return async function (dispatch) {
+    const beers = await axios.get(SELLERBEER + id);
+    return dispatch({
+      type: SELLERBEERS,
+      payload: beers.data,
+    });
+  };
+}
+
+
+export function SetSellerDetail() {
+  return {
+      type: SET_DETAIL_SELLER,
+      payload: []
+  }
+
+}
+
+
+export function getPurchasesByUserId(userId){
+  try {
+    return async function(dispatch){
+      const userPurchases = await axios.get(ALL_PURCHASES + `/user?userId=${userId}`)
+      return dispatch({
+        type: GET_PURCHASES_BY_USER,
+        payload: userPurchases.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
 }
 

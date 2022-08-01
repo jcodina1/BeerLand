@@ -4,15 +4,13 @@ const { Seller, Beer } = require("../db.js");
 async function postSellers(req, res, next) {
   const { name, description, mail, dni } = req.body;
   try {
-
     let newSeller = await Seller.findOrCreate({
       where: {
         name: name,
         description: description,
         mail: mail,
-        dni: dni
-
-      }
+        dni: dni,
+      },
     });
     return res.json(newSeller);
   } catch (error) {
@@ -87,9 +85,19 @@ async function getAllSellers2(req, res, next) {
     next(error);
   }
 }
+async function getAllSellersId(req, res, next) {
+  try {
+    const {id}=req.params
+  const sellersDb = await Seller.findByPk(id);
+  res.send(sellersDb)
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports = {
   getAllSellers,
   postSellers,
   getAllSellers2,
+  getAllSellersId
 };

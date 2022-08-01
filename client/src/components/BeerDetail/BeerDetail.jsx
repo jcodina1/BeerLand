@@ -1,13 +1,17 @@
 /* eslint-disable no-unused-vars */
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBeerDetail, removeDetail, addToCart } from "../../redux/actions/index";
+import {
+  getBeerDetail,
+  removeDetail,
+  addToCart,
+} from "../../redux/actions/index";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
-import style from '../BeerDetail/BeerDetail.module.css'
+import style from "../BeerDetail/BeerDetail.module.css";
 import NavBar from "../NavBar/NavBar";
-import DetailCompra from '../DetailCompra/DetailCompra';
-import Score from '../Score/Score';
+import DetailCompra from "../DetailCompra/DetailCompra";
+import Score from "../Score/Score";
 import { Comment } from "../Comment/Comment";
 
 export default function BeerDetail(props) {
@@ -15,7 +19,6 @@ export default function BeerDetail(props) {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const beer = useSelector((state) => state.detail);
-  console.log(beer);
 
   useEffect(() => {
     dispatch(removeDetail());
@@ -46,34 +49,33 @@ export default function BeerDetail(props) {
             <div className={style.box}>
               <div className={style.leftContainer}>
                 <div>
-                  <h1>{beer.name}</h1>
-                <div className={style.image}>
-                  <img src={beer.image} alt="" />
-                </div>
+                  <div className={style.dis}>
+                    <h1>{beer.name}</h1>
+                  </div>
+                  <div className={style.image}>
+                    <img src={beer.image} alt="" />
+                  </div>
                 </div>
               </div>
+
               <div className={style.containerR}>
-                 <p>
+
+                <p>
                   <h2>Description:</h2>
                   <span className={style.textBox}>{beer.description}</span>
-                </p> 
-{/*                 <p>
-                  <strong>Price: </strong>
-                  <span className={style.textBox}>{beer.price}</span>
                 </p>
-                <p>
-                  <strong>Stock: </strong>
-                  <span className={style.textBox}>{beer.stock}</span>
-                </p> */}
+
                 <div>
-                  <Score id={id}/>
+                  <Score id={beer.id} />
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>
             </div>
-                
           </div>
         )}
+        <div className={style.comments}>
+          <Comment className={style.comments} id={id} />
+        </div>
       </div>
     </div>
   );

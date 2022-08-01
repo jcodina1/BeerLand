@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.detailPage {
+    background: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 5% 5% 4% 5%;;
+    margin: 0px;
+    background-size: contain;
+}
+
+.box {
+    display: flex;
+    align-content: inherit;
+    flex-direction: row;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(245, 245, 245);
+    height: 535px;
+    padding: 10px 30px 10px 50px;
+}
+.leftContainer{
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    padding: 50px 20px 20px 20px;
+    border-radius: 10px 0 0 10px;
+    min-width: 452px;
+    min-height: 482px;
+    margin-right: 100px;
+}
+.containerR{
+    padding: 50px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+}
+.leftContainer img{
+    width: 100%;
+}
+.containerR p{
+    text-align: left;
+    width: 100%;
+    line-height: 22px
+}
+
+.textBox{
+
+font-size: 16px;
+line-height: 16px;
+
+}
+
+.cardsBox {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    justify-content: space-evenly;
+    /* margin: 1rem, 0; */
+}
+
+.cardsContainer {
+    width: auto;
+    height: auto;
+    /* padding: 0 0 2rem 0; */
+    background-color: rgb(245, 245, 245);
+    
+    padding:80px 20px 20px 20px;
+}
+.beers{
+    display: flex;
+    flex-direction: column;
+}
+h2{
+    margin-bottom: 64px;
+    font-family: 'Staatliches', cursive;
+    font-weight: 500;
+    font-size: 50px;
+    margin: 0 0 10px 0;
+}
+.whitebox{
+    height: 535px;
+    padding: 10px 30px 10px 50px;
+}

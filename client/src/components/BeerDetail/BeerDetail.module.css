@@ -1,40 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .detailPage {
-    background-color: rgba(3, 48, 9, 0.5);
+    background: rgba(74, 47, 3, 0.5);
     display: flex;
     flex-direction: column;
     height: fit-content;
     padding: 5% 5% 4% 5%;;
     margin: 0px;
+    background-size: contain;
 }
 
 .box {
     display: flex;
-    align-content: inherit;
+    /* align-content: inherit; */
     flex-direction: row;
-    border-radius: 10px;
-    color: blanchedalmond;
-    background-color: brown;
+    /* border-radius: 10px; */
+    color: rgb(35,20,10);
+    background-color: rgb(245, 245, 245);
     height: 535px;
+    min-height: 650px;
 }
 .leftContainer{
-    background-color: aqua;
+    background-color: rgb(245, 245, 245);
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    padding: 50px 20px 20px 20px;
+    padding: 35px 0px 0px 20px;
     border-radius: 10px 0  0 10px;
-    width: 450px;
-    margin-right: 100px;
+    min-width: 500px;
+    min-height: 650px;
+    margin-right: 0px;
 }
 .containerR{
-    padding: 50px 20px 20px 20px;
+    padding: 50px 20px 20px 0px;
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-img{
+.leftContainer img{
     width: 70%;
+    margin: -20px;
 }
 .containerR p{
     text-align: left;
@@ -44,7 +50,15 @@ img{
 
 .textBox{
 
-font-size: small;
-line-height: 3px ;
+font-size: 20px;
+line-height: 26px ;
 
+}
+.comments{
+    margin-top: 50px;
+}
+.dis h1{
+    font-family: 'Staatliches', cursive;
+    font-size: 58px;
+    color: rgb(35,20,10);
 }
