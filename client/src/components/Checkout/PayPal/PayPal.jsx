@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import {useDispatch} from 'react-redux'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from 'react-router-dom';
-
+import * as actions from '../../../redux/actions'
 
 export default function Paypal({ precioTotal, userId, purchaseDetails }) {
-
+  const dispatch = useDispatch();
   const [approved, setApproved] = useState(false);
   const nav = useHistory();
   function navigateToHome(){
     nav.push('/home')
   }
-
+  
 
   if (approved === true) {
     const purchaseInfo = {
@@ -20,7 +21,8 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
       purchaseDetails: purchaseDetails,
       status: "PENDING",
     };
-    
+
+    dispatch(actions.postPurchase(purchaseInfo))
     setApproved(false);
   }
   return (

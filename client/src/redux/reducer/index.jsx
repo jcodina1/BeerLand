@@ -33,7 +33,9 @@ import {
   ALL_PURCHASES,
   GET_PURCHASES,
   SELLERBEERS,
-  SET_DETAIL_SELLER
+  SET_DETAIL_SELLER,
+  POST_PURCHASE,
+  GET_PURCHASES_BY_USER
 } from "../const";
 
 const initialState = {
@@ -56,8 +58,7 @@ const initialState = {
   favs: [],
   comments: [],
   allPurchases: [],
-
-  
+  userPurchases: []
 };
 
 function Reducer(state = initialState, action) {
@@ -333,6 +334,17 @@ function Reducer(state = initialState, action) {
         };
 
 
+
+      case POST_PURCHASE:
+      return {
+        ...state,
+      };
+
+      case GET_PURCHASES_BY_USER:
+        return {
+          ...state,
+          userPurchases: action.payload
+        };
 
     default:
       return { ...state };

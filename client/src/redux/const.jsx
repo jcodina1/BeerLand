@@ -19,8 +19,8 @@ export const GET_FAV = '/user/fav/beer/'
 export const POST_SCORE="/score"
 export const SELLERBEER = "/beer/beers?sellerId="
 
-
-
+export const POST_PURCHASE = 'POST_PURCHASE'
+export const GET_PURCHASES_BY_USER = 'GET_PURCHASES_BY_USER';
 export const SEARCH_BAR = "SEARCH_BAR";
 export const SET_PAGE = "SET_PAGE";
 export const SET_DETAILS = "SET_DETAILS";
