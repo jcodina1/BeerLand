@@ -68,7 +68,7 @@
 	opacity: 0;
 	visibility: hidden;
 	margin-right: 40px;
-	margin-top: 20px;
+	margin-top: -7px;
 	text-decoration: none;
 }
 .card:hover .content{

@@ -1,11 +1,8 @@
 const { Router } = require("express");
 
 const {
-  postComment,
-  getComment,
-  getAllComment,
-  getAllCommentUser,
-  getAllCommentBeer,
+  postComment, 
+  getAllCommentBeer
 } = require("../controllers/CommentController");
 
 const router = Router();
