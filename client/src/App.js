@@ -16,10 +16,11 @@ import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 import ValidacionUSer from "./components/validacion/validacionUsuario";
 import RegisterSeller from "./components/register/RegisterSeller";
-import Purchases from "./components/Purchases/AllPurchases"
+import Purchases from "./components/Purchases/AllPurchases";
 import axios from "axios";
 import BreweryDetail from "./components/BreweryDetail/BreweryDetail";
 import ShowBrewery from "./components/ShowBrewery/ShowBrewery";
+import UserPurchases from "./components/Purchases/UserPurchases/UserPurchases";
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
 
@@ -41,9 +42,9 @@ function App() {
             <Route path="/registerCompany" component={RegisterSeller} />
             <Route path="/user/favourites" component={UserFavs} />
             <Route path="/purchases" component={Purchases} />
-            <Route path="/sellers" component={ShowBrewery}/>
-            <Route path="/seller/detail/:id" component={BreweryDetail}/>
-
+            <Route path="/sellers" component={ShowBrewery} />
+            <Route path="/seller/detail/:id" component={BreweryDetail} />
+            <Route path="test" component={UserPurchases} />
           </Switch>
         </AuthProvider>
       </div>

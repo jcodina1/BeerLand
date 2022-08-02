@@ -1,0 +1,10 @@
+.purchasesWrapper {
+  direction: flex;
+  flex-direction: column;
+}
+
+.purchaseContainer {
+  direction: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

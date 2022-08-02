@@ -22,7 +22,7 @@ const { conn } = require("./src/db.js");
 const { getAllSellers2 } = require("./src/controllers/SellerController");
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-consolers
     getAllSellers2();
