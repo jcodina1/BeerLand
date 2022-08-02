@@ -10,8 +10,8 @@ export default function Itemscheckout({ name, image, price, cant }) {
         <div>
           <h4>{name}</h4>
           <p>Quantity: {cant}</p>
-          <p>Price per unit: ${price / cant}</p>
-          <p>Subtotal ${price}</p>
+          <p>Price per unit: ${(price / cant).toFixed(2)}</p>
+          <p>Subtotal ${price.toFixed(2)}</p>
         </div>
       </div>
     </div>
