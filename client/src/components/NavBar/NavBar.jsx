@@ -20,6 +20,7 @@ import Swal from "sweetalert2";
 import { IoMdContact } from "react-icons/io";
 import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
+import { removeAllFromCart } from "../../redux/actions";
 
 export default function NavBar({ setPage }) {
   const dispatch = useDispatch()
@@ -59,6 +60,7 @@ export default function NavBar({ setPage }) {
           setIsLogged(false);
           salir();
           reload();
+          dispatch(removeAllFromCart())
           window.location.href = "/home";
         }
       });

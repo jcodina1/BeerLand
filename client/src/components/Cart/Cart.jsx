@@ -12,10 +12,15 @@ import {
 import Item from "../Item/Item.jsx";
 import Footer from "../Footer/Footer.jsx";
 import BeerLogo from "../../img/BeerLogo.png";
+import { useAuth } from "../Context/Contestautenticacion";
+import Swal from "sweetalert2";
 
 export default function Cart() {
   const [checkout, setCheckout] = useState(false);
   const cantidad = Math.floor(Math.random() * 15) + 1;
+  const user2 = useSelector((state) => state.user);
+  const { user } = useAuth();
+  const [loggedIn, setLoggeddIn] = useState(false);  
 
   const dispatch = useDispatch();
   const beerCarts = useSelector((state) => state.cart);
@@ -34,13 +39,33 @@ export default function Cart() {
   preciototal = Number(preciototal.toFixed(2));
 
   useEffect(() => {
-    dispatch(getCart());
-  }, [dispatch]);
+      dispatch(getCart());
+  }, [user]);
+
+  useEffect(() => {
+    if(user) {
+      setLoggeddIn(true)      
+    }
+  }, [user]);
+  console.log(loggedIn)
 
   function newDel() {
     setItems(localstorage);
     setDel(del ? false : true);
   }
+
+  function handleCheckout (){
+  if(!loggedIn){
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "You must login first to do this!",
+    });
+  }
+
+}
+
+
 
   function handleItem(name, price, cant) {
     let newBeers = localstorage?.map((e) => {
@@ -53,7 +78,6 @@ export default function Cart() {
       return e;
     });
     localStorage.setItem("carrito", JSON.stringify(newBeers));
-    localStorage.setItem("carrito", JSON.stringify(newBeers));
     setItems(newBeers);
     let total = 0;
     newBeers.forEach((e) => {
@@ -62,41 +86,6 @@ export default function Cart() {
     setAdd(true);
     return total;
   }
-
-  /*   function handleAddItems() {
-    let newItems = localstorage?.map((e) => e?.total);
-    let firstItems = localstorage?.map((e) => e.price);
-
-
-    if (firstItems.length) {
-      let priceTotal = firstItems?.reduce(function (a, b) {
-        return a + b;
-      }, 0);
-      let beerInfo = localstorage;
-      dispatch(totalPrice(priceTotal));
-      dispatch(infoBeers(beerInfo));
-
-    } else {
-      let pricesTotal = newItems?.reduce(function (a, b) {
-        return a + b;
-      }, 0);
-      let beerInfo = localstorage;
-      dispatch(totalPrice(pricesTotal));
-      dispatch(infoBeers(beerInfo));
-    }
-    let precio = localstorage.map((e) => e.cant * e.price);
-    let preciototal = precio.reduce(function (a, b) {
-      return a + b;
-    }, 0);
-    return preciototal
-  }
-
-  function handleSubItems() {
-    let newItems = localstorage?.map((e) => e.cant);
-    return newItems.reduce(function (a, b) {
-      return a + b;
-    }, 0);
-  } */
 
   return (
     <div className={style.cartContainer}>
@@ -136,10 +125,49 @@ export default function Cart() {
         )}
       </div>
       <div className={style.checkout}>
-        <Link to="/checkout" className={style.link}>
-          <p className={style.check2}>Checkout</p>
-        </Link>
+          {
+            !loggedIn ?  <p className={style.check2}  onClick={e=>handleCheckout(e)}>Checkout</p>
+            : <Link to="/checkout" className={style.link}>
+                <p className={style.check2}>Checkout</p>
+               </Link>
+          }       
       </div>
     </div>
   );
 }
+
+
+  /*   function handleAddItems() {
+    let newItems = localstorage?.map((e) => e?.total);
+    let firstItems = localstorage?.map((e) => e.price);
+
+
+    if (firstItems.length) {
+      let priceTotal = firstItems?.reduce(function (a, b) {
+        return a + b;
+      }, 0);
+      let beerInfo = localstorage;
+      dispatch(totalPrice(priceTotal));
+      dispatch(infoBeers(beerInfo));
+
+    } else {
+      let pricesTotal = newItems?.reduce(function (a, b) {
+        return a + b;
+      }, 0);
+      let beerInfo = localstorage;
+      dispatch(totalPrice(pricesTotal));
+      dispatch(infoBeers(beerInfo));
+    }
+    let precio = localstorage.map((e) => e.cant * e.price);
+    let preciototal = precio.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+    return preciototal
+  }
+
+  function handleSubItems() {
+    let newItems = localstorage?.map((e) => e.cant);
+    return newItems.reduce(function (a, b) {
+      return a + b;
+    }, 0);
+  } */
