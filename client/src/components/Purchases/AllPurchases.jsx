@@ -26,6 +26,7 @@ export default function Purchases(){
                     beers={e.beers}
                     user={e.user}
                     seller={e.beers.seller}
+                    address={e.address}
                     // beers: purchase.beers.map((b)=>{
                     //     return (
                     //         b.id,

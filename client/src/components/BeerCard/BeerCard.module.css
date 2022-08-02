@@ -8,7 +8,7 @@
 .card{
 	position: relative;
 	width: 600px;
-	height: 400px;
+	height: 380px;
 	/* background: blue; */
 	border-radius: 10px;
 	display: flex;
@@ -48,15 +48,15 @@
 	top: 32%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	height: 500px;
+	height: 450px;
 	pointer-events: none;
 	transition: 0.5s;
 	
 }
 .card:hover img{
 	left: 75%;
-	height: 700px;
-	width: 580px;
+	height: 650px;
+	width: 540px;
 		
 }
 .card .content{
@@ -68,7 +68,7 @@
 	opacity: 0;
 	visibility: hidden;
 	margin-right: 40px;
-	margin-top: 20px;
+	margin-top: -7px;
 	text-decoration: none;
 }
 .card:hover .content{
@@ -116,7 +116,7 @@
 	
 }
 .content .heart{
-	/*  */background-color: blueviolet;
+	/*background-color: blueviolet;*/
 	color: rgb(185,155,103);
 	z-index: 4;
 	margin-top: 25px;

@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPurchases } from "../../redux/actions";
 
-export default function Purchase({ id, total, status, create, beers, user }) {
+export default function Purchase({ id, total, status, create, beers, user,address }) {
 
     let i = 1
 
@@ -13,6 +13,14 @@ export default function Purchase({ id, total, status, create, beers, user }) {
                 <h3>Total: {total}</h3>
                 <h3>Status purchase: {status}</h3>
                 <h3>Date: {create}</h3>
+                <h3>Address:</h3>
+                {address.map(e=>
+                <>
+                <p> Street address: {e.address}</p>
+                <p>Apto: {e.extra}</p>
+                <p>City: {e.city}</p>
+               
+                </>)}
                 <h1>Details:</h1>
                 {beers.map((b) =>
                     <div key={b.id}>
