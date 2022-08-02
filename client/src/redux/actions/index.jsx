@@ -344,7 +344,7 @@ export async function helpCallScores(url) {
 export function postPurchase(purchaseInfo){
   return async function(dispatch){
     try {
-      const res = await axios.post(ALL_PURCHASES + '/user', purchaseInfo)
+      const res = await axios.post(ALL_PURCHASES , purchaseInfo)
       return dispatch({type : POST_PURCHASE, payload: res.data })
     } catch (error) {
       console.log(error)
