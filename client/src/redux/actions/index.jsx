@@ -114,7 +114,7 @@ export function getBeerDetail(id) {
 
 export function getBreweryDetail(id) {
   return async function (dispatch) {
-    const breweryById = await axios.get(SELLERS_ID +id);
+    const breweryById = await axios.get(SELLERS_ID + id);
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,
@@ -293,12 +293,12 @@ export async function helpCall(url) {
   });
 }
 
-export function postComment(obj,id) {
-  console.log(obj)
+export function postComment(obj, id) {
+  console.log(obj);
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
-      return dispatch({ type: 'POST_SCORE', payload: response.data });
+      const response = await axios.post(`${COMMENTS}/beer/${id}`, obj);
+      return dispatch({ type: "POST_SCORE", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -327,9 +327,8 @@ export function getFavDetail(id) {
 export function postScore(obj) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(POST_SCORE,obj);
-      return dispatch({ type: 'POST_SCORE', payload: response.data });
-
+      const response = await axios.post(POST_SCORE, obj);
+      return dispatch({ type: "POST_SCORE", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -342,20 +341,16 @@ export async function helpCallScores(url) {
   });
 }
 
-export function postPurchase(purchaseInfo){
-  return async function(dispatch){
+export function postPurchase(purchaseInfo) {
+  return async function (dispatch) {
     try {
-      const res = await axios.post(ALL_PURCHASES , purchaseInfo)
-      return dispatch({type : POST_PURCHASE, payload: res.data })
+      const res = await axios.post(ALL_PURCHASES, purchaseInfo);
+      return dispatch({ type: POST_PURCHASE, payload: res.data });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
 }
-
-
-
 
 export function getAllPurchases() {
   return async function (dispatch) {
@@ -367,7 +362,6 @@ export function getAllPurchases() {
   };
 }
 
-
 export function getBeerSeller(id) {
   return async function (dispatch) {
     const beers = await axios.get(SELLERBEER + id);
@@ -378,28 +372,27 @@ export function getBeerSeller(id) {
   };
 }
 
-
 export function SetSellerDetail() {
   return {
-      type: SET_DETAIL_SELLER,
-      payload: []
-  }
-
+    type: SET_DETAIL_SELLER,
+    payload: [],
+  };
 }
 
-
-export function getPurchasesByUserId(userId){
-  try {
-    return async function(dispatch){
-      const userPurchases = await axios.get(ALL_PURCHASES + `/user?userId=${userId}`)
+export function getPurchasesByUserId(userId) {
+  return async function (dispatch) {
+    try {
+      const userPurchases = await axios.get(
+        ALL_PURCHASES + `/user?userId=${userId}`
+      );
       return dispatch({
         type: GET_PURCHASES_BY_USER,
-        payload: userPurchases.data
-      })
+        payload: userPurchases.data,
+      });
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error)
-  }
+  };
 }
 
 export function updateStatus(id,status){
