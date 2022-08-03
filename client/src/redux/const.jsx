@@ -12,9 +12,7 @@ export const POST_USER = "/user";
 export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
-
 export const COMMENTS = "/comment";
-
 export const GET_FAV = '/user/fav/beer/'
 export const POST_SCORE="/score"
 export const SELLERBEER = "/beer/beers?sellerId="
@@ -57,4 +55,5 @@ export const ALL_COMMENT = "";
 export const GET_PURCHASES = 'GET_PURCHASES'
 export const POST_COMMENT = "POST_COMMENT";
 export const SELLERBEERS = "SELLERBEERS";
-export const SET_DETAIL_SELLER = "SET_DETAIL_SELLER"
+export const SET_DETAIL_SELLER = "SET_DETAIL_SELLER";
+export const GET_SALES_BREWERY = "GET_SALES_BREWERY";
