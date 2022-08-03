@@ -7,10 +7,10 @@ import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 import PromoBanner from "../PromoBanner/PromoBanner";
 import Slider from "../Slider/Slider";
-import { useTranslation } from 'react-i18next'
+
 
 export default function Home() {
-  const [t, i18n] = useTranslation("global")
+
   
   /* const [userType, setUserType] = useState('') */
   const carga = useSelector(state => state)
