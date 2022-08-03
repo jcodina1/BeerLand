@@ -47,6 +47,7 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
+  UPDATE_PURCHASE_STATUS
   GET_SALES_BREWERY
 } from "../const";
 
@@ -396,7 +397,21 @@ export function getPurchasesByUserId(userId){
   }
 }
 
-export function getSalesBySellerId(sellerId){
+export function updateStatus(id,status){
+  try {
+    return async function(dispatch){
+      const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
+      return dispatch({
+        type: UPDATE_PURCHASE_STATUS,
+        payload:updateStatus.data
+
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+  
+  export function getSalesBySellerId(sellerId){
   try {
     return async function(dispatch){
       const brewerySales = await axios.get(ALL_PURCHASES + `/user?sellerId=${sellerId}`)
@@ -409,3 +424,4 @@ export function getSalesBySellerId(sellerId){
     console.log(error)
   }
 }
+

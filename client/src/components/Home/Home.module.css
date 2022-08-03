@@ -26,8 +26,6 @@
         flex-direction: column;
         min-height: 100%;
         width: 100%;
-    
-    
     }
     .homeContainer{
         display: grid;
@@ -41,8 +39,6 @@
         align-items: center;
         align-content: center;
         color: rgb(35,20,10) ;
-    
-          
     }
    
     .beerBox{

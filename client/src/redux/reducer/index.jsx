@@ -36,6 +36,7 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
+  UPDATE_PURCHASE_STATUS
   GET_SALES_BREWERY
 } from "../const";
 
@@ -347,6 +348,11 @@ function Reducer(state = initialState, action) {
           ...state,
           userPurchases: action.payload
         };
+      case UPDATE_PURCHASE_STATUS:
+        return{
+          ...state,
+          userPurchases:action.payload
+        }
 
       case GET_SALES_BREWERY:
         return {

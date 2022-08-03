@@ -4,7 +4,6 @@ export const ALL_ID = "/beer/id/";
 export const ALL_SELLERS = "/sellers";
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
-// export const ALL_STYLES = '/temperaments';
 export const SELLERS_ID = "/seller/";
 export const ALL_NAME = "/beer?name=";
 export const POST_BEER = "/beer";
@@ -55,5 +54,6 @@ export const ALL_COMMENT = "";
 export const GET_PURCHASES = 'GET_PURCHASES'
 export const POST_COMMENT = "POST_COMMENT";
 export const SELLERBEERS = "SELLERBEERS";
-export const SET_DETAIL_SELLER = "SET_DETAIL_SELLER";
+export const SET_DETAIL_SELLER = "SET_DETAIL_SELLER"
+export const UPDATE_PURCHASE_STATUS="UPDATE_PURCHASE_STATUS"
 export const GET_SALES_BREWERY = "GET_SALES_BREWERY";
