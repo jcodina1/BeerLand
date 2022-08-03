@@ -3,22 +3,25 @@ const axios = require("axios");
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
-  const { userId, purchaseDetails, totalPrice,  status, address } = req.body;
+  const { userId, purchaseDetails, totalPrice, status, address } = req.body;
   try {
     const newPurchases = await Purchases.create({
       userId: userId,
       purchaseDetails: purchaseDetails,
       totalPrice: totalPrice,
       status: status,
-      address:address
+      address: address,
     });
-    
-    let beer = await Beer.findAll({ where: { id: purchaseDetails } ,include:{model: Seller}});
+
+    let beer = await Beer.findAll({
+      where: { id: purchaseDetails },
+      include: { model: Seller },
+    });
     newPurchases.addBeer(beer);
     const purchases = Purchases.findAll({
-       where: {id: newPurchases.id},
-       include: {model: Beer,
-        include: {model: Seller}}});
+      where: { id: newPurchases.id },
+      include: { model: Beer, include: { model: Seller } },
+    });
     res.send(newPurchases);
   } catch (error) {
     next(error);
@@ -29,8 +32,7 @@ async function getAllPurchases(req, res, next) {
   try {
     const UsersDb = await Purchases.findAll({
       order: [["id", "ASC"]],
-      include: [{ model: Beer,
-        include: {model: Seller}}, { model: User}]
+      include: [{ model: Beer, include: { model: Seller } }, { model: User }],
     });
 
     res.status(200).send(UsersDb);
@@ -38,41 +40,39 @@ async function getAllPurchases(req, res, next) {
     next(error);
   }
 }
-async function getAllPurchasesByUser(req,res,next){
-const {userId}=req.query
-try {
-  const UsersDb = await Purchases.findAll({
-    where:{userId:userId},
-    order: [["id", "ASC"]],
-    include: [{ model: Beer,
-      include: {model: Seller}}, { model: User}]
-  });
+async function getAllPurchasesByUser(req, res, next) {
+  const { userId } = req.query;
+  try {
+    const UsersDb = await Purchases.findAll({
+      where: { userId: userId },
+      order: [["id", "ASC"]],
+      include: [{ model: Beer, include: { model: Seller } }, { model: User }],
+    });
 
-  res.status(200).send(UsersDb);
-} catch (error) {
-  next(error)
-}
+    res.status(200).send(UsersDb);
+  } catch (error) {
+    next(error);
+  }
 }
 
-async function getPurchasesBySeller(req,res,next){
-  const {sellerId}=req.query
-try {
-  const UsersDb = await Purchases.findAll({
-    where:{userId:userId},
-    order: [["id", "ASC"]],
-    include: [{ model: Beer,
-      include: {model: Seller}}, { model: User}]
-  });
+async function getPurchasesBySeller(req, res, next) {
+  const { sellerId } = req.query;
+  try {
+    const UsersDb = await Purchases.findAll({
+      where: { userId: userId },
+      order: [["id", "ASC"]],
+      include: [{ model: Beer, include: { model: Seller } }, { model: User }],
+    });
 
-  res.status(200).send(UsersDb);
-} catch (error) {
-  next(error)
-}
+    res.status(200).send(UsersDb);
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = {
   postPurchases,
   getAllPurchases,
   getAllPurchasesByUser,
-  getPurchasesBySeller
+  getPurchasesBySeller,
 };
