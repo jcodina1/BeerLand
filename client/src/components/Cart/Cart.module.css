@@ -22,7 +22,6 @@
 .cartContainer{
   background-color: rgb(254, 254, 254) ;
   background-size: cover;
-  position: absolute; 
   background-attachment: fixed;
   overflow-y:hidden;
   width: 100%;
@@ -85,7 +84,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: solid red 3px;
   margin: 0px 0px 10px 180px;
 }
 

@@ -5,7 +5,7 @@ import BeerCard from "../BeerCard/BeerCard";
 import NavBar from "../NavBar/NavBar.jsx";
 import { getFavDetail, getFavs, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
-import "../UserFavs/userFavs.css";
+
 
 export default function UserFavs() {
   const user2 = useSelector((state) => state.user);

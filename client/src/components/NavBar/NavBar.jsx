@@ -32,6 +32,10 @@ export default function NavBar({ setPage }) {
   const [sideBar, setSideBar] = useState(true);
   const showSideBar = () => setSideBar(!sideBar);
 
+  const clearCart = async () => {
+    dispatch(removeAllFromCart())
+  };
+
   useEffect(() => {
     user ? setIsLogged(true) : setIsLogged(false);
   }, [user, isLogged]);
@@ -60,7 +64,7 @@ export default function NavBar({ setPage }) {
           setIsLogged(false);
           salir();
           reload();
-          dispatch(removeAllFromCart())
+          clearCart();
           window.location.href = "/home";
         }
       });
