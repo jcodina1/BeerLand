@@ -3,13 +3,14 @@ const axios = require("axios");
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
-  const { userId, purchaseDetails, totalPrice,  status } = req.body;
+  const { userId, purchaseDetails, totalPrice,  status, address } = req.body;
   try {
     const newPurchases = await Purchases.create({
       userId: userId,
       purchaseDetails: purchaseDetails,
       totalPrice: totalPrice,
       status: status,
+      address:address
     });
     
     let beer = await Beer.findAll({ where: { id: purchaseDetails } ,include:{model: Seller}});
@@ -18,7 +19,7 @@ async function postPurchases(req, res, next) {
        where: {id: newPurchases.id},
        include: {model: Beer,
         include: {model: Seller}}});
-    res.send(purchases);
+    res.send(newPurchases);
   } catch (error) {
     next(error);
   }
@@ -53,8 +54,35 @@ try {
 }
 }
 
+async function getPurchasesBySeller(req,res,next){
+  const {sellerId}=req.query
+try {
+  const UsersDb = await Purchases.findAll({
+    
+    order: [["id", "ASC"]],
+    include: [{ model: Beer,where:{sellerId:sellerId}}, { model: User}]
+  });
+
+  res.status(200).send(UsersDb);
+} catch (error) {
+  next(error)
+}
+}
+async function updateStatus(req,res,next){
+  const {id,status}= req.query
+  try {
+    let purchase= await Purchases.findByPk(id)
+    purchase.status=status
+    await purchase.save()
+    res.send(purchase)
+  } catch (error) {
+    next(error)
+  }
+}
 module.exports = {
   postPurchases,
   getAllPurchases,
-  getAllPurchasesByUser
+  getAllPurchasesByUser,
+  getPurchasesBySeller,
+  updateStatus
 };
