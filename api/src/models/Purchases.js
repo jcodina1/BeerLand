@@ -17,6 +17,9 @@ module.exports = (sequelize) => {
       status: {
         type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
       },
+      address: {
+        type: DataTypes.JSON,
+      }
     },
 
     { paranoid: true }

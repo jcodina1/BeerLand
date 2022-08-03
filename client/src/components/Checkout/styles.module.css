@@ -11,7 +11,7 @@
 .headerAndFooter {
     direction: flex;
     flex-direction: row
-}
+}   
 
 
 .productList {
@@ -22,12 +22,16 @@
 
 .productContainer {
     direction: flex;
-    flex-direction: row
+    flex-direction: row;
+    
 }
 
 .itemBeer{
     display: flex;
     flex-direction: row;
+    width: 30%;
+    height: 30%;
+    margin: 10px 0px 10px 580px;
 }
 
 .itemBeer img{
@@ -36,9 +40,11 @@
 }
 
 .itemContainer{
-    width: 40%;
-    height: 40%;
-    padding: 20px;
-    border: solid red 2px;
-    justify-content: space-evenly;
+    border-radius: 20px;
+    background-color: rgba(185, 155, 103, 0.20);
+    height: auto;
+    width: 80%;
+    margin: 20px 0px 20px 200px;
+    display: flex;
+    flex-direction: row;
 }

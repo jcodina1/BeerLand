@@ -16,13 +16,12 @@
   position: absolute;
   top: 10%;
   margin-left: -48%;
+  margin-top: 15px;
 }
 
 .cartContainer{
-  /* background-image: url("C:\Users\JP\Documents\GitHub\BeerLand\client\src\img\muro.jpg"); */
   background-color: rgb(254, 254, 254) ;
   background-size: cover;
-  position: absolute; 
   background-attachment: fixed;
   overflow-y:hidden;
   width: 100%;
@@ -33,33 +32,30 @@
 }
 
 .header{
-  background-color: rgb(21, 55, 16);
-  height: 14%;
-  width: 85%;
-  border-radius: 20px;
+  background-color: rgb(35,20,10);
+  height: 15%;
+  width: 100%;
   position: relative;
-  margin-top: 2%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .h1{
-  color:rgba(255, 159, 41);
-  font-size: 60px;
+  color:rgb(185,155,103);
+  font-size: 80px;
   font-weight: bold;
+  margin-top: 1.5rem;
 }
 
 .keep{
   padding-top: 0.5%;
-  background-color: rgba(255, 159, 41);
-  color: rgb(21, 55, 16);
+  background-color: rgb(185,155,103);
+  color: rgb(35,20,10);
   font-size: 25px;
   font-weight: bold;
   width: 220px;
-  height: 70%;
+  height: 60px;
   border-radius: 10px;
   margin-left: 82%;
-  margin-top: -5.4%;
+  margin-top: -4.5%;
 }
 
 .link{
@@ -67,7 +63,7 @@
 }
 
 .cart{
-  background-color: rgba(250, 243, 227, 0.80);;
+  background-color: rgba(185, 155, 103, 0.20);
   height: auto;
   width: 85%;
   border-radius: 20px;
@@ -77,16 +73,37 @@
   margin-right: auto;
   padding: 10px 10px 20px 10px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);;
 }
 
 .items{
+  height: auto;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: 0px 0px 10px 180px;
 }
 
 .checkout{
-  height: 6rem;
-  width: 15rem;
-  margin: 50px 460px;
+  margin-top: 60px;
+  margin-left: 906px;
+  height: 70px;
+  width: 230px;
+  padding: 1px;
+} 
+
+.check2{
+  padding-top: 6px;
+  background-color: rgb(185,155,103);
+  color: rgb(35,20,10);
+  font-size: 35px;
+  font-weight: bold;
+  width: 220px;
+  height: 67px;
+  border-radius: 10px;
+
+  /* margin-top: -4.5%; */
 }

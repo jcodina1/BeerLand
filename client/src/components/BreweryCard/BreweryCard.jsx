@@ -1,6 +1,6 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
-import style from "../BeerCard/BeerCard.module.css";
+import style from "../BreweryCard/BreweryCard.module.css";
 
 export default function BreweryCard({
   id,

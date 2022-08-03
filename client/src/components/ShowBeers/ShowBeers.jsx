@@ -58,24 +58,24 @@ export default function ShowBeers() {
   return (
     <div className={style.showBeers}>
       <div className={style.distance}>
-      <div className={style.filters}>
-        <div className={style.distribution}>
-          <SortByName setOrder={setOrder} />
-        </div>
-        <div className={style.distribution}>
-          <FilterByBrewery />
-          <Link to="/sellers" >See More</Link>
-        </div>
-        <div className={style.distribution}>
-          <SortByPrice setOrder={setOrder} />
-        </div>
-        <div className={style.distribution}>
-          <FilterByType />
+        <div className={style.filters}>
+          <div className={style.distribution}>
+            <SortByName setOrder={setOrder} />
+          </div>
+          <div className={style.distribution}>
+            <FilterByBrewery />
+          </div>
+          <div className={style.distribution}>
+            <SortByPrice setOrder={setOrder} />
+          </div>
+          <div className={style.distribution}>
+            <FilterByType />
+          </div>
+          <div className={style.buttonB}>
+          <Link className={style.buttonB} to="/sellers" >SEE BREWERIES</Link>
+          </div>
         </div>
       </div>
-    </div> 
-      
-      
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (

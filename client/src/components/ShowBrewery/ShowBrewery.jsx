@@ -6,7 +6,7 @@ import BreweryCard from "../BreweryCard/BreweryCard";
 import Loading from "../Loading/Loading";
 import NavBar from "../NavBar/NavBar";
 import Pagination from "../Pagination/Pagination";
-import style from '../ShowBeers/ShowBeers.module.css'
+import style from '../ShowBrewery/ShowBrewery.module.css'
 
 
 
@@ -54,8 +54,10 @@ export default function ShowBrewery() {
     }, [dispatch]);
 
     return (
-        <div className={style.showBrewery}>
-        <NavBar/>
+        <div>
+            <NavBar/>
+            <div className={style.showBrewery}>
+        
         <div className={style.cardsContainer}>
             
             <div className={style.cardsBox}>
@@ -88,6 +90,7 @@ export default function ShowBrewery() {
                 firstPrevControl={firstPrevControl}
                 nextLastControl={nextLastControl}
             />
+        </div>
         </div>
         </div>
     )
