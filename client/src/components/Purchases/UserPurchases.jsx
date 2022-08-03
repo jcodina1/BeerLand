@@ -1,27 +1,22 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-export default function UserPurchases(){
+export default function UserPurchases() {
     userPurchases = useSelector((state) => state.userPurchases)
 
-    
-    
-    return(
+
+
+    return (
         <div>
             <p>Hola!, estas son tus compras.</p>
             {userPurchases.map((purchase) => {
-              
-                    <div>
-                        <ul>
-                            <li>
-                                Cervezas: {purchase.beers}
-                            </li>
-                            <li>
-                                Total: {purchase.total}
-                            </li>
-                        </ul>
-                    </div>
+                <div>
                 
+                        
+                            Cervezas: {purchase.beers}
+                            Total: {purchase.total}
+                    
+                </div>
             })}
         </div>
     )

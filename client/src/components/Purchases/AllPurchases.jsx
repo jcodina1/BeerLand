@@ -10,7 +10,7 @@ export default function Purchases(){
         if (!purchases.length) {
             dispatch(getAllPurchases());
         }
-    }, []);
+    }, [purchases]);
     
     console.log(purchases)
     return(
@@ -26,24 +26,8 @@ export default function Purchases(){
                     beers={e.beers}
                     user={e.user}
                     seller={e.beers.seller}
-                    // beers: purchase.beers.map((b)=>{
-                    //     return (
-                    //         b.id,
-                    //         b.name,
-                    //         b.price,
-                    //         b.sellerId,
-                    //         b.seller.name
-                    //     )
-                    // }),
-                    // user: purchase.user.map((u)=>{
-                    //     return (
-                    //         u.id,
-                    //         u.name,
-                    //         u.surname,
-                    //         u.address,
-                    //         u.email
-                    //     )
-                    // })
+                    address={e.address}
+                  
                 />)
             }
             )}
