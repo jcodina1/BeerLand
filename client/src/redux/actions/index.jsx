@@ -46,7 +46,8 @@ import {
   SELLERBEER,
   SET_DETAIL_SELLER,
   POST_PURCHASE,
-  GET_PURCHASES_BY_USER
+  GET_PURCHASES_BY_USER,
+  UPDATE_PURCHASE_STATUS
 } from "../const";
 
 export function addToCart(id) {
@@ -394,6 +395,20 @@ export function getPurchasesByUserId(userId){
       return dispatch({
         type: GET_PURCHASES_BY_USER,
         payload: userPurchases.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function updateStatus(id,status){
+  try {
+    return async function(dispatch){
+      const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
+      return dispatch({
+        type: UPDATE_PURCHASE_STATUS,
+        payload:updateStatus.data
       })
     }
   } catch (error) {

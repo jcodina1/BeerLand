@@ -58,10 +58,9 @@ async function getPurchasesBySeller(req,res,next){
   const {sellerId}=req.query
 try {
   const UsersDb = await Purchases.findAll({
-    where:{userId:userId},
+    
     order: [["id", "ASC"]],
-    include: [{ model: Beer,
-      include: {model: Seller}}, { model: User}]
+    include: [{ model: Beer,where:{sellerId:sellerId}}, { model: User}]
   });
 
   res.status(200).send(UsersDb);
@@ -69,10 +68,21 @@ try {
   next(error)
 }
 }
-
+async function updateStatus(req,res,next){
+  const {id,status}= req.query
+  try {
+    let purchase= await Purchases.findByPk(id)
+    purchase.status=status
+    await purchase.save()
+    res.send(purchase)
+  } catch (error) {
+    next(error)
+  }
+}
 module.exports = {
   postPurchases,
   getAllPurchases,
   getAllPurchasesByUser,
-  getPurchasesBySeller
+  getPurchasesBySeller,
+  updateStatus
 };
