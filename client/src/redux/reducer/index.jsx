@@ -336,8 +336,6 @@ function Reducer(state = initialState, action) {
           breweryDetail: action.payload,
         };
 
-
-
       case POST_PURCHASE:
       return {
         ...state,
