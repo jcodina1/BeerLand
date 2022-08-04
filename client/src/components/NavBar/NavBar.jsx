@@ -39,9 +39,12 @@ export default function NavBar({ setPage, id }) {
 }, []);
 
   let currentUser;
+  let name;
   if (user !== null) {
-    console.log(currentUser[0].image)
+    currentUser = users.filter((e) => e.email === user.email);
+    name = currentUser[0].name
 }
+
 
 
 
@@ -111,12 +114,12 @@ export default function NavBar({ setPage, id }) {
         <SearchBar setPage={setPage} />
       </div>
 
-        {/* <div className={style.space2}>
-          { user ?
+        <div className={style.space2}>
+          { currentUser ?
             <h4>Hello, {name} </h4>
             :''
             }
-        </div> */}
+        </div>
       <div className={style.infoDistribution}>
 
         <div className={style.buttonlink}>
