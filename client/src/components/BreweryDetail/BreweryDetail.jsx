@@ -54,7 +54,7 @@ export default function BreweryDetail() {
                   <h1>{brewery.name}</h1>
                 </div>
                 <div>
-                  <img src={brewery.image} alt="" />
+                { brewery.image===false?'no imagen': <img src={brewery.image} alt="" />}
                 </div>
               </div>
               <div className={style.containerR}>

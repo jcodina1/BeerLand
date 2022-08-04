@@ -47,7 +47,7 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
-  UPDATE_PURCHASE_STATUS
+  UPDATE_PURCHASE_STATUS,
   GET_SALES_BREWERY
 } from "../const";
 
@@ -115,7 +115,7 @@ export function getBeerDetail(id) {
 
 export function getBreweryDetail(id) {
   return async function (dispatch) {
-    const breweryById = await axios.get(SELLERS_ID +id);
+    const breweryById = await axios.get(SELLERS_ID + id);
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,
@@ -294,11 +294,11 @@ export async function helpCall(url) {
   });
 }
 
-export function postComment(obj,id) {
+export function postComment(obj, id) {
   console.log(obj)
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
+      const response = await axios.post(`${COMMENTS}/beer/${id}`, obj);
       return dispatch({ type: 'POST_SCORE', payload: response.data });
     } catch (error) {
       console.log(error);
@@ -328,7 +328,7 @@ export function getFavDetail(id) {
 export function postScore(obj) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(POST_SCORE,obj);
+      const response = await axios.post(POST_SCORE, obj);
       return dispatch({ type: 'POST_SCORE', payload: response.data });
 
     } catch (error) {
@@ -343,11 +343,11 @@ export async function helpCallScores(url) {
   });
 }
 
-export function postPurchase(purchaseInfo){
-  return async function(dispatch){
+export function postPurchase(purchaseInfo) {
+  return async function (dispatch) {
     try {
-      const res = await axios.post(ALL_PURCHASES , purchaseInfo)
-      return dispatch({type : POST_PURCHASE, payload: res.data })
+      const res = await axios.post(ALL_PURCHASES, purchaseInfo)
+      return dispatch({ type: POST_PURCHASE, payload: res.data })
     } catch (error) {
       console.log(error)
     }
@@ -377,15 +377,15 @@ export function getBeerSeller(id) {
 
 export function SetSellerDetail() {
   return {
-      type: SET_DETAIL_SELLER,
-      payload: []
+    type: SET_DETAIL_SELLER,
+    payload: []
   }
 
 }
 
-export function getPurchasesByUserId(userId){
+export function getPurchasesByUserId(userId) {
   try {
-    return async function(dispatch){
+    return async function (dispatch) {
       const userPurchases = await axios.get(ALL_PURCHASES + `/user?userId=${userId}`)
       return dispatch({
         type: GET_PURCHASES_BY_USER,
@@ -397,23 +397,24 @@ export function getPurchasesByUserId(userId){
   }
 }
 
-export function updateStatus(id,status){
+export function updateStatus(id, status) {
   try {
-    return async function(dispatch){
+    return async function (dispatch) {
       const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
       return dispatch({
         type: UPDATE_PURCHASE_STATUS,
-        payload:updateStatus.data
+        payload: updateStatus.data
 
       })
     }
   } catch (error) {
     console.log(error)
   }
-  
-  export function getSalesBySellerId(sellerId){
+}
+
+export function getSalesBySellerId(sellerId) {
   try {
-    return async function(dispatch){
+    return async function (dispatch) {
       const brewerySales = await axios.get(ALL_PURCHASES + `/user?sellerId=${sellerId}`)
       return dispatch({
         type: GET_SALES_BREWERY,

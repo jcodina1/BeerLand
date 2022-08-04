@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getSalesBySellerId } from "../../redux/actions/index"
 
-export default function BrewerySales(){
+export default function BrewerySales(sellerId){
     const dispatch = useDispatch();
     const sales = useSelector((state) => state.brewerySales);
     const [showModal, setShowModal] = useState(false);
@@ -16,7 +16,7 @@ export default function BrewerySales(){
 
   return (
     <div className=''>
-      <p>Hola!, estas son tus compras.</p>
+      <p>Hola!, estas son tus ventas.</p>
       {sales.map((sale) => {
         return (
           <div className='{styles.purchaseContainer}'>
@@ -26,9 +26,9 @@ export default function BrewerySales(){
             })}
             <p>Total: {sales.total}</p>
             <p>Estado de la Compra: {sales.status} </p>
-            <button onClick={setShowModal((showModal) => !showModal)}>
+            {/* <button onClick={setShowModal((showModal) => !showModal)}>
               Ver detalle de la compra.
-            </button>
+            </button> */}
           </div>
         );
       })}
