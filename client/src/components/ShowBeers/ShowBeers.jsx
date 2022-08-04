@@ -92,6 +92,7 @@ export default function ShowBeers() {
                     name={beer.name}
                     price={beer.price}
                     image={beer.image ? beer.image : false}
+                    stock={beer.stock}
                   // style={beer.style}
                   // origin={beer.origin}
                   />

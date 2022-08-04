@@ -47,7 +47,8 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
-  UPDATE_PURCHASE_STATUS
+  UPDATE_PURCHASE_STATUS,
+  GET_SALES_BREWERY
 } from "../const";
 
 export function addToCart(id) {
@@ -379,13 +380,16 @@ export function SetSellerDetail() {
   };
 }
 
+
+
+   
 export function getPurchasesByUserId(userId) {
   return async function (dispatch) {
     try {
       const userPurchases = await axios.get(
         ALL_PURCHASES + `/user?userId=${userId}`
-      );
-      return dispatch({
+      )
+return dispatch({
         type: GET_PURCHASES_BY_USER,
         payload: userPurchases.data,
       });
@@ -395,13 +399,30 @@ export function getPurchasesByUserId(userId) {
   };
 }
 
-export function updateStatus(id,status){
+
+
+export function updateStatus(id, status) {
   try {
-    return async function(dispatch){
+    return async function (dispatch) {
       const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
       return dispatch({
         type: UPDATE_PURCHASE_STATUS,
-        payload:updateStatus.data
+        payload: updateStatus.data
+
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function getSalesBySellerId(sellerId) {
+  try {
+    return async function (dispatch) {
+      const brewerySales = await axios.get(ALL_PURCHASES + `/user?sellerId=${sellerId}`)
+      return dispatch({
+        type: GET_SALES_BREWERY,
+        payload: brewerySales.data
       })
     }
   } catch (error) {
