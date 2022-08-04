@@ -40,7 +40,7 @@ export default function BeerCard({
         idUser: filtrado[0].id,
         idBeer: id
       };
-      helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
+      helpCall(`user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
         .then(res => setIsFav(res))
     }
   }
