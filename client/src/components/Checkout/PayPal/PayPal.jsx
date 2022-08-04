@@ -3,13 +3,18 @@ import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from "react-router-dom";
-import { postPurchase } from "../../../redux/actions";
+import { postPurchase, removeAllFromCart } from "../../../redux/actions";
 
 export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
   const dispatch = useDispatch();
   const nav = useHistory();
   function navigateToHome() {
-    nav.push("/home");
+    // nav.push("/home");
+    window.location.href="/home"
+  }
+
+  function setCart() {
+    dispatch(removeAllFromCart())
   }
 
   return (
@@ -57,6 +62,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
                 };
               }),
             };
+            setCart()
             dispatch(postPurchase(purchaseInfo));
           }}
         />

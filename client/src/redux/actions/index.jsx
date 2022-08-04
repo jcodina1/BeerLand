@@ -47,7 +47,8 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
-  UPDATE_PURCHASE_STATUS
+  UPDATE_PURCHASE_STATUS,
+  UPDATE_USER
 } from "../const";
 
 export function addToCart(id) {
@@ -406,6 +407,18 @@ export function updateStatus(id,status){
     }
   } catch (error) {
     console.log(error)
+  }
+}
+
+export function updateUser(data, id) {
+  console.log(data)
+  try {
+     return async function (dispatch) {
+    const response = axios.put(`http://localhost:3001/user/update/${id}`, data)
+      return dispatch({ type: UPDATE_USER })
+  };
+  } catch (error) {
+    
   }
 }
 

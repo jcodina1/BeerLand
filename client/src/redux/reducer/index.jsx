@@ -36,7 +36,8 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
-  UPDATE_PURCHASE_STATUS
+  UPDATE_PURCHASE_STATUS,
+  UPDATE_USER
 } from "../const";
 
 const initialState = {
@@ -351,6 +352,10 @@ function Reducer(state = initialState, action) {
           ...state,
           userPurchases:action.payload
         }
+    case UPDATE_USER:
+      return {
+        ...state,
+      };
 
     default:
       return { ...state };

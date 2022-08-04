@@ -12,6 +12,7 @@ export const POST_USER = "/user";
 export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
+export const UPDATE_USER = "/user/update/"
 
 export const COMMENTS = "/comment";
 
