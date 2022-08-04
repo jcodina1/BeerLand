@@ -48,6 +48,7 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
+  UPDATE_USER
   GET_SALES_BREWERY
 } from "../const";
 
@@ -427,6 +428,18 @@ export function getSalesBySellerId(sellerId) {
     }
   } catch (error) {
     console.log(error)
+  }
+}
+
+export function updateUser(data, id) {
+  console.log(data)
+  try {
+     return async function (dispatch) {
+    const response = axios.put(`http://localhost:3001/user/update/${id}`, data)
+      return dispatch({ type: UPDATE_USER })
+  };
+  } catch (error) {
+    
   }
 }
 

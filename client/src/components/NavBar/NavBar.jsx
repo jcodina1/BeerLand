@@ -20,10 +20,12 @@ import Swal from "sweetalert2";
 import { IoMdContact } from "react-icons/io";
 import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
-import { removeAllFromCart } from "../../redux/actions";
+import { removeAllFromCart, getUser } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
 export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
+  const users = useSelector((state) => state.user)
   const { salir, user } = useAuth();
   const [cart, setCart] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -31,6 +33,20 @@ export default function NavBar({ setPage, id }) {
 
   const [sideBar, setSideBar] = useState(true);
   const showSideBar = () => setSideBar(!sideBar);
+
+  useEffect(() => {
+    dispatch(getUser());
+}, []);
+
+  let currentUser;
+  let name;
+  if (user !== null) {
+    currentUser = users.filter((e) => e.email === user.email);
+    name = currentUser[0].name 
+    console.log(currentUser[0].image)
+}
+
+
 
   const clearCart = async () => {
     dispatch(removeAllFromCart())
@@ -98,10 +114,13 @@ export default function NavBar({ setPage, id }) {
         <SearchBar setPage={setPage} />
       </div>
 
-      <div className={style.infoDistribution}>
         <div className={style.space2}>
-          {/* <h3>Hello </h3> */}
+          { user ?
+            <h4>Hello, {name} </h4>
+            :''
+            }
         </div>
+      <div className={style.infoDistribution}>
 
         <div className={style.buttonlink}>
           <div className={style.cartbtn}>
