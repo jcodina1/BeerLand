@@ -419,7 +419,7 @@ export function updateStatus(id, status) {
 export function getSalesBySellerId(sellerId) {
   try {
     return async function (dispatch) {
-      const brewerySales = await axios.get(ALL_PURCHASES + `/user?sellerId=${sellerId}`)
+      const brewerySales = await axios.get(ALL_PURCHASES + `/seller?sellerId=${sellerId}`)
       return dispatch({
         type: GET_SALES_BREWERY,
         payload: brewerySales.data

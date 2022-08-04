@@ -357,7 +357,7 @@ function Reducer(state = initialState, action) {
       case GET_SALES_BREWERY:
         return {
           ...state,
-          brewerySales: action.payload
+          userPurchases: action.payload
         }
 
     default:

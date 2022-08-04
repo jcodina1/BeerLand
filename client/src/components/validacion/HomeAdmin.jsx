@@ -1,4 +1,5 @@
 import { useAuth } from "../Context/Contestautenticacion"
+import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
 
 
 export default function HomeAdmin() {
@@ -10,6 +11,9 @@ export default function HomeAdmin() {
   return (
     <div>
       <h1>Hola admin</h1>
+      <div>
+        <UserPurchases/>
+      </div>
       <button onClick={(e) => salir2(e)}>salir</button>
     </div>
   );
