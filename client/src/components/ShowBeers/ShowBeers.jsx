@@ -79,9 +79,9 @@ export default function ShowBeers() {
       <div className={style.cardsContainer}>
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (
-            <span>
-              (<Loading setLoading={setLoading} />)
-            </span>
+           
+              <Loading setLoading={setLoading} />
+            
           ) : (
             <>
               {currentBeer?.map((beer) => {
@@ -92,6 +92,7 @@ export default function ShowBeers() {
                     name={beer.name}
                     price={beer.price}
                     image={beer.image ? beer.image : false}
+                    stock={beer.stock}
                   // style={beer.style}
                   // origin={beer.origin}
                   />

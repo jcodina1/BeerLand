@@ -23,7 +23,7 @@ import { useDispatch } from "react-redux";
 import { removeAllFromCart, getUser } from "../../redux/actions";
 import { useSelector } from "react-redux";
 
-export default function NavBar({ setPage }) {
+export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
   const users = useSelector((state) => state.user)
   const { salir, user } = useAuth();
@@ -163,6 +163,11 @@ export default function NavBar({ setPage }) {
                   <MenuItem icon={<BsFillBookmarkHeartFill />}>
                     Liked
                     <Link to="/user/favourites" />
+                  </MenuItem>
+
+                  <MenuItem icon={<FaShoppingBag />}>
+                    Shopping History
+                    <Link to={`/history`} />
                   </MenuItem>
 
                   <MenuItem icon={<CgLogOut />} onClick={handleLogOut}>

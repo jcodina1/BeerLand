@@ -38,6 +38,7 @@ import {
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
   UPDATE_USER
+  GET_SALES_BREWERY
 } from "../const";
 
 const initialState = {
@@ -60,7 +61,8 @@ const initialState = {
   favs: [],
   comments: [],
   allPurchases: [],
-  userPurchases: []
+  userPurchases: [],
+  brewerySales: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -335,8 +337,6 @@ function Reducer(state = initialState, action) {
           breweryDetail: action.payload,
         };
 
-
-
       case POST_PURCHASE:
       return {
         ...state,
@@ -356,6 +356,12 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
       };
+
+      case GET_SALES_BREWERY:
+        return {
+          ...state,
+          userPurchases: action.payload
+        }
 
     default:
       return { ...state };

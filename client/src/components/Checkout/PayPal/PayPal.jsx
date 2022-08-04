@@ -17,6 +17,10 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
     dispatch(removeAllFromCart())
   }
 
+  function setCart(){
+    dispatch(removeAllFromCart())
+  }
+
   return (
     <div>
       <PayPalScriptProvider
@@ -64,6 +68,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
             };
             setCart()
             dispatch(postPurchase(purchaseInfo));
+            
           }}
         />
       </PayPalScriptProvider>
