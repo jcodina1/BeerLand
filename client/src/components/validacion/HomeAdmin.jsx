@@ -1,6 +1,5 @@
 import { useAuth } from "../Context/Contestautenticacion"
 import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
-import { useAuth } from "../Context/Contestautenticacion";
 import BrewerySales from "../Purchases/BrewerySales"
 
 export default function HomeAdmin() {

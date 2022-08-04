@@ -114,12 +114,12 @@ export default function NavBar({ setPage, id }) {
         <SearchBar setPage={setPage} />
       </div>
 
-        <div className={style.space2}>
+        {/* <div className={style.space2}>
           { user ?
             <h4>Hello, {name} </h4>
             :''
             }
-        </div>
+        </div> */}
       <div className={style.infoDistribution}>
 
         <div className={style.buttonlink}>
