@@ -39,10 +39,7 @@ export default function NavBar({ setPage, id }) {
 }, []);
 
   let currentUser;
-  let name;
   if (user !== null) {
-    currentUser = users.filter((e) => e.email === user.email);
-    name = currentUser[0].name 
     console.log(currentUser[0].image)
 }
 
