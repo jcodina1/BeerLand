@@ -21,6 +21,7 @@ import axios from "axios";
 import BreweryDetail from "./components/BreweryDetail/BreweryDetail";
 import ShowBrewery from "./components/ShowBrewery/ShowBrewery";
 import UserProfile from "./components/UserProfile/UserProfile"
+import UserPurchases from "./components/Purchases/UserPurchases/UserPurchases";
 
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
@@ -46,6 +47,7 @@ function App() {
             <Route path="/sellers" component={ShowBrewery}/>
             <Route path="/seller/detail/:id" component={BreweryDetail}/>
             <Route path="/userProfile" component={UserProfile}/>
+            <Route path="/history" component={UserPurchases}/>
           </Switch>
         </AuthProvider>
       </div>
