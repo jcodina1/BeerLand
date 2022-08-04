@@ -113,7 +113,7 @@ export default function NavBar({ setPage, id }) {
       </div>
 
         <div className={style.space2}>
-          { !user ? '' :
+          { !currentUser?.length ? '' :
             <h4>Hello, {currentUser[0].name} </h4>
           }
           
