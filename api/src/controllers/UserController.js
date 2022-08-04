@@ -1,3 +1,5 @@
+const { sendConfirmationEmail } = require ("./Nodemailer/Emails")
+const nodemailer = require("nodemailer");
 const axios = require("axios");
 const { Seller, Beer, User, Purchases } = require("../db.js");
 
@@ -25,10 +27,10 @@ async function postUser(req, res, next) {
         rol: rol,
         image:image    
       },
-    });
-    
-
+    }); 
+    sendConfirmationEmail( name,email,);
     return res.json(newUser);
+    
   } catch (error) {
     next(error);
   }

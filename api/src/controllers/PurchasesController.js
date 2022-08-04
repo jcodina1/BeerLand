@@ -1,9 +1,10 @@
 const axios = require("axios");
+const { sendConfirmationPurchases } = require ("./Nodemailer/Emails")
 
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
-  const { userId, purchaseDetails, totalPrice,  status, address } = req.body;
+  const { userId, purchaseDetails, totalPrice,  status, address, email } = req.body;
   try {
     const newPurchases = await Purchases.create({
       userId: userId,
@@ -19,6 +20,8 @@ async function postPurchases(req, res, next) {
        where: {id: newPurchases.id},
        include: {model: Beer,
         include: {model: Seller}}});
+        console.log(email)
+        sendConfirmationPurchases(email);
     res.send(newPurchases);
   } catch (error) {
     next(error);
