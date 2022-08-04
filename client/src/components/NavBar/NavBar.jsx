@@ -22,7 +22,7 @@ import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
 import { removeAllFromCart } from "../../redux/actions";
 
-export default function NavBar({ setPage }) {
+export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
   const { salir, user } = useAuth();
   const [cart, setCart] = useState(false);
@@ -144,6 +144,11 @@ export default function NavBar({ setPage }) {
                   <MenuItem icon={<BsFillBookmarkHeartFill />}>
                     Liked
                     <Link to="/user/favourites" />
+                  </MenuItem>
+
+                  <MenuItem icon={<FaShoppingBag />}>
+                    Shopping History
+                    <Link to={`/history`} />
                   </MenuItem>
 
                   <MenuItem icon={<CgLogOut />} onClick={handleLogOut}>

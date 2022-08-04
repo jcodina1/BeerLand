@@ -6,13 +6,7 @@ export default function Loading({ setLoading }) {
             <div>
                 <img src={loading} alt='' />
             </div>
-            <div>
-                {
-                    setTimeout(() => {
-                        setLoading(false)
-                    }, 5000)
-                }
-            </div>
+            
         </div>
     )
 }

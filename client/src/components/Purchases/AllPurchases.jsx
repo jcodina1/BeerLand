@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllPurchases } from '../../redux/actions';
 import Purchase from '../Purchases/Purchase.jsx';
+import UserPurchases from './UserPurchases/UserPurchases';
 
 export default function Purchases(){
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function Purchases(){
         <div>
             {purchases?.map((e)=>{
                 return (
+                   <>
                     <Purchase
                     key={e.id}
                     id= {e.id}
@@ -28,7 +30,15 @@ export default function Purchases(){
                     seller={e.beers.seller}
                     address={e.address}
                   
-                />)
+                />
+                <UserPurchases           
+                 user1={e.user}
+                 
+                
+                />
+                   </>
+                
+                )
             }
             )}
         </div>
