@@ -1,7 +1,5 @@
 import { useAuth } from "../Context/Contestautenticacion"
 import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
-import { useAuth } from "../Context/Contestautenticacion";
-import BrewerySales from "../Purchases/BrewerySales"
 
 export default function HomeAdmin() {
   const { user, salir } = useAuth();
@@ -11,12 +9,11 @@ export default function HomeAdmin() {
   
   return (
     <div>
-      <h1>Hola admin</h1>
+      <h1>Welcome {user.email}</h1>
       <div>
         <UserPurchases/>
       </div>
-      <button onClick={(e) => salir2(e)}>salir</button>
-      <BrewerySales/>
+      <button onClick={(e) => salir2(e)}>Get out!</button>
     </div>
   );
 }

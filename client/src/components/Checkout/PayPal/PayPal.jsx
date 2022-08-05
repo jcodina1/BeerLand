@@ -5,7 +5,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from "react-router-dom";
 import { postPurchase, removeAllFromCart } from "../../../redux/actions";
 
-export default function Paypal({ precioTotal, userId, purchaseDetails }) {
+export default function Paypal({ precioTotal, userId, purchaseDetails}) {
   const dispatch = useDispatch();
   const nav = useHistory();
   function navigateToHome() {
@@ -44,7 +44,6 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
             Swal.fire("Payment successful!", "Enjoy your beer");
             navigateToHome();
             console.log(order);
-
             const purchaseInfo = {
               totalPrice: precioTotal,
               userId: userId,
@@ -60,9 +59,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
                 };
               }),
             };
-
-            dispatch(postPurchase(purchaseInfo));
-            
+            dispatch(postPurchase(purchaseInfo));            
           }}
         />
       </PayPalScriptProvider>

@@ -57,6 +57,7 @@ export default function Checkout() {
         <div className="pay">
           <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
           <h3>Total: ${precioTotal} </h3>
+          {console.log(checkoutinfo)}
           <div className="paypal">
             <Paypal
               userId={userId}

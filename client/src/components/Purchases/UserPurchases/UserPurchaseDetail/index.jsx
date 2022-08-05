@@ -1,11 +1,25 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
+import { useModals } from "../../../../Hooks/useModals";
+import ModalDetail from "../../../Purchases/ModalDetail/ModalDetail";
 
-export default function UserPurchaseDetail({ purchaseDetail }) {
+export default function UserPurchaseDetail({ purchase }) {
+  const [isOpenModal, openModal, closeModal] = useModals(false);
+
   return (
     <div>
-      <p>This are the details of your purchase.</p>
+      <button onClick={openModal}>
+        Details
+      </button>
+      <ModalDetail isOpen={isOpenModal} closeModal={closeModal}><>
+        <h3>Beers:{" "}</h3>
+        {purchase.beers.map((beer, index) => {
+          return <p key={index}>- {beer.name}</p>;
+        })}
+        <h3>Total: ${purchase.totalPrice}</h3>
+        <h3>Status: {purchase.status} </h3></>
+      </ModalDetail>
     </div>
   );
 }

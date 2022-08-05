@@ -2,23 +2,20 @@ import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
-import Modal from "../../Modal/Modal"
 import { useAuth } from "../../Context/Contestautenticacion";
-import { useModals } from "../../../Hooks/useModals";
+import UserPurchaseDetail from './UserPurchaseDetail/index'
 
 
 export default function UserPurchases() {
   const user2 = useSelector((state) => state.user)
   const seller = useSelector((state) => state.allSellers)
   const userPurchases = useSelector(state => state.userPurchases);
-  const [isOpenModal, openModal, closeModal] = useModals(false);
 
-    const { user } = useAuth();
-    const dispatch = useDispatch()
-    let currentUser;
-    let currentSeller
-
-
+  const { user } = useAuth();
+  const dispatch = useDispatch()
+  let currentUser;
+  let currentSeller;
+  let currentRol;
 
     if (user !== null ) {
       if(user.rol==="user"){
@@ -39,30 +36,24 @@ export default function UserPurchases() {
   // console.log(user2)
   // console.log(currentUser)
 
-  //me traje un dato del endpoint para trabajarlo sin andar pinchando la api, pa dejarlo funcionando es cosa de descomentar lo de arriba
-  // y cambiar el json por el selector
+  if (user !== null ) {
+    if(user.rol === "user"){
+      currentRol = "purchases";
+    }else {
+    currentRol = "sales";
+    }
+}
 
-console.log(currentSeller)
   let i=1
  
   return (
     <div className={styles.purchasesWrapper}>
-      <p>Hey! These are your purchases</p>
+      <p>Hey! These are your {currentRol}</p>
       {userPurchases?.map((purchase) => {
         return (
           <div key={purchase.id} className={styles.purchaseContainer}>
-            <p>Purchase n°{i++}</p>
-            <button onClick={openModal} >
-            Ver detalle de la compra.
-          </button>
-            <Modal isOpen={isOpenModal} closeModal={closeModal}>
-            <> Beers:{" "}
-            {purchase.beers.map((beer, index) => {
-              return <p key={index}> {beer.name} </p>;
-            })}
-            <p>Total: {purchase.totalPrice}</p>
-            <p>Status: {purchase.status} </p></>
-            </Modal>
+            <p>Order n°{i++}</p>
+            <UserPurchaseDetail purchase={purchase}/>
             <hr />
           </div>
         );

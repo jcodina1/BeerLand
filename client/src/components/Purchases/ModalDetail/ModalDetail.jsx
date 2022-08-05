@@ -1,4 +1,4 @@
-import './Modal.css'
+import './ModalDetail.css'
 
 const Modal = ({children, isOpen, closeModal}) => {
     const handleContainerClick = (e) => e.stopPropagation();

@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-      },     
+      },
       totalPrice: {
         type: DataTypes.FLOAT,
       },
@@ -21,7 +21,6 @@ module.exports = (sequelize) => {
         type: DataTypes.JSON,
       }
     },
-
     { paranoid: true }
   );
 };
