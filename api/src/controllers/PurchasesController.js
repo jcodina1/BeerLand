@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { sendConfirmationPurchases } = require ("./nodemailer/Emails")
+const { sendConfirmationPurchases } = require ("./Nodemailer/Emails")
 
 const { Seller, Beer, Purchases, User } = require("../db.js");
 

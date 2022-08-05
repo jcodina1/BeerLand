@@ -1,4 +1,4 @@
-const { sendConfirmationEmail } = require ("./nodemailer/Emails")
+const { sendConfirmationEmail } = require ("./Nodemailer/Emails")
 const nodemailer = require("nodemailer");
 const axios = require("axios");
 const { Seller, Beer, User, Purchases } = require("../db.js");
