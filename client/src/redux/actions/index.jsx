@@ -46,7 +46,10 @@ import {
   SELLERBEER,
   SET_DETAIL_SELLER,
   POST_PURCHASE,
-  GET_PURCHASES_BY_USER
+  GET_PURCHASES_BY_USER,
+  UPDATE_PURCHASE_STATUS,
+  UPDATE_USER,
+  GET_SALES_BREWERY
 } from "../const";
 
 export function addToCart(id) {
@@ -113,7 +116,7 @@ export function getBeerDetail(id) {
 
 export function getBreweryDetail(id) {
   return async function (dispatch) {
-    const breweryById = await axios.get(SELLERS_ID +id);
+    const breweryById = await axios.get(SELLERS_ID + id);
     return dispatch({
       type: GET_BREWERY_DETAIL,
       payload: breweryById.data,
@@ -292,12 +295,12 @@ export async function helpCall(url) {
   });
 }
 
-export function postComment(obj,id) {
-  console.log(obj)
+export function postComment(obj, id) {
+  console.log(obj);
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${COMMENTS}/beer/${id}`,obj);
-      return dispatch({ type: 'POST_SCORE', payload: response.data });
+      const response = await axios.post(`${COMMENTS}/beer/${id}`, obj);
+      return dispatch({ type: "POST_SCORE", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -326,9 +329,8 @@ export function getFavDetail(id) {
 export function postScore(obj) {
   return async function (dispatch) {
     try {
-      const response = await axios.post(POST_SCORE,obj);
-      return dispatch({ type: 'POST_SCORE', payload: response.data });
-
+      const response = await axios.post(POST_SCORE, obj);
+      return dispatch({ type: "POST_SCORE", payload: response.data });
     } catch (error) {
       console.log(error);
     }
@@ -341,20 +343,16 @@ export async function helpCallScores(url) {
   });
 }
 
-export function postPurchase(purchaseInfo){
-  return async function(dispatch){
+export function postPurchase(purchaseInfo) {
+  return async function (dispatch) {
     try {
-      const res = await axios.post(ALL_PURCHASES + '/user', purchaseInfo)
-      return dispatch({type : POST_PURCHASE, payload: res.data })
+      const res = await axios.post(ALL_PURCHASES, purchaseInfo);
+      return dispatch({ type: POST_PURCHASE, payload: res.data });
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
 }
-
-
-
 
 export function getAllPurchases() {
   return async function (dispatch) {
@@ -366,7 +364,6 @@ export function getAllPurchases() {
   };
 }
 
-
 export function getBeerSeller(id) {
   return async function (dispatch) {
     const beers = await axios.get(SELLERBEER + id);
@@ -377,27 +374,72 @@ export function getBeerSeller(id) {
   };
 }
 
-
 export function SetSellerDetail() {
   return {
-      type: SET_DETAIL_SELLER,
-      payload: []
-  }
-
+    type: SET_DETAIL_SELLER,
+    payload: [],
+  };
 }
 
 
-export function getPurchasesByUserId(userId){
-  try {
-    return async function(dispatch){
-      const userPurchases = await axios.get(ALL_PURCHASES + `/user?userId=${userId}`)
-      return dispatch({
+
+   
+export function getPurchasesByUserId(userId) {
+  return async function (dispatch) {
+    try {
+      const userPurchases = await axios.get(
+        ALL_PURCHASES + `/user?userId=${userId}`
+      )
+return dispatch({
         type: GET_PURCHASES_BY_USER,
-        payload: userPurchases.data
+        payload: userPurchases.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+
+
+export function updateStatus(id, status) {
+  try {
+    return async function (dispatch) {
+      const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
+      return dispatch({
+        type: UPDATE_PURCHASE_STATUS,
+        payload: updateStatus.data
+
       })
     }
   } catch (error) {
     console.log(error)
+  }
+}
+
+export function getSalesBySellerId(sellerId) {
+  try {
+    return async function (dispatch) {
+      const brewerySales = await axios.get(ALL_PURCHASES + `/seller?sellerId=${sellerId}`)
+      return dispatch({
+        type: GET_SALES_BREWERY,
+        payload: brewerySales.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function updateUser(data, id) {
+  console.log(data)
+  try {
+     return async function (dispatch) {
+    const response = axios.put(`http://localhost:3001/user/update/${id}`, data)
+      return dispatch({ type: UPDATE_USER })
+  };
+  } catch (error) {
+    
   }
 }
 

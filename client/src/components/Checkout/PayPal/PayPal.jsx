@@ -1,30 +1,26 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-import { useHistory } from 'react-router-dom';
-import * as actions from '../../../redux/actions'
+import { useHistory } from "react-router-dom";
+import { postPurchase, removeAllFromCart } from "../../../redux/actions";
 
-export default function Paypal({ precioTotal, userId, purchaseDetails }) {
+export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
   const dispatch = useDispatch();
-  const [approved, setApproved] = useState(false);
   const nav = useHistory();
-  function navigateToHome(){
-    nav.push('/home')
+  function navigateToHome() {
+     nav.push("/home");
+    // window.location.href="/home"
   }
-  
 
-  if (approved === true) {
-    const purchaseInfo = {
-      totalPrice: precioTotal,
-      userId: userId,
-      purchaseDetails: purchaseDetails,
-      status: "PENDING",
-    };
-
-    dispatch(actions.postPurchase(purchaseInfo))
-    setApproved(false);
+  function setCart() {
+    dispatch(removeAllFromCart())
   }
+
+  function setCart(){
+    dispatch(removeAllFromCart())
+  }
+
   return (
     <div>
       <PayPalScriptProvider
@@ -50,10 +46,31 @@ export default function Paypal({ precioTotal, userId, purchaseDetails }) {
           }}
           onApprove={async (data, actions) => {
             const order = await actions.order.capture();
-            setApproved(true);
             Swal.fire("Payment successful!", "Enjoy your beer");
-            navigateToHome()
-          }}/>
+            navigateToHome();
+            console.log(order);
+
+            const purchaseInfo = {
+              email:email,
+              totalPrice: precioTotal,
+              userId: userId,
+              purchaseDetails: purchaseDetails,
+              status: "PENDING",
+              address: [order.purchase_units[0].shipping.address].map((e) => {
+                return {
+                  address:
+                    order.purchase_units[0].shipping.address.address_line_1,
+                  extra:
+                    order.purchase_units[0].shipping.address.address_line_2,
+                  city: order.purchase_units[0].shipping.address.admin_area_2,
+                };
+              }),
+            };
+         
+            dispatch(postPurchase(purchaseInfo));
+            
+          }}
+        />
       </PayPalScriptProvider>
     </div>
   );

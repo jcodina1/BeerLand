@@ -105,6 +105,7 @@ export default function Cart() {
           <div className={style.items}>
             {beerCarts?.map((e) => (
               <Item
+              key={e.id}
                 id={e.id}
                 name={e.name}
                 image={e.image}

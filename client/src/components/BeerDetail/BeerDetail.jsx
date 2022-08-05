@@ -60,10 +60,10 @@ export default function BeerDetail(props) {
 
               <div className={style.containerR}>
 
-                <p>
+                <div>
                   <h2>Description:</h2>
                   <span className={style.textBox}>{beer.description}</span>
-                </p>
+                </div>
 
                 <div>
                   <Score id={beer.id} />
