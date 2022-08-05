@@ -14,9 +14,8 @@ export default function UserPurchaseDetail({ purchase }) {
       </button>
       <ModalDetail isOpen={isOpenModal} closeModal={closeModal}><>
         <h3>Beers:{" "}</h3>
-        {purchase.beers.map((beer, index) => {
-          return <p key={index}>- {beer.name}</p>;
-        })}
+        {purchase.beers.map((beer,index) =><p key={index}>-  {beer.name} ({purchase.purchaseDetails.filter(f=>f.beerId===beer.id)[0].cant})</p>)
+        }
         <h3>Total: ${purchase.totalPrice}</h3>
         <h3>Status: {purchase.status} </h3></>
       </ModalDetail>

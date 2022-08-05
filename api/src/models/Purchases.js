@@ -19,6 +19,9 @@ module.exports = (sequelize) => {
       },
       address: {
         type: DataTypes.JSON,
+      },
+      purchaseDetails:{
+        type:DataTypes.JSON
       }
     },
     { paranoid: true }

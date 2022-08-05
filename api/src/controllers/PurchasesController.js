@@ -3,19 +3,20 @@ const axios = require("axios");
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
-  const { userId, purchaseDetails, totalPrice, status, address } = req.body;
+  const { userId, purchaseDetails,beerId, totalPrice, status, address } = req.body;
   try {
     const newPurchases = await Purchases.create({
       userId: userId,
       purchaseDetails: purchaseDetails,
+      beerId:beerId,
       totalPrice: totalPrice,
       status: status,
       address: address
     });
 
-    let beer = await Beer.findAll({ where: { id: purchaseDetails }, include: { model: Seller } });
+    let beer = await Beer.findAll({ where: { id: beerId }, include: { model: Seller } });
     newPurchases.addBeer(beer);
-    const purchases = Purchases.findAll({
+    const purchases = await Purchases.findAll({
       where: { id: newPurchases.id },
       include: {
         model: Beer,
