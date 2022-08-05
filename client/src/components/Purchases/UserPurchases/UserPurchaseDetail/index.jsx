@@ -5,20 +5,42 @@ import { useModals } from "../../../../Hooks/useModals";
 import ModalDetail from "../../../Purchases/ModalDetail/ModalDetail";
 
 export default function UserPurchaseDetail({ purchase }) {
-  const [isOpenModal, openModal, closeModal] = useModals(false);
+  const [mostrar, setMostrar] = useState(false)
 
   return (
     <div>
-      <button onClick={openModal}>
+      <button onClick={()=>setMostrar(true)} >
         Details
       </button>
-      <ModalDetail isOpen={isOpenModal} closeModal={closeModal}><>
-        <h3>Beers:{" "}</h3>
-        {purchase.beers.map((beer,index) =><p key={index}>-  {beer.name} ({purchase.purchaseDetails.filter(f=>f.beerId===beer.id)[0].cant})</p>)
-        }
-        <h3>Total: ${purchase.totalPrice}</h3>
-        <h3>Status: {purchase.status} </h3></>
-      </ModalDetail>
+      <></>
+
+
+    {mostrar===true?<div id="main-container">
+        <h3>Status: {purchase.status} </h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Beer</th><th>Price</th><th>Cantidad</th><th>Total</th>
+            </tr>
+          </thead>
+          {purchase.beers.map((beer, index) =>
+            <tr key={beer.name}>
+              <td>{beer.name}</td>
+              <td>$ {beer.price}</td>
+              <td>{purchase.purchaseDetails.filter(f => f.beerId === beer.id)[0].cant}</td>
+              <td>$ {purchase.purchaseDetails.filter(f => f.beerId === beer.id)[0].cant * beer.price}</td>
+            </tr>
+          )}
+          <thead>
+            <tr>
+              <th></th><th></th><th>Total</th><th>$ {purchase.totalPrice}</th>
+            </tr>
+          </thead>
+
+        </table>
+        <button onClick={()=>setMostrar(false)}> cerrar</button>
+      </div>:""}
+      
     </div>
   );
 }

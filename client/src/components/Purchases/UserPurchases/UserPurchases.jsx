@@ -48,21 +48,16 @@ export default function UserPurchases() {
  
   return (
     <div className={styles.purchasesWrapper}>
-     <div className={styles.history}>
-     <p>Hey! These are your {currentRol}</p>
+      <p>Hey! These are your {currentRol}</p>
       {userPurchases?.map((purchase) => {
         return (
-          <div  className={styles.purchaseContainer}>            
+          <div key={purchase.id} className={styles.purchaseContainer}>
             <p>Order n°{i++}</p>
             <UserPurchaseDetail purchase={purchase}/>
-            <hr />            
+            <hr />
           </div>
         );
       })}
-     </div>
-      <div>
-        total:ganado,
-      </div>
     </div>
   );
 }
