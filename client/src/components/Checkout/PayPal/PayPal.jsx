@@ -5,7 +5,7 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from "react-router-dom";
 import { postPurchase, removeAllFromCart } from "../../../redux/actions";
 
-export default function Paypal({ precioTotal, userId, purchaseDetails}) {
+export default function Paypal({ precioTotal, userId, purchaseDetails,beerId}) {
   const dispatch = useDispatch();
   const nav = useHistory();
   function navigateToHome() {
@@ -48,6 +48,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails}) {
               totalPrice: precioTotal,
               userId: userId,
               purchaseDetails: purchaseDetails,
+              beerId:beerId,
               status: "PENDING",
               address: [order.purchase_units[0].shipping.address].map((e) => {
                 return {

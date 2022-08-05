@@ -37,7 +37,11 @@ export default function Checkout() {
 
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails.push(beer.id);
+    purchaseDetails.push({beerId:beer.id,cant:beer.cant});
+  });
+  const beers = [];
+  checkoutinfo.forEach((beer) => {
+    beers.push(beer.id);
   });
 
   return (
@@ -63,6 +67,7 @@ export default function Checkout() {
               userId={userId}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
+              beerId={beers}
             />
           </div>
         </div>
