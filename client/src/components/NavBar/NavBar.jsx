@@ -39,10 +39,8 @@ export default function NavBar({ setPage, id }) {
 }, []);
 
   let currentUser;
-  let name;
   if (user !== null) {
     currentUser = users.filter((e) => e.email === user.email);
-    name = currentUser[0].name
 }
 
 
@@ -115,10 +113,10 @@ export default function NavBar({ setPage, id }) {
       </div>
 
         <div className={style.space2}>
-          { currentUser ?
-            <h4>Hello, {name} </h4>
-            :''
-            }
+          { !currentUser?.length ? '' :
+            <h4>Hello, {currentUser[0].name} </h4>
+          }
+          
         </div>
       <div className={style.infoDistribution}>
 

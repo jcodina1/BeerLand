@@ -9,8 +9,8 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
   const dispatch = useDispatch();
   const nav = useHistory();
   function navigateToHome() {
-     nav.push("/home");
-    // window.location.href="/home"
+     //nav.push("/home");
+     window.location.href="/home"
   }
 
   function setCart() {
@@ -68,7 +68,7 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
             };
          
             dispatch(postPurchase(purchaseInfo));
-            
+            setCart()
           }}
         />
       </PayPalScriptProvider>

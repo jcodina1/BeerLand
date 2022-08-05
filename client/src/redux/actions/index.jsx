@@ -213,7 +213,7 @@ export function filterBeersByType(payload) {
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
-      .put(`http://localhost:3001/beer/update/${id}`, data)
+      .put(UPDATE_BEER + id, data)
       .then((response) => dispatch({ type: UPDATE_BEER }))
       .catch((e) => {
         console.log(e);
@@ -290,7 +290,7 @@ export function getUser() {
 }
 
 export async function helpCall(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -338,7 +338,7 @@ export function postScore(obj) {
 }
 
 export async function helpCallScores(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -435,7 +435,7 @@ export function updateUser(data, id) {
   console.log(data)
   try {
      return async function (dispatch) {
-    const response = axios.put(`http://localhost:3001/user/update/${id}`, data)
+    const response = axios.put(UPDATE_USER + id, data)
       return dispatch({ type: UPDATE_USER })
   };
   } catch (error) {
