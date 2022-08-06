@@ -119,9 +119,14 @@
     margin: -20px -100px 0 -40px;
 }
 
-@media (max-width: 900px) {
-    .navbar .logo {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+.space2{
+    margin-right: 90px;
+    z-index: 4;
+}
+
+.space2 h4{
+    color:antiquewhite;
+    display: flex;
+    width: 200px;
+
 }

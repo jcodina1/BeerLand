@@ -54,7 +54,7 @@ const Star = ({id}) => {
             idBeer:id
         }
         
-        helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
+        helpCallScores(`score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
         .then(res => setRating(res.score))
     }
   }, [user]);

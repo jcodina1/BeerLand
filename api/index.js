@@ -23,8 +23,8 @@ const { getAllSellers2 } = require("./src/controllers/SellerController");
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-consolers
-    getAllSellers2();
+  server.listen(process.env.PORT, () => {
+    getAllSellers2()
+   console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
