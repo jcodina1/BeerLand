@@ -48,6 +48,7 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
+  FILTER_SALES_STATUS
   UPDATE_USER,
   GET_SALES_BREWERY
 } from "../const";
@@ -429,6 +430,13 @@ export function getSalesBySellerId(sellerId) {
   } catch (error) {
     console.log(error)
   }
+}
+
+export function filterSalesByStatus(payload) {
+  return {
+    type: FILTER_SALES_STATUS,
+    payload,
+  };
 }
 
 export function updateUser(data, id) {

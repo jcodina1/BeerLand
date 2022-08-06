@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
 import { useAuth } from "../../Context/Contestautenticacion";
+import UserFilterStatus from '../FilterStatus/UserFilterStatus'
 import UserPurchaseDetail from './UserPurchaseDetail/index'
 import NavBar from "../../NavBar/NavBar";
-
 
 export default function UserPurchases() {
   const user2 = useSelector((state) => state.user)
@@ -50,6 +50,7 @@ export default function UserPurchases() {
   return (
     <div className={styles.purchasesWrapper}>      
       <p>Hey! These are your {currentRol}</p>
+      <UserFilterStatus/>
       {userPurchases?.map((purchase) => {
         return (
           <div key={purchase.id} className={styles.purchaseContainer}>
