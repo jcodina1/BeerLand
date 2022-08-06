@@ -31,6 +31,34 @@
   box-shadow: -2px 0px 53px 4px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: -2px 0px 53px 4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: -2px 0px 53px 4px rgba(0, 0, 0, 0.75);
+  -webkit-animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-name: fadeIn;
+  animation-duration: .3s;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0.0;
+    scale: 0;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.0;
+    scale: 0;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
 }
 
 .modal-close {
