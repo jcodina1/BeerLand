@@ -39,7 +39,11 @@ export default function Checkout() {
 
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails.push(beer.id);
+    purchaseDetails.push({beerId:beer.id,cant:beer.cant});
+  });
+  const beers = [];
+  checkoutinfo.forEach((beer) => {
+    beers.push(beer.id);
   });
 
   return (
@@ -59,12 +63,14 @@ export default function Checkout() {
         <div className="pay">
           <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
           <h3>Total: ${precioTotal} </h3>
+          {console.log(checkoutinfo)}
           <div className="paypal">
             <Paypal
               email={userEmail}
               userId={userId}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
+              beerId={beers}
             />
           </div>
         </div>
