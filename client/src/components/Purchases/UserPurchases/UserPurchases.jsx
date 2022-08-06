@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
 import { useAuth } from "../../Context/Contestautenticacion";
-import UserPurchaseDetail from './UserPurchaseDetail/index'
+import UserPurchaseDetail from './UserPurchaseDetail/index';
+import UserFilterStatus from '../FilterStatus/UserFilterStatus'
 
 
 export default function UserPurchases() {
@@ -49,6 +50,7 @@ export default function UserPurchases() {
   return (
     <div className={styles.purchasesWrapper}>
       <p>Hey! These are your {currentRol}</p>
+      <UserFilterStatus/>
       {userPurchases?.map((purchase) => {
         return (
           <div key={purchase.id} className={styles.purchaseContainer}>
