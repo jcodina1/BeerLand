@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { sendConfirmationPurchases } = require ("./Nodemaileer/Emails")
 
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
@@ -16,13 +17,12 @@ async function postPurchases(req, res, next) {
 
     let beer = await Beer.findAll({ where: { id: beerId }, include: { model: Seller } });
     newPurchases.addBeer(beer);
-    const purchases = await Purchases.findAll({
-      where: { id: newPurchases.id },
-      include: {
-        model: Beer,
-        include: { model: Seller }
-      }
-    });
+    const purchases = Purchases.findAll({
+       where: {id: newPurchases.id},
+       include: {model: Beer,
+        include: {model: Seller}}});
+        console.log(email)
+        sendConfirmationPurchases(email);
     res.send(newPurchases);
   } catch (error) {
     next(error);

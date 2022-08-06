@@ -28,11 +28,13 @@ export default function Checkout() {
     dispatch(getCart());
   }, [dispatch]);
 
-  let currentUser = [];
+  let currentUser;
   let userId;
+  let userEmail
   if (user !== null) {
     currentUser = users.filter((u) => u.email === user.email);
     userId = currentUser[0].id;
+    userEmail = currentUser[0].email
   }
 
   const purchaseDetails = [];
@@ -64,6 +66,7 @@ export default function Checkout() {
           {console.log(checkoutinfo)}
           <div className="paypal">
             <Paypal
+              email={userEmail}
               userId={userId}
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
