@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
 import { useAuth } from "../../Context/Contestautenticacion";
 import UserPurchaseDetail from './UserPurchaseDetail/index'
+import NavBar from "../../NavBar/NavBar";
 
 
 export default function UserPurchases() {
@@ -47,7 +48,7 @@ export default function UserPurchases() {
   let i=1
  
   return (
-    <div className={styles.purchasesWrapper}>
+    <div className={styles.purchasesWrapper}>      
       <p>Hey! These are your {currentRol}</p>
       {userPurchases?.map((purchase) => {
         return (
