@@ -21,7 +21,7 @@ export default function Modal({ closeModal }) {
               <p>Next page is adults only!</p>
             </div>
             <div className={style.footer}>
-              <Link to="/home">
+              <Link to="/promoPage">
                 <button className={style.button} type="button">Yes, I'm Over 18!</button>
               </Link>
               <button className={style.button} onClick={() => closeModal(false)}>No, I'm under 18</button>
