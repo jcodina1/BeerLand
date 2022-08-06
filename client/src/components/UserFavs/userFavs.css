@@ -1,0 +1,14 @@
+.favs{
+    padding: 100px 0px 0px;
+}
+.catalogue{
+    padding: 40px 0px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    justify-content: space-evenly;
+}
+
+.aviso{
+    padding: 80px 0px 0px;
+}
