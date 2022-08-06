@@ -8,6 +8,7 @@ const {
   postFavorite,
   getUserId,
   deleteFavorite,
+  updateUser
 } = require("../controllers/UserController");
 
 const router = Router();
@@ -19,5 +20,6 @@ router.get("/id/:id", getUserId);
 router.delete("/fav", deleteFavorite);
 router.get("/fav/beer", Favorites);
 router.get("/fav/beer/:id", getUserFav);
+router.put("/update/:id", updateUser)
 
 module.exports = router;

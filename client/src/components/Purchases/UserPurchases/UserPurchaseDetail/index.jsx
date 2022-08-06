@@ -9,10 +9,8 @@ export default function UserPurchaseDetail({ purchase }) {
 
   return (
     <div>
-      <button onClick={()=>setMostrar(true)} >
-        Details
-      </button>
-      <></>
+      
+     
 
 
     {mostrar===true?<div id="main-container">
@@ -39,7 +37,9 @@ export default function UserPurchaseDetail({ purchase }) {
 
         </table>
         <button onClick={()=>setMostrar(false)}> cerrar</button>
-      </div>:""}
+      </div>:<button onClick={()=>setMostrar(true)} >
+        Details
+      </button>}
       
     </div>
   );

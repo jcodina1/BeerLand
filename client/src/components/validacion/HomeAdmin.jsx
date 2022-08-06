@@ -1,5 +1,7 @@
 import { useAuth } from "../Context/Contestautenticacion"
 import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
+import BrewerySales from "../Purchases/BrewerySales"
+
 
 export default function HomeAdmin() {
   const { user, salir } = useAuth();

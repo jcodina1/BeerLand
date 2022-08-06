@@ -42,7 +42,6 @@ export default function RegisterSeller() {
       });
 
       const user2 = {
-        id: 245,
         mail: google.user.email,
         name: google._tokenResponse.firstName,
         surname: google._tokenResponse.lastName,

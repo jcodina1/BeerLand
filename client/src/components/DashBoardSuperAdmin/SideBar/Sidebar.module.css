@@ -1,0 +1,136 @@
+.sideBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px;
+    background: #11101d;
+    padding: 6px 14px;
+
+}
+
+.sideBar .logo_content .logo {
+
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+}
+
+.logo_content .logo .sombreo {
+    width: 20%;
+}
+
+.logo_content .logo .logo_name {
+    width: 65%;
+}
+
+.sideBar .menuBtn {
+    position: absolute;
+    color: #fff;
+    left: 90%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    transform: translateX(-50%);
+}
+
+.sideBar ul {
+    margin-top: 20px;
+    padding: 0 0 0 0;
+}
+
+.sideBar ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+.sideBar ul li input{  
+    width: 100%;
+    left:0;
+    top: 0;
+    border-radius: 12px;
+    outline: none;
+    border:none;
+    background:  #1d1b31;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #fff;
+}
+.sideBar ul li .links_icon_lupa{
+   
+    z-index: 99;
+    color: #fff;
+    font-size: 22px;
+}
+
+
+.sideBar ul li .link {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+
+.sideBar ul li .link:hover {
+    color: #11101d;
+    background: #fff;
+}
+
+.sideBar ul li .links_icon {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
+.sideBar ul li .search {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+.sideBar .profile_content{
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+}
+.sideBar .profile_content .profile{
+    position: relative;
+    padding: 10px 6px;
+    height: 60px;
+}
+.profile_content .profile .profile_details{
+    display: flex;
+    align-items: center;
+}
+.profile .profile_details img{
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+.profile .profile_details .name_job{
+    margin-left: 10px;
+
+}
+.profile .profile_details .name{
+    font-size: 15px;
+    font-weight: 400;
+}
+.profile .profile_details .job{
+    font-size: 12 px;
+    font-weight: 400;
+}

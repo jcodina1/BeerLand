@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
 import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
 import { useAuth } from "../../Context/Contestautenticacion";
-import UserPurchaseDetail from './UserPurchaseDetail/index';
 import UserFilterStatus from '../FilterStatus/UserFilterStatus'
-
+import UserPurchaseDetail from './UserPurchaseDetail/index'
+import NavBar from "../../NavBar/NavBar";
 
 export default function UserPurchases() {
   const user2 = useSelector((state) => state.user)
@@ -48,7 +48,7 @@ export default function UserPurchases() {
   let i=1
  
   return (
-    <div className={styles.purchasesWrapper}>
+    <div className={styles.purchasesWrapper}>      
       <p>Hey! These are your {currentRol}</p>
       <UserFilterStatus/>
       {userPurchases?.map((purchase) => {

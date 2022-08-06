@@ -37,8 +37,9 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
-  GET_SALES_BREWERY,
-  FILTER_SALES_STATUS
+  FILTER_SALES_STATUS,
+  UPDATE_USER,
+  GET_SALES_BREWERY
 } from "../const";
 
 const initialState = {
@@ -359,6 +360,21 @@ function Reducer(state = initialState, action) {
         userPurchases: action.payload,
         brewerySales: action.payload
       }
+
+      case GET_PURCHASES_BY_USER:
+        return {
+          ...state,
+          userPurchases: action.payload
+        };
+      case UPDATE_PURCHASE_STATUS:
+        return{
+          ...state,
+          userPurchases:action.payload
+        }
+    case UPDATE_USER:
+      return {
+        ...state,
+      };
 
     case FILTER_SALES_STATUS:
       const allOrders = state.brewerySales;
