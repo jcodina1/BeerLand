@@ -79,7 +79,7 @@ async function updateBeer(req, res, next) {
     const { id } = req.params
     const { name, description, price, stock, image } = req.body
     try {
-        beer = await Beer.findByPk(id)
+         const beer = await Beer.findByPk(id)
         beer.name = name
         beer.description = description
         beer.price = price
