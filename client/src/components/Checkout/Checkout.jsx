@@ -42,7 +42,7 @@ export default function Checkout() {
   let userId;
   let userEmail
   if (user !== null) {
-    currentUser = users.filter((u) => u.email === user.email);
+    currentUser = users?.filter((u) => u.email === user.email);
     userId = currentUser[0].id;
     userEmail = currentUser[0].email
   }
@@ -83,7 +83,7 @@ export default function Checkout() {
             <Crypto
             email={userEmail}
             userId={userId}
-            precioTotal={precioTotal}
+            precioTotal={val}
             purchaseDetails={purchaseDetails}
             />
             <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px', marginBottom: '-8px' }}> What is Metamask?</span></a>
