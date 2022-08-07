@@ -5,7 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BsCart4, BsGrid1X2 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
-import { BiPurchaseTagAlt, BiSearchAlt } from 'react-icons/bi'
+import { BiLogOut, BiPurchaseTagAlt, BiSearchAlt } from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 import style from './Sidebar.module.css'
 
@@ -69,6 +69,7 @@ export default function Sidebar() {
                             <div className={style.job}>Fullstack</div>
                         </div>
                     </div>
+                    <div className={style.log_out}><BiLogOut/></div>
                 </div>
             </div>
         </div>

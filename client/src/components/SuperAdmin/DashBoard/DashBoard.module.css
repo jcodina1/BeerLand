@@ -1,0 +1,12 @@
+.dashBoard{
+    position: absolute;
+    height: 100%;
+    width: calc(100%-240px);
+    left: 240px;
+}
+.dashBoard .text{
+    font-size: 25px;
+    font-weight: 500;
+    color: #1d1b31;
+    margin-top: 12px; 
+}

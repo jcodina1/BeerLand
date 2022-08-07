@@ -106,11 +106,13 @@
     color: #fff;
     bottom: 0;
     left: 0;
+    width: 100%;
 }
 .sideBar .profile_content .profile{
     position: relative;
     padding: 10px 6px;
     height: 60px;
+    background: #1d1b31;
 }
 .profile_content .profile .profile_details{
     display: flex;
@@ -133,4 +135,14 @@
 .profile .profile_details .job{
     font-size: 12 px;
     font-weight: 400;
+}
+.profile .log_out{
+position: absolute;
+left: 88%;
+bottom: 5px;
+transform: translateX(-50%);
+min-width: 50px;
+line-height: 50px;
+font-size: 20px;
+border-radius: 12px;
 }
