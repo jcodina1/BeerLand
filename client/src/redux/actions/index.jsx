@@ -49,7 +49,8 @@ import {
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
   UPDATE_USER,
-  GET_SALES_BREWERY
+  GET_SALES_BREWERY,
+  CRYPTO
 } from "../const";
 
 export function addToCart(id) {
@@ -441,5 +442,18 @@ export function updateUser(data, id) {
   } catch (error) {
     
   }
+}
+
+export function exchangeCrypto() {
+  return async function (dispatch) {
+    try {
+      var response = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`
+      );
+      return dispatch({ type: CRYPTO, payload: response.data.ethereum.usd });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 }
 

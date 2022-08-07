@@ -4,8 +4,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
-import { getCart, getUser } from "../../redux/actions";
+import { exchangeCrypto, getCart, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
+import Crypto from "./Crypto/Crypto";
+import { FaEthereum } from "react-icons/fa";
 
 export default function Checkout() {
   const dispatch = useDispatch();
@@ -26,7 +28,15 @@ export default function Checkout() {
 
   useEffect(() => {
     dispatch(getCart());
+    dispatch(exchangeCrypto())
   }, [dispatch]);
+
+  const crypto = useSelector(state => state.crypto)
+
+  let x = precioTotal / crypto
+  let valuecrypto = x.toString()
+  let val = valuecrypto.slice(0, 11)
+
 
   let currentUser;
   let userId;
@@ -66,6 +76,17 @@ export default function Checkout() {
               precioTotal={precioTotal}
               purchaseDetails={purchaseDetails}
             />
+          </div>
+          <div>
+          <h3>USD: ${precioTotal}</h3>
+          <h3>ETH <FaEthereum /> : {val} </h3>
+            <Crypto
+            email={userEmail}
+            userId={userId}
+            precioTotal={precioTotal}
+            purchaseDetails={purchaseDetails}
+            />
+            <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px', marginBottom: '-8px' }}> What is Metamask?</span></a>
           </div>
         </div>
       </div>
