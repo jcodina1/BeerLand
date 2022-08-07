@@ -12,7 +12,6 @@ export const UPDATE_BEER = "/beer/update/";
 export const SELLER = "/seller";
 export const POST_SELLER = "/seller";
 export const UPDATE_USER = "/user/update/"
-
 export const COMMENTS = "/comment";
 export const GET_FAV = '/user/fav/beer/';
 export const POST_SCORE="/score";
@@ -60,3 +59,4 @@ export const SET_DETAIL_SELLER = "SET_DETAIL_SELLER";
 export const UPDATE_PURCHASE_STATUS="UPDATE_PURCHASE_STATUS";
 export const GET_SALES_BREWERY = "GET_SALES_BREWERY";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
+export const FILTER_STATUS = "FILTER_STATUS";

@@ -2,12 +2,12 @@ import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import * as action from '../../../redux/actions/index'
 
-export default function UserFilterStatus() {
+export default function AllFilterStatus() {
     const dispatch = useDispatch();
 
     function handleChange(e) {
         e.preventDefault();
-        dispatch(action.filterSalesByStatus(e.target.value));
+        dispatch(action.filterByStatus(e.target.value));
         dispatch(action.setPage(1));
     }
 

@@ -39,7 +39,8 @@ import {
   UPDATE_PURCHASE_STATUS,
   FILTER_SALES_STATUS,
   UPDATE_USER,
-  GET_SALES_BREWERY
+  GET_SALES_BREWERY,
+  FILTER_STATUS
 } from "../const";
 
 const initialState = {
@@ -63,7 +64,7 @@ const initialState = {
   comments: [],
   allPurchases: [],
   userPurchases: [],
-  brewerySales: [],
+  filtroPurchases: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -308,7 +309,6 @@ function Reducer(state = initialState, action) {
         comments: action.payload
       }
 
-
     case GET_FAV_DETAIL:
       return {
         ...state,
@@ -324,8 +324,9 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         allPurchases: action.payload,
-
+        filtroPurchases: action.payload
       };
+
     case SELLERBEERS:
       return {
         ...state,
@@ -343,11 +344,6 @@ function Reducer(state = initialState, action) {
         ...state,
       };
 
-    case GET_PURCHASES_BY_USER:
-      return {
-        ...state,
-        userPurchases: action.payload
-      };
     case UPDATE_PURCHASE_STATUS:
       return {
         ...state,
@@ -358,32 +354,41 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         userPurchases: action.payload,
-        brewerySales: action.payload
+        filtroPurchases: action.payload
       }
 
-      case GET_PURCHASES_BY_USER:
-        return {
-          ...state,
-          userPurchases: action.payload
-        };
-      case UPDATE_PURCHASE_STATUS:
-        return{
-          ...state,
-          userPurchases:action.payload
-        }
+    case GET_PURCHASES_BY_USER:
+      return {
+        ...state,
+        userPurchases: action.payload,
+        filtroPurchases: action.payload
+      };
+    case UPDATE_PURCHASE_STATUS:
+      return {
+        ...state,
+        userPurchases: action.payload
+      }
     case UPDATE_USER:
       return {
         ...state,
       };
 
     case FILTER_SALES_STATUS:
-      const allOrders = state.brewerySales;
-      const  filteredByStatus = action.payload === "All" ? allOrders
-      //: action.payload === "PENDING" ? 
-      : allOrders.filter((st) => st.status === action.payload);
+      const allOrders = state.filtroPurchases;
+      const filteredByStatus = action.payload === "All" ? allOrders
+        : allOrders.filter((st) => st.status === action.payload);
       return {
         ...state,
         userPurchases: filteredByStatus,
+      }
+
+    case FILTER_STATUS:
+      const orders = state.allPurchases;
+      const filtered = action.payload === "All" ? orders
+        : orders.filter((st) => st.status === action.payload);
+      return {
+        ...state,
+        filtroPurchases: filtered,
       }
 
     default:
