@@ -48,9 +48,10 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
-  FILTER_SALES_STATUS
+  FILTER_SALES_STATUS,
   UPDATE_USER,
-  GET_SALES_BREWERY
+  GET_SALES_BREWERY,
+  FILTER_STATUS
 } from "../const";
 
 export function addToCart(id) {
@@ -451,3 +452,9 @@ export function updateUser(data, id) {
   }
 }
 
+export function filterByStatus(payload) {
+  return {
+    type: FILTER_STATUS,
+    payload,
+  };
+}
