@@ -4,10 +4,11 @@
     left: 0;
     height: 100%;
     width: 240px;
-    background: #11101d;
+    background: rgb(35,20,10);
     padding: 6px 14px;
 
 }
+
 
 .sideBar .logo_content .logo {
 
@@ -17,17 +18,17 @@
     align-items: center;
 }
 
-.logo_content .logo .sombreo {
+.sideBar .logo_content .logo .sombrero {
     width: 20%;
 }
 
-.logo_content .logo .logo_name {
+.sideBar .logo_content .logo .logo_name {
     width: 65%;
 }
 
 .sideBar .menuBtn {
     position: absolute;
-    color: #fff;
+    color: rgb(185,155,103);
     left: 90%;
     top: 6px;
     font-size: 20px;
@@ -36,6 +37,7 @@
     text-align: center;
     line-height: 50px;
     transform: translateX(-50%);
+    cursor: pointer;
 }
 
 .sideBar ul {
@@ -51,28 +53,30 @@
     list-style: none;
     line-height: 50px;
 }
-.sideBar ul li input{  
+
+.sideBar ul li input {
     width: 100%;
-    left:0;
+    left: 0;
     top: 0;
     border-radius: 12px;
     outline: none;
-    border:none;
-    background:  #1d1b31;
+    border: none;
+    background: #1d1b31;
     padding-left: 50px;
     font-size: 18px;
-    color: #fff;
+    color: rgb(185,155,103);
 }
-.sideBar ul li .links_icon_lupa{
-   
+
+.sideBar ul li .links_icon_lupa {
+
     z-index: 99;
-    color: #fff;
+    color: rgb(185,155,103);
     font-size: 22px;
 }
 
 
 .sideBar ul li .link {
-    color: #fff;
+    color: rgb(185,155,103);
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -81,8 +85,8 @@
 }
 
 .sideBar ul li .link:hover {
-    color: #11101d;
-    background: #fff;
+    color:  rgb(35,20,10);
+    background: rgb(185,155,103);
 }
 
 .sideBar ul li .links_icon {
@@ -92,8 +96,9 @@
     line-height: 50px;
     text-align: center;
 }
+
 .sideBar ul li .search {
-    color: #fff;
+    color: rgb(185,155,103);
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -101,48 +106,165 @@
     border-radius: 12px;
     margin-bottom: 10px;
 }
-.sideBar .profile_content{
+
+.sideBar .profile_content {
     position: absolute;
-    color: #fff;
+    color: rgb(35,20,10);
     bottom: 0;
     left: 0;
     width: 100%;
 }
-.sideBar .profile_content .profile{
+
+.sideBar .profile_content .profile {
     position: relative;
     padding: 10px 6px;
     height: 60px;
-    background: #1d1b31;
+    background: rgb(185,155,103);
 }
-.profile_content .profile .profile_details{
+
+.profile_content .profile .profile_details {
     display: flex;
     align-items: center;
 }
-.profile .profile_details img{
+
+.profile .profile_details img {
     height: 45px;
     width: 45px;
     object-fit: cover;
     border-radius: 12px;
 }
-.profile .profile_details .name_job{
+
+.profile .profile_details .name_job {
     margin-left: 10px;
 
 }
-.profile .profile_details .name{
+
+.profile .profile_details .name {
     font-size: 15px;
     font-weight: 400;
 }
-.profile .profile_details .job{
+
+.profile .profile_details .job {
     font-size: 12 px;
     font-weight: 400;
 }
-.profile .log_out{
-position: absolute;
-left: 88%;
-bottom: 5px;
-transform: translateX(-50%);
-min-width: 50px;
-line-height: 50px;
-font-size: 20px;
-border-radius: 12px;
+
+.profile .log_out {
+    position: absolute;
+    left: 88%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    min-width: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 12px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+.sideBar2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 78px;
+    background: rgb(35,20,10);
+    padding: 6px 14px;
+
+}
+
+
+.sideBar2 .logo_content .logo .sombrero {
+
+
+    width: 100%;
+    align-items: center;
+}
+
+.sideBar2 .menuBtn {
+
+    color: rgb(185,155,103);
+    left: 90%;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.sideBar2 ul {
+    margin-top: 20px;
+    padding: 0 0 0 0;
+}
+
+.sideBar2 ul li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 0 5px;
+    list-style: none;
+    line-height: 50px;
+}
+
+.sideBar2 ul li .tooltip {
+    position: absolute;
+    border-radius: 6px;
+    top: -20px;
+    left: calc(100% + 5px);
+    z-index: 0;
+    height: 35px;
+    width: 122px;
+    background: rgb(185,155,103);
+    color: #1d1b31;
+    line-height: 35px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sideBar2 ul li:hover .tooltip {
+    transition: all 0.5s ease;
+    opacity: 1;
+    top: 50%;
+}
+
+.sideBar2 ul li .link {
+    color: rgb(185,155,103);
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+.sideBar2 ul li .link:hover {
+    color: rgb(35,20,10);
+    background: #704021;
+}
+ 
+
+
+.sideBar2 ul li .links_icon_lupa {
+
+    cursor: pointer;
+    color: rgb(185,155,103);
+    font-size: 22px;
+}
+.sideBar2 .profile_content .profile {
+    position: relative;
+    padding: 10px 6px;
+    height: 60px;
+    background: #1d1b31;
+}
+.sideBar2.profile .log_out {
+    position: absolute;
+    left: 88%;
+    bottom: 5px;
+    transform: translateX(-50%);
+    min-width: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 12px;
 }
