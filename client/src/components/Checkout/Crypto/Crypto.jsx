@@ -87,7 +87,8 @@ export default function Crypto({value, precioTotal, userId, purchaseDetails, ema
     totalPrice : precioTotal,
     purchaseDetails: purchaseDetails,
     userId: userId,
-    status: "PENDING"
+    status: "PENDING",
+    email:email
   }
 
   return (
