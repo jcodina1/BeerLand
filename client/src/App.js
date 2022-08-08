@@ -22,9 +22,12 @@ import BreweryDetail from "./components/BreweryDetail/BreweryDetail";
 import ShowBrewery from "./components/ShowBrewery/ShowBrewery";
 import UserProfile from "./components/UserProfile/UserProfile"
 import UserPurchases from "./components/Purchases/UserPurchases/UserPurchases";
+import SupportUser from "./components/SupportUser/SuportUser";
 
 import BrewerySales from "./components/Purchases/BrewerySales"
 import SuperAdmin from "./components/SuperAdmin/SuperAdmin";
+import Support from "./components/Support/Support";
+
 
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
@@ -53,6 +56,8 @@ function App() {
             <Route path="/history" component={UserPurchases}/>
             <Route path="/purchases/seller/:id" component={BrewerySales}/>
             <Route path="/test" component={SuperAdmin}/>
+            <Route path="/SupportUser" component={SupportUser}/>
+            <Route path="/Support" component={Support}/>
           </Switch>
         </AuthProvider>
       </div>
