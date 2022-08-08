@@ -1,4 +1,4 @@
-const { sendConfirmationEmail } = require ("./Nodemaileer/Emails")
+const { sendConfirmationEmail } = require("./Nodemaileer/Emails");
 const nodemailer = require("nodemailer");
 const axios = require("axios");
 const { Seller, Beer, User, Purchases } = require("../db.js");
@@ -25,12 +25,11 @@ async function postUser(req, res, next) {
         address: address,
         email: email,
         rol: rol,
-        image:image    
+        // image:image
       },
-    }); 
-    sendConfirmationEmail( name,email,);
+    });
+    sendConfirmationEmail(name, email);
     return res.json(newUser);
-    
   } catch (error) {
     next(error);
   }
@@ -64,32 +63,30 @@ async function postFavorite(req, res, next) {
 }
 
 async function deleteFavorite(req, res, next) {
-  const { idUser, idBeer } = req.query
+  const { idUser, idBeer } = req.query;
 
   try {
     const user = await User.findByPk(idUser, { include: Beer });
-    await user.removeBeer(idBeer)
+    await user.removeBeer(idBeer);
     let final = await User.findByPk(idUser, { include: Beer });
-    res.status(200).send(final.beers)
-
+    res.status(200).send(final.beers);
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 
-
 async function Favorites(req, res, next) {
-  const { idUser, idBeer } = req.query
-  let exist = true
+  const { idUser, idBeer } = req.query;
+  let exist = true;
   try {
-    const Userfound = await User.findByPk(idUser)
-    const beer = await Userfound.getBeers({ where: { id: idBeer } })
+    const Userfound = await User.findByPk(idUser);
+    const beer = await Userfound.getBeers({ where: { id: idBeer } });
     if (beer.length == 0) {
-      exist = false
+      exist = false;
     }
-    res.send(exist)
+    res.send(exist);
   } catch (error) {
-    next(error)
+    next(error);
   }
 }
 
@@ -107,30 +104,29 @@ async function getUserFav(req, res, next) {
 }
 
 async function updateUser(req, res, next) {
-  const { id } = req.params
-  const { name, surname, address, email, image } = req.body
+  const { id } = req.params;
+  const { name, surname, address, email, image } = req.body;
   try {
-       const user = await User.findByPk(id)
-       user.name = name
-       user.surname = surname
-       user.address = address
-       user.email = email
-       user.image = image
-      await user.save()
-      res.send('update')
+    const user = await User.findByPk(id);
+    user.name = name;
+    user.surname = surname;
+    user.address = address;
+    user.email = email;
+    user.image = image;
+    await user.save();
+    res.send("update");
   } catch (error) {
-      next(error)
+    next(error);
   }
 }
 
 module.exports = {
-    getAllUsers,
-    postUser,
-    getUserId,
-    postFavorite,
-    deleteFavorite,
-    Favorites,
-    getUserFav,
-    updateUser
-
-}
+  getAllUsers,
+  postUser,
+  getUserId,
+  postFavorite,
+  deleteFavorite,
+  Favorites,
+  getUserFav,
+  updateUser,
+};

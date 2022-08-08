@@ -1,25 +1,24 @@
 import { useState } from "react";
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import * as React from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 import styles from "./Users.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
-import { setPage } from "../../../redux/actions";
-
-
+import { getAllPurchases, setPage } from "../../../redux/actions";
 
 export default function Users() {
-  const dispatch = useDispatch()
-  const allUsers = useSelector(state => state.user)
+  const dispatch = useDispatch();
+  const allUsers = useSelector((state) => state.user);
   let page = useSelector((state) => state.page);
-  let usersPerPage = 10
+  let usersPerPage = 10;
+  const allPurchases = useSelector((state) => state.allPurchases);
 
   let lastIndex = page * usersPerPage; //indice incial para metodo slice
   let firstIndex = lastIndex - usersPerPage; //indice final para metodo slice
@@ -35,7 +34,12 @@ export default function Users() {
 
   // pageControl realiza el control del paginado, recibe la información del evento y renderiza mediante el componente Paginated.
   // setea las páginas segun el botón clickeado.
+  console.log(allUsers);
+  console.log(allPurchases);
 
+  React.useEffect(() => {
+    dispatch(getAllPurchases);
+  }, []);
 
   const paginate = (e, pageNumber) => {
     if (pageNumber === "next" && page + 1 <= limitPage) {
@@ -49,14 +53,9 @@ export default function Users() {
 
   return (
     <div className={styles.table}>
-
-
-
-
       <TableContainer component={Paper}>
-        <Table >
+        <Table>
           <TableHead>
-
             <TableRow>
               <TableCell>Avatar</TableCell>
               <TableCell>Id</TableCell>
@@ -68,17 +67,21 @@ export default function Users() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {currentUser.map(e =>
+            {currentUser.map((e) => (
               <TableRow key={e.id}>
-                <TableCell><img src={e.image} alt="Avatar" /></TableCell>
+                <TableCell>
+                  <img src={e.image} alt="Avatar" />
+                </TableCell>
                 <TableCell>{e.id}</TableCell>
                 <TableCell>{e.name}</TableCell>
                 <TableCell>{e.surname}</TableCell>
                 <TableCell>{e.email}</TableCell>
-                <TableCell>{e.address===""?"Adress not found":e.address}</TableCell>
-              </TableRow>)}
-             { console.log(allUsers)}
-
+                <TableCell>
+                  {e.address === "" ? "Adress not found" : e.address}
+                </TableCell>
+                <TableCell> </TableCell>
+              </TableRow>
+            ))}
           </TableBody>
         </Table>
         <Pagination
@@ -89,10 +92,6 @@ export default function Users() {
           nextLastControl={nextLastControl}
         />
       </TableContainer>
-
-
-
-
     </div>
   );
 }
