@@ -52,7 +52,7 @@ export default function Checkout() {
 
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails.push({beerId:beer.id,cant:beer.cant});
+    purchaseDetails.push({ beerId: beer.id, cant: beer.cant });
   });
   const beers = [];
   checkoutinfo.forEach((beer) => {
@@ -65,11 +65,13 @@ export default function Checkout() {
       <NavBar />
       <div className={style.checkout}>
         <div className={style.checkoutCont}>
-          
+
           <div className={style.pay}>
-            <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
-            <h3>Total: ${precioTotal} </h3>
-            <h3>ETH <FaEthereum /> : {val} </h3>
+            <div className={style.payInfo}>
+              <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
+              <h3 style={{ textAlign: "center", marginLeft: "340px" }}>Total: ${precioTotal} </h3>
+              <h3 style={{ textAlign: "center", marginLeft: "340px"}}>ETH <FaEthereum /> : {val} </h3>
+            </div>
             <div>
               <Crypto
                 email={userEmail}
@@ -77,7 +79,7 @@ export default function Checkout() {
                 precioTotal={val}
                 purchaseDetails={purchaseDetails}
               />
-              <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px', marginBottom: '-8px' }}> What is Metamask?</span></a>
+              <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '5px', marginBottom: '20px' }}> What is Metamask?</span></a>
             </div>
             <div className={style.paypal}>
               <Paypal
@@ -101,7 +103,7 @@ export default function Checkout() {
 
           </div>
         </div>
-        
+
       </div>
       <Footer />
     </Container>

@@ -2,9 +2,13 @@
     padding: 20% 20% 0 5%;
     position: absolute;
 }
+.icon{
+    height: 40px;
+    width: 40px;
+}
 
 .navbar {
-    width: 103%;
+    width: 102%;
     max-height: 10vh;
     min-height: 10vh;
     background-color: rgb(35,20,10);;
@@ -76,6 +80,8 @@
     background-color: bisque;
     padding: 2px;
     z-index: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 .infoDistribution {
@@ -112,7 +118,7 @@
 }
 
 .buttonlink .cartbtn {
-    margin: -20px 40px 0 -80px;
+    margin: -20px 40px 0 -500px;
 }
 
 .sidePosition {
@@ -120,14 +126,16 @@
 }
 
 .space2{
-    margin-right: 90px;
-    z-index: 4;
+    margin: -25px 0px 0 -180px;
+    z-index: 0;
+    /* background-color: aqua; */
 }
 
 .space2 h4{
     color:antiquewhite;
     display: flex;
     width: 200px;
+
 
 }
 
@@ -161,7 +169,11 @@
 
 
     }
-
+    .icon{
+        height: 30px;
+        width: 30px;
+        margin-top: 8px;
+    }
 
     .buttonlink {
         margin: 0px 0px 10px 100px;
@@ -207,7 +219,7 @@
         width: auto;
         height: fit-content;
         color: #dfdfdf;
-        margin: -20px 0px 0 -20px;
+        margin: -20px -40px 0 -20px;
         align-items: center;
         align-content: center;
     }
@@ -217,7 +229,7 @@
     }
 
     .buttonlink .sideBar {
-        margin: -20px 0px 20px -20px;
+        margin: -20px 0px 20px 25px;
         /* background-color: blue; */
         display: flexbox;
         flex-direction: column;
@@ -229,10 +241,24 @@
     }
 
     .buttonlink .cartbtn {
-        margin: -20px 40px 0 -80px;
+        margin: -22px 40px 0 -250px;
     }
 
     .sidePosition {
         margin: -20px -100px 0 -40px;
+    }
+    .space2{
+        margin: -15px 0px 0 -70px;
+        z-index: 0;
+        /* background-color: aqua; */
+    }
+    
+    .space2 h4{
+        color:antiquewhite;
+        display: flex;
+        width: 200px;
+        font-size: 14px;
+    
+    
     }
 }

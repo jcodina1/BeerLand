@@ -88,7 +88,7 @@
 @media (max-width:900px) {
   .searchBox {
     position: absolute;
-    transform: translate(-180%, -180%);
+    transform: translate(-210%, -180%);
     background: rgb(254, 244, 233);
     height: 30px;
     border-radius: 0px;
