@@ -1,0 +1,51 @@
+.dashBoard {
+    width: 99%;
+    margin: 10px;
+}
+
+.totalEarnings {
+
+    display: flex;
+   
+    flex-direction: column;
+    align-items: flex-start;
+    height: 150px;
+    border-radius: 6px;
+    background:rgb(35,20,10) ;
+    margin: 10px;
+}
+
+.totalEarnings .totalEarning {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+
+}
+.totalEarnings h2 {
+    
+    color:rgb(185,155,103);
+    margin: 5px;
+}
+.totalEarnings .totalEarning h5 {
+    font-size: xx-large;
+    color:rgb(185,155,103);
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    height: 200px;
+}
+
+
+
+.card {
+    background: rgba(185, 155, 103);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+

@@ -11,12 +11,15 @@ import { useModals } from '../../Hooks/useModals';
 
 
 import Footer from "../Footer/Footer";
+import UserPurchases from '../Purchases/UserPurchases/UserPurchases';
 
 export default function UserProfile() {
     const users = useSelector((state) => state.user)
     const { user } = useAuth();
     const dispatch = useDispatch()
+    const [mostrarOrden,setMostrarOrden]=useState(false)
     const [isOpenModal, openModal, closeModal] = useModals(false);
+
 
     let currentUser;
     useEffect(() => {
@@ -50,9 +53,9 @@ export default function UserProfile() {
             <FaUserEdit color="#c03b3b" size={25} />
             <Modal isOpen={isOpenModal} closeModal={closeModal}>
               <EditProfile />
-
             </Modal>
           </button>
+ {mostrarOrden===true?<><button onClick={()=>setMostrarOrden(false)}>x</button><UserPurchases/></>:<button onClick={()=>setMostrarOrden(true)}>Ver Tus ordenes</button>}
 
                     </div>
                 </> :
