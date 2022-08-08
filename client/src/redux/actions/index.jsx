@@ -48,7 +48,12 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
-  GET_SALES_BREWERY
+  FILTER_SALES_STATUS,
+  UPDATE_USER,
+  GET_SALES_BREWERY,
+  CRYPTO,
+  FILTER_STATUS
+
 } from "../const";
 
 export function addToCart(id) {
@@ -212,7 +217,7 @@ export function filterBeersByType(payload) {
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
-      .put(`http://localhost:3001/beer/update/${id}`, data)
+      .put(UPDATE_BEER + id, data)
       .then((response) => dispatch({ type: UPDATE_BEER }))
       .catch((e) => {
         console.log(e);
@@ -289,7 +294,7 @@ export function getUser() {
 }
 
 export async function helpCall(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -337,7 +342,7 @@ export function postScore(obj) {
 }
 
 export async function helpCallScores(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -428,5 +433,46 @@ export function getSalesBySellerId(sellerId) {
   } catch (error) {
     console.log(error)
   }
+}
+
+export function filterSalesByStatus(payload) {
+  return {
+    type: FILTER_SALES_STATUS,
+    payload,
+  };
+}
+
+export function updateUser(data, id) {
+  console.log(data)
+  try {
+     return async function (dispatch) {
+    const response = axios.put(UPDATE_USER + id, data)
+      return dispatch({ type: UPDATE_USER })
+  };
+  } catch (error) {
+    
+  }
+}
+
+
+export function exchangeCrypto() {
+  return async function (dispatch) {
+    try {
+      var response = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`
+      );
+      return dispatch({ type: CRYPTO, payload: response.data.ethereum.usd });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
+
+
+export function filterByStatus(payload) {
+  return {
+    type: FILTER_STATUS,
+    payload,
+  };
 }
 

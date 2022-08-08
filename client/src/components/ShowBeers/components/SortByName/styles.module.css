@@ -1,0 +1,10 @@
+.select{
+    padding: 5px;
+    text-decoration: none;
+    color: antiquewhite;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    background-color: #704021;
+    cursor: pointer;
+}

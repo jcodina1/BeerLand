@@ -16,7 +16,7 @@ export default function BrewerySales(sellerId){
 
   return (
     <div className=''>
-      <p>Hola!, estas son tus ventas.</p>
+      <p>estas son tus ventas.</p>
       {sales.map((sale) => {
         return (
           <div className='{styles.purchaseContainer}'>
@@ -26,9 +26,9 @@ export default function BrewerySales(sellerId){
             })}
             <p>Total: {sales.total}</p>
             <p>Estado de la Compra: {sales.status} </p>
-            {/* <button onClick={setShowModal((showModal) => !showModal)}>
+            <button onClick={setShowModal((showModal) => !showModal)}>
               Ver detalle de la compra.
-            </button> */}
+            </button>
           </div>
         );
       })}

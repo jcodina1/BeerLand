@@ -35,12 +35,12 @@ export default function BeerCard({
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
-    if (user2.length !== 0) {
+    if (filtrado.length !== 0) {
       var obj = {
         idUser: filtrado[0].id,
         idBeer: id
       };
-      helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
+      helpCall(`user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
         .then(res => setIsFav(res))
     }
   }

@@ -13,6 +13,7 @@ import SortByPrice from "./components/SortByPrice";
 import { Link } from "react-router-dom";
 import Container from '@mui/material/Container';
 
+
 export default function ShowBeers() {
   const dispatch = useDispatch();
   const allBeers = useSelector((state) => state.beers);
@@ -49,6 +50,7 @@ export default function ShowBeers() {
   };
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     if (!allBeers1.length) {
       dispatch(getAllBeers());
@@ -58,7 +60,7 @@ export default function ShowBeers() {
 
   return (
     <Container maxWidth='xxl' disableGutters='false'>
-      <div className={style.showBeers}>
+      <div className={style.showBeers} >
         <div className={style.distance}>
           <div className={style.filters}>
             <div className={style.distribution}>
@@ -78,7 +80,7 @@ export default function ShowBeers() {
             </div>
           </div>
         </div>
-        <div className={style.cardsContainer}>
+        <div className={style.cardsContainer} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
           <div className={style.cardsBox}>
             {allBeers.length === 0 ? (
 

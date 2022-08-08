@@ -13,7 +13,8 @@ import NavBar from "../NavBar/NavBar";
 import DetailCompra from "../DetailCompra/DetailCompra";
 import Score from "../Score/Score";
 import { Comment } from "../Comment/Comment";
-import Container from '@mui/material/Container';
+import { Container } from "@mui/material";
+
 
 export default function BeerDetail(props) {
   const { id } = useParams();
@@ -27,8 +28,9 @@ export default function BeerDetail(props) {
   }, [dispatch, id]);
 
   return (
-    <Container maxWidth='xxl' disableGutters='false'>
+    <Container maxWidth='xxl' disableGutters='false' >
       <div>
+       
         <div>
           <NavBar />
         </div>
@@ -67,8 +69,8 @@ export default function BeerDetail(props) {
                     <span className={style.textBox}>{beer.description}</span>
                   </p>
 
-                  <div >
-                    <Score  id={beer.id} />
+                  <div>
+                    <Score id={beer.id} />
                     <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                   </div>
                 </div>
@@ -80,6 +82,6 @@ export default function BeerDetail(props) {
           </div>
         </div>
       </div>
-    </Container>
-  );
+      </Container>
+      );
 }

@@ -4,23 +4,33 @@ import { useAuth } from '../Context/Contestautenticacion';
 import NavBar from "../NavBar/NavBar";
 import style from "../UserProfile/UserProfile.module.css";
 import { getUser } from '../../redux/actions';
+import { FaUserEdit } from 'react-icons/fa'
+import Modal from '../Modal/Modal';
+import EditProfile from '../EditProfile/EditProfile'
+import { useModals } from '../../Hooks/useModals';
+
+
 import Footer from "../Footer/Footer";
+import UserPurchases from '../Purchases/UserPurchases/UserPurchases';
 
 export default function UserProfile() {
     const users = useSelector((state) => state.user)
     const { user } = useAuth();
     const dispatch = useDispatch()
+    const [mostrarOrden,setMostrarOrden]=useState(false)
+    const [isOpenModal, openModal, closeModal] = useModals(false);
+
+
     let currentUser;
-    let name;
     useEffect(() => {
         dispatch(getUser());
     }, []);
 
     if (user !== null) {
         currentUser = users.filter((e) => e.email === user.email);
-        name = currentUser[0].name + currentUser[0].surname
     }
-    console.log(currentUser)
+    
+    
 
 
 
@@ -37,9 +47,16 @@ export default function UserProfile() {
                                 <h3>Name: {currentUser[0].name}</h3>
                                 <h3>Surname: {currentUser[0].surname}</h3>
                                 <h3>E-mail: {currentUser[0].email}</h3>
-                                <h3>Address: {currentUser[0].address}</h3>
                             </div>
                         </div>
+                        <button className='buttonSeting' onClick={openModal} title="Edit Profile" >
+            <FaUserEdit color="#c03b3b" size={25} />
+            <Modal isOpen={isOpenModal} closeModal={closeModal}>
+              <EditProfile />
+            </Modal>
+          </button>
+ {mostrarOrden===true?<><button onClick={()=>setMostrarOrden(false)}>x</button><UserPurchases/></>:<button onClick={()=>setMostrarOrden(true)}>Ver Tus ordenes</button>}
+
                     </div>
                 </> :
                 <div>
