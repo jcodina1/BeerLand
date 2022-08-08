@@ -66,7 +66,7 @@ export default function BeerDetail(props) {
                 </div>
 
                 <div>
-                  <Score id={beer.id} />
+                  <Score id={id} />
                   <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
                 </div>
               </div>

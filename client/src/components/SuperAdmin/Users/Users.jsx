@@ -12,12 +12,14 @@ import styles from "./Users.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
 import { setPage } from "../../../redux/actions";
+import { Link } from "react-router-dom";
 
 
 
 export default function Users() {
   const dispatch = useDispatch()
   const allUsers = useSelector(state => state.user)
+  const allpuscheses=useSelector(state => state.user)
   let page = useSelector((state) => state.page);
   let usersPerPage = 10
 
@@ -76,6 +78,7 @@ export default function Users() {
                 <TableCell>{e.surname}</TableCell>
                 <TableCell>{e.email}</TableCell>
                 <TableCell>{e.address===""?"Adress not found":e.address}</TableCell>
+                <TableCell>t</TableCell>
               </TableRow>)}
              { console.log(allUsers)}
 
