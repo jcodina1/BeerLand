@@ -17,5 +17,6 @@ router.use("/seller", seller);
 router.use("/purchases", purchases);
 router.use("/score", score);
 router.use("/comment", comment);
-router.use("/mail", mail);
+router.use("/support", support);
+
 module.exports = router;

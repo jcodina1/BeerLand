@@ -399,6 +399,13 @@ function Reducer(state = initialState, action) {
         crypto: action.payload,
       };
 
+          case 'POST_SUPPORT':
+            return {
+              ...state,
+            };
+
+
+
     default:
       return { ...state };
   }

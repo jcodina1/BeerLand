@@ -468,3 +468,14 @@ export function filterByStatus(payload) {
     payload,
   };
 }
+
+export function postSupport(payload) {
+  return async function (dispatch) {
+    try {
+      let response = await axios.post(`http://localhost:3001/support`, payload);
+      return dispatch({ type: "POST_SUPPORT", payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
