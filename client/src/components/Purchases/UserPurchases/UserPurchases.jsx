@@ -73,6 +73,9 @@ export default function UserPurchases() {
           </div>
         );
       })}
+      <div>
+        
+      </div>
     </div>
   );
 }
