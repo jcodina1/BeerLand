@@ -19,9 +19,6 @@ export default function Paypal({ precioTotal, userId, purchaseDetails,beerId, em
     dispatch(removeAllFromCart())
   }
 
-  function setCart(){
-    dispatch(removeAllFromCart())
-  }
 
   return (
     <div>

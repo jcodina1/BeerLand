@@ -5,7 +5,7 @@ import ShowBeers from "../ShowBeers/ShowBeers";
 import style from "../Home/Home.module.css";
 import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
-import PromoBanner from "../PromoBanner/PromoBanner";
+/* import PromoBanner from "../PromoPage/PromoPage"; */
 import Slider from "../Slider/Slider";
 
 export default function Home() {
