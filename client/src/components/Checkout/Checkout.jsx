@@ -63,23 +63,14 @@ export default function Checkout() {
               name={e.name}
               price={e.price * e.cant}
               cant={e.cant}
-            />
-          ))}
+              />
+              ))}
         </div>
         <div className="pay">
           <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
           <h3>Total: ${precioTotal} </h3>
-          <div className="paypal">
-            <Paypal
-              email={userEmail}
-              userId={userId}
-              precioTotal={precioTotal}
-              purchaseDetails={purchaseDetails}
-            />
-          </div>
-          <div>
-          <h3>USD: ${precioTotal}</h3>
           <h3>ETH <FaEthereum /> : {val} </h3>
+          <div>
             <Crypto
             email={userEmail}
             userId={userId}
@@ -87,6 +78,14 @@ export default function Checkout() {
             purchaseDetails={purchaseDetails}
             />
             <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '-20px', marginBottom: '-8px' }}> What is Metamask?</span></a>
+          </div>
+          <div className="paypal">
+            <Paypal
+              email={userEmail}
+              userId={userId}
+              precioTotal={precioTotal}
+              purchaseDetails={purchaseDetails}
+            />
           </div>
         </div>
       </div>

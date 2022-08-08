@@ -59,7 +59,7 @@ export default function Crypto({value, precioTotal, userId, purchaseDetails, ema
     let timerInterval
     Swal.fire({
       title: 'Your payment was successful',
-      html: 'Thank you for trusting in BookStore',
+      html: 'Thank you, enjoy your beer!!! ',
       timer: 5000,
 
       timerProgressBar: true,
