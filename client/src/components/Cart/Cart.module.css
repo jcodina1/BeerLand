@@ -1,7 +1,31 @@
-.info {
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.detailPage {
+  background-color: rgba(74, 47, 3, 0.5);
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: fit-content;
+  padding: 3% 5% 4% 5%;;
+  margin: 0px;
+  background-size: cover;
+}
+.tittle{
+ 
+  height: 40px;
+  width: auto;
+  z-index: 2;
+  padding-top: 90px;
+  margin-bottom: 0px;
+  
+}
+.tittle h1{
+  color:rgb(35,20,10);
+  font-size: 60px;
+  font-weight: bold;
+  font-family: 'Staatliches', cursive;
+  margin-top: 20px;
+  /* background-color: aqua; */
 }
 
 .checkoutWrapper {
@@ -20,7 +44,7 @@
 }
 
 .cartContainer{
-  background-color: rgb(254, 254, 254) ;
+ /*  background-color: rgb(24, 54, 254) ; */
   background-size: cover;
   background-attachment: fixed;
   overflow-y:hidden;
@@ -31,79 +55,94 @@
   flex-direction: column;
 }
 
-.header{
-  background-color: rgb(35,20,10);
-  height: 15%;
-  width: 100%;
-  position: relative;
-}
-
-.h1{
-  color:rgb(185,155,103);
-  font-size: 80px;
-  font-weight: bold;
-  margin-top: 1.5rem;
-}
 
 .keep{
   padding-top: 0.5%;
-  background-color: rgb(185,155,103);
+  background-color: antiquewhite;
   color: rgb(35,20,10);
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 700;
   width: 220px;
   height: 60px;
-  border-radius: 10px;
-  margin-left: 82%;
-  margin-top: -4.5%;
+  border-radius: 5px;
+  margin-left: 88%;
+  margin-top:-2%;
 }
 
 .link{
   text-decoration: none;
 }
+.link2{
+  color: rgb(35,20,10);
+  text-decoration: none;
+  font-size: 22px;
+  font-family: 'Trebuchet MS' sans-serif;
+  z-index: 3;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row row-reverse;
+  /* align-content: flex-start; */
+  text-align: right;
+  margin-left: 70%;
+  position: relative;
+  font-weight: 600;
+  margin-bottom: -15px;
+  
+
+}
 
 .cart{
-  background-color: rgba(185, 155, 103, 0.20);
+  background-color: rgb(245,245, 245);
   height: auto;
-  width: 85%;
-  border-radius: 20px;
+  width: 100%;
+  border-radius: 10px;
   position: relative;
-  margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 10px 10px 20px 10px;
+  padding: 20px ;
+  margin: 30px 10px 10px 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);;
+ 
 }
 
 .items{
   height: auto;
-  width: 80%;
+  width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0px 0px 10px 180px;
+  justify-content: space-evenly;
+  margin: 50px 0px 10px 20px;
 }
 
 .checkout{
-  margin-top: 60px;
-  margin-left: 906px;
-  height: 70px;
+  margin-top: 0px;
+  margin-left: 90%;
+  height: 30px;
   width: 230px;
   padding: 1px;
+
 } 
 
 .check2{
-  padding-top: 6px;
-  background-color: rgb(185,155,103);
-  color: rgb(35,20,10);
-  font-size: 35px;
-  font-weight: bold;
-  width: 220px;
-  height: 67px;
-  border-radius: 10px;
-
-  /* margin-top: -4.5%; */
+  padding-top: 2px 5px 2px 5px;
+  background-color: rgb(35,20,10);
+  color: antiquewhite;
+  font-size: 30px;
+  font-weight: 600;
+  width: 180px;
+  height: 50px;
+  border-radius: 5px;
+}
+.boxend{
+  background-color: #704021;
+  height: 55px;
+  align-items: center;
+  align-content: center;
+  padding: 5px 0 0 0;
+}
+.h1{
+  color: rgb(245,245,245);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 40px;
 }
