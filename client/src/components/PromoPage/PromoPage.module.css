@@ -1,0 +1,39 @@
+
+.promopage{
+    width: auto;
+    height: auto;
+}
+    .banner{
+        width: auto;
+        height: auto;
+        
+     }
+     .banner img{
+         width: 100%;
+         height: auto;
+         margin-top: 0;
+        
+     }
+     .slider2{
+         height: 200px;
+         width: 200px;
+     }
+ 
+
+@media (max-width:990px){
+    .banner{
+        width: auto;
+        height: auto;
+        
+     }
+     .banner img{
+         width: 100%;
+         height: auto;
+         margin-top: 0;
+        
+     }
+     .slider2{
+         height: 200px;
+         width: 200px;
+     }
+}
