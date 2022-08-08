@@ -11,11 +11,23 @@ import Paper from "@mui/material/Paper";
 import styles from "./Users.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
+<<<<<<< HEAD
 import { getAllPurchases, setPage } from "../../../redux/actions";
 
 export default function Users() {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user);
+=======
+import { setPage } from "../../../redux/actions";
+import { Link } from "react-router-dom";
+
+
+
+export default function Users() {
+  const dispatch = useDispatch()
+  const allUsers = useSelector(state => state.user)
+  const allpuscheses=useSelector(state => state.user)
+>>>>>>> origin/JuanCho
   let page = useSelector((state) => state.page);
   let usersPerPage = 10;
   const allPurchases = useSelector((state) => state.allPurchases);
@@ -76,12 +88,20 @@ export default function Users() {
                 <TableCell>{e.name}</TableCell>
                 <TableCell>{e.surname}</TableCell>
                 <TableCell>{e.email}</TableCell>
+<<<<<<< HEAD
                 <TableCell>
                   {e.address === "" ? "Adress not found" : e.address}
                 </TableCell>
                 <TableCell> </TableCell>
               </TableRow>
             ))}
+=======
+                <TableCell>{e.address===""?"Adress not found":e.address}</TableCell>
+                <TableCell>t</TableCell>
+              </TableRow>)}
+             { console.log(allUsers)}
+
+>>>>>>> origin/JuanCho
           </TableBody>
         </Table>
         <Pagination

@@ -23,10 +23,6 @@ export default function Paypal({
     dispatch(removeAllFromCart());
   }
 
-  function setCart() {
-    dispatch(removeAllFromCart());
-  }
-
   return (
     <div>
       <PayPalScriptProvider

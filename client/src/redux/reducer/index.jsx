@@ -40,6 +40,7 @@ import {
   FILTER_SALES_STATUS,
   UPDATE_USER,
   GET_SALES_BREWERY,
+  CRYPTO,
   FILTER_STATUS,
 } from "../const";
 
@@ -64,6 +65,8 @@ const initialState = {
   comments: [],
   allPurchases: [],
   userPurchases: [],
+  brewerySales: [],
+  crypto: 0,
   filtroPurchases: [],
 };
 
@@ -388,6 +391,12 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         filtroPurchases: filtered,
+      };
+
+    case CRYPTO:
+      return {
+        ...state,
+        crypto: action.payload,
       };
 
     default:

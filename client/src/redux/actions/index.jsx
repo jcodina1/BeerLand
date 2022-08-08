@@ -51,6 +51,7 @@ import {
   FILTER_SALES_STATUS,
   UPDATE_USER,
   GET_SALES_BREWERY,
+  CRYPTO,
   FILTER_STATUS,
 } from "../const";
 
@@ -446,6 +447,19 @@ export function updateUser(data, id) {
       return dispatch({ type: UPDATE_USER });
     };
   } catch (error) {}
+}
+
+export function exchangeCrypto() {
+  return async function (dispatch) {
+    try {
+      var response = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd`
+      );
+      return dispatch({ type: CRYPTO, payload: response.data.ethereum.usd });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 }
 
 export function filterByStatus(payload) {
