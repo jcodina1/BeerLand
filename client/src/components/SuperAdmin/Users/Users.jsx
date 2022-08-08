@@ -13,11 +13,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
 import { setPage } from "../../../redux/actions";
 import { Link } from "react-router-dom";
-
+import PurchaseDetails from "./PurchaseDetails";
 export default function Users() {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.user);
-  const allpuscheses = useSelector((state) => state.user);
+  const allPurchases = useSelector((state) => state.allPurchases);
+  const [modalOpen, setModalOpen] = useState(false);
+
   let page = useSelector((state) => state.page);
   let usersPerPage = 10;
 
@@ -45,7 +47,8 @@ export default function Users() {
       dispatch(setPage(pageNumber));
     }
   };
-
+  console.log(allUsers);
+  console.log(allPurchases);
   return (
     <div className={styles.table}>
       <TableContainer component={Paper}>
@@ -58,7 +61,8 @@ export default function Users() {
               <TableCell>Surname</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Address</TableCell>
-              <TableCell>Purchases</TableCell>
+              <TableCell>Amount Paid</TableCell>
+              <TableCell>Toggle Details</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -72,9 +76,28 @@ export default function Users() {
                 <TableCell>{e.surname}</TableCell>
                 <TableCell>{e.email}</TableCell>
                 <TableCell>
-                  {e.address === "" ? "Adress not found" : e.address}
+                  {e.address === "" ? "Address not found" : e.address}
                 </TableCell>
-                <TableCell>t</TableCell>
+                <TableCell>
+                  $
+                  {allPurchases
+                    .filter((purchase) => purchase.userId == e.id)
+                    .map((compra) => compra.totalPrice)}
+                </TableCell>
+                <TableCell>
+                  <button onClick={() => setModalOpen(true)}>
+                    Purchase Detail
+                  </button>{" "}
+                  {modalOpen && (
+                    <div>
+                      {" "}
+                      <PurchaseDetails
+                        setModalOpen={setModalOpen}
+                        userId={e.id}
+                      />
+                    </div>
+                  )}
+                </TableCell>
               </TableRow>
             ))}
             {console.log(allUsers)}
