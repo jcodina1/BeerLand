@@ -4,8 +4,24 @@ const { sendConfirmationPurchases } = require("./Nodemaileer/Emails");
 const { Seller, Beer, Purchases, User } = require("../db.js");
 
 async function postPurchases(req, res, next) {
-  const { userId, purchaseDetails, beerId, totalPrice, status, address } =
-    req.body;
+  const {
+    userId,
+    purchaseDetails,
+    beerId,
+    totalPrice,
+    status,
+    address,
+    email,
+  } = req.body;
+  console.log(
+    userId,
+    purchaseDetails,
+    beerId,
+    totalPrice,
+    status,
+    address,
+    email
+  );
   try {
     const newPurchases = await Purchases.create({
       userId: userId,
@@ -15,12 +31,15 @@ async function postPurchases(req, res, next) {
       status: status,
       address: address,
     });
-
-    let beer = await Beer.findAll({
-      where: { id: beerId },
-      include: { model: Seller },
+    purchaseDetails.forEach(async (item) => {
+      let beer = await Beer.findAll({
+        where: { id: item.beerId },
+        include: { model: Seller },
+      });
+      newPurchases.addBeer(beer);
     });
-    newPurchases.addBeer(beer);
+    // let beer = await Beer.findAll({ where: { id: beerId }, include: { model: Seller } });
+    // newPurchases.addBeer(beer);
     const purchases = Purchases.findAll({
       where: { id: newPurchases.id },
       include: { model: Beer, include: { model: Seller } },
