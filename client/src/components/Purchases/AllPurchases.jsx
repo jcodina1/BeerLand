@@ -29,11 +29,9 @@ export default function Purchases() {
                         user={e.user}
                         seller={e.beers.seller}
                         address={e.address}
-
                     />
                 )
-            }
-            )}
+            })}
         </div>
     )
 }

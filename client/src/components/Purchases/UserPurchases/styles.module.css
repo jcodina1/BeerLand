@@ -1,12 +1,14 @@
 .purchasesWrapper {
+  border: solid red 2px;
   direction: flex;
   flex-direction: row;
 }
 
 .purchaseContainer {
+  width: 1000px;
   direction: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: left;
 }
 .history{
   display: flex;

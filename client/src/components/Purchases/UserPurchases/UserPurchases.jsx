@@ -18,44 +18,44 @@ export default function UserPurchases() {
   let currentSeller;
   let currentRol;
 
-    if (user !== null ) {
-      if(user.rol==="user"){
-        currentUser = user2?.filter((e) => e.email === user.email);
-    }else {
+  if (user !== null) {
+    if (user.rol === "user") {
+      currentUser = user2?.filter((e) => e.email === user.email);
+    } else {
       currentSeller = seller?.filter((e) => e.mail === user.email);
+    }
   }
-}
 
   useEffect(() => {
     dispatch(getUser())
     if (user !== null) {
-      if(user.rol==="user") { dispatch(getPurchasesByUserId(currentUser[0].id))}
-      else  {dispatch(getSalesBySellerId(currentSeller[0].id))}
+      if (user.rol === "user") { dispatch(getPurchasesByUserId(currentUser[0].id)) }
+      else { dispatch(getSalesBySellerId(currentSeller[0].id)) }
     }
   }, [user]);
   // console.log(user)
   // console.log(user2)
   // console.log(currentUser)
 
-  if (user !== null ) {
-    if(user.rol === "user"){
+  if (user !== null) {
+    if (user.rol === "user") {
       currentRol = "purchases";
-    }else {
-    currentRol = "sales";
+    } else {
+      currentRol = "sales";
     }
-}
+  }
 
-  let i=1
- 
+  let i = 1
+
   return (
-    <div className={styles.purchasesWrapper}>      
-      <p>Hey! These are your {currentRol}</p>
-      <UserFilterStatus/>
+    <div className={styles.purchasesWrapper}>
+      <h3>Hey! These are your {currentRol}</h3>
+      <UserFilterStatus />
       {userPurchases?.map((purchase) => {
         return (
           <div key={purchase.id} className={styles.purchaseContainer}>
-            <p>Order n°{i++}</p>
-            <UserPurchaseDetail purchase={purchase}/>
+            <h2>Order n°{i++}</h2>
+            <UserPurchaseDetail purchase={purchase} />
             <hr />
           </div>
         );

@@ -10,27 +10,22 @@
 }
 
 table{
+	width: 1000px;
 	background-color: white;
 	text-align: left;
 	border-collapse: collapse;
-	width: 100%;
 }
 
 th, td{
-	padding: 20px;
+	padding: 10px;
 }
 
 thead{
-	background-color: #246355;
-	border-bottom: solid 5px #0F362D;
+	background-color: rgba(185, 155, 103, 0.687);
 	color: white;
-}
-
-tr:nth-child(even){
-	background-color: #ddd;
 }
 
 tr:hover td{
-	background-color: #369681;
-	color: white;
+	font-size: 14px;
+	font-weight: 600;
 }
