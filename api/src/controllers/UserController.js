@@ -1,3 +1,5 @@
+const { sendConfirmationEmail } = require ("./Nodemaileer/Emails")
+const nodemailer = require("nodemailer");
 const axios = require("axios");
 const { Seller, Beer, User, Purchases } = require("../db.js");
 
@@ -14,7 +16,7 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-  const { id, name, surname, address, email, rol } = req.body;
+  const { id, name, surname, address, email, rol, image } = req.body;
   try {
     let newUser = await User.findOrCreate({
       where: {
@@ -23,11 +25,12 @@ async function postUser(req, res, next) {
         address: address,
         email: email,
         rol: rol,
+        image:image    
       },
-    });
-    
-
+    }); 
+    sendConfirmationEmail( name,email,);
     return res.json(newUser);
+    
   } catch (error) {
     next(error);
   }
@@ -103,6 +106,23 @@ async function getUserFav(req, res, next) {
   }
 }
 
+async function updateUser(req, res, next) {
+  const { id } = req.params
+  const { name, surname, address, email, image } = req.body
+  try {
+       const user = await User.findByPk(id)
+       user.name = name
+       user.surname = surname
+       user.address = address
+       user.email = email
+       user.image = image
+      await user.save()
+      res.send('update')
+  } catch (error) {
+      next(error)
+  }
+}
+
 module.exports = {
     getAllUsers,
     postUser,
@@ -110,6 +130,7 @@ module.exports = {
     postFavorite,
     deleteFavorite,
     Favorites,
-    getUserFav
+    getUserFav,
+    updateUser
 
 }

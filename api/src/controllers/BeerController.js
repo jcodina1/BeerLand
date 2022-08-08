@@ -79,7 +79,7 @@ async function updateBeer(req, res, next) {
     const { id } = req.params
     const { name, description, price, stock, image } = req.body
     try {
-        beer = await Beer.findByPk(id)
+         const beer = await Beer.findByPk(id)
         beer.name = name
         beer.description = description
         beer.price = price
@@ -101,16 +101,17 @@ async function deleteBeer(req, res, next) {
 }
 
 async function postBeer(req, res, next) {
-    const { name, description, price, stock, image, sellerId } = req.body;
+    const { name, description, price, stock, image, sellerId,tipo } = req.body;
     try {
         let newBeer = await Beer.findOrCreate({
                 where:{
-                name:name,
-                description:description,
-                price:price,
-                stock:stock,
-                image:image,
-                sellerId:sellerId,
+                    name: name ? name : "It does not contain name",
+                    description: description ? description : "It does not contain description",
+                    price: price?price:"12",
+                    stock: stock?stock:10,                    
+                    image: image ? image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+                    sellerId: sellerId,
+                    tipo: tipo ? tipo : "IPA",    
                 }
             });
         return res.json(newBeer);

@@ -20,9 +20,12 @@ import Swal from "sweetalert2";
 import { IoMdContact } from "react-icons/io";
 import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
+import { removeAllFromCart, getUser } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
-export default function NavBar({ setPage }) {
+export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
+  const users = useSelector((state) => state.user)
   const { salir, user } = useAuth();
   const [cart, setCart] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
@@ -30,6 +33,22 @@ export default function NavBar({ setPage }) {
 
   const [sideBar, setSideBar] = useState(true);
   const showSideBar = () => setSideBar(!sideBar);
+
+  useEffect(() => {
+    dispatch(getUser());
+}, []);
+
+  let currentUser;
+  if (user !== null) {
+    currentUser = users.filter((e) => e.email === user.email);
+}
+
+
+
+
+  const clearCart = async () => {
+    dispatch(removeAllFromCart())
+  };
 
   useEffect(() => {
     user ? setIsLogged(true) : setIsLogged(false);
@@ -59,6 +78,7 @@ export default function NavBar({ setPage }) {
           setIsLogged(false);
           salir();
           reload();
+          clearCart();
           window.location.href = "/home";
         }
       });
@@ -92,10 +112,13 @@ export default function NavBar({ setPage }) {
         <SearchBar setPage={setPage} />
       </div>
 
-      <div className={style.infoDistribution}>
         <div className={style.space2}>
-          {/* <h3>Hello </h3> */}
+          { !currentUser?.length ? '' :
+            <h4>Hello, {currentUser[0].name} </h4>
+          }
+          
         </div>
+      <div className={style.infoDistribution}>
 
         <div className={style.buttonlink}>
           <div className={style.cartbtn}>
@@ -138,6 +161,11 @@ export default function NavBar({ setPage }) {
                   <MenuItem icon={<BsFillBookmarkHeartFill />}>
                     Liked
                     <Link to="/user/favourites" />
+                  </MenuItem>
+
+                  <MenuItem icon={<FaShoppingBag />}>
+                    Shopping History
+                    <Link to={`/history`} />
                   </MenuItem>
 
                   <MenuItem icon={<CgLogOut />} onClick={handleLogOut}>

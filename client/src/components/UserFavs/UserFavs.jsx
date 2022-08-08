@@ -5,7 +5,8 @@ import BeerCard from "../BeerCard/BeerCard";
 import NavBar from "../NavBar/NavBar.jsx";
 import { getFavDetail, getFavs, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
-import "../UserFavs/userFavs.css";
+import "./userFavs.css"
+
 
 export default function UserFavs() {
   const user2 = useSelector((state) => state.user);
@@ -33,21 +34,23 @@ export default function UserFavs() {
     <NavBar />
     {user ?
     <>
+    <div className="favs">
     <h2>My favorites</h2>
     <div className='catalogue'>
         {
-            favs.length !==0?
-             favs.map(e => {
-                return (
-                  <BeerCard
-                  key={e.id} name={e.name} id={e.id} price={e.price} image={e.image}
-                />
-                )
+          favs.length !==0?
+          favs.map(e => {
+            return (
+              <BeerCard
+              key={e.id} name={e.name} id={e.id} price={e.price} image={e.image}
+              />
+              )
             })
             :
             <h3>You have no favorites</h3>
-        }
+          }
     </div>
+  </div>
     </>:
     <div  className="aviso">
     <h2>You need to be logged in to access here</h2>

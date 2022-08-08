@@ -11,6 +11,8 @@ import FilterByBrewery from "./components/FilterByBrewery";
 import FilterByType from "./components/FilterByType";
 import SortByPrice from "./components/SortByPrice";
 import { Link } from "react-router-dom";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
@@ -47,6 +49,7 @@ export default function ShowBeers() {
     }
   };
   const [loading, setLoading] = useState(true);
+  AOS.init();
 
   useEffect(() => {
     if (!allBeers1.length) {
@@ -56,7 +59,7 @@ export default function ShowBeers() {
   }, []);
 
   return (
-    <div className={style.showBeers}>
+    <div className={style.showBeers} >
       <div className={style.distance}>
         <div className={style.filters}>
           <div className={style.distribution}>
@@ -76,12 +79,12 @@ export default function ShowBeers() {
           </div>
         </div>
       </div>
-      <div className={style.cardsContainer}>
+      <div className={style.cardsContainer} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
         <div className={style.cardsBox}>
           {allBeers.length === 0 ? (
-            <span>
-              (<Loading setLoading={setLoading} />)
-            </span>
+           
+              <Loading setLoading={setLoading} />
+            
           ) : (
             <>
               {currentBeer?.map((beer) => {
@@ -92,6 +95,7 @@ export default function ShowBeers() {
                     name={beer.name}
                     price={beer.price}
                     image={beer.image ? beer.image : false}
+                    stock={beer.stock}
                   // style={beer.style}
                   // origin={beer.origin}
                   />

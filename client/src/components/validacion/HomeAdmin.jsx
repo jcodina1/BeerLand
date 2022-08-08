@@ -1,4 +1,6 @@
 import { useAuth } from "../Context/Contestautenticacion"
+import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
+import BrewerySales from "../Purchases/BrewerySales"
 
 
 export default function HomeAdmin() {
@@ -6,11 +8,14 @@ export default function HomeAdmin() {
   async function salir2() {
     await salir();
   }
-  console.log(user);
+  
   return (
     <div>
-      <h1>Hola admin</h1>
-      <button onClick={(e) => salir2(e)}>salir</button>
+      <h1>Welcome {user.email}</h1>
+      <div>
+        <UserPurchases/>
+      </div>
+      <button onClick={(e) => salir2(e)}>Get out!</button>
     </div>
   );
 }

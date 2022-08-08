@@ -9,8 +9,10 @@ import PromoBanner from "../PromoBanner/PromoBanner";
 import Slider from "../Slider/Slider";
 
 export default function Home() {
+  
   /* const [userType, setUserType] = useState('') */
   const carga = useSelector((state) => state);
+
 
   return (
     <div className={style.navbar}>

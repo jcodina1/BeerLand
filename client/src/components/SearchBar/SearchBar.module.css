@@ -25,6 +25,9 @@
   border-radius: 0px;
 
 }
+.autocomplete li{
+  cursor: pointer;
+}
  
  .searchBtn {
    cursor: pointer;

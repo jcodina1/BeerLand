@@ -1,10 +1,16 @@
 .purchasesWrapper {
+  border: solid red 2px;
   direction: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .purchaseContainer {
+  width: 1000px;
   direction: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: left;
+}
+.history{
+  display: flex;
+  flex-direction: column;
 }

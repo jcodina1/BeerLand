@@ -16,11 +16,16 @@ import Cart from "./components/Cart/Cart";
 import UpdateProduct from "./components/Forms/UpdateProductForm";
 import ValidacionUSer from "./components/validacion/validacionUsuario";
 import RegisterSeller from "./components/register/RegisterSeller";
-import Purchases from "./components/Purchases/AllPurchases";
+import Purchases from "./components/Purchases/AllPurchases"
 import axios from "axios";
 import BreweryDetail from "./components/BreweryDetail/BreweryDetail";
 import ShowBrewery from "./components/ShowBrewery/ShowBrewery";
+import UserProfile from "./components/UserProfile/UserProfile"
 import UserPurchases from "./components/Purchases/UserPurchases/UserPurchases";
+
+import BrewerySales from "./components/Purchases/BrewerySales"
+import SuperAdmin from "./components/SuperAdmin/SuperAdmin";
+
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
 
@@ -42,9 +47,12 @@ function App() {
             <Route path="/registerCompany" component={RegisterSeller} />
             <Route path="/user/favourites" component={UserFavs} />
             <Route path="/purchases" component={Purchases} />
-            <Route path="/sellers" component={ShowBrewery} />
-            <Route path="/seller/detail/:id" component={BreweryDetail} />
-            <Route path="test" component={UserPurchases} />
+            <Route path="/sellers" component={ShowBrewery}/>
+            <Route path="/seller/detail/:id" component={BreweryDetail}/>
+            <Route path="/userProfile" component={UserProfile}/>
+            <Route path="/history" component={UserPurchases}/>
+            <Route path="/purchases/seller/:id" component={BrewerySales}/>
+            <Route path="/test" component={SuperAdmin}/>
           </Switch>
         </AuthProvider>
       </div>

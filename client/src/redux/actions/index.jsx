@@ -47,6 +47,11 @@ import {
   SET_DETAIL_SELLER,
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
+  UPDATE_PURCHASE_STATUS,
+  FILTER_SALES_STATUS,
+  UPDATE_USER,
+  GET_SALES_BREWERY,
+  FILTER_STATUS
 } from "../const";
 
 export function addToCart(id) {
@@ -210,7 +215,7 @@ export function filterBeersByType(payload) {
 export function updateBeer(data, id) {
   return (dispatch) => {
     axios
-      .put(`http://localhost:3001/beer/update/${id}`, data)
+      .put(UPDATE_BEER + id, data)
       .then((response) => dispatch({ type: UPDATE_BEER }))
       .catch((e) => {
         console.log(e);
@@ -287,7 +292,7 @@ export function getUser() {
 }
 
 export async function helpCall(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -335,7 +340,7 @@ export function postScore(obj) {
 }
 
 export async function helpCallScores(url) {
-  return axios.get(`http://localhost:3001${url}`).then((res) => {
+  return axios.get(`/${url}`).then((res) => {
     return res.data;
   });
 }
@@ -378,18 +383,78 @@ export function SetSellerDetail() {
   };
 }
 
+
+
+   
 export function getPurchasesByUserId(userId) {
   return async function (dispatch) {
     try {
       const userPurchases = await axios.get(
         ALL_PURCHASES + `/user?userId=${userId}`
-      );
-      return dispatch({
+      )
+return dispatch({
         type: GET_PURCHASES_BY_USER,
         payload: userPurchases.data,
       });
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+
+
+export function updateStatus(id, status) {
+  try {
+    return async function (dispatch) {
+      const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
+      return dispatch({
+        type: UPDATE_PURCHASE_STATUS,
+        payload: updateStatus.data
+
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function getSalesBySellerId(sellerId) {
+  try {
+    return async function (dispatch) {
+      const brewerySales = await axios.get(ALL_PURCHASES + `/seller?sellerId=${sellerId}`)
+      return dispatch({
+        type: GET_SALES_BREWERY,
+        payload: brewerySales.data
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function filterSalesByStatus(payload) {
+  return {
+    type: FILTER_SALES_STATUS,
+    payload,
+  };
+}
+
+export function updateUser(data, id) {
+  console.log(data)
+  try {
+     return async function (dispatch) {
+    const response = axios.put(UPDATE_USER + id, data)
+      return dispatch({ type: UPDATE_USER })
+  };
+  } catch (error) {
+    
+  }
+}
+
+export function filterByStatus(payload) {
+  return {
+    type: FILTER_STATUS,
+    payload,
   };
 }

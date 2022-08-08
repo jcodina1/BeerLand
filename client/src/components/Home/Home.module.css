@@ -27,11 +27,6 @@
     min-height: 100%;
     width: 100%;
   }
-
-  .bar {
-    z-index: 999;
-    position: fixed;
-  }
   .homeContainer {
     display: grid;
     grid-template-columns: repeat(3, auto);
