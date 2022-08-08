@@ -48,9 +48,12 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
+  FILTER_SALES_STATUS,
   UPDATE_USER,
   GET_SALES_BREWERY,
-  CRYPTO
+  CRYPTO,
+  FILTER_STATUS
+
 } from "../const";
 
 export function addToCart(id) {
@@ -432,6 +435,13 @@ export function getSalesBySellerId(sellerId) {
   }
 }
 
+export function filterSalesByStatus(payload) {
+  return {
+    type: FILTER_SALES_STATUS,
+    payload,
+  };
+}
+
 export function updateUser(data, id) {
   console.log(data)
   try {
@@ -444,6 +454,7 @@ export function updateUser(data, id) {
   }
 }
 
+
 export function exchangeCrypto() {
   return async function (dispatch) {
     try {
@@ -454,6 +465,14 @@ export function exchangeCrypto() {
     } catch (e) {
       console.log(e);
     }
+  };
+}
+
+
+export function filterByStatus(payload) {
+  return {
+    type: FILTER_STATUS,
+    payload,
   };
 }
 

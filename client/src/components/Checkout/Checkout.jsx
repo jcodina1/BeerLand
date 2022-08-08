@@ -52,10 +52,15 @@ export default function Checkout() {
 
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails.push(beer.id);
+    purchaseDetails.push({beerId:beer.id,cant:beer.cant});
+  });
+  const beers = [];
+  checkoutinfo.forEach((beer) => {
+    beers.push(beer.id);
   });
 
   return (
+
     <Container maxWidth='xxl' disableGutters='false'>
       <NavBar />
       <div className={style.checkout}>
@@ -93,6 +98,7 @@ export default function Checkout() {
                 cant={e.cant}
               />
             ))}
+
           </div>
         </div>
         
