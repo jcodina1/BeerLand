@@ -7,76 +7,92 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
+
 import styles from "./Users.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Pagination from "../../Pagination/Pagination";
+import { setPage } from "../../../redux/actions";
 
 
 
-export default function Users(){
-  const TAX_RATE = 0.05;
-  const purchases=useSelector(state=>state.allPurchases)
-  // const invoiceSubtotal = purchase.totalPrice;
-  // const invoiceTaxes = TAX_RATE * purchase.totalPrice;
-  // const invoiceTotal = purchase.totalPrice - (TAX_RATE * purchase.totalPrice);
-  const [mostrar, setMostrar] = useState(false)
+export default function Users() {
+  const dispatch = useDispatch()
+  const allUsers = useSelector(state => state.user)
+  let page = useSelector((state) => state.page);
+  let usersPerPage = 10
 
-  function ccyFormat(num) {
-    return `${num.toFixed(2)}`;
-  }
+  let lastIndex = page * usersPerPage; //indice incial para metodo slice
+  let firstIndex = lastIndex - usersPerPage; //indice final para metodo slice
+  let currentUser = allUsers.slice(firstIndex, lastIndex); //metodo slice para determinar del array los libros a mostrar por pagina
+
+  const limitPage = Math.ceil(allUsers.length / usersPerPage);
+
+  let firstPrevControl = false; //control de botones, deshabilita cuando es imposible la ejecución
+  let nextLastControl = false;
+
+  if (page === 1) firstPrevControl = true; //control de botones, dependiendo la posición, deshabilita el correspondiente
+  if (page === limitPage) nextLastControl = true;
+
+  // pageControl realiza el control del paginado, recibe la información del evento y renderiza mediante el componente Paginated.
+  // setea las páginas segun el botón clickeado.
+
+
+  const paginate = (e, pageNumber) => {
+    if (pageNumber === "next" && page + 1 <= limitPage) {
+      dispatch(setPage(page + 1));
+    } else if (pageNumber === "prev" && page - 1 >= 1) {
+      dispatch(setPage(page - 1));
+    } else {
+      dispatch(setPage(pageNumber));
+    }
+  };
 
   return (
     <div className={styles.table}>
-      {mostrar === true ?
-        purchases.map(purchase=>
-          <div>
-          <h3>Status: {purchase.status} </h3>
-          <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 600, maxWidth: 1000 }} aria-label="spanning table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center" colSpan={3}>
-                    Details
-                  </TableCell>
-                  <TableCell align="right">Price</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Desc</TableCell>
-                  <TableCell align="right">Qty.</TableCell>
-                  <TableCell align="right">Unit</TableCell>
-                  <TableCell align="right">Sum</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {purchase.beers.map((beer, index) => (
-                  <TableRow key={beer.name}>
-                    <TableCell>{beer.name}</TableCell>
-                    <TableCell align="right">{purchase.purchaseDetails.filter(f => f.beerId === beer.id)[0].cant}</TableCell>
-                    <TableCell align="right">{beer.price}</TableCell>
-                    <TableCell align="right">{purchase.purchaseDetails.filter(f => f.beerId === beer.id)[0].cant * beer.price}</TableCell>
-                  </TableRow>
-                ))}
-                <TableRow>
-                  <TableCell rowSpan={3} />
-                  <TableCell colSpan={2}>Subtotal</TableCell>
-                  <TableCell align="right">{purchase.totalPrice}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Tax</TableCell>
-                  <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                  <TableCell align="right">{ccyFormat( TAX_RATE * purchase.totalPrice)}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell colSpan={2}>TOTAL</TableCell>
-                  <TableCell align="right">{ccyFormat(purchase.totalPrice - (TAX_RATE * purchase.totalPrice))}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <Button variant="contained" color="warning" onClick={() => setMostrar(false)}>Close</Button>
-        </div>)
-        : <Button variant="contained" color="warning" onClick={() => setMostrar(true)}>Details</Button>
-      }
+
+
+
+
+      <TableContainer component={Paper}>
+        <Table >
+          <TableHead>
+
+            <TableRow>
+              <TableCell>Avatar</TableCell>
+              <TableCell>Id</TableCell>
+              <TableCell>Name</TableCell>
+              <TableCell>Surname</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Address</TableCell>
+              <TableCell>Purchases</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {currentUser.map(e =>
+              <TableRow key={e.id}>
+                <TableCell><img src={e.image} alt="Avatar" /></TableCell>
+                <TableCell>{e.id}</TableCell>
+                <TableCell>{e.name}</TableCell>
+                <TableCell>{e.surname}</TableCell>
+                <TableCell>{e.email}</TableCell>
+                <TableCell>{e.address===""?"Adress not found":e.address}</TableCell>
+              </TableRow>)}
+             { console.log(allUsers)}
+
+          </TableBody>
+        </Table>
+        <Pagination
+          page={page}
+          paginate={paginate}
+          limitPage={limitPage}
+          firstPrevControl={firstPrevControl}
+          nextLastControl={nextLastControl}
+        />
+      </TableContainer>
+
+
+
+
     </div>
   );
 }
