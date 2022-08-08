@@ -114,7 +114,7 @@ export default function BeerCard({
     <div className={style.card}>
       <div className={style.circle}>
       <Link to={`/beers/detail/${id}`} className={style.link}>
-        <img src={image} alt="No img found " />
+        <img src={image} alt="No img found " height='450px' width='360px' />
       </Link>
         <Link to={`/beers/detail/${id}`} className={style.link}>
           <div className={style.content}>
