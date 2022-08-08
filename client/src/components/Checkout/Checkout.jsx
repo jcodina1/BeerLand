@@ -6,6 +6,8 @@ import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
 import { getCart, getUser } from "../../redux/actions";
 import { useAuth } from "../Context/Contestautenticacion";
+import Container from '@mui/material/Container';
+import NavBar from "../NavBar/NavBar";
 
 export default function Checkout() {
   const dispatch = useDispatch();
@@ -41,7 +43,10 @@ export default function Checkout() {
   });
 
   return (
-    <div className="checkout">
+    <Container maxWidth='xxl' disableGutters='false'>
+   
+   <div className="checkout">
+    <NavBar/>
       <div className="checkoutCont">
         <div>
           {checkoutinfo?.map((e) => (
@@ -68,5 +73,6 @@ export default function Checkout() {
       </div>
       <Footer />
     </div>
+    </Container>
   );
 }

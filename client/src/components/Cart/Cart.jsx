@@ -11,7 +11,7 @@ import {
 } from "../../redux/actions/index";
 import Item from "../Item/Item.jsx";
 import Footer from "../Footer/Footer.jsx";
-import BeerLogo from "../../img/BeerLogo.png";
+
 import { useAuth } from "../Context/Contestautenticacion";
 import Swal from "sweetalert2";
 import NavBar from "../NavBar/NavBar";
