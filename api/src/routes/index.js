@@ -1,5 +1,7 @@
 const { Router } = require("express");
 
+const router = Router();
+
 const user = require("./UserRoutes.js");
 const beer = require("./BeerRoutes.js");
 const seller = require("./SellerRoutes");
@@ -10,12 +12,12 @@ const support = require("./SupportRoutes");
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-Router.use("/user", user);
-Router.use("/beer", beer);
-Router.use("/seller", seller);
-Router.use("/purchases", purchases);
-Router.use("/score", score);
-Router.use("/comment", comment);
-Router.use("/support", support);
+router.use("/user", user);
+router.use("/beer", beer);
+router.use("/seller", seller);
+router.use("/purchases", purchases);
+router.use("/score", score);
+router.use("/comment", comment);
+router.use("/support", support);
 
 module.exports = router;
