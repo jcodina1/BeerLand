@@ -31,20 +31,20 @@
     flex-direction: row;
     width: 30%;
     height: 30%;
-    margin: 10px 0px 10px 580px;
+    margin: 10px 0px 10px 380px;
 }
 
 .itemBeer img{
-    width: 30%;
-    height: 30%;
+    width: 80%;
+    height: 80%;
 }
 
 .itemContainer{
     border-radius: 20px;
     background-color: rgba(185, 155, 103, 0.20);
-    height: auto;
-    width: 80%;
-    margin: 20px 0px 20px 200px;
+    height: 200px;
+    width: 50%;
+    margin: 20px 0px 20px 600px;
     display: flex;
     flex-direction: row;
 }
