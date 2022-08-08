@@ -1,19 +1,24 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
-import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
+import {
+  getPurchasesByUserId,
+  getSalesBySellerId,
+  getUser,
+} from "../../../redux/actions";
 import { useAuth } from "../../Context/Contestautenticacion";
-import UserFilterStatus from '../FilterStatus/UserFilterStatus'
-import UserPurchaseDetail from './UserPurchaseDetail/index'
+import UserFilterStatus from "../FilterStatus/UserFilterStatus";
+import UserPurchaseDetail from "./UserPurchaseDetail/index";
 import NavBar from "../../NavBar/NavBar";
 
 export default function UserPurchases() {
-  const user2 = useSelector((state) => state.user)
-  const seller = useSelector((state) => state.allSellers)
-  const userPurchases = useSelector(state => state.userPurchases);
+  const user2 = useSelector((state) => state.user);
+  const seller = useSelector((state) => state.allSellers);
+  const userPurchases = useSelector((state) => state.userPurchases);
+  const [showModal, setShowModal] = useState(false);
 
   const { user } = useAuth();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   let currentUser;
   let currentSeller;
   let currentRol;
@@ -27,10 +32,13 @@ export default function UserPurchases() {
   }
 
   useEffect(() => {
-    dispatch(getUser())
+    dispatch(getUser());
     if (user !== null) {
-      if (user.rol === "user") { dispatch(getPurchasesByUserId(currentUser[0].id)) }
-      else { dispatch(getSalesBySellerId(currentSeller[0].id)) }
+      if (user.rol === "user") {
+        dispatch(getPurchasesByUserId(currentUser[0].id));
+      } else {
+        dispatch(getSalesBySellerId(currentSeller[0].id));
+      }
     }
   }, [user]);
   // console.log(user)
@@ -45,17 +53,22 @@ export default function UserPurchases() {
     }
   }
 
-  let i = 1
+  let i = 1;
 
   return (
     <div className={styles.purchasesWrapper}>
-      <h3>Hey! These are your {currentRol}</h3>
+      <h3>Hey! These are your {currentRol} so far</h3>
       <UserFilterStatus />
       {userPurchases?.map((purchase) => {
         return (
           <div key={purchase.id} className={styles.purchaseContainer}>
             <h2>Order n°{i++}</h2>
-            <UserPurchaseDetail purchase={purchase} />
+            {showModal && (
+              <UserPurchaseDetail
+                purchase={purchase}
+                showModal={setShowModal()}
+              />
+            )}
             <hr />
           </div>
         );
