@@ -11,8 +11,7 @@ import FilterByBrewery from "./components/FilterByBrewery";
 import FilterByType from "./components/FilterByType";
 import SortByPrice from "./components/SortByPrice";
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
@@ -49,7 +48,7 @@ export default function ShowBeers() {
     }
   };
   const [loading, setLoading] = useState(true);
-  AOS.init();
+
 
   useEffect(() => {
     if (!allBeers1.length) {
