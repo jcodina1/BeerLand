@@ -1,67 +1,118 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styles.module.css";
-import { getPurchasesByUserId, getSalesBySellerId, getUser } from "../../../redux/actions";
+import {
+  getPurchasesByUserId,
+  getSalesBySellerId,
+  getUser,
+} from "../../../redux/actions";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import { useAuth } from "../../Context/Contestautenticacion";
-import UserFilterStatus from '../FilterStatus/UserFilterStatus'
-import UserPurchaseDetail from './UserPurchaseDetail/index'
+import UserFilterStatus from "../FilterStatus/UserFilterStatus";
+import UserPurchaseDetail from "./UserPurchaseDetail/index";
 import NavBar from "../../NavBar/NavBar";
+import PurchaseDetails from "../../SuperAdmin/Users/PurchaseDetails";
 
 export default function UserPurchases() {
-  const user2 = useSelector((state) => state.user)
-  const seller = useSelector((state) => state.allSellers)
-  const userPurchases = useSelector(state => state.userPurchases);
+  const user2 = useSelector((state) => state.user);
+  const seller = useSelector((state) => state.allSellers);
+  const userPurchases = useSelector((state) => state.userPurchases);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const { user } = useAuth();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   let currentUser;
-  let currentSeller;
-  let currentRol;
+  console.log(user);
 
   if (user !== null) {
-    if (user.rol === "user") {
-      currentUser = user2?.filter((e) => e.email === user.email);
-    } else {
-      currentSeller = seller?.filter((e) => e.mail === user.email);
-    }
+    currentUser = user2?.filter((e) => e.email === user.email);
   }
-
+  console.log(currentUser);
   useEffect(() => {
-    dispatch(getUser())
-    if (user !== null) {
-      if (user.rol === "user") { dispatch(getPurchasesByUserId(currentUser[0].id)) }
-      else { dispatch(getSalesBySellerId(currentSeller[0].id)) }
-    }
-  }, [user]);
-  // console.log(user)
-  // console.log(user2)
-  // console.log(currentUser)
+    dispatch(getUser());
+    dispatch(getPurchasesByUserId(currentUser[0].id));
+  }, []);
 
-  if (user !== null) {
-    if (user.rol === "user") {
-      currentRol = "purchases";
-    } else {
-      currentRol = "sales";
+  console.log(userPurchases);
+
+  let subtotals = [];
+  if (userPurchases != null) {
+    let amounts = [];
+    let prices = [];
+    userPurchases.map((purchase) => {
+      amounts.push(purchase.purchaseDetails.cant);
+      purchase.beers.map((beer) => {
+        prices.push(beer.price);
+      });
+    });
+    for (let index = 0; index < amounts.length; index++) {
+      subtotals.push(amounts[index] * prices[index]);
     }
   }
-
-  let i = 1
+  console.log(subtotals);
 
   return (
-    <div className={styles.purchasesWrapper}>
-      <h3>Hey! These are your {currentRol}</h3>
-      <UserFilterStatus />
-      {userPurchases?.map((purchase) => {
-        return (
-          <div key={purchase.id} className={styles.purchaseContainer}>
-            <h2>Order n°{i++}</h2>
-            <UserPurchaseDetail purchase={purchase} />
-            <hr />
-          </div>
-        );
-      })}
-      <div>
-        
+    <div className={styles.navbar}>
+      <NavBar />
+      {/* <div className={styles.contentWrapper}>
+        <Users setModalOpen={setShowModal} />
+      </div> */}
+      <div className={styles.contentWrapper}>
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Beer</TableCell>
+                <TableCell>Seller</TableCell>
+                <TableCell>Units</TableCell>
+                <TableCell>Price per Unit</TableCell>
+                <TableCell>Subtotal</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {userPurchases.map((purchase) => {
+                return (
+                  <TableRow>
+                    <TableCell>
+                      {purchase.beers.map((beer) => (
+                        <p>{beer.name}</p>
+                      ))}
+                    </TableCell>
+                    <TableCell>
+                      {purchase.beers.map((beer) => (
+                        <p> {beer.seller.name} </p>
+                      ))}
+                    </TableCell>
+                    <TableCell>
+                      {purchase.purchaseDetails.map((detail) => (
+                        <p>{detail.cant}</p>
+                      ))}
+                    </TableCell>
+                    <TableCell>
+                      {purchase.beers.map((beer) => (
+                        <p>${beer.price}</p>
+                      ))}
+                    </TableCell>
+                    <TableCell>
+                      {purchase.purchaseDetails.map((detail) => {
+                        let subt =
+                          parseFloat(detail.cant) * parseFloat(detail.price);
+                        return <p>${subt} </p>;
+                      })}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import style from './SuperAdmin.module.css'
+import style from "./SuperAdmin.module.css";
 import Sidebar from "./SideBar/Sidebar";
 import DashBoard from "./DashBoard/DashBoard";
 import { useState } from "react";
@@ -42,6 +42,7 @@ const SuperAdmin = () => {
            
         </div>
     );
+
 };
 
 export default SuperAdmin;

@@ -1,14 +1,14 @@
 const { Router } = require("express");
 
+const router = Router();
+
 const user = require("./UserRoutes.js");
 const beer = require("./BeerRoutes.js");
 const seller = require("./SellerRoutes");
 const purchases = require("./PurchasesRoutes");
 const comment = require("./CommentRoutes");
 const score = require("./ScoreRoutes");
-const support = require("./SupportRoutes")
-
-const router = Router();
+const support = require("./SupportRoutes");
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);

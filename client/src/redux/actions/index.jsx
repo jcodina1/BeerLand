@@ -52,8 +52,7 @@ import {
   UPDATE_USER,
   GET_SALES_BREWERY,
   CRYPTO,
-  FILTER_STATUS
-
+  FILTER_STATUS,
 } from "../const";
 
 export function addToCart(id) {
@@ -385,16 +384,13 @@ export function SetSellerDetail() {
   };
 }
 
-
-
-   
 export function getPurchasesByUserId(userId) {
   return async function (dispatch) {
     try {
       const userPurchases = await axios.get(
         ALL_PURCHASES + `/user?userId=${userId}`
-      )
-return dispatch({
+      );
+      return dispatch({
         type: GET_PURCHASES_BY_USER,
         payload: userPurchases.data,
       });
@@ -404,34 +400,35 @@ return dispatch({
   };
 }
 
-
-
 export function updateStatus(id, status) {
   try {
     return async function (dispatch) {
-      const updateStatus = await axios.put(ALL_PURCHASES + `/status?id=${id}&status=${status}`)
+      const updateStatus = await axios.put(
+        ALL_PURCHASES + `/status?id=${id}&status=${status}`
+      );
       return dispatch({
         type: UPDATE_PURCHASE_STATUS,
-        payload: updateStatus.data
-
-      })
-    }
+        payload: updateStatus.data,
+      });
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
 export function getSalesBySellerId(sellerId) {
   try {
     return async function (dispatch) {
-      const brewerySales = await axios.get(ALL_PURCHASES + `/seller?sellerId=${sellerId}`)
+      const brewerySales = await axios.get(
+        ALL_PURCHASES + `/seller?sellerId=${sellerId}`
+      );
       return dispatch({
         type: GET_SALES_BREWERY,
-        payload: brewerySales.data
-      })
-    }
+        payload: brewerySales.data,
+      });
+    };
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 
@@ -443,17 +440,14 @@ export function filterSalesByStatus(payload) {
 }
 
 export function updateUser(data, id) {
-  console.log(data)
+  console.log(data);
   try {
-     return async function (dispatch) {
-    const response = axios.put(UPDATE_USER + id, data)
-      return dispatch({ type: UPDATE_USER })
-  };
-  } catch (error) {
-    
-  }
+    return async function (dispatch) {
+      const response = axios.put(UPDATE_USER + id, data);
+      return dispatch({ type: UPDATE_USER });
+    };
+  } catch (error) {}
 }
-
 
 export function exchangeCrypto() {
   return async function (dispatch) {
@@ -468,7 +462,6 @@ export function exchangeCrypto() {
   };
 }
 
-
 export function filterByStatus(payload) {
   return {
     type: FILTER_STATUS,
@@ -480,7 +473,7 @@ export function postSupport(payload) {
   return async function (dispatch) {
     try {
       let response = await axios.post(`http://localhost:3001/support`, payload);
-      return dispatch({ type: 'POST_SUPPORT', payload: response.data });
+      return dispatch({ type: "POST_SUPPORT", payload: response.data });
     } catch (e) {
       console.log(e);
     }
