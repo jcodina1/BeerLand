@@ -41,7 +41,11 @@ import {
   UPDATE_USER,
   GET_SALES_BREWERY,
   CRYPTO,
-  FILTER_STATUS
+  FILTER_STATUS,
+  POST_SUPPORT,
+  GET_SUPPORT,
+  ANSWER_SUPPORT,
+  SUPPORT
 
 } from "../const";
 
@@ -397,28 +401,35 @@ function Reducer(state = initialState, action) {
         filtroPurchases: filtered,
       }
 
-        case CRYPTO:
-          return {
-            ...state,
-            crypto: action.payload,
-          };
+    case CRYPTO:
+      return {
+        ...state,
+        crypto: action.payload,
+      };
 
-          case 'POST_SUPPORT':
-            return {
-              ...state,
-            }
-        
-            case 'GET_SUPPORT':
-              return {
-                ...state,
-                support: action.payload,
-                backupSupport: action.payload
-              };
+    case POST_SUPPORT:
+      return {
+        ...state,
+      }
 
-              case 'ANSWER_SUPPORT':
-                return {
-                  ...state,
-                }
+    case SUPPORT:
+      return {
+        ...state,
+        support: action.payload,
+        backupSupport: action.payload
+      };
+
+    case ANSWER_SUPPORT:
+      return {
+        ...state,
+      }
+    case 'DELETE_COMMENT':
+      return{
+        ...state,
+        support:action.payload,
+        backupSupport: action.payload
+      }
+    
 
 
 
