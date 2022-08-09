@@ -1,6 +1,8 @@
 const axios = require('axios')
 const { Op } = require('sequelize')
 const { Beer, Seller , Comment, Score,User, Support} = require('../db.js')
+const { sendEmailSupport } = require ("./Nodemaileer/Emails")
+const nodemailer = require("nodemailer");
 
 const createSupport = async (req, res) => {
     const { name, email, comment } = req.body;
@@ -52,6 +54,44 @@ const createSupport = async (req, res) => {
     }
 }
 
+const getSupports = async (req, res) => {
+    //const uid = req.uid;
+    try {
+            const supports = await Support.findAll({
+                attributes: { exclude: ['createdAt', 'updatedAt'] },
+                include: {
+                    model: User,
+                    attributes: ['name', 'email']
+                }
+            });
+            if (!supports) {
+                return res.status(400).json({
+                    ok: false,
+                    msg: 'No supports'
+                });
+            }
+            res.json({
+                ok: true,
+                supports
+            });
+        }catch (error) {
+        console.log(error);
+        res.status(500).json({
+            ok: false,
+            msg: 'Error inesperado'
+        });
+    }
+}
+
+const SendEmail = async (req,res)=>{
+    const { name, answer,email } = req.body;
+    console.log(name, email, answer)
+    sendEmailSupport( name, answer, email)
+    res.send('Enviadoo')
+}
+
 module.exports = {
-createSupport
+createSupport,
+getSupports,
+SendEmail
   };

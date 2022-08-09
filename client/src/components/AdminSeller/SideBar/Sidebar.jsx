@@ -2,13 +2,11 @@ import logo2 from '../../../img/BeerLogo2.png'
 import logo3 from '../../../img/BeerLogo3.png'
 import profiles from '../../../img/beertest.png'
 import { AiOutlineMenu } from "react-icons/ai";
-import { BsCart4, BsGrid1X2 } from "react-icons/bs";
-import { FaUserCircle } from "react-icons/fa";
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
-import { BiLogOut, BiPurchaseTagAlt, BiSearchAlt, BiSupport} from 'react-icons/bi'
-
+import { BsGrid1X2 } from "react-icons/bs";
+import { GiBeerBottle } from "react-icons/gi";
+import { MdOutlineAttachMoney } from "react-icons/md";
+import { BiLogOut } from 'react-icons/bi'
 import style from './Sidebar.module.css'
-import { useState } from 'react';
 
 export default function Sidebar({mostrar,setMostrar,setRender}) {
 
@@ -31,39 +29,17 @@ export default function Sidebar({mostrar,setMostrar,setRender}) {
                     
                 </li>
                 <li>
-                    <div onClick={()=>setRender("Users")} className={style.link}>
-                        <div className={style.links_icon}><FaUserCircle /> </div>
-                        {mostrar?<span className={style.links_name}>Users</span>:<span className={style.tooltip}>Users</span>}
-                    </div>
-                    
-                </li>
-                <li>
-                    <div onClick={()=>setRender("Sellers")} className={style.link}>
-                        <div className={style.links_icon}><MdOutlineAdminPanelSettings /> </div>
-                        {mostrar?<span className={style.links_name}>Sellers</span>:<span className={style.tooltip}>Sellers</span>}
-                    </div>
-                    
-                </li>
-                <li>
                     <div onClick={()=>setRender("Products")} className={style.link}>
-                        <div className={style.links_icon}><BsCart4 /></div>
+                        <div className={style.links_icon}><GiBeerBottle /></div>
                         {mostrar?<span className={style.links_name}>Products</span>:<span className={style.tooltip}>Products</span>}
                     </div>
                     
                 </li>
                 <li>
                     <div onClick={()=>setRender("Pusrchases")} className={style.link}>
-                        <div className={style.links_icon}><BiPurchaseTagAlt /> </div>
-                        {mostrar?<span className={style.links_name}>Pusrchases</span>:<span className={style.tooltip}>Pusrchases</span>}
+                        <div className={style.links_icon}><MdOutlineAttachMoney/> </div>
+                        {mostrar?<span className={style.links_name}>Sales</span>:<span className={style.tooltip}>Sales</span>}
                     </div>
-                    
-                </li>
-                <li>
-                    <div onClick={()=>setRender("AdminSupport")} className={style.link} >
-                        <div className={style.links_icon}><BiSupport /> </div>
-                        {mostrar?<span className={style.links_name}>AdminSupport</span>:<span className={style.tooltip}>AdminSupport</span>}
-                    </div>
-                    
                 </li>
             </ul>
             {mostrar?<div className={style.profile_content}>

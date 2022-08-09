@@ -68,6 +68,9 @@ const initialState = {
   brewerySales: [],
   crypto: 0,
   filtroPurchases: [],
+  backupSupport: [],
+  support:[]
+
 };
 
 function Reducer(state = initialState, action) {
@@ -402,7 +405,19 @@ function Reducer(state = initialState, action) {
           case 'POST_SUPPORT':
             return {
               ...state,
-            };
+            }
+        
+            case 'GET_SUPPORT':
+              return {
+                ...state,
+                support: action.payload,
+                backupSupport: action.payload
+              };
+
+              case 'ANSWER_SUPPORT':
+                return {
+                  ...state,
+                }
 
 
 

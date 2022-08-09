@@ -42,9 +42,10 @@ td {
   padding: 10px;
 }
 
-thead {
-  background-color: rgb(255, 123, 0);
-  color: white;
+
+thead{
+	background-color: rgb(255, 123, 0);
+	color: white;
 }
 
 tr:hover td {

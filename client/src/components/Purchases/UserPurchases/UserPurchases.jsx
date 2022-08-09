@@ -112,6 +112,7 @@ export default function UserPurchases() {
             </TableBody>
           </Table>
         </TableContainer>
+
       </div>
     </div>
   );
