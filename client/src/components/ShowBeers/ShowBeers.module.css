@@ -49,13 +49,14 @@
 @media (max-width:900px) {
     .showBeers {
         display: flex;
-        width: auto;
+        width: 100%;
         height: auto;
         flex-direction: column;
         gap: 10px;
-        max-height: 80%;
-        min-height: 80%;
+        max-height: 78%;
+        min-height: 78%;
         margin-bottom: 40px;
+        padding:0px 10px 0 10px ;
     }
     
     .cardsBox {
@@ -72,15 +73,15 @@
         /* padding: 0 0 2rem 0; */
     }
     .distance{
-        margin: 5px 0 50px 0;
+        margin: 5px 0 40px 0;
     } 
     .filters{
         display: flex;
         flex-direction: row;
-        align-content: space-evenly;
+        align-content: center;
         left:40%;
         justify-content: space-evenly;
-        margin: 0 20px 0 20px;
+        margin: 0 10px 0 10px;
     }
     .filters .distribution{
         margin: 0 10px 0px 10px;

@@ -105,35 +105,39 @@ export default function Cart() {
           <p className={style.keep}>Keep Shopping</p>
         </Link>
 
-        <div className={style.cart}>
-          <div className={style.link2}><Link className={style.link2} to="/checkout">...Checkout</Link></div>
+        <div className={style.checkoutCont}>
+          <div className={style.cart}>
+            <div className={style.link2}><Link className={style.link2} to="/checkout">...Checkout</Link></div>
 
-          {JSON.parse(localStorage.getItem("carrito"))?.length ? (
-            <div className={style.items}>
-              {beerCarts?.map((e) => (
-                <Item
-                  key={e.id}
-                  id={e.id}
-                  name={e.name}
-                  image={e.image}
-                  price={e.price}
-                  stock={e.stock}
-                  handleItem={handleItem}
-                  newDel={newDel}
-                />
-              ))}
-              <div className={style.boxend}>
-                <h1 className={style.h1} >TOTAL: $ {preciototal} </h1>
+            {JSON.parse(localStorage.getItem("carrito"))?.length ? (
+              <div className={style.items}>
+                {beerCarts?.map((e) => (
+                  <Item
+                    key={e.id}
+                    id={e.id}
+                    name={e.name}
+                    image={e.image}
+                    price={e.price}
+                    stock={e.stock}
+                    handleItem={handleItem}
+                    newDel={newDel}
+                  />
+                ))}
+                <div className={style.boxend}>
+                  <h1 className={style.h1} >TOTAL: $ {preciototal} </h1>
+                </div>
               </div>
-            </div>
-          ) : (
-            <div className="empty">
-              <h1>Oops, Your Cart is Empty!</h1>
-              <p>Looks like you haven't added anything to your cart yet</p>
-              <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" width='500em' />
-            </div>
-          )}
+            ) : (
+              <div className="empty">
+                <h1>Oops, Your Cart is Empty!</h1>
+                <p>Looks like you haven't added anything to your cart yet</p>
+                <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" width='500em' />
+              </div>
+            )}
+          </div>
         </div>
+
+
         <div className={style.checkout}>
           {
             !loggedIn ? <p className={style.check2} onClick={e => handleCheckout(e)}>Checkout</p>

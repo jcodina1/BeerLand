@@ -44,7 +44,7 @@
 }
 
 .cartContainer{
- /*  background-color: rgb(24, 54, 254) ; */
+  background-color: rgb(24, 54, 254) ;
   background-size: cover;
   background-attachment: fixed;
   overflow-y:hidden;
