@@ -357,13 +357,13 @@
     padding-top: 0.5%;
     background-color: antiquewhite;
     color: rgb(35,20,10);
-    font-size: 25px;
-    font-weight: 700;
-    width: 200px;
-    height: 50px;
+    font-size: 20px;
+    font-weight: 600;
+    width: 150px;
+    height: 45px;
     border-radius: 5px;
-    margin-left: 75%;
-    margin-top:0.5%;
+    margin-left: 82%;
+    margin-top:1%;
   }
   
   .link{
