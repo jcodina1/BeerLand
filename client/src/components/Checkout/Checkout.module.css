@@ -1,0 +1,44 @@
+.checkout{
+    background-color: aqua;
+    width: auto;
+    min-height: 100vh;
+    max-height: auto;
+    padding: 120px 60px 0px 80px;
+   
+}
+.checkout h1 {
+    font-size: 30px;
+    font-family: 'Roboto Flex', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+   
+  }
+  .checkout .paypal {
+    display: flex;
+    justify-content: center;
+  }
+  .checkoutCont {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 20px 20px 20px;
+    background-color: green;
+    width: 95%;
+    height: auto;
+    padding: 20px 40px 20px 40px;
+  }
+  .pay {
+    position: sticky;
+    top: 20px;
+    background-color: #d7c3b5;
+    padding: 20px 50px;
+    height: min-content;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+  }
+  .pay h3 {
+    font-size: 20px;
+    text-align: justify;
+    padding-top: '12px';
+  }

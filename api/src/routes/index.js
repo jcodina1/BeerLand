@@ -6,6 +6,7 @@ const seller = require("./SellerRoutes");
 const purchases = require("./PurchasesRoutes");
 const comment = require("./CommentRoutes");
 const score = require("./ScoreRoutes");
+const support = require("./SupportRoutes")
 
 const router = Router();
 
@@ -17,5 +18,6 @@ router.use("/seller", seller);
 router.use("/purchases", purchases);
 router.use("/score", score);
 router.use("/comment", comment);
+router.use("/support", support);
 
 module.exports = router;

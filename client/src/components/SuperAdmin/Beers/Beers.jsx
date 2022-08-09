@@ -60,6 +60,7 @@ export default function Beers() {
                 <TableCell>Price($)</TableCell>
                 <TableCell>Register date</TableCell>
                 <TableCell>Purchases</TableCell>
+                <TableCell>Update</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -71,6 +72,8 @@ export default function Beers() {
                   <TableCell>{e.stock}</TableCell>
                   <TableCell>$ {e.price}</TableCell>
                   <TableCell>{e.createdAt.split("T")}</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell><button>UpDate</button></TableCell>
                 </TableRow>)}
                { console.log(allBeers)}
   

@@ -36,15 +36,16 @@ export default function Item({ id, name, image, price, stock, handleItem, newDel
                 <img src={image} alt={name} />
                 <h2 className={style.h2}>{name}</h2>
                 <div className={style.box}>
-                    <p className={style.p}>${price}</p>
+                    <h3>${price}</h3>
                     <div className={style.amount2}>
                         <button  onClick={e => handlePrice(e, "men")}><AiOutlineMinus size={30} /></button>
                         <input type="number" value={cantidad} readOnly id="" />
                         <button  onClick={e => handlePrice(e, "sum")}><MdOutlineAdd size={30} /></button>
                     </div>
-                    <p className={style.p2}>${total2}</p>
+                    <h3>${total2}</h3>
+                    <button className={style.trash} onClick={handleDelete}><FaRegTrashAlt size={30} /></button>
                 </div>
-                <button className={style.trash} onClick={handleDelete}><FaRegTrashAlt size={30} /></button>
+                
             </div>
         </div>
     )

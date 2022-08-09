@@ -22,6 +22,7 @@ import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
 import { removeAllFromCart, getUser } from "../../redux/actions";
 import { useSelector } from "react-redux";
+import Container from '@mui/material/Container';
 
 export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
@@ -95,7 +96,8 @@ export default function NavBar({ setPage, id }) {
   // };
 
   return (
-    <nav className={style.navbar}>
+    <Container maxWidth='false' disableGutters='false'>
+      <nav className={style.navbar}>
       <div>
         <Link to="/home">
           <span>
@@ -182,5 +184,6 @@ export default function NavBar({ setPage, id }) {
         </div>
       </div>
     </nav>
+    </Container>
   );
 }
