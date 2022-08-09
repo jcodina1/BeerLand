@@ -1,0 +1,61 @@
+
+.dataUp {
+    align-items: center;
+    border-bottom: 1px solid #746c6c;
+    padding-bottom: 2rem;
+    margin: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+  }
+.dataUp h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    color:#704021;;
+    font-size: 35px;
+    padding: 10px;
+    text-align: center;
+  }
+.dataUp img {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    border-radius: 30px;
+  }
+
+.promopage{
+    width: auto;
+    height: auto;
+}
+    .banner{
+        width: auto;
+        height: auto;
+        
+     }
+     .banner img{
+         width: 100%;
+         height: auto;
+         margin-top: 0;
+        
+     }
+     .slider2{
+         height: 200px;
+         width: 200px;
+     }
+ 
+
+@media (max-width:990px){
+    .banner{
+        width: auto;
+        height: auto;
+        
+     }
+     .banner img{
+         width: 100%;
+         height: auto;
+         margin-top: 0;
+        
+     }
+     .slider2{
+         height: 200px;
+         width: 200px;
+     }
+}

@@ -18,11 +18,11 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
       },
       address: {
-        type: DataTypes.JSON,
+        type: DataTypes.JSONB,
       },
-      purchaseDetails:{
-        type:DataTypes.JSON
-      }
+      purchaseDetails: {
+        type: DataTypes.JSONB,
+      },
     },
     { paranoid: true }
   );
