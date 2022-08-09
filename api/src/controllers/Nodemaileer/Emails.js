@@ -38,3 +38,18 @@ module.exports.sendConfirmationPurchases = ( email) => {
         </div>`,
   }).catch(err => console.log(err));
 };
+
+module.exports.sendEmailSupport = (name, answer, email) => {
+  console.log(email)
+  console.log("Check");
+  transport.sendMail({
+    from: user,
+    to: email,
+    subject: "Thank you for submitting your question",
+    html: `<h1>Confirmation Answer</h1>
+        <h2>Hello, ${name}</h2>
+        <p>${answer}</p>
+        <img src="https://cdn.discordapp.com/attachments/996059560638939161/1004562091367202886/Group_1.jpg">
+        </div>`,
+  }).catch(err => console.log(err));
+};

@@ -5,7 +5,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { BsCart4, BsGrid1X2 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
-import { BiLogOut, BiPurchaseTagAlt, BiSearchAlt } from 'react-icons/bi'
+import { BiLogOut, BiPurchaseTagAlt, BiSearchAlt, BiSupport} from 'react-icons/bi'
 
 import style from './Sidebar.module.css'
 import { useState } from 'react';
@@ -55,6 +55,13 @@ export default function Sidebar({mostrar,setMostrar,setRender}) {
                     <div onClick={()=>setRender("Pusrchases")} className={style.link}>
                         <div className={style.links_icon}><BiPurchaseTagAlt /> </div>
                         {mostrar?<span className={style.links_name}>Pusrchases</span>:<span className={style.tooltip}>Pusrchases</span>}
+                    </div>
+                    
+                </li>
+                <li>
+                    <div onClick={()=>setRender("AdminSupport")} className={style.link} >
+                        <div className={style.links_icon}><BiSupport /> </div>
+                        {mostrar?<span className={style.links_name}>AdminSupport</span>:<span className={style.tooltip}>AdminSupport</span>}
                     </div>
                     
                 </li>

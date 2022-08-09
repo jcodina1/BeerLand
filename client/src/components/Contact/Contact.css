@@ -3,6 +3,9 @@
     padding: 2rem 0;
     padding-left: 20px;
   }
+  .formContainer{
+    padding: 120px;
+  }
   .contactContainer .conttext h1:hover {
     color: #d16e31;
     cursor: pointer;
@@ -79,7 +82,7 @@
     background-color: white;
   }
   .contactInfo button {
-    background-color: #704021;;
+    background-color: #000000;
     outline: none;
     padding: 10px;
     border-radius: 10px;
@@ -117,7 +120,7 @@
   .minimize {
     /* margin: auto; */
     background-color: #704021;
-    color: antiquewhite;
+    color: black;
   
     outline: none;
     padding: 10px;
@@ -129,8 +132,8 @@
     margin: 10px;
   }
   .minimize:hover {
-    background-color: #a5704d;
-    color: antiquewhite;
+    background-color: #803d3d;
+    color: white;
     cursor: pointer;
   }
   

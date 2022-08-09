@@ -486,3 +486,26 @@ export function postSupport(payload) {
     }
   };
 }
+
+export function getSupport() {
+  return async function (dispatch) {
+    try {
+      const res = await axios.get("http://localhost:3001/support");
+      return dispatch({ type: 'GET_SUPPORT', payload: res.data.supports });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function answerSupport(payload) {
+  console.log(payload)
+  return async function (dispatch) {
+    try {
+      let response = await axios.post(`http://localhost:3001/support/answer`, payload);
+      return dispatch({ type: 'ANSWER_SUPPORT', payload: response.data });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+}
