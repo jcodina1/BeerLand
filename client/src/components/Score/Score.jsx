@@ -9,6 +9,7 @@ import { getUser } from '../../redux/actions';
 import Swal from 'sweetalert2';
 
 const Star = ({id}) => {
+    
     const dispatch = useDispatch()
     const user2 = useSelector((state) => state.user);
     const [rating, setRating] = useState(null);
@@ -17,7 +18,7 @@ const Star = ({id}) => {
     
    if (user !== null) {
         var filtrado = user2.filter((e) => e.email === user.email);
-        console.log(filtrado);
+        
     }
 
     function HandleSubmit() {
@@ -54,7 +55,7 @@ const Star = ({id}) => {
             idBeer:id
         }
         
-        helpCallScores(`/score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
+        helpCallScores(`score/scores?idUser=${obje.idUser}&idBeer=${obje.idBeer}`)
         .then(res => setRating(res.score))
     }
   }, [user]);

@@ -37,8 +37,11 @@ import {
   POST_PURCHASE,
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
+  FILTER_SALES_STATUS,
   UPDATE_USER,
-  GET_SALES_BREWERY
+  GET_SALES_BREWERY,
+  CRYPTO,
+  FILTER_STATUS,
 } from "../const";
 
 const initialState = {
@@ -63,6 +66,11 @@ const initialState = {
   allPurchases: [],
   userPurchases: [],
   brewerySales: [],
+  crypto: 0,
+  filtroPurchases: [],
+  backupSupport: [],
+  support:[]
+
 };
 
 function Reducer(state = initialState, action) {
@@ -227,7 +235,6 @@ function Reducer(state = initialState, action) {
         ...state,
         beers: filteredBeersByBrewery,
         filterPlaceholder: filteredBeersByBrewery,
-        
       };
 
     case FILTER_BEER_BY_TYPE:
@@ -299,14 +306,13 @@ function Reducer(state = initialState, action) {
       };
     case POST_COMMENT:
       return {
-        ...state 
+        ...state,
       };
-      case GET_COMMENTS_BEER:
-        return{
-          ...state,
-          comments:action.payload
-        }
-      
+    case GET_COMMENTS_BEER:
+      return {
+        ...state,
+        comments: action.payload,
+      };
 
     case GET_FAV_DETAIL:
       return {
@@ -314,54 +320,106 @@ function Reducer(state = initialState, action) {
         favs: action.payload,
       };
 
-      case POST_SCORE:
-        return {
-          ...state,
-        };
-  
+    case POST_SCORE:
+      return {
+        ...state,
+      };
+
     case GET_PURCHASES:
       return {
         ...state,
         allPurchases: action.payload,
-      
+        filtroPurchases: action.payload,
       };
-     case SELLERBEERS:
-      return{
+
+    case SELLERBEERS:
+      return {
         ...state,
-        filterPlaceholder:action.payload
-      }
+        filterPlaceholder: action.payload,
+      };
 
-      case SET_DETAIL_SELLER:
-        return {
-          ...state,
-          breweryDetail: action.payload,
-        };
+    case SET_DETAIL_SELLER:
+      return {
+        ...state,
+        breweryDetail: action.payload,
+      };
 
-      case POST_PURCHASE:
+    case POST_PURCHASE:
       return {
         ...state,
       };
 
-      case GET_PURCHASES_BY_USER:
-        return {
-          ...state,
-          userPurchases: action.payload
-        };
-      case UPDATE_PURCHASE_STATUS:
-        return{
-          ...state,
-          userPurchases:action.payload
-        }
+    case UPDATE_PURCHASE_STATUS:
+      return {
+        ...state,
+        userPurchases: action.payload,
+      };
+
+    case GET_SALES_BREWERY:
+      return {
+        ...state,
+        userPurchases: action.payload,
+        filtroPurchases: action.payload,
+      };
+
+    case GET_PURCHASES_BY_USER:
+      return {
+        ...state,
+        userPurchases: action.payload,
+        filtroPurchases: action.payload,
+      };
+
     case UPDATE_USER:
       return {
         ...state,
       };
 
-      case GET_SALES_BREWERY:
-        return {
-          ...state,
-          userPurchases: action.payload
-        }
+    case FILTER_SALES_STATUS:
+      const allOrders = state.filtroPurchases;
+      const filteredByStatus =
+        action.payload === "All"
+          ? allOrders
+          : allOrders.filter((st) => st.status === action.payload);
+      return {
+        ...state,
+        userPurchases: filteredByStatus,
+      };
+
+    case FILTER_STATUS:
+      const orders = state.allPurchases;
+      const filtered =
+        action.payload === "All"
+          ? orders
+          : orders.filter((st) => st.status === action.payload);
+      return {
+        ...state,
+        filtroPurchases: filtered,
+      };
+
+    case CRYPTO:
+      return {
+        ...state,
+        crypto: action.payload,
+      };
+
+          case 'POST_SUPPORT':
+            return {
+              ...state,
+            }
+        
+            case 'GET_SUPPORT':
+              return {
+                ...state,
+                support: action.payload,
+                backupSupport: action.payload
+              };
+
+              case 'ANSWER_SUPPORT':
+                return {
+                  ...state,
+                }
+
+
 
     default:
       return { ...state };

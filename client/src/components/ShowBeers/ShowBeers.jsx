@@ -11,6 +11,8 @@ import FilterByBrewery from "./components/FilterByBrewery";
 import FilterByType from "./components/FilterByType";
 import SortByPrice from "./components/SortByPrice";
 import { Link } from "react-router-dom";
+import Container from '@mui/material/Container';
+
 
 export default function ShowBeers() {
   const dispatch = useDispatch();
@@ -19,7 +21,7 @@ export default function ShowBeers() {
   const styles = useSelector((state) => state.styles);
   let page = useSelector((state) => state.page);
   const [, setOrder] = useState("");
-  const beersPerPage = 9;
+  const beersPerPage = 12;
 
   let lastIndex = page * beersPerPage; //indice incial para metodo slice
   let firstIndex = lastIndex - beersPerPage; //indice final para metodo slice
@@ -48,6 +50,7 @@ export default function ShowBeers() {
   };
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     if (!allBeers1.length) {
       dispatch(getAllBeers());
@@ -56,61 +59,63 @@ export default function ShowBeers() {
   }, []);
 
   return (
-    <div className={style.showBeers}>
-      <div className={style.distance}>
-        <div className={style.filters}>
-          <div className={style.distribution}>
-            <SortByName setOrder={setOrder} />
-          </div>
-          <div className={style.distribution}>
-            <FilterByBrewery />
-          </div>
-          <div className={style.distribution}>
-            <SortByPrice setOrder={setOrder} />
-          </div>
-          <div className={style.distribution}>
-            <FilterByType />
-          </div>
-          <div className={style.buttonB}>
-          <Link className={style.buttonB} to="/sellers" >SEE BREWERIES</Link>
+    <Container maxWidth='xxl' disableGutters='false'>
+      <div className={style.showBeers} >
+        <div className={style.distance}>
+          <div className={style.filters}>
+            <div className={style.distribution}>
+              <SortByName setOrder={setOrder} />
+            </div>
+            <div className={style.distribution}>
+              <FilterByBrewery />
+            </div>
+            <div className={style.distribution}>
+              <SortByPrice setOrder={setOrder} />
+            </div>
+            <div className={style.distribution}>
+              <FilterByType />
+            </div>
+            <div className={style.buttonB}>
+              <Link className={style.buttonB} to="/sellers" >BREWERIES</Link>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={style.cardsContainer}>
-        <div className={style.cardsBox}>
-          {allBeers.length === 0 ? (
-           
-              <Loading setLoading={setLoading} />
-            
-          ) : (
-            <>
-              {currentBeer?.map((beer) => {
-                return (
-                  <BeerCard
-                    id={beer.id}
-                    key={beer.id}
-                    name={beer.name}
-                    price={beer.price}
-                    image={beer.image ? beer.image : false}
-                    stock={beer.stock}
-                  // style={beer.style}
-                  // origin={beer.origin}
-                  />
-                );
-              })}
+        <div className={style.cardsContainer} data-aos="fade-zoom-in" data-aos-offset="200" data-aos-easing="ease-in-sine" data-aos-duration="600">
+          <div className={style.cardsBox}>
+            {allBeers.length === 0 ? (
 
-            </>
-          )}
+              <Loading setLoading={setLoading} />
+
+            ) : (
+              <>
+                {currentBeer?.map((beer) => {
+                  return (
+                    <BeerCard
+                      id={beer.id}
+                      key={beer.id}
+                      name={beer.name}
+                      price={beer.price}
+                      image={beer.image ? beer.image : false}
+                      stock={beer.stock}
+                    // style={beer.style}
+                    // origin={beer.origin}
+                    />
+                  );
+                })}
+
+              </>
+            )}
+          </div>
+          <Pagination
+            page={page}
+            paginate={paginate}
+            limitPage={limitPage}
+            firstPrevControl={firstPrevControl}
+            nextLastControl={nextLastControl}
+          />
         </div>
-        <Pagination
-          page={page}
-          paginate={paginate}
-          limitPage={limitPage}
-          firstPrevControl={firstPrevControl}
-          nextLastControl={nextLastControl}
-        />
       </div>
-    </div>
+    </Container>
   );
 }
 

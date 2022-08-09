@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { useAuth } from "../Context/Contestautenticacion";
 import { useHistory } from "react-router-dom";
-import style from "../Login/Login.module.css";
+import reg from "./Registers.module.css";
 import swal from "sweetalert";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,7 @@ import { postSeller } from "../../redux/actions";
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { app } from "../../firebase";
 import googleLogo from "../../img/googleLogin.png";
+import NavBar from "../NavBar/NavBar";
 
 export default function RegisterSeller() {
   const dispatch = useDispatch();
@@ -84,91 +85,96 @@ export default function RegisterSeller() {
   };
 
   return (
-    <div className={style.container}>
-      <form>
-        <h1>Sign In</h1>
-        <div className={style.password}>
+<>
+    <div className={reg.navBar}>
+      <NavBar/>
+    </div>
+    
+<div className={reg.container}>
+    <div className={reg.RegisterForm}>
+     
+      <form style={{ display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
+      
+      <div className={reg.contactInfo}>
+        <h1 style={{ textAlign: 'center', margin: '0' }}>Sign In</h1>
+        
+        <div className={reg.description}>
           <label>Name: </label>
           <input
+            className={reg.otromas}
             name="name"
             type="name"
             placeholder="youremail@company.com"
             onChange={handleChange}
-          />
+            />
         </div>
 
-        <div className={style.password}>
+        <div className={reg.description}>
           <label>description: </label>
           <input
+            className={reg.otromas}
             name="description"
             type="description"
             placeholder="youremail@company.com"
             onChange={handleChange}
-          />
+            />
         </div>
 
-        <div className={style.password}>
+        <div className={reg.description}>
           <label>dni: </label>
           <input
+            className={reg.otromas}
             name="dni"
             type="number"
             placeholder="youremail@company.com"
             onChange={handleChange}
-          />
+            />
         </div>
 
-        <div className={style.password}>
+        <div className={reg.description}>
           <label>Email: </label>
           <input
+            className={reg.otromas}
             name="mail"
             type="email"
             placeholder="youremail@company.com"
             onChange={handleChange}
-          />
+            />
         </div>
 
-        <div className={style.password}>
+        <div className={reg.description}>
           <label>Password: </label>
           <input
+            className={reg.otromas}
             name="password"
             type="password"
             id="password"
             placeholder="password"
             onChange={handleChange}
-          />
+            />
         </div>
 
-        <div className={style.password}>
+        <div className={reg.description}>
           <label>Confirmation: </label>
           <input
+             className={reg.otromas}
             name="confirmation"
             type="password"
             id="confirmation"
             placeholder="confirmation"
             onChange={handleChange}
-          />
+            />
         </div>
-        <div>
-          <Link to="/registerCompany">
-            <span>
-              <img
-                className={style.googleIcon}
-                id="GoogleLogo"
-                src={googleLogo}
-                onClick={handleGoogle}
-                alt="Beer"
-              />
-            </span>
-          </Link>
-        </div>
-
-        <button className={style.password} onClick={handleSubmit}>
+        <button className={reg.minimize} onClick={handleSubmit}>
           Register
         </button>
-      </form>
-      <Link to="/home">
-        <button>Return</button>
+      <Link className={reg.textde} to="/home">
+        <button className={reg.minimize}>Return</button>
       </Link>
+        </div>
+      </form>
     </div>
+</div>
+                </>
   );
 }

@@ -5,20 +5,22 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useHistory } from "react-router-dom";
 import { postPurchase, removeAllFromCart } from "../../../redux/actions";
 
-export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
+export default function Paypal({
+  precioTotal,
+  userId,
+  purchaseDetails,
+  beerId,
+  email,
+}) {
   const dispatch = useDispatch();
   const nav = useHistory();
   function navigateToHome() {
-     nav.push("/home");
-    // window.location.href="/home"
+    //nav.push("/home");
+    window.location.href = "/home";
   }
 
   function setCart() {
-    dispatch(removeAllFromCart())
-  }
-
-  function setCart(){
-    dispatch(removeAllFromCart())
+    dispatch(removeAllFromCart());
   }
 
   return (
@@ -49,12 +51,12 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
             Swal.fire("Payment successful!", "Enjoy your beer");
             navigateToHome();
             console.log(order);
-
             const purchaseInfo = {
-              email:email,
+              email: email,
               totalPrice: precioTotal,
               userId: userId,
               purchaseDetails: purchaseDetails,
+              beerId: beerId,
               status: "PENDING",
               address: [order.purchase_units[0].shipping.address].map((e) => {
                 return {
@@ -66,9 +68,9 @@ export default function Paypal({ precioTotal, userId, purchaseDetails, email}) {
                 };
               }),
             };
-         
+            console.log(purchaseInfo);
             dispatch(postPurchase(purchaseInfo));
-            
+            setCart();
           }}
         />
       </PayPalScriptProvider>

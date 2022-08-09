@@ -5,21 +5,21 @@ import style from "./Purchases.module.css"
 
 export default function Purchase({ id, total, status, create, beers, user, address }) {
 
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
     let i = 1
-    
+
     let statusA = ["PENDING", "CANCELLED", "COMPLETED"]
     const [statusAc, setStatusAc] = useState(status)
     const [statusB, setStatusB] = useState(status)
-useEffect(()=>{dispatch(getAllPurchases())},[status])
-    const handleChangeStatus=(e)=>{
+    useEffect(() => { dispatch(getAllPurchases()) }, [status])
+    const handleChangeStatus = (e) => {
         setStatusAc(e.target.value)
     }
-    const hadleSubmit=(e)=>{
+    const hadleSubmit = (e) => {
         e.preventDefault()
         console.log("enviado");
-        dispatch(updateStatus(id,statusAc)).then(res=>setStatusB(statusAc))
-       
+        dispatch(updateStatus(id, statusAc)).then(res => setStatusB(statusAc))
+
     }
     return (
         <div >
@@ -27,16 +27,16 @@ useEffect(()=>{dispatch(getAllPurchases())},[status])
                 <h3>Id purchase: {id}</h3>
                 <h3>Total: {total}</h3>
                 <div>
-                <h3>Status purchase: {statusB}</h3></div>
-                    <select 
-                  name='status'
-                  onChange={(e)=>{handleChangeStatus(e)}}
-                  >
+                    <h3>Status purchase: {statusB}</h3></div>
+                <select
+                    name='status'
+                    onChange={(e) => { handleChangeStatus(e) }}
+                >
                     <option value="">Selection one</option>
-                     {statusA.map(e=>e!==statusB?<option key={e} value={e}>{e}</option>:"" )}
-                  </select>
-                  <p>Esta seguro de cambiar El estado a : {statusAc===statusB?"":statusAc}</p>
-                 <button onClick={e=>hadleSubmit(e)}>Si</button>
+                    {statusA.map(e => e !== statusB ? <option key={e} value={e}>{e}</option> : "")}
+                </select>
+                <p>Esta seguro de cambiar El estado a : {statusAc === statusB ? "" : statusAc}</p>
+                <button onClick={e => hadleSubmit(e)}>Si</button>
                 <h3>Date: {create}</h3>
                 <h3>Address:</h3>
                 {address.map(e =>
@@ -64,13 +64,13 @@ useEffect(()=>{dispatch(getAllPurchases())},[status])
                 <p>Address: {user.address}</p>
                 <p>Email: {user.email}</p>
                 <div>
-                 
-                 
-                 
+
+
+
                 </div>
                 <p> ------- </p><hr />
 
-               
+
             </div>
         </div>
     );

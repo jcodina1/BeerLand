@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-      },     
+      },
       totalPrice: {
         type: DataTypes.FLOAT,
       },
@@ -18,10 +18,12 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("PENDING", "CANCELLED", "COMPLETED"),
       },
       address: {
-        type: DataTypes.JSON,
-      }
+        type: DataTypes.JSONB,
+      },
+      purchaseDetails: {
+        type: DataTypes.JSONB,
+      },
     },
-
     { paranoid: true }
   );
 };

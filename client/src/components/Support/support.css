@@ -1,0 +1,139 @@
+.contactContainer {
+    display: block;
+    padding: 2rem 0;
+    padding-left: 20px;
+  }
+  .contactContainer .conttext h1:hover {
+    color: #d16e31;
+    cursor: pointer;
+  }
+  .contactContainer p {
+  
+    width: 700px;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: justify;
+  }
+  .contactContainer h1 {
+    text-align: left;
+    font-family: 'Roboto Flex', sans-serif;
+  
+  }
+  .options {
+    background-color: #704021;
+    padding: 100px 0px;
+  }
+  .minitag {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    transition: transform 0.5s;
+    margin:10px 0px 0px 0px;
+    height: 30px;
+      padding: 20px;
+  }
+  .gg{
+    color: white;
+    transition: transform 0.5s;
+    position: absolute;
+    text-decoration: none;
+  }
+  .minitag a:hover {
+    cursor: pointer;
+    color: #ffd0d0;
+    transform: scale(1.02);
+  }
+  .conttext {
+    text-align: left;
+    margin-left: 20%;
+  }
+  .conttext .clickMe {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .descriptionS {
+    text-align: center;
+  }
+  
+  .descriptionArea{
+    height: 150px;
+    width: 450px;
+  }
+  
+  .text {
+    margin: 10px;
+    font-size: larger;
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    background-color: #704021;
+  }
+  .contactInfo {
+    border: 1px solid #c4c4c4;
+    box-shadow: 5px 5px 20px -2px black;
+    border-radius: 20px;
+    font-family: 'Merriweather', serif;
+    font-size: 20px;
+    text-align: justify;
+    min-width: 400px;
+    max-width: 600px;
+    background-color: white;
+  }
+  .contactInfo button {
+    background-color: #704021;;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 1px solid #c4c4c4;
+    font-weight: 400;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+  }
+  .contactInfo .description {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+  }
+  .contactInfo .description input,
+  .contactInfo .description textarea {
+    margin: auto;
+  }
+  @media (max-width: 700px) {
+    .contactInfo {
+      min-width: 300px;
+      max-width: 400px;
+    }
+  }
+  .contactInfo .field {
+    margin: 5px auto;
+    max-width: 20rem;
+    display: flex;
+    /*   justify-content: space-between; */
+  }
+  .minimize {
+    /* margin: auto; */
+    background-color: #704021;
+    color: antiquewhite;
+  
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Roboto Flex', sans-serif;
+    border: 1px solid #c4c4c4;
+    font-weight: 400;
+    margin: 10px;
+  }
+  .minimize:hover {
+    background-color: #a5704d;
+    color: antiquewhite;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+  }

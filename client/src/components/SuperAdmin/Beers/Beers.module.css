@@ -1,0 +1,26 @@
+
+  table{
+    width: 50%;
+    background-color: white;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 10px;
+    max-width: 150px;
+}
+
+thead{
+    background-color: rgba(185, 155, 103, 0.687);
+    color: rgb(255, 0, 0);
+}
+
+tr:hover td{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.img{
+  width: 40%;
+}

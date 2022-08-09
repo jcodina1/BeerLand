@@ -11,9 +11,11 @@ import {
 } from "../../redux/actions/index";
 import Item from "../Item/Item.jsx";
 import Footer from "../Footer/Footer.jsx";
-import BeerLogo from "../../img/BeerLogo.png";
+
 import { useAuth } from "../Context/Contestautenticacion";
 import Swal from "sweetalert2";
+import NavBar from "../NavBar/NavBar";
+import Container from '@mui/material/Container';
 
 export default function Cart() {
   const [checkout, setCheckout] = useState(false);
@@ -90,53 +92,59 @@ export default function Cart() {
   }
 
   return (
-    <div className={style.cartContainer}>
-      <div className={style.header}>
-        <Link to="/home">
-          <img className={style.logo} id="BeerLogo" src={BeerLogo} alt="Beer" />
-        </Link>
-        <h1 className={style.h1}>Cart</h1>
+
+    <Container maxWidth='xxl' disableGutters='false'>
+      <div>
+        <NavBar />
+      </div>
+      <div className={style.tittle}>
+        <h1>Cart</h1>
+      </div>
+      <div className={style.detailPage}>
         <Link to="/home" className={style.link}>
           <p className={style.keep}>Keep Shopping</p>
         </Link>
-      </div>
-      <div className={style.cart}>
-        {JSON.parse(localStorage.getItem("carrito"))?.length ? (
-          <div className={style.items}>
-            {beerCarts?.map((e) => (
-              <Item
-              key={e.id}
-                id={e.id}
-                name={e.name}
-                image={e.image}
-                price={e.price}
-                stock={e.stock}
-                handleItem={handleItem}
-                newDel={newDel}
-              />
-            ))}
-            <div>
-              <h1 className={style.boxend}>TOTAL: ${preciototal} </h1>
+
+        <div className={style.cart}>
+          <div className={style.link2}><Link className={style.link2} to="/checkout">...Checkout</Link></div>
+
+          {JSON.parse(localStorage.getItem("carrito"))?.length ? (
+            <div className={style.items}>
+              {beerCarts?.map((e) => (
+                <Item
+                  key={e.id}
+                  id={e.id}
+                  name={e.name}
+                  image={e.image}
+                  price={e.price}
+                  stock={e.stock}
+                  handleItem={handleItem}
+                  newDel={newDel}
+                />
+              ))}
+              <div className={style.boxend}>
+                <h1 className={style.h1} >TOTAL: $ {preciototal} </h1>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="empty">
-            <h1>Oops, Your Cart is Empty!</h1>
-            <p>Looks like you haven't added anything to your cart yet</p>
-            <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" width = '500em'/>
-          </div>
-        )}
+          ) : (
+            <div className="empty">
+              <h1>Oops, Your Cart is Empty!</h1>
+              <p>Looks like you haven't added anything to your cart yet</p>
+              <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" width='500em' />
+            </div>
+          )}
+        </div>
+        <div className={style.checkout}>
+          {
+            !loggedIn ? <p className={style.check2} onClick={e => handleCheckout(e)}>Checkout</p>
+              : JSON.parse(localStorage.getItem("carrito"))?.length ? <Link to="/checkout" className={style.link}>
+                <p className={style.check2}>Checkout</p>
+              </Link>
+                : <p className={style.check2} onClick={e => cartItems(e)}>Checkout</p>
+          }
+        </div>
       </div>
-      <div className={style.checkout}>
-        {
-          !loggedIn ? <p className={style.check2} onClick={e => handleCheckout(e)}>Checkout</p>
-            : JSON.parse(localStorage.getItem("carrito"))?.length ? <Link to="/checkout" className={style.link}>
-              <p className={style.check2}>Checkout</p>
-            </Link>
-              : <p className={style.check2} onClick={e => cartItems(e)}>Checkout</p>
-        }
-      </div>
-    </div>
+    </Container>
   );
 }
 

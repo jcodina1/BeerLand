@@ -35,12 +35,12 @@ export default function BeerCard({
 
   if (user !== null) {
     var filtrado = user2.filter((e) => e.email === user.email);
-    if (user2.length !== 0) {
+    if (filtrado.length !== 0) {
       var obj = {
         idUser: filtrado[0].id,
         idBeer: id
       };
-      helpCall(`/user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
+      helpCall(`user/fav/beer?idUser=${obj.idUser}&idBeer=${obj.idBeer}`)
         .then(res => setIsFav(res))
     }
   }
@@ -114,7 +114,7 @@ export default function BeerCard({
     <div className={style.card}>
       <div className={style.circle}>
       <Link to={`/beers/detail/${id}`} className={style.link}>
-        <img src={image} alt="No img found " />
+        <img src={image} alt="No img found " height='450px' width='360px' />
       </Link>
         <Link to={`/beers/detail/${id}`} className={style.link}>
           <div className={style.content}>

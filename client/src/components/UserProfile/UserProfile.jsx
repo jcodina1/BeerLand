@@ -11,12 +11,15 @@ import { useModals } from '../../Hooks/useModals';
 
 
 import Footer from "../Footer/Footer";
+import UserPurchases from '../Purchases/UserPurchases/UserPurchases';
 
 export default function UserProfile() {
     const users = useSelector((state) => state.user)
     const { user } = useAuth();
     const dispatch = useDispatch()
+    const [mostrarOrden,setMostrarOrden]=useState(false)
     const [isOpenModal, openModal, closeModal] = useModals(false);
+    let image
 
     let currentUser;
     useEffect(() => {
@@ -25,7 +28,9 @@ export default function UserProfile() {
 
     if (user !== null) {
         currentUser = users.filter((e) => e.email === user.email);
+        image = currentUser[0].image
     }
+
     
     
 
@@ -34,12 +39,12 @@ export default function UserProfile() {
     return (
         <>
             <NavBar />
-            {user ?
+            {currentUser ?
                 <>
                     <div className={style.flor}>
                         <h1>Your profile</h1>
                         <div className={style.hola}>
-                            <img src={currentUser[0].image} />
+                            <img src={image} />
                             <div className={style.margen}>
                                 <h3>Name: {currentUser[0].name}</h3>
                                 <h3>Surname: {currentUser[0].surname}</h3>
@@ -50,9 +55,9 @@ export default function UserProfile() {
             <FaUserEdit color="#c03b3b" size={25} />
             <Modal isOpen={isOpenModal} closeModal={closeModal}>
               <EditProfile />
-
             </Modal>
           </button>
+ {mostrarOrden===true?<><button onClick={()=>setMostrarOrden(false)}>x</button><UserPurchases/></>:<button onClick={()=>setMostrarOrden(true)}>Ver Tus ordenes</button>}
 
                     </div>
                 </> :
