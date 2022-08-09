@@ -2,21 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 // import { Link } from 'react-scroll';
 import {Link} from 'react-router-dom'
 import NavBar from '../NavBar/NavBar';
-import { Formik, Form, Field } from 'formik'
 import './support.css'
 // import { scrollToTop } from 'react-scroll/modules/mixins/animate-scroll';
 import { MdKeyboardArrowUp } from 'react-icons/md'
 import { MdKeyboardArrowDown } from 'react-icons/md'
- import { postSupport } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
 import Footer from '../Footer/Footer';
-import Swal from "sweetalert2";
-import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function Support() {
-
-    const dispatch = useDispatch()
-    const captcha = useRef(null)
     const [captchaVal, setCaptchaVal] = useState(false)
 
     const token = localStorage.getItem("token");
@@ -44,22 +37,6 @@ export default function Support() {
         else setRender({ ...render, [e.target.id]: !render[e.target.id] })
     }
 
-    function onChange() {
-        setCaptchaVal(true)
-    }
-
-    const handleMinimize = (e) => {
-        e.preventDefault()
-        setRender({
-            Home: false,
-            WorkTeam: false,
-            Networks: false,
-            Advertising: false,
-            Write: false,
-            Payment: false
-        })
-    }
-
     useEffect(() => {
         token ? setIsLogged(true) : setIsLogged(false);
     }, [token, isLogged]);
@@ -69,12 +46,12 @@ export default function Support() {
             <NavBar />
             <div className="options">
                 <ul style={{ display: 'column', listStyle: 'none', justifyContent: 'space-around' }}>
-                    <h3 className='minitag'><Link id="Home" onClick={(e) => { scroll0.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- What is BookStore?</Link></h3>
-                    <h3 className='minitag'><Link id="WorkTeam" onClick={(e) => { scroll1.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Team Work</Link></h3>
-                    <h3 className='minitag'><Link id="Networks" onClick={(e) => { scroll2.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Networks</Link></h3>
-                    <h3 className='minitag'><Link id="Payment" onClick={(e) => { scroll3.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Payment metods</Link></h3>
-                    <h3 className='minitag'><Link id="Advertising" onClick={(e) => { scroll4.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Advertising</Link></h3>
-                    <h3 className='minitag'><Link id="Write" onClick={(e) => { scroll5.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Write us!</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="Home" onClick={(e) => { scroll0.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- What is Beerland?</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="WorkTeam" onClick={(e) => { scroll1.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Team Work</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="Networks" onClick={(e) => { scroll2.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Networks</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="Payment" onClick={(e) => { scroll3.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Payment metods</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="Advertising" onClick={(e) => { scroll4.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Advertising</Link></h3>
+                    <h3 className='minitag'><Link className='gg' id="Write" onClick={(e) => { scroll5.current.scrollIntoView({ behavior: "smooth" }); handleClick(e, true) }}>- Write us!</Link></h3>
                 </ul>
             </div>
             <div className="contactContainer">
@@ -157,100 +134,14 @@ export default function Support() {
                                         member of our community, we can follow all your request closer. If you are not register
                                         in our page yet, we recomends you to do it now clicking here.
                                     </p>
-                                    <Formik
-                                        initialValues={{
-                                            name: "",
-                                            email: "",
-                                            comment: ""
-                                        }}
-                                        validate={(valores) => {
-
-                                            let errors = {};
-
-                                            if (!valores.email) {
-                                                errors.email = 'Email has been required!';
-                                            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(valores.email)) {
-                                                errors.email = 'Invalid email address';
-                                            }
-                                            if (!valores.name) {
-                                                errors.password = 'Name has been required!'
-                                            }
-
-                                            if (valores.comment.length > 255) {
-                                                errors.comment = 'Your question can not be longer than 255 characters!'
-                                            }
-                                            return errors;
-
-                                        }}
-
-                                        onSubmit={(valores, { resetForm }) => {
-                                            if (captchaVal === false) {
-                                                Swal.fire({
-                                                    icon: 'error',
-                                                    title: 'Oops...',
-                                                    text: 'Please check the captcha box to send your question',
-                                                })
-                                            }
-                                            else {
-                                                 dispatch(postSupport(valores))
-                                                Swal.fire({
-                                                    icon: 'success',
-                                                    title: 'Thanks!',
-                                                    text: "Your message was sent, we'll see what we can do about it",
-                                                })
-                                                resetForm()
-                                            }
-                                        }}>
-
-                                        {({ touched, errors }) => (
-                                            <div className='formContainer' style={{ marginLeft: '15%' }} >
-                                                <Form style={{ display: 'flex', justifyContent: 'center' }}>
-                                                    <div className='contactInfo'>
-                                                        <h2 style={{ textAlign: 'center', margin: '0' }}>Write us!</h2>
-
-                                                        <div className='description'>
-                                                            <label>Name </label>
-                                                            <Field type="text" name="name" placeholder="Name" />
-                                                            {touched.name && errors.name && <span className="error">{errors.name}</span>}
-                                                        </div>
-                                                        <div className='description'>
-                                                            <label>Email </label>
-                                                            <Field type="text" name="email" placeholder="Email" />
-                                                            {touched.email && errors.email && <span className="error">{errors.email}</span>}
-                                                        </div>
-                                                        <div className='description'>
-                                                            <label>What you want to tell us?</label>
-                                                        </div>
-                                                        <div className='description'>
-                                                            <Field style={{ margin: '20px', outline: '1px solid #fc6f53' }} type="text" name="comment" className="descriptionArea" as="textarea" placeholder="Write your question here!" />
-                                                        </div>
-                                                        {touched.comment && errors.comment && <span className="error">{errors.comment}</span>}
-                                                        <div>
-                                                            <ReCAPTCHA
-                                                                ref={captcha}
-                                                                sitekey="6Lc_RlkgAAAAAHm3lFu7iwKYTD3wu2owN56SxDdW"
-                                                                onChange={onChange}
-                                                                style={{ justifyContent: 'center', display: 'flex' }}
-                                                            />
-                                                        </div>
-                                                        <button className="minimize" type="submit">Send!</button>
-
-                                                    </div>
-                                                </Form>
-                                            </div>
-                                        )}
-                                    </Formik>
+                                    
+                                      
                                 </div>
                             }
                         </div>
                     }
                 </div>
-                {render?.Advertising || render?.Home || render?.Networks || render?.WorkTeam || render?.Write ?
-                    <div className='descriptionS'>
-                        <button type="button" className="minimize" onClick={(e) => { handleMinimize(e) }}>Minimize all tags</button>
-                    </div>
-                    : ''
-                }
+                
             </div>
             <Footer />
         </>

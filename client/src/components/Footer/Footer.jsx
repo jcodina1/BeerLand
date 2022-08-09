@@ -8,10 +8,10 @@ export default function Footer() {
             <div className={style.container}>
                 <div className={style.info}>
                     <Link to={"/home"} className={style.link}>TO GO TO</Link>
-                    <Link to={"/home"} className={style.link}>CONTACT</Link>
+                    <Link to={"/Contact"} className={style.link}>CONTACT</Link>
                 </div>
                 <div className={style.info}>
-                    <Link to={"/home"} className={style.link}>FAQ</Link>
+                    <Link to={"/Support"} className={style.link}>FAQ</Link>
                     <Link to={"/home"} className={style.link}>ABOUT US</Link>
                 </div>
                 <div className={style.info}>
