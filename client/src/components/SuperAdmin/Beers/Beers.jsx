@@ -17,6 +17,7 @@ import { setPage } from "../../../redux/actions";
 export default function Beers() {
     const dispatch = useDispatch()
     const allBeers = useSelector(state => state.allBeers)
+    const [upDate,setUpDate]=useState(false)
     let page = useSelector((state) => state.page);
     let beersPerPage = 4
   
