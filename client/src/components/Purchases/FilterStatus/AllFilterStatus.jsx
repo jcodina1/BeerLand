@@ -1,6 +1,7 @@
 import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import * as action from '../../../redux/actions/index'
+import styles from './styles.module.css'
 
 export default function AllFilterStatus() {
     const dispatch = useDispatch();
@@ -13,12 +14,13 @@ export default function AllFilterStatus() {
 
     return (
         <div>
-            <select onChange={(e) => handleChange(e)}>
-                <option value="All">Filter by status</option>
+            <label>Filter by status</label>
+            <select className={styles.select} onChange={(e) => handleChange(e)}>
+                <option value="All">All</option>
                 <option value="PENDING">Pending</option>
                 <option value="CANCELLED">Cancelled</option>
                 <option value="COMPLETED">Completed</option>
-            </select>   
+            </select>
         </div>
     )
 }   
