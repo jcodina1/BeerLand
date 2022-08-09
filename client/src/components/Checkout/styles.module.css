@@ -130,9 +130,6 @@
 
 }
 
-
-
-
 @media (max-width: 900px) {
     .wrapper {
         direction: flex;

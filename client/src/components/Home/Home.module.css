@@ -25,7 +25,15 @@
     min-height: 100%;
     
 }
-
+.h1Tittle {
+    font-family: 'Staatliches', cursive;
+    /* font-family: 'Palanquin Dark', sans-serif; */
+    /* font-family: 'DM Serif Display', serif; */
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: 0px;
+    color: rgb(35, 20, 10);
+}
 
 
 
@@ -52,12 +60,12 @@
 }
 
 .beerBox {
-    padding: 80px 100px 0 100px;
+    padding: 30px 100px 0 100px;
     /* background-color: aqua; */
 }
 
 .paginate {
-    margin: 100px 0 10px 0;
+    margin: 120px 0 10px 0;
 
 }
 
