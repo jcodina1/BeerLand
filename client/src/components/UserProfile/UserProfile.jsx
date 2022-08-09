@@ -19,7 +19,7 @@ export default function UserProfile() {
     const dispatch = useDispatch()
     const [mostrarOrden,setMostrarOrden]=useState(false)
     const [isOpenModal, openModal, closeModal] = useModals(false);
-
+    let image
 
     let currentUser;
     useEffect(() => {
@@ -28,7 +28,9 @@ export default function UserProfile() {
 
     if (user !== null) {
         currentUser = users.filter((e) => e.email === user.email);
+        image = currentUser[0].image
     }
+
     
     
 
@@ -37,12 +39,12 @@ export default function UserProfile() {
     return (
         <>
             <NavBar />
-            {user ?
+            {currentUser ?
                 <>
                     <div className={style.flor}>
                         <h1>Your profile</h1>
                         <div className={style.hola}>
-                            <img src={currentUser[0].image} />
+                            <img src={image} />
                             <div className={style.margen}>
                                 <h3>Name: {currentUser[0].name}</h3>
                                 <h3>Surname: {currentUser[0].surname}</h3>

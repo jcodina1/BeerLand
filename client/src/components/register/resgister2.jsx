@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import style from "../Login/Login.module.css";
+import style from "./Registers.module.css";
 import swal from "sweetalert";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../Context/Contestautenticacion";
 import { postUser } from "../../redux/actions";
+import NavBar from "../NavBar/NavBar";
 import { useDispatch } from "react-redux";
+
 
 export function Register() {
   const dispatch = useDispatch();
@@ -23,12 +25,16 @@ export function Register() {
     rol: "user",
   });
 
+
+
   const handleChange = (e) => {
     SetUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,71 +47,58 @@ export function Register() {
     }
   };
 
-  //     const handleGoogle = async ()=>{
-  //        try {
-  //         user.User = user.User
-  //           const google =  await  logingWithGoogle()
-  //
-  //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
-  //           dispatch(postUser(userdata))
-  //           history.push('/home')
 
-  //          } catch (error) {
-  //
-  //              setError(error.message)
-  //              swal(error.message)
-  //          }
-
-  //     }
-
-  //     const handelResetPassword =async ()=>{
-  //         if (!user.email) return swal("please enter your mail")
-  //         try {
-  //             await resetPassword(user.email)
-  //             swal('We sent you an mail with a link to reset you password')
-  //         } catch (error) {
-  //             setError(error.message)
-  //         }
-
-  //     }
 
   return (
+    <>
+      <div className={style.navBar}>
+            <NavBar/>
+      </div>
+  
     <div className={style.container}>
-      <form>
-        <h1>Sign In</h1>
-        <div className={style.password}>
-          <label>Name: </label>
+      <div className={style.RegisterForm}>
+
+      <form style={{ display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
+        
+        <div className={style.contactInfo}>
+        <h1 style={{ textAlign: 'center', margin: '0' }}>Sign In</h1>
+        <div className={style.description}>
+          {/* <label>Name: </label> */}
           <input
+            className={style.otromas}
             name="name"
             type="name"
-            placeholder="youremail@company.com"
+            placeholder="Name"
             onChange={handleChange}
           />
         </div>
 
-        <div className={style.password}>
+        <div className={style.description}>
           <label>Surname: </label>
           <input
+           className={style.otromas}
             name="surname"
             type="surname"
-            placeholder="youremail@company.com"
+            placeholder="Last Name"
             onChange={handleChange}
           />
         </div>
 
-        <div className={style.password}>
+        <div className={style.description}>
           <label>Address: </label>
           <input
+            className={style.otromas}
             name="address"
             type="address"
-            placeholder="youremail@company.com"
+            placeholder="Address"
             onChange={handleChange}
           />
         </div>
 
-        <div className={style.password}>
+        <div className={style.description}>
           <label>Email: </label>
           <input
+            className={style.otromas}
             name="email"
             type="email"
             placeholder="youremail@company.com"
@@ -113,9 +106,10 @@ export function Register() {
           />
         </div>
 
-        <div className={style.password}>
+        <div className={style.description}>
           <label>Password: </label>
           <input
+           className={style.otromas}
             name="password"
             type="password"
             id="password"
@@ -124,9 +118,10 @@ export function Register() {
           />
         </div>
 
-        <div className={style.password}>
+        <div className={style.description}>
           <label>Confirmation: </label>
           <input
+            className={style.otromas}
             name="confirmation"
             type="password"
             id="confirmation"
@@ -135,28 +130,37 @@ export function Register() {
           />
         </div>
 
-        {/* <a href='#!'onClick={handelResetPassword}>
-                Forgot Password
-            </a> */}
-      </form>
-      <div className={style.submit}>
-        <button onClick={handleSubmit}>Sing In</button>
+
+      
+      <div className={style.descriptionS}>
+        <button className={style.minimize} onClick={handleSubmit}>Sing In</button>
       </div>
-      {/* <div>
-                <button onClick={handleGoogle}>Google Login</button>
-            </div> */}
+    
 
       <div>
-        <label>Register as a company : </label>
-        <Link to="/registerCompany">
-          <button>Sing In</button>
+       
+        <Link className={style.textde} to="/registerCompany">
+          <div className={style.descriptionS}>
+            <label>Register as a company </label>
+          </div>
+          
         </Link>
       </div>
       <div>
-        <Link to="/home">
-          <button>Return</button>
+        <Link className={style.textde} to="/home">
+        <div className={style.descriptionS}>
+            <button className={style.minimize}>Return</button>
+          </div>
         </Link>
       </div>
+
+
+
+        </div>
+
+      </form>
+      </div>
     </div>
+    </>
   );
 }

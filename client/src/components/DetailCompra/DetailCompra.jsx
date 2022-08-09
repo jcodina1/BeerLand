@@ -5,8 +5,8 @@ import { addToCart } from "../../redux/actions";
 import { useSelector } from "react-redux";
 import { BsCartPlus } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
-import Swal from 'sweetalert2'
-import style from "../DetailCompra/DetailCompra.module.css"
+import Swal from "sweetalert2";
+import style from "../DetailCompra/DetailCompra.module.css";
 
 /* import './styles.css' */
 
@@ -22,24 +22,24 @@ export default function Compra({ id, name, price, stock }) {
 
   function handleClick() {
     if (!beerinCart?.length) {
-      dispatch(addToCart(id))
+      dispatch(addToCart(id));
       const Toast = Swal.mixin({
         toast: true,
-        position: 'bottom-start',
+        position: "bottom-start",
         showConfirmButton: false,
         timer: 3000,
         timerProgressBar: true,
         didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
 
       Toast.fire({
-        icon: 'success',
+        icon: "success",
         title: `Added "${name}" to cart`,
-      })
-      setCartIcon(<BsCartCheckFill size={25} className="done" />)
+      });
+      setCartIcon(<BsCartCheckFill size={25} className="done" />);
     }
   }
 
@@ -54,7 +54,7 @@ export default function Compra({ id, name, price, stock }) {
       >
         ${price}
       </h3>
-      {stock == 0 ? (
+      {parseInt(stock) === parseInt(0) ? (
         <h3>No more stock</h3>
       ) : (
         <div style={{ marginTop: "-20px" }}>
