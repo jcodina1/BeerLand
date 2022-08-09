@@ -73,17 +73,7 @@ export default function Support() {
                             you can see us like juniors web page developers. As you can see, our web is awsome.
                             <br /><br />
                             The team is:<br />
-                            <span style={{ display: 'flex', justifyContent: 'center', lineHeight: '30px' }}>Christian Cordoba /
-                                Alvaro Cordoba /
-                                Federico Garcia /
-                                Camila Castillo
-                                <br />
-
-                                Gaston Cajal Skaf /
-                                Ignacion Burgos /
-                                Jorge Torres /
-                                Gonzalo Rumi
-                            </span >
+                         
                         </p>}
 
                 </div>
@@ -91,8 +81,8 @@ export default function Support() {
                     <h1 ref={scroll2} id="Networks" onClick={(e) => handleClick(e)}>Any social network to follow you?<span className='clickMe'> Click to {render.Networks ? 'Hide' : 'find out!'}</span>{render.Networks ? <MdKeyboardArrowUp size={20} /> : <MdKeyboardArrowDown size={20} />}</h1>
                     {
                         render.Networks && <p className='text'>
-                            Yes! You can follow us on Facebook (bookStore), Instagram (@bookstore) and LinkedIn (bookstore).
-                            Every day we upload content about our store, new books, new collection and more!
+                            Forks! You can follow us on Facebook (beerland), Instagram (@beerland) and LinkedIn (beerland).
+                            Every day we upload content about our store, new beers, and more!
                             <br /><br />
                         </p>}
 
@@ -106,7 +96,7 @@ export default function Support() {
                             <br /><br />
                         </p>}
                 </div>
-                <div className="conttext">
+                {/* <div className="conttext">
                     <h1 ref={scroll4} id="Advertising" onClick={(e) => handleClick(e)}>Do you sell advertising on your site?<span className='clickMe'> Click to {render.Advertising ? 'Hide' : 'find out!'}</span>{render.Advertising ? <MdKeyboardArrowUp size={20} /> : <MdKeyboardArrowDown size={20} />}</h1>
                     {
                         render.Advertising && <p className='text'>
@@ -115,7 +105,7 @@ export default function Support() {
                             an email whit your offer. We will consider the option and we will contact you in case of accept it.
                             <br /><br />
                         </p>}
-                </div>
+                </div> */}
                 <div className="conttext">
                     <h1 ref={scroll5} id="Write" onClick={(e) => handleClick(e)}>How can i do to contact you directly?<span className='clickMe'> Click to {render.Write ? 'Hide' : 'find out!'}</span>{render.Write ? <MdKeyboardArrowUp size={20} /> : <MdKeyboardArrowDown size={20} />}</h1>
                     {
@@ -129,10 +119,10 @@ export default function Support() {
                                 :
                                 <div>
                                     <p className='text'>
-                                        Down below you have the option to send us an email, and we will response you quickly. You can
-                                        ask what ever you want. In spite of that, the best way to clean all your doubts is being a
-                                        member of our community, we can follow all your request closer. If you are not register
-                                        in our page yet, we recomends you to do it now clicking here.
+                                    You then have the option to ask a question and we'll get back to you 
+                                    quickly. You can ask what you want. Despite that, the best way to clear all your doubts is to be a member of our community,
+                                     we can follow all your requests more closely. If you are not yet registered on our page, 
+                                     we recommend that you do so now by clicking <Link to="/Contact">here</Link>. 
                                     </p>
                                     
                                       
