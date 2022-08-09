@@ -55,7 +55,11 @@ export default function Checkout() {
 
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
-    purchaseDetails.push({ beerId: beer.id, cant: beer.cant });
+    purchaseDetails.push({
+      beerId: beer.id,
+      cant: beer.cant,
+      price: beer.price,
+    });
   });
   const beers = [];
   checkoutinfo.forEach((beer) => {

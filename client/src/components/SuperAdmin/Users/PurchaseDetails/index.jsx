@@ -22,7 +22,7 @@ export default function PurchaseDetails({ setModalOpen, userId }) {
                 <TableCell>Beer</TableCell>
                 <TableCell>Seller</TableCell>
                 <TableCell>Units</TableCell>
-                <TableCell>Price</TableCell>
+                <TableCell>Price per Unit</TableCell>
                 <TableCell>Subtotal</TableCell>
               </TableRow>
             </TableHead>
