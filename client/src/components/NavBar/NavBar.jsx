@@ -15,13 +15,15 @@ import { BsFillBookmarkHeartFill } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { CgLogOut } from "react-icons/cg";
 import { FaShoppingBag } from "react-icons/fa";
-
+import { AiTwotoneHome } from "react-icons/ai";
 import Swal from "sweetalert2";
-import { IoMdContact } from "react-icons/io";
+import { IoIosBeer, IoMdContact } from "react-icons/io";
 import { MdShoppingCart } from "react-icons/md"
 import { useDispatch } from "react-redux";
 import { removeAllFromCart, getUser } from "../../redux/actions";
 import { useSelector } from "react-redux";
+import Container from '@mui/material/Container';
+
 
 export default function NavBar({ setPage, id }) {
   const dispatch = useDispatch()
@@ -95,7 +97,8 @@ export default function NavBar({ setPage, id }) {
   // };
 
   return (
-    <nav className={style.navbar}>
+    <Container maxWidth='false' disableGutters='false'>
+      <nav className={style.navbar}>
       <div>
         <Link to="/home">
           <span>
@@ -112,24 +115,31 @@ export default function NavBar({ setPage, id }) {
         <SearchBar setPage={setPage} />
       </div>
 
-        <div className={style.space2}>
-          { !currentUser?.length ? '' :
-            <h4>Hello, {currentUser[0].name} </h4>
-          }
-          
-        </div>
+        
       <div className={style.infoDistribution}>
 
         <div className={style.buttonlink}>
           <div className={style.cartbtn}>
+          <Link to="/promoPage">
+              <AiTwotoneHome className={style.icon} style={{fill:'#dfdfdf', marginRight:'5px',marginLeft:'5px' }} />
+            </Link>
+            <Link to="/home">
+              <IoIosBeer className={style.icon} style={{fill:'#dfdfdf', marginRight:'5px',marginLeft:'5px' }} />
+            </Link>
             <Link to="/cart">
               {/* <button className={style.cartBtn}></button> */}
-              <MdShoppingCart size={45} style={{ fill: '#dfdfdf' }} />
+              <MdShoppingCart className={style.icon} style={{ fill: '#dfdfdf' , marginRight:'5px',marginLeft:'5px' }} />
             </Link>
           </div>
+          <div className={style.space2}>
+          { !currentUser?.length ? '' :
+            <h4 style={{marginTop:'10px'}}>Hello, {currentUser[0].name} </h4>
+          }
+          
+        </div>
           {!isLogged && (
             <div className={style.log}>
-              <IoMdContact size={45} onClick={openModal} />
+              <IoMdContact className={style.icon} onClick={openModal} />
               <Modal isOpen={isOpenModal} closeModal={closeModal}>
                 <Login />
               </Modal>
@@ -140,10 +150,9 @@ export default function NavBar({ setPage, id }) {
             <div className={style.sideBar}>
               <IoMdContact
                 onClick={showSideBar}
-                style={{ cursor: "pointer" }}
-                size={45}
+                style={{ cursor: "pointer", marginTop:'5px' }}
                 color={"rgb(209,56,0)"}
-                className="menu"
+                className={style.icon}
               />
               <ProSidebar
                 className={style.sidePosition}
@@ -182,5 +191,6 @@ export default function NavBar({ setPage, id }) {
         </div>
       </div>
     </nav>
+    </Container>
   );
 }

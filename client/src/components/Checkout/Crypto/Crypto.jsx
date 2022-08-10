@@ -92,7 +92,7 @@ export default function Crypto({value, precioTotal, userId, purchaseDetails, ema
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ borderTop: '1px solid gray' }}>
+    <form onSubmit={handleSubmit} >
     <div style={{ display: 'flex', justifyContent: 'center' }}>
 
       <button

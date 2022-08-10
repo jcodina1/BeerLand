@@ -9,6 +9,7 @@ import { getUser } from '../../redux/actions';
 import Swal from 'sweetalert2';
 
 const Star = ({id}) => {
+    
     const dispatch = useDispatch()
     const user2 = useSelector((state) => state.user);
     const [rating, setRating] = useState(null);
@@ -17,7 +18,7 @@ const Star = ({id}) => {
     
    if (user !== null) {
         var filtrado = user2.filter((e) => e.email === user.email);
-        console.log(filtrado);
+        
     }
 
     function HandleSubmit() {
@@ -28,7 +29,14 @@ const Star = ({id}) => {
                 beerId:id
             }
             dispatch(postScore(obj))
-        }  }
+        }  else
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login first to do this!",
+          });
+
+    }
 
     function handleSet(ratingValue) {
         if (user !== null) {

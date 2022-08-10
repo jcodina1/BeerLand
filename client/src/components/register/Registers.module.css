@@ -1,0 +1,405 @@
+/* ::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar{
+    margin: 0px 10px 10px 10px
+}
+
+.log {
+    height: 750px;
+    padding-top: 100px;
+    width: 400px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    padding: 200px 300px 100px 450px;
+    background-color: rgba(3, 48, 9, 0.5);
+    align-content: center;
+    align-items: inherit;
+    height: fit-content;
+    background-size: cover;
+    overflow: hidden;
+
+}
+
+.container .RegisterForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: white;
+    min-width: 600px;
+    margin-left: 650px;
+    margin-right: 650px;
+    height: 400px;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    gap: 40px;
+    max-height: 140vh;
+    min-height: 140vh;
+    margin-bottom: 400px;
+    padding: 120px 30px 0 30px;
+    background-color: rgb(185,155,103)
+}
+
+.confirmation {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid #4fb8b8;
+    background-color: unset;
+    outline: none;
+    margin: 10px;
+}
+
+.confirmation input {
+    border: none;
+    outline: none;
+}
+
+.confirmation input:focus {
+    border-bottom: 2px solid #83c290;
+}
+
+h1 {
+    color: rgb(3, 44, 14);
+    font-weight: bold;
+}
+
+.password {
+    margin: 20px;
+    background-color: None;
+    color: rgb(3, 44, 14);
+    font-family: 'Trebuchet MS', sans-serif;
+
+}
+
+.submit {
+    margin: 10px;
+}
+
+.registerbox {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 25px;
+}
+
+.close {
+
+    display: flex;
+    flex-direction: row;
+    padding-left: 400px;
+}
+
+.googleIcon {
+     background-image: url('../../img/googleLogin.png'); 
+    background-size: contain;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: aliceblue;
+    border-color: black;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin: 0 25px 25px 25px;
+    cursor: pointer;
+}
+
+.facebookIcon {
+    background-size: contain;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    border: none;
+    background-color: aliceblue;
+    border-radius: 10px;
+    margin: 0 10px 25px 0px;
+    cursor: pointer;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
+}
+
+.footer {
+    margin-top: 10px;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    color: black
+}
+
+.loginBox {
+    background-color: beige;
+    border-radius: 20px;
+    width: 1000px;
+    height: 650px;
+    flex-direction: row;
+    display: flex;
+    padding: 30px;
+
+}
+
+.return {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    left: 80%;
+    padding: 10px;
+}
+
+.boxR {
+    background-color: green;
+    width: 600px;
+    height: 1000px;
+}
+
+.leftBox {
+    background-color: green;
+    width: 600px;
+    height: 400px;
+}
+
+.image {
+    background-size: contain;
+    height: 45vh;
+    width: 350px;
+    margin-right: 50px;
+    background-color: rgba(6, 169, 50, 0.432);
+    margin: 170px 0 0 40px;
+
+
+}
+
+.button {
+    color: beige;
+    background-color: rgba(3, 48, 9);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
+    width: 100px;
+    margin: 10px;
+}
+
+.buttonA {
+    color: beige;
+    background-color: rgba(3, 48, 9);
+    border-radius: 5px;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
+    width: 70px;
+    margin: 2px;
+    height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    align-items: center;
+
+}
+
+.buttonsGen{
+    background-color: white;
+    margin-left: 600px;
+    margin-right: 600px;
+} */
+
+/* .RegisterForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 600px;
+    margin-left: 650px;
+    margin-right: 650px;
+    padding-top: 120px;
+}
+
+.confirmation {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid #4fb8b8;
+    background-color: unset;
+    outline: none;
+    margin: 10px;
+}
+
+.confirmation input {
+    border: none;
+    outline: none;
+}
+
+.confirmation input:focus {
+    border-bottom: 2px solid #83c290;
+} */
+
+.container {
+    display: block;
+    padding: 2rem 0;
+    padding-left: 20px;
+  }
+
+  .RegisterForm{
+    padding: 120px;
+    margin-left: 300px;
+  }
+  .contactContainer .conttext h1:hover {
+    color: #d16e31;
+    cursor: pointer;
+  }
+  .contactContainer p {
+  
+    width: 700px;
+    font-family: 'Trebuchet MS',sans-serif;
+    text-align: justify;
+  }
+  .contactContainer h1 {
+    text-align: left;
+    font-family: 'Trebuchet MS',sans-serif;
+  
+  }
+  .options {
+    background-color: #704021;
+    padding: 100px 0px;
+  }
+  .minitag {
+    font-family: 'Trebuchet MS',sans-serif;
+    color: white;
+    transition: transform 0.5s;
+    margin:10px 0px 0px 0px;
+    height: 30px;
+      padding: 20px;
+  }
+  .gg{
+    color: white;
+    transition: transform 0.5s;
+    position: absolute;
+    text-decoration: none;
+  }
+  .minitag a:hover {
+    cursor: pointer;
+    color: #ffd0d0;
+    transform: scale(1.02);
+  }
+  .conttext {
+    text-align: left;
+    margin-left: 20%;
+  }
+  .conttext .clickMe {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .descriptionS {
+    text-align: center;
+  }
+  
+  .descriptionArea{
+    height: 150px;
+    width: 450px;
+  }
+  
+  .text {
+    margin: 10px;
+    font-size: larger;
+    border: 2px solid #c4c4c4;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    background-color: #704021;
+  }
+  .contactInfo {
+    border: 1px solid #c4c4c4;
+    box-shadow: 5px 5px 20px -2px black;
+    border-radius: 20px;
+    font-family: 'Trebuchet MS',sans-serif;
+    font-size: 20px;
+    text-align: justify;
+    min-width: 400px;
+    max-width: 600px;
+    background-color: white;
+  }
+  .contactInfo button {
+    background-color: rgb(126, 71, 35);
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Trebuchet MS',sans-serif;
+    border: 1px solid #c4c4c4;
+    font-weight: 400;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+  }
+  .otromas{
+    border: none;
+    border-bottom: 2px solid rgb(126, 71, 35);
+    outline: none;
+    padding: 15px;
+  }
+  .otromas input:focus{
+    border-bottom: rgb(185,155,103);
+  }
+
+  .contactInfo .description {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+
+  }
+  .contactInfo .description input,
+  .contactInfo .description textarea {
+    margin: auto;
+  }
+  @media (max-width: 700px) {
+    .contactInfo {
+      min-width: 300px;
+      max-width: 400px;
+    }
+  }
+  .contactInfo .field {
+    margin: 5px auto;
+    max-width: 20rem;
+    display: flex;
+    /*   justify-content: space-between; */
+  }
+  .minimize {
+    /* margin: auto; */
+    background-color: #704021;
+    color: antiquewhite;
+    outline: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: 'Trebuchet MS',sans-serif;
+    border: 1px solid #c4c4c4;
+    font-weight: 400;
+    margin: 20px;
+    width: 100px;
+
+  }
+  .minimize:hover {
+    background-color: rgb(185,155,103);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+  }
+
+.textde{
+    text-decoration: none;
+}

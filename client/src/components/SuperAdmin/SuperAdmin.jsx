@@ -1,16 +1,16 @@
 import React from "react";
-import style from './SuperAdmin.module.css'
+import style from "./SuperAdmin.module.css";
 import Sidebar from "./SideBar/Sidebar";
 import DashBoard from "./DashBoard/DashBoard";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllBeers, getAllPurchases, getAllSellers, getUser } from "../../redux/actions";
+import { getAllBeers, getAllPurchases, getAllSellers, getSupport, getUser } from "../../redux/actions";
 import Purchases from "../Purchases/AllPurchases";
 import Users from "./Users/Users";
 import Sellers from "./Sellers/Sellers";
 import Beers from "./Beers/Beers";
-
+import SupportAdmin from "./AdminSupport/AdminSupport";
 const SuperAdmin = () => {
     const [mostrar, setMostrar] = useState(false)
     const [render, setRender] = useState("DashBoard")
@@ -20,6 +20,7 @@ const SuperAdmin = () => {
         dispatch(getAllSellers())
         dispatch(getUser())
         dispatch(getAllBeers())
+        dispatch(getSupport())
 
     }, [])
     //Users
@@ -35,11 +36,13 @@ const SuperAdmin = () => {
             render === "Sellers" ? <Sellers  /> :
             render === "Products" ? <Beers  /> :
             render === "Pusrchases" ? <Purchases  />:
+            render === "AdminSupport" ? <SupportAdmin/>:
             <DashBoard mostrar={mostrar} />}
             </div>
            
         </div>
     );
+
 };
 
 export default SuperAdmin;

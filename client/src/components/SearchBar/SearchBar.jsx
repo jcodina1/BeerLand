@@ -9,7 +9,7 @@ import { setPage } from '../../redux/actions/index';
 export default function SearchBar() {
   const dispatch = useDispatch();
   const [value, setValue] = useLocalStorege('value', '')
-  const allBeersx2 = useSelector(state => state.beers);
+  const allBeersx2 = useSelector(state => state.allBeers);
 
   const onChange = (e) => {           // handleInput
     e.preventDefault();
@@ -27,6 +27,7 @@ export default function SearchBar() {
   const onSearch2 = (payload) => {
     dispatch(searchBar(payload));
     dispatch(setPage(1))
+    setValue('')
   }
 
   function handleBack() {
