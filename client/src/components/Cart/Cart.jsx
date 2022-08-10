@@ -25,7 +25,7 @@ export default function Cart() {
   const [loggedIn, setLoggeddIn] = useState(false);
   const dispatch = useDispatch();
   const beerCarts = useSelector((state) => state.cart);
-  let localstorage = JSON.parse(localStorage.getItem("carrito"));
+  let localstorage = JSON.parse(localStorage.getItem("carrito")) || localStorage.setItem("carrito", JSON.stringify([]));
   const [items, setItems] = useState(JSON.parse(localStorage.getItem("carrito")));
   const [del, setDel] = useState(true);
   const [add, setAdd] = useState(false);
