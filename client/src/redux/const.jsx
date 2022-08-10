@@ -19,6 +19,7 @@ export const SELLERBEER = "/beer/beers?sellerId=";
 export const POST_SUPPORT = "/support"
 export const GET_SUPPORT = "/support"
 export const ANSWER_SUPPORT = "/support/answer"
+export const ALL_NAME2 = "/seller?name=";
 
 export const POST_PURCHASE = 'POST_PURCHASE';
 export const GET_PURCHASES_BY_USER = 'GET_PURCHASES_BY_USER';
@@ -65,5 +66,6 @@ export const GET_SALES_BREWERY = "GET_SALES_BREWERY";
 export const FILTER_SALES_STATUS = "FILTER_SALES_STATUS";
 export const FILTER_STATUS = "FILTER_STATUS";
 export const SUPPORT = "SUPPORT";
+export const SEARCH_BAR2 = "SEARCH_BAR2"
 
 

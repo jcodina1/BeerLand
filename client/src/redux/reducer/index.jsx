@@ -45,7 +45,8 @@ import {
   POST_SUPPORT,
   GET_SUPPORT,
   ANSWER_SUPPORT,
-  SUPPORT
+  SUPPORT,
+  SEARCH_BAR2,
 
 } from "../const";
 
@@ -74,7 +75,8 @@ const initialState = {
   crypto: 0,
   filtroPurchases: [],
   backupSupport: [],
-  support:[]
+  support:[],
+  search2: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -166,6 +168,7 @@ function Reducer(state = initialState, action) {
         ...state,
         search: action.payload,
         beers: action.payload,
+        
       };
     }
 
@@ -428,6 +431,13 @@ function Reducer(state = initialState, action) {
         ...state,
         support:action.payload,
         backupSupport: action.payload
+      }
+      case SEARCH_BAR2: {
+        return {
+          ...state,
+          search2: action.payload,
+          allSellers: action.payload,
+        };
       }
     
 

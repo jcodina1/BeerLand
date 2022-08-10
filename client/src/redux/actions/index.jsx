@@ -56,7 +56,9 @@ import {
   POST_SUPPORT,
   GET_SUPPORT,
   ANSWER_SUPPORT,
-  SUPPORT
+  SUPPORT, 
+  SEARCH_BAR2,
+  ALL_NAME2
 } from "../const";
 
 export function addToCart(id) {
@@ -521,6 +523,23 @@ export function deleteComment(idSupport) {
       return dispatch({ type: 'DELETE_COMMENT', payload: re.data });
     } catch (error) {
       console.log(error);
+    }
+  };
+}
+
+export function searchBar2(payload) {
+  console.log(payload)
+  return async function (dispatch) {
+    try {
+      const search2 = await axios.get(ALL_NAME2 + payload);
+      return dispatch({
+        type: SEARCH_BAR2,
+        payload: search2.data,
+      });
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data);
+      }
     }
   };
 }

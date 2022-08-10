@@ -10,6 +10,7 @@ import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 import { app } from "../../firebase";
 import googleLogo from "../../img/googleLogin.png";
 import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 
 export default function RegisterSeller() {
   const dispatch = useDispatch();
@@ -36,36 +37,36 @@ export default function RegisterSeller() {
     });
   };
 
-  const handleGoogle = async () => {
-    try {
-      const google = await logingWithGoogle().then((usuarioGoogle) => {
-        return usuarioGoogle;
-      });
+  // const handleGoogle = async () => {
+  //   try {
+  //     const google = await logingWithGoogle().then((usuarioGoogle) => {
+  //       return usuarioGoogle;
+  //     });
 
-      const user2 = {
-        mail: google.user.email,
-        name: google._tokenResponse.firstName,
-        surname: google._tokenResponse.lastName,
-        description: "",
-        dni: 0,
-        rol: "admin",
-      };
+  //     const user2 = {
+  //       mail: google.user.email,
+  //       name: google._tokenResponse.firstName,
+  //       surname: google._tokenResponse.lastName,
+  //       description: "",
+  //       dni: 0,
+  //       rol: "admin",
+  //     };
 
-      const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
-      setDoc(docuRef, {
-        email: user2.mail,
-        name: user2.name,
-        surname: user2.surname,
-        user: user2.rol,
-        login: "google",
-      });
-      dispatch(postSeller(user2));
-      history.push("/home");
-    } catch (error) {
-      setError(error.message);
-      swal(error.message);
-    }
-  };
+  //     const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
+  //     setDoc(docuRef, {
+  //       email: user2.mail,
+  //       name: user2.name,
+  //       surname: user2.surname,
+  //       user: user2.rol,
+  //       login: "google",
+  //     });
+  //     dispatch(postSeller(user2));
+  //     history.push("/home");
+  //   } catch (error) {
+  //     setError(error.message);
+  //     swal(error.message);
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,7 +97,7 @@ export default function RegisterSeller() {
       <form style={{ display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
       
       <div className={reg.contactInfo}>
-        <h1 style={{ textAlign: 'center', margin: '0' }}>Sign In</h1>
+        <h1 style={{ textAlign: 'center', margin: '0', color:"rgb(35,20,10)" }}>Sign In</h1>
         
         <div className={reg.description}>
           <label>Name: </label>
@@ -110,7 +111,7 @@ export default function RegisterSeller() {
         </div>
 
         <div className={reg.description}>
-          <label>description: </label>
+          <label>Description: </label>
           <input
             className={reg.otromas}
             name="description"
@@ -121,7 +122,7 @@ export default function RegisterSeller() {
         </div>
 
         <div className={reg.description}>
-          <label>dni: </label>
+          <label>Dni: </label>
           <input
             className={reg.otromas}
             name="dni"
@@ -175,6 +176,7 @@ export default function RegisterSeller() {
       </form>
     </div>
 </div>
+<Footer></Footer>
                 </>
   );
 }

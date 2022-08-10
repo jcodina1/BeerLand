@@ -1,15 +1,15 @@
 import { React, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchBar, getAllBeers } from '../../redux/actions/index';
+import { searchBar, getAllBeers, searchBar2, getAllSellers } from '../../redux/actions/index';
 import { useLocalStorege } from '../../Hooks/useLocalStorage';
 import style from '../SearchBar/SearchBar.module.css'
 import { setPage } from '../../redux/actions/index';
 
 
-export default function SearchBar() {
+export default function SearchBar2() {
   const dispatch = useDispatch();
   const [value, setValue] = useLocalStorege('value', '')
-  const allBeersx2 = useSelector(state => state.allBeers);
+  const allBeersx2 = useSelector(state => state.sellers);
 
   const onChange = (e) => {           // handleInput
     e.preventDefault();
@@ -18,20 +18,20 @@ export default function SearchBar() {
 
   const onSearch = (searchTerm) => {       //handleSubmit
     setValue(searchTerm)
-    dispatch(searchBar(value));
+    dispatch(searchBar2(value));
     setValue('')
     dispatch(setPage(1))
 
   };
 
   const onSearch2 = (payload) => {
-    dispatch(searchBar(payload));
+    dispatch(searchBar2(payload));
     dispatch(setPage(1))
     setValue('')
   }
 
   function handleBack() {
-    dispatch(getAllBeers());
+    dispatch(getAllSellers());
     setValue("")
     //setPage(1);
   }
