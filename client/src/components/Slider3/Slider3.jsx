@@ -1,18 +1,18 @@
 import React, { useState } from 'react'
-import './Slider.css'
+import '../Slider/Slider.css'
 import BtnSlider from '../Slider/BtnSlider'
-import dataSlider from '../Slider/dataSlider'
+import dataSlider2 from './dataSlider2'
 import { Link } from 'react-router-dom'
 
-export default function Slider() {
+export default function Slider3() {
 
     const [slideIndex, setSlideIndex] = useState(1)
 
     const nextSlide = () => {
-        if (slideIndex !== dataSlider.length) {
+        if (slideIndex !== dataSlider2.length) {
             setSlideIndex(slideIndex + 1)
         }
-        else if (slideIndex === dataSlider.length) {
+        else if (slideIndex === dataSlider2.length) {
             setSlideIndex(1)
         }
     }
@@ -22,7 +22,7 @@ export default function Slider() {
             setSlideIndex(slideIndex - 1)
         }
         else if (slideIndex === 1) {
-            setSlideIndex(dataSlider.length)
+            setSlideIndex(dataSlider2.length)
         }
     }
 
@@ -32,14 +32,15 @@ export default function Slider() {
 
     return (
         <div className="container-slider">
-            {dataSlider.map((obj, index) => {
+            {dataSlider2.map((obj, index) => {
                 return (
                     <div
                         key={obj.id}
-                        className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
-                       
-                            <img src={`./Imgs/img${index + 1}.jpg`} />
-                        
+                        className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
+                    >
+                        <Link to="/home">
+                            <img src={`./Imgs/slider2/img${index + 1}.jpg`} />
+                        </Link>
                     </div>
                 )
             })}
@@ -47,7 +48,7 @@ export default function Slider() {
             <BtnSlider moveSlide={prevSlide} direction={"prev"} />
 
             <div className="container-dots">
-                {Array.from({ length: 5 }).map((item, index) => (
+                {Array.from({ length: 4 }).map((item, index) => (
                     <div
                         key={index}
                         onClick={() => moveDot(index + 1)}

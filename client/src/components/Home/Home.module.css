@@ -11,6 +11,9 @@
     margin-top: 10px;
     color: rgb(35, 20, 10);
 }
+.footer {
+    margin-top: 112%;
+}
 
 @media (max-width:1280px) {
 
@@ -36,11 +39,11 @@
 }
 
 
-
-
 .footer {
-    margin-top: 12%;
+    margin-top: 125%;
 }
+
+
 
 
 
@@ -87,9 +90,9 @@
     }
 
     .footer {
-        margin-top: 2%;
+        margin-top: 245%;
+       
     }
-
 
     .navbar {
         /* margin: 3% 8% 2% 2%; */

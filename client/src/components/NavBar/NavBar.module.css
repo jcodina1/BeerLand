@@ -113,13 +113,14 @@
     flex-direction: column;
     align-items: flex-end;
     height: 220px;
-    z-index: 2;
+    z-index: 9999;
     position: absolute;
 
 }
 
 .buttonlink .cartbtn {
     margin: -20px 40px 0 -500px;
+    z-index: 9999;
 }
 
 .sidePosition {
@@ -302,7 +303,9 @@
         width: 30px;
         margin-top: 8px;
         cursor: pointer;
+        transition: transform 0.5s;
     }
+   
 
     .buttonlink {
         margin: 0px 0px 10px 100px;
@@ -313,6 +316,7 @@
 
 
     }
+   
 
     .button {
         background-color: bisque;

@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 /* import PromoBanner from "../PromoPage/PromoPage"; */
 import Slider from "../Slider/Slider";
+import { Container } from "@mui/material";
 
 export default function Home() {
   
@@ -15,7 +16,8 @@ export default function Home() {
 
 
   return (
-    <div className={style.navbar}>
+    <Container maxWidth='xxl' disableGutters='false'>
+      <div className={style.navbar}>
       <div><NavBar /></div>
       <div><Slider /></div>
       <div className={style.h1Tittle}>Our Products</div>  
@@ -27,9 +29,11 @@ export default function Home() {
 
       </div>
       <div className={style.footer}>
-        <Footer className={style.footer} />
+        
       </div>
     </div>
+    <Footer className={style.footer} />
+    </Container>
 
 
   );

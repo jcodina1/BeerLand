@@ -9,6 +9,7 @@ import Slider2 from "../Slider2/Slider2";
 import Container from '@mui/material/Container';
 import { useDispatch } from "react-redux";
 import { getAllBeers } from "../../redux/actions";
+import Slider3 from "../Slider3/Slider3";
 
 
 export default function PromoPage() {
@@ -22,7 +23,7 @@ export default function PromoPage() {
             <div className={style.promopage}>
 
                 <Navbar />
-                <Slider />
+                <Slider3/>
                 <div className={style.banner}>
                     <img src={banner} alt="promo banner" />
                 </div>

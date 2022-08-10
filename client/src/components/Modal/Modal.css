@@ -1,5 +1,5 @@
 .modal {
-  position: fixed;
+  position: absolute;
   z-index: 999;
   top: 0;
   left: 0;
@@ -16,13 +16,13 @@
 }
 
 .modal-container {
-  position: relative;
+  position: absolute;
   background-color: #fff;
   min-width: 420px;
   max-width: 480;
   max-height: 200px;
   min-height: 500px;
-  overflow-y: auto;
+  overflow-y: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
