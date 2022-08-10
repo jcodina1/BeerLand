@@ -12,6 +12,21 @@ import Paper from "@mui/material/Paper";
 export default function SaleDetails({ setModalOpen, sellerId }) {
   const allPurchases = useSelector((state) => state.allPurchases);
   console.log(allPurchases);
+  const purchaseInfo = [];
+  if (allPurchases != null) {
+    allPurchases.forEach((purchase) => {
+      purchaseInfo.push(purchase.purchaseDetails);
+    });
+  }
+  console.log(purchaseInfo);
+  console.log(purchaseInfo[0][0].sellerId);
+  console.log(sellerId);
+
+  const filteredPurchaseInfo = purchaseInfo.filter(
+    (info) => info.sellerId == sellerId
+  );
+
+  console.log(filteredPurchaseInfo);
 
   return (
     <div className={styles.modalBackground}>
