@@ -4,7 +4,7 @@ import { getAllSellers } from "../../redux/actions";
 import { setPage } from "../../redux/actions";
 import BreweryCard from "../BreweryCard/BreweryCard";
 import Loading from "../Loading/Loading";
-import NavBar from "../NavBar/NavBar";
+import NavBar2 from "../NavBar/NavBar2";
 import Pagination from "../Pagination/Pagination";
 import style from '../ShowBrewery/ShowBrewery.module.css'
 import Container from '@mui/material/Container';
@@ -58,7 +58,7 @@ export default function ShowBrewery() {
     return (
         <Container maxWidth='xxl' disableGutters='false'>
             <div>
-                <NavBar />
+                <NavBar2 />
                 <div className={style.showBrewery}>
 
                     <div className={style.cardsContainer}>

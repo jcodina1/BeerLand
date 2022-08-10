@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap");
 
 .h1Tittle {
-    font-family: 'Staatliches', cursive;
-    /* font-family: 'Palanquin Dark', sans-serif; */
-    /* font-family: 'DM Serif Display', serif; */
-    font-size: 80px;
-    font-weight: 500;
-    margin-top: 10px;
-    color: rgb(35, 20, 10);
+  font-family: "Staatliches", cursive;
+  /* font-family: 'Palanquin Dark', sans-serif; */
+  /* font-family: 'DM Serif Display', serif; */
+  font-size: 80px;
+  font-weight: 500;
+  margin-top: 10px;
+  color: rgb(35, 20, 10);
 }
 .footer {
     margin-top: 112%;
 }
 
-@media (max-width:1280px) {
-
-
-.navbar {
+@media (max-width: 1280px) {
+  .navbar {
     /* background: yellowgreen; */
     height: fit-content;
     width: 100%;
@@ -60,34 +58,43 @@
     align-items: center;
     align-content: center;
     color: rgb(35, 20, 10);
-}
+  }
 
 .beerBox {
     padding: 30px 100px 0 100px;
     /* background-color: aqua; */
-}
+  }
 
 .paginate {
     margin: 120px 0 10px 0;
 
 }
 
-.tittle {
+  .tittle {
     font-size: 50px;
-}
+  }
 }
 
-@media (max-width:900px) {
+.btnScrollTop {
+    padding: 15px 20px;
+    background: rgb(41, 41, 41);
+    color: white;
+    border: 1px solid rgb(41, 41, 41);
+    border-radius: 100%;
+    cursor: pointer;
+    margin-left: 1800px;
+}
 
-    .h1Tittle {
-        font-family: 'Staatliches', cursive;
-        /* font-family: 'Palanquin Dark', sans-serif; */
-        /* font-family: 'DM Serif Display', serif; */
-        font-size: 40px;
-        font-weight: 500;
-        margin-top: 10px;
-        color: rgb(35, 20, 10);
-    }
+@media (max-width: 900px) {
+  .h1Tittle {
+    font-family: "Staatliches", cursive;
+    /* font-family: 'Palanquin Dark', sans-serif; */
+    /* font-family: 'DM Serif Display', serif; */
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 10px;
+    color: rgb(35, 20, 10);
+  }
 
     .footer {
         margin-top: 245%;
@@ -106,32 +113,30 @@
         width: 100%;
     }
 
-    .homeContainer {
-        display: grid;
-        grid-template-columns: repeat(3, auto);
-        /*  grid-auto-columns: 100px;
+  .homeContainer {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    /*  grid-auto-columns: 100px;
                 grid-auto-rows: auto; */
-        min-height: 100%;
-        width: 100%;
-        padding: 0px, 400px, 0px, 400px;
-        /*  background-color: rgb(253, 249, 243); */
-        align-items: center;
-        align-content: center;
-        color: rgb(35, 20, 10);
-    }
+    min-height: 100%;
+    width: 100%;
+    padding: 0px, 400px, 0px, 400px;
+    /*  background-color: rgb(253, 249, 243); */
+    align-items: center;
+    align-content: center;
+    color: rgb(35, 20, 10);
+  }
 
-    .beerBox {
-        padding: 10px 20px 0 20px;
-        /* background-color: aqua; */
-    }
+  .beerBox {
+    padding: 10px 20px 0 20px;
+    /* background-color: aqua; */
+  }
 
-    .paginate {
-        margin: 200px 0 10px 0;
+  .paginate {
+    margin: 200px 0 10px 0;
+  }
 
-    }
-
-    .tittle {
-        font-size: 50px;
-    }
-
+  .tittle {
+    font-size: 50px;
+  }
 }

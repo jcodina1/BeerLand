@@ -55,7 +55,7 @@ export default function Slider2() {
     }
 
     return (
-        <div className={style.containerlider2}>
+        <div className={style.containerlider2} >
             {
              imagesToShow.length &&
              renderImages().map((e,index)=>{

@@ -113,7 +113,7 @@ export function Login() {
 
   return (
     // <div className={style.login}>
-      <div >
+      <div className={style.stop} >
         {/* <img className={style.image} src={beertest} alt="beercharacter" /> */}
 
         

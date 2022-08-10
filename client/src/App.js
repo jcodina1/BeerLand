@@ -22,9 +22,14 @@ import BreweryDetail from "./components/BreweryDetail/BreweryDetail";
 import ShowBrewery from "./components/ShowBrewery/ShowBrewery";
 import UserProfile from "./components/UserProfile/UserProfile"
 import UserPurchases from "./components/Purchases/UserPurchases/UserPurchases";
+import SupportUser from "./components/SupportUser/SuportUser";
+import Contact from "./components/Contact/Contact";
+import AdminAnswer from "./components/SuperAdmin/AdminSupport/AdminAnswer";
 
 import BrewerySales from "./components/Purchases/BrewerySales"
 import SuperAdmin from "./components/SuperAdmin/SuperAdmin";
+import Support from "./components/Support/Support";
+
 import AboutUs from "./components/AboutUs/AboutUs";
 
 require("dotenv").config();
@@ -55,6 +60,10 @@ function App() {
             <Route path="/history" component={UserPurchases}/>
             <Route path="/purchases/seller/:id" component={BrewerySales}/>
             <Route path="/test" component={SuperAdmin}/>
+            <Route exact path="/SupportUser" component={SupportUser}/>
+            <Route exact path="/Support" component={Support}/>
+            <Route exact path="/Contact" component={Contact}/>
+            <Route exact path="/AdminAnswer" component={AdminAnswer}/>
             <Route path="/aboutus" component={AboutUs}/>
           </Switch>
         </AuthProvider>
