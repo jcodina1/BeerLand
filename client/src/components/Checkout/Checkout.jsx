@@ -35,7 +35,7 @@ export default function Checkout() {
   }, [dispatch]);
 
   const crypto = useSelector((state) => state.crypto);
-
+  console.log(checkoutinfo);
   let x = precioTotal / crypto;
   let valuecrypto = x.toString();
   let val = valuecrypto.slice(0, 11);
@@ -59,6 +59,8 @@ export default function Checkout() {
       beerId: beer.id,
       cant: beer.cant,
       price: beer.price,
+      sellerId: beer.sellerId,
+      beerName: beer.name,
     });
   });
   const beers = [];
