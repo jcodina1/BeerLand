@@ -29,7 +29,14 @@ const Star = ({id}) => {
                 beerId:id
             }
             dispatch(postScore(obj))
-        }  }
+        }  else
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You must login first to do this!",
+          });
+
+    }
 
     function handleSet(ratingValue) {
         if (user !== null) {
