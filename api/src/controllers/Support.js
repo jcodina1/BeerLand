@@ -61,7 +61,7 @@ const getSupports = async (req, res) => {
                 attributes: { exclude: ['createdAt', 'updatedAt'] },
                 include: {
                     model: User,
-                    attributes: ['name', 'email']
+                    attributes: ['name', 'email', 'id']
                 }
             });
             if (!supports) {
@@ -84,14 +84,42 @@ const getSupports = async (req, res) => {
 }
 
 const SendEmail = async (req,res)=>{
-    const { name, answer,email } = req.body;
-    console.log(name, email, answer)
+    const { name, answer,email, userId } = req.body;
+    console.log(name, email, answer, userId)
     sendEmailSupport( name, answer, email)
     res.send('Enviadoo')
 }
 
+async function deleteSupport(req, res, next) {
+    const { idSupport } = req.query
+    console.log(idSupport)
+    try {
+          const support = await Support.destroy({where:{idSupport:idSupport}})
+          const supportf = await Support.findAll()
+          res.send(supportf) 
+    } catch (error) {
+      next(error)
+    }
+}
+
+
+//   async function deleteFavorite(req, res, next) {
+//     const { idUser, idBeer } = req.query
+  
+//     try {
+//       const user = await User.findByPk(idUser, { include: Beer });
+//       await user.removeBeer(idBeer)
+//       let final = await User.findByPk(idUser, { include: Beer });
+//       res.status(200).send(final.beers)
+  
+//     } catch (error) {
+//       next(error)
+//     }
+//   }
+
 module.exports = {
 createSupport,
 getSupports,
-SendEmail
+SendEmail,
+deleteSupport
   };

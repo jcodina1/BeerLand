@@ -6,7 +6,7 @@ import { useHistory, Link } from 'react-router-dom';
 import Swal from "sweetalert2";
 import { useAuth } from '../../Context/Contestautenticacion';
 
-export default function AdminAnswer({name, email}) {
+export default function AdminAnswer({name, email, idSupport, isUser, userId}) {
     const dispatch = useDispatch()
     const history = useHistory()
     const users = useSelector(state => state.user)
@@ -23,7 +23,6 @@ export default function AdminAnswer({name, email}) {
     if (user !== null) {
         currentUser = users.filter((e) => e.email === user.email);
         idUser = currentUser[0].id
-        console.log(currentUser)
     }
 
     const redirect = () => {
@@ -34,9 +33,18 @@ export default function AdminAnswer({name, email}) {
   function post(values) {
     values.name = name
     values.email = email
-    console.log(values)
-    
+    values.idSupport = idSupport
+    values.isUser=isUser
+    values.userId=userId
+
     dispatch(answerSupport(values))
+    Swal.fire({
+        title:'Done!',
+        text:'Your answer was sent correctly',
+        icon:'success',
+        showConfirmButton: false,
+        timer: 1500
+})
   }
 
 
@@ -46,12 +54,21 @@ export default function AdminAnswer({name, email}) {
                 initialValues={{
                     name: '',
                     email: '',
-                    answer:''
+                    answer:'',
+                    idSupport: 0,
+                    isUser:null,
+                    userId:0
                 }}
                 validate={(valores) => {
                     let errors = {};
-                    if (/^\s/.test(valores.name)) {
-                        errors.name = "Cant start with an empty space"
+                    if (!valores.answer) {
+                        errors.answer = "Please enter a answer";
+                        Swal.fire({
+                            title:'0ops..!',
+                            text:'Your answer can not be empty',
+                            icon:'error',
+                            showConfirmButton: false,
+                            timer: 1500})
                     }
                     if (/^\s/.test(valores.answer)) {
                         errors.answer = "Cant start with an empty space"
@@ -60,13 +77,7 @@ export default function AdminAnswer({name, email}) {
                 }}
                 onSubmit={(valores, { resetForm }) => {
                     dispatch(post(valores, idUser))
-                    Swal.fire({
-                        title:'Done!',
-                        text:'Your profile has been updated',
-                        icon:'success',
-                        showConfirmButton: false,
-                        timer: 1500
-            })
+                   
             window.location.reload(true)
             resetForm()
             setTimeout(() => redirect(), "1000")

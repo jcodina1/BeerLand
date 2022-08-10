@@ -12,6 +12,7 @@ import Paper from '@mui/material/Paper';
 import { useModals } from '../../../Hooks/useModals';
 import Modal from '../../Modal/Modal';
 import AdminAnswer from './AdminAnswer';
+import { deleteComment } from '../../../redux/actions';
 
 
 
@@ -24,10 +25,12 @@ export default function SupportAdmin() {
     const dispatch = useDispatch()
     const Comments = useSelector(state => state.support)
     const [isOpenModal, openModal, closeModal] = useModals(false);
-  function s(idSupport) {
-    openModal(idSupport)
-    
-  }
+    console.log(Comments)
+
+    function handleclick(idSupport, f) {
+      f.preventDefault()
+      dispatch(deleteComment(idSupport))
+    }
     // let page = useSelector((state) => state.page);
     // let sellersPerPage = 3
   
@@ -80,15 +83,18 @@ export default function SupportAdmin() {
                   <TableCell>{e.name}</TableCell>
                   <TableCell>{e.email}</TableCell>
                   <TableCell>{e.comment}</TableCell>
+                
                   <TableCell>
-             
-                  
                        <AdminAnswer 
                        name={e.name}
                        email={e.email}
+                       idSupport={e.idSupport}
+                       isUser={e.isUser}
+                       userId={e.userId}
                        />
-             
-                 
+                  </TableCell>
+                  <TableCell>
+                    <button onClick={f=>handleclick(e.idSupport, f)}>X</button>
                   </TableCell>
                   {/* <TableCell>{e.createdAt.split("T")}</TableCell> */}
                   

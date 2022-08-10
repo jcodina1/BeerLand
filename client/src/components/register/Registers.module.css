@@ -251,6 +251,7 @@ h1 {
 
   .RegisterForm{
     padding: 120px;
+    margin-left: 300px;
   }
   .contactContainer .conttext h1:hover {
     color: #d16e31;
@@ -259,12 +260,12 @@ h1 {
   .contactContainer p {
   
     width: 700px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Trebuchet MS',sans-serif;
     text-align: justify;
   }
   .contactContainer h1 {
     text-align: left;
-    font-family: 'Roboto Flex', sans-serif;
+    font-family: 'Trebuchet MS',sans-serif;
   
   }
   .options {
@@ -272,7 +273,7 @@ h1 {
     padding: 100px 0px;
   }
   .minitag {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Trebuchet MS',sans-serif;
     color: white;
     transition: transform 0.5s;
     margin:10px 0px 0px 0px;
@@ -320,7 +321,7 @@ h1 {
     border: 1px solid #c4c4c4;
     box-shadow: 5px 5px 20px -2px black;
     border-radius: 20px;
-    font-family: 'Merriweather', serif;
+    font-family: 'Trebuchet MS',sans-serif;
     font-size: 20px;
     text-align: justify;
     min-width: 400px;
@@ -333,7 +334,7 @@ h1 {
     padding: 10px;
     border-radius: 10px;
     font-size: 18px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Trebuchet MS',sans-serif;
     border: 1px solid #c4c4c4;
     font-weight: 400;
     margin: 30px auto;
@@ -382,7 +383,7 @@ h1 {
     padding: 10px;
     border-radius: 10px;
     font-size: 18px;
-    font-family: 'Roboto Flex', sans-serif;
+    font-family: 'Trebuchet MS',sans-serif;
     border: 1px solid #c4c4c4;
     font-weight: 400;
     margin: 20px;
