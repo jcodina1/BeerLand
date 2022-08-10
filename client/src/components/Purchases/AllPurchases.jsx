@@ -17,9 +17,7 @@ export default function Purchases() {
     return (
         <div>
             <AllFilterStatus/>
-            {purchases?.map((e) => {
-                return (
-                    <Purchase
+            {purchases?.map(e =><Purchase
                         key={e.id}
                         id={e.id}
                         total={e.totalPrice}
@@ -29,9 +27,7 @@ export default function Purchases() {
                         user={e.user}
                         seller={e.beers.seller}
                         address={e.address}
-                    />
-                )
-            })}
+                    /> )}
         </div>
     )
 }

@@ -15,7 +15,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useAuth } from "../../Context/Contestautenticacion";
 import UserFilterStatus from "../FilterStatus/UserFilterStatus";
-import UserPurchaseDetail from "./UserPurchaseDetail/index";
+
 import NavBar from "../../NavBar/NavBar";
 import PurchaseDetails from "../../SuperAdmin/Users/PurchaseDetails";
 

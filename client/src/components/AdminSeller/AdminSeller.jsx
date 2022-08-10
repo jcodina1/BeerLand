@@ -5,7 +5,7 @@ import Sidebar from "./SideBar/Sidebar";
 import DashBoard from "./DashBoard/DashBoard";
 import { getBeerSeller, getAllSellers, getSalesBySellerId } from "../../redux/actions";
 import Beers from "./Beers/Beers";
-import UserPurchases from "../Purchases/UserPurchases/UserPurchases";
+import BrewerySales from '../Purchases/BrewerySales/BrewerySales'
 
 const AdminSeller = ({user}) => {
     const [mostrar, setMostrar] = useState(false)
@@ -13,17 +13,18 @@ const AdminSeller = ({user}) => {
     const dispatch = useDispatch()
     const seller = useSelector((state) => state.allSellers)
     let currentSeller;
-
+    let sellerId;
     if (user !== null) {
         currentSeller = seller?.filter((e) => e.mail === user.email);
+        sellerId=currentSeller[0].id
     }
 
     useEffect(() => {
         dispatch(getAllSellers())
-        dispatch(getSalesBySellerId(currentSeller[0].id))
-        dispatch(getBeerSeller(currentSeller[0].id))
-    }, [])
-
+        dispatch(getSalesBySellerId(sellerId))
+        dispatch(getBeerSeller(sellerId))
+    }, [dispatch])
+console.log(sellerId);
     //Users
     // Sellers 
     // Products
@@ -34,8 +35,9 @@ const AdminSeller = ({user}) => {
             <div className={mostrar ? style.container : style.container2}>
                 {render === "DashBoard" ? <DashBoard user={user}/> :
                     render === "Products" ? <Beers /> :
-                        render === "Pusrchases" ? <UserPurchases /> :
-                            <DashBoard mostrar={mostrar} />}
+                        render === "Pusrchases" ? <BrewerySales sellerId={sellerId} /> :
+                            <DashBoard mostrar={mostrar} />
+                            }
             </div>
 
         </div>
