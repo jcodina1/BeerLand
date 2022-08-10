@@ -42,12 +42,12 @@ export default function BeerDetail(props) {
           ) : (
             <div>
               <div>
-                <Link to="/home">
+                {/* <Link to="/home">
                   <button className={style.button}>Back</button>
                 </Link>
                 <Link to="/update">
                   <button>Update</button>
-                </Link>
+                </Link> */}
                 {/* //este botón es para la ruta de put para el vendedor */}
               </div>
               <div className={style.box}>

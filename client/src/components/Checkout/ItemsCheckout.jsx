@@ -7,7 +7,7 @@ export default function Itemscheckout({ name, image, price, cant }) {
     <div className={style.itemContainer}>
       <div className={style.itemBeer}>
         <img src={image} alt={name} />
-        <div>
+        <div className={style.itemBeer}>
           <h4>{name}</h4>
           <p>Units: {cant}</p>
           <p>Price per unit: ${(price / cant).toFixed(2)}</p>
