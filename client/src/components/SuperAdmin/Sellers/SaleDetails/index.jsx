@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { us } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,24 +9,24 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export default function SaleDetails({ setModalOpen, sellerId }) {
-  const allPurchases = useSelector((state) => state.allPurchases);
+export default function SaleDetails({ setModalOpen, sellerId, allPurchases }) {
   console.log(allPurchases);
-  const purchaseInfo = [];
+  let purchaseInfo = [];
   if (allPurchases != null) {
     allPurchases.forEach((purchase) => {
-      purchaseInfo.push(purchase.purchaseDetails);
+      purchaseInfo = [
+        ...purchaseInfo,
+        ...purchase.purchaseDetails,
+        ...purchase.beers,
+      ];
     });
   }
-  console.log(purchaseInfo);
-  console.log(purchaseInfo[0][0].sellerId);
-  console.log(sellerId);
-
-  const filteredPurchaseInfo = purchaseInfo.filter(
-    (info) => info.sellerId == sellerId
+  // console.log(purchaseInfo);
+  const filteredPurchases = purchaseInfo.filter(
+    (info) => (info.sellerId = sellerId)
   );
 
-  console.log(filteredPurchaseInfo);
+  // console.log(filteredPurchases);
 
   return (
     <div className={styles.modalBackground}>

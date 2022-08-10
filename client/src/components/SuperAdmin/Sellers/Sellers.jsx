@@ -15,6 +15,8 @@ import { setPage } from "../../../redux/actions";
 
 export default function Sellers() {
   const dispatch = useDispatch();
+  const allPurchases = useSelector((state) => state.allPurchases);
+  console.log(allPurchases);
   const allSellers = useSelector((state) => state.allSellers);
   let page = useSelector((state) => state.page);
   let sellersPerPage = 3;
@@ -77,7 +79,11 @@ export default function Sellers() {
                     Sales Details{" "}
                   </button>{" "}
                   {modalOpen && (
-                    <SaleDetails setModalOpen={setModalOpen} sellerId={e.id} />
+                    <SaleDetails
+                      setModalOpen={setModalOpen}
+                      sellerId={e.id}
+                      allPurchases={allPurchases}
+                    />
                   )}
                 </TableCell>
               </TableRow>

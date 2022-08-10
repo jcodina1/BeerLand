@@ -15,7 +15,6 @@ import Score from "../Score/Score";
 import { Comment } from "../Comment/Comment";
 import { Container } from "@mui/material";
 
-
 export default function BeerDetail(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -28,9 +27,8 @@ export default function BeerDetail(props) {
   }, [dispatch, id]);
 
   return (
-    <Container maxWidth='xxl' disableGutters='false' >
+    <Container maxWidth="xxl" disableGutters="false">
       <div>
-       
         <div>
           <NavBar />
         </div>
@@ -45,9 +43,7 @@ export default function BeerDetail(props) {
                 <Link to="/home">
                   <button className={style.button}>Back</button>
                 </Link>
-                <Link to="/update">
-                  <button>Update</button>
-                </Link>
+
                 {/* //este botón es para la ruta de put para el vendedor */}
               </div>
               <div className={style.box}>
@@ -63,7 +59,6 @@ export default function BeerDetail(props) {
                 </div>
 
                 <div className={style.containerR}>
-
                   <p>
                     <h2>Description:</h2>
                     <span className={style.textBox}>{beer.description}</span>
@@ -71,7 +66,12 @@ export default function BeerDetail(props) {
 
                   <div>
                     <Score id={beer.id} />
-                    <DetailCompra name={beer.name} price={beer.price} id={beer.id} stock={beer.stock}></DetailCompra>
+                    <DetailCompra
+                      name={beer.name}
+                      price={beer.price}
+                      id={beer.id}
+                      stock={beer.stock}
+                    ></DetailCompra>
                   </div>
                 </div>
               </div>
@@ -82,6 +82,6 @@ export default function BeerDetail(props) {
           </div>
         </div>
       </div>
-      </Container>
-      );
+    </Container>
+  );
 }
