@@ -7,6 +7,7 @@ import { useAuth } from "../Context/Contestautenticacion";
 import { postUser } from "../../redux/actions";
 import NavBar from "../NavBar/NavBar";
 import { useDispatch } from "react-redux";
+import Footer from "../Footer/Footer";
 
 
 export function Register() {
@@ -61,9 +62,9 @@ export function Register() {
       <form style={{ display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
         
         <div className={style.contactInfo}>
-        <h1 style={{ textAlign: 'center', margin: '0' }}>Sign In</h1>
+        <h1 style={{ textAlign: 'center', margin: '0', color:"rgb(35,20,10)"  }}>Sign In</h1>
         <div className={style.description}>
-          {/* <label>Name: </label> */}
+          <label>Name: </label>
           <input
             className={style.otromas}
             name="name"
@@ -74,7 +75,7 @@ export function Register() {
         </div>
 
         <div className={style.description}>
-          <label>Surname: </label>
+          <label>Last Name: </label>
           <input
            className={style.otromas}
             name="surname"
@@ -113,7 +114,7 @@ export function Register() {
             name="password"
             type="password"
             id="password"
-            placeholder="password"
+            placeholder="Password"
             onChange={handleChange}
           />
         </div>
@@ -125,7 +126,7 @@ export function Register() {
             name="confirmation"
             type="password"
             id="confirmation"
-            placeholder="confirmation"
+            placeholder="Confirmation"
             onChange={handleChange}
           />
         </div>
@@ -133,7 +134,7 @@ export function Register() {
 
       
       <div className={style.descriptionS}>
-        <button className={style.minimize} onClick={handleSubmit}>Sing In</button>
+        <button className={style.minimize} onClick={handleSubmit}>Sign In</button>
       </div>
     
 
@@ -161,6 +162,7 @@ export function Register() {
       </form>
       </div>
     </div>
+    <Footer></Footer>
     </>
   );
 }

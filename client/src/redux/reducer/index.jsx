@@ -42,6 +42,11 @@ import {
   GET_SALES_BREWERY,
   CRYPTO,
   FILTER_STATUS,
+  POST_SUPPORT,
+  GET_SUPPORT,
+  ANSWER_SUPPORT,
+  SUPPORT,
+  SEARCH_BAR2,
 } from "../const";
 
 const initialState = {
@@ -69,8 +74,8 @@ const initialState = {
   crypto: 0,
   filtroPurchases: [],
   backupSupport: [],
-  support:[]
-
+  support:[],
+  search2: [],
 };
 
 function Reducer(state = initialState, action) {
@@ -162,6 +167,7 @@ function Reducer(state = initialState, action) {
         ...state,
         search: action.payload,
         beers: action.payload,
+        
       };
     }
 
@@ -402,22 +408,36 @@ function Reducer(state = initialState, action) {
         crypto: action.payload,
       };
 
-          case 'POST_SUPPORT':
-            return {
-              ...state,
-            }
-        
-            case 'GET_SUPPORT':
-              return {
-                ...state,
-                support: action.payload,
-                backupSupport: action.payload
-              };
+    case POST_SUPPORT:
+      return {
+        ...state,
+      }
 
-              case 'ANSWER_SUPPORT':
-                return {
-                  ...state,
-                }
+    case SUPPORT:
+      return {
+        ...state,
+        support: action.payload,
+        backupSupport: action.payload
+      };
+
+    case ANSWER_SUPPORT:
+      return {
+        ...state,
+      }
+    case 'DELETE_COMMENT':
+      return{
+        ...state,
+        support:action.payload,
+        backupSupport: action.payload
+      }
+      case SEARCH_BAR2: {
+        return {
+          ...state,
+          search2: action.payload,
+          allSellers: action.payload,
+        };
+      }
+    
 
 
 
