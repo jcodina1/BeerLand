@@ -45,7 +45,7 @@ import {
   SELLERBEERS,
   SELLERBEER,
   SET_DETAIL_SELLER,
-  POST_PURCHASE,
+  POST_PURCHASE, 
   GET_PURCHASES_BY_USER,
   UPDATE_PURCHASE_STATUS,
   FILTER_SALES_STATUS,
@@ -53,6 +53,13 @@ import {
   GET_SALES_BREWERY,
   CRYPTO,
   FILTER_STATUS,
+  POST_SUPPORT,
+  GET_SUPPORT,
+  ANSWER_SUPPORT,
+  SUPPORT, 
+  SEARCH_BAR2,
+  ALL_NAME2
+
 } from "../const";
 
 export function addToCart(id) {
@@ -472,8 +479,8 @@ export function filterByStatus(payload) {
 export function postSupport(payload) {
   return async function (dispatch) {
     try {
-      let response = await axios.post(`http://localhost:3001/support`, payload);
-      return dispatch({ type: "POST_SUPPORT", payload: response.data });
+      let response = await axios.post(POST_SUPPORT, payload);
+      return dispatch({ type:POST_SUPPORT, payload: response.data });
     } catch (e) {
       console.log(e);
     }
@@ -483,8 +490,9 @@ export function postSupport(payload) {
 export function getSupport() {
   return async function (dispatch) {
     try {
-      const res = await axios.get("http://localhost:3001/support");
-      return dispatch({ type: 'GET_SUPPORT', payload: res.data.supports });
+      const res = await axios.get(GET_SUPPORT);
+      console.log(res)
+      return dispatch({ type: SUPPORT, payload: res.data.supports });
     } catch (error) {
       console.log(error);
     }
@@ -495,10 +503,38 @@ export function answerSupport(payload) {
   console.log(payload)
   return async function (dispatch) {
     try {
-      let response = await axios.post(`http://localhost:3001/support/answer`, payload);
-      return dispatch({ type: 'ANSWER_SUPPORT', payload: response.data });
+      let response = await axios.post(ANSWER_SUPPORT, payload);
+      return dispatch({ type: ANSWER_SUPPORT, payload: response.data });
     } catch (e) {
       console.log(e);
+    }
+  };
+}
+
+export function deleteComment(idSupport) {
+  return async function (dispatch) {
+    try {
+      const re = await axios.delete("http://localhost:3001/support?idSupport=" + idSupport);
+      return dispatch({ type: 'DELETE_COMMENT', payload: re.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function searchBar2(payload) {
+  console.log(payload)
+  return async function (dispatch) {
+    try {
+      const search2 = await axios.get(ALL_NAME2 + payload);
+      return dispatch({
+        type: SEARCH_BAR2,
+        payload: search2.data,
+      });
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data);
+      }
     }
   };
 }

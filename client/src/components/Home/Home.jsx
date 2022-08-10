@@ -9,10 +9,12 @@ import { useSelector } from "react-redux";
 import Slider from "../Slider/Slider";
 
 export default function Home() {
-  
   /* const [userType, setUserType] = useState('') */
   const carga = useSelector((state) => state);
 
+  function up() {
+    window.scrollTo(0, 0)
+  }
 
   return (
     <div className={style.navbar}>
@@ -29,6 +31,7 @@ export default function Home() {
             <ShowBeers />
           </div>
         </div>
+        <button className={style.btnScrollTop} onClick={up}>Ʌ</button>
       </div>
       <div className={style.footer}>
         <Footer className={style.footer} />
