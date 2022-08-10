@@ -47,7 +47,6 @@ import {
   ANSWER_SUPPORT,
   SUPPORT,
   SEARCH_BAR2,
-
 } from "../const";
 
 const initialState = {
@@ -178,21 +177,21 @@ function Reducer(state = initialState, action) {
         sortedByName =
           action.payload === "AtoZ"
             ? state.allBeers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
+                return a.name.localeCompare(b.name);
+              })
             : state.allBeers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+                return b.name.localeCompare(a.name);
+              });
       }
       if (state.allBeers.length !== state.beers.length) {
         sortedByName =
           action.payload === "AtoZ"
             ? state.beers.sort(function (a, b) {
-              return a.name.localeCompare(b.name);
-            })
+                return a.name.localeCompare(b.name);
+              })
             : state.beers.sort(function (a, b) {
-              return b.name.localeCompare(a.name);
-            });
+                return b.name.localeCompare(a.name);
+              });
       }
       return {
         ...state,
@@ -207,22 +206,22 @@ function Reducer(state = initialState, action) {
         sortedByPrice =
           action.payload === "Low to High"
             ? state.allBeers.sort(function (a, b) {
-              return a.price - b.price;
-            })
+                return a.price - b.price;
+              })
             : state.allBeers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+                return b.price - a.price;
+              });
       }
       if (state.allBeers.length !== state.beers.length) {
         //misma logica de arriba, caso opuesto
         sortedByPrice =
           action.payload === "Low to High"
             ? state.beers.sort(function (a, b) {
-              return a.price - b.price;
-            })
+                return a.price - b.price;
+              })
             : state.beers.sort(function (a, b) {
-              return b.price - a.price;
-            });
+                return b.price - a.price;
+              });
       }
       return {
         ...state,
@@ -236,13 +235,12 @@ function Reducer(state = initialState, action) {
         action.payload === "All"
           ? preFilteredBeersByBrewery
           : preFilteredBeersByBrewery.filter(
-            (beer) => parseInt(beer.sellerId) === parseInt(action.payload)
-          );
+              (beer) => parseInt(beer.sellerId) === parseInt(action.payload)
+            );
       return {
         ...state,
         beers: filteredBeersByBrewery,
         filterPlaceholder: filteredBeersByBrewery,
-
       };
 
     case FILTER_BEER_BY_TYPE:
@@ -251,8 +249,8 @@ function Reducer(state = initialState, action) {
         action.payload === "All"
           ? preFilteredBeersByType
           : preFilteredBeersByType.filter(
-            (beer) => beer.tipo === action.payload
-          );
+              (beer) => beer.tipo === action.payload
+            );
 
       return {
         ...state,
@@ -314,13 +312,13 @@ function Reducer(state = initialState, action) {
       };
     case POST_COMMENT:
       return {
-        ...state
+        ...state,
       };
     case GET_COMMENTS_BEER:
       return {
         ...state,
-        comments: action.payload
-      }
+        comments: action.payload,
+      };
 
     case GET_FAV_DETAIL:
       return {
@@ -337,14 +335,14 @@ function Reducer(state = initialState, action) {
       return {
         ...state,
         allPurchases: action.payload,
-        filtroPurchases: action.payload
+        filtroPurchases: action.payload,
       };
 
     case SELLERBEERS:
       return {
         ...state,
-        filterPlaceholder: action.payload
-      }
+        filterPlaceholder: action.payload,
+      };
 
     case SET_DETAIL_SELLER:
       return {
@@ -360,27 +358,23 @@ function Reducer(state = initialState, action) {
     case UPDATE_PURCHASE_STATUS:
       return {
         ...state,
-        userPurchases: action.payload
-      }
+        userPurchases: action.payload,
+      };
 
     case GET_SALES_BREWERY:
       return {
         ...state,
         userPurchases: action.payload,
-        filtroPurchases: action.payload
-      }
+        filtroPurchases: action.payload,
+      };
 
     case GET_PURCHASES_BY_USER:
       return {
         ...state,
         userPurchases: action.payload,
-        filtroPurchases: action.payload
+        filtroPurchases: action.payload,
       };
-    case UPDATE_PURCHASE_STATUS:
-      return {
-        ...state,
-        userPurchases: action.payload
-      }
+
     case UPDATE_USER:
       return {
         ...state,
@@ -388,21 +382,25 @@ function Reducer(state = initialState, action) {
 
     case FILTER_SALES_STATUS:
       const allOrders = state.filtroPurchases;
-      const filteredByStatus = action.payload === "All" ? allOrders
-        : allOrders.filter((st) => st.status === action.payload);
+      const filteredByStatus =
+        action.payload === "All"
+          ? allOrders
+          : allOrders.filter((st) => st.status === action.payload);
       return {
         ...state,
         userPurchases: filteredByStatus,
-      }
+      };
 
     case FILTER_STATUS:
       const orders = state.allPurchases;
-      const filtered = action.payload === "All" ? orders
-        : orders.filter((st) => st.status === action.payload);
+      const filtered =
+        action.payload === "All"
+          ? orders
+          : orders.filter((st) => st.status === action.payload);
       return {
         ...state,
         filtroPurchases: filtered,
-      }
+      };
 
     case CRYPTO:
       return {
