@@ -11,6 +11,7 @@
   border-radius: 10px;
   background-color: #704021;
   color: antiquewhite;
+  z-index: 9999;
 }
 
 .modal-container button:hover {
