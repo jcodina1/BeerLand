@@ -15,7 +15,7 @@ export default function SaleDetail({ purchase, mostrar, setMostrar }) {
   const invoiceSubtotal = purchase.totalPrice;
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
   const invoiceTotal = invoiceSubtotal - invoiceTaxes;
-
+  const [mostrar, setMostrar] = useState(false);
   console.log(purchase);
   function ccyFormat(num) {
     return `${num.toFixed(2)}`;
@@ -23,6 +23,8 @@ export default function SaleDetail({ purchase, mostrar, setMostrar }) {
 
   return (
 
+   <>
+   
     <div className={styles.table}>
       {mostrar ? <div>
         <p onClick={()=>setMostrar(false)}>❌</p>
@@ -83,10 +85,10 @@ export default function SaleDetail({ purchase, mostrar, setMostrar }) {
           </Table>
         </TableContainer>
 
-      </div> : ""}
+      </div> : <TableCell><button onClick={()=>setMostrar(true)}>Detail</button></TableCell>}
 
 
-    </div>
+    </div></>
 
   );
 }
