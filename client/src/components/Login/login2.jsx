@@ -65,7 +65,6 @@ export function Login() {
         rol: "user",
         image:google._tokenResponse.photoUrl
       };
-      var hola = ''
       const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
       setDoc(docuRef, {
         email: user2.email,
@@ -75,7 +74,7 @@ export function Login() {
         login: "google",
         image:google._tokenResponse.photoUrl
       });
-      dispatch(postUser(user2));
+      const hola=''
 
       //   dispatch(postUser(userdata))
       history.push("/home");
