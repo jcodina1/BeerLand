@@ -4,7 +4,7 @@ import profiles from '../../../img/beertest.png'
 import { AiOutlineMenu } from "react-icons/ai";
 import { BsCart4, BsGrid1X2 } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
-import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { MdOutlineAdminPanelSettings, MdOutlineCreateNewFolder } from "react-icons/md";
 import { BiLogOut, BiPurchaseTagAlt, BiSearchAlt, BiSupport} from 'react-icons/bi'
 
 import style from './Sidebar.module.css'
@@ -65,6 +65,7 @@ export default function Sidebar({mostrar,setMostrar,setRender}) {
                     </div>
                     
                 </li>
+                
             </ul>
             {mostrar?<div className={style.profile_content}>
                 <div className={style.profile}>
