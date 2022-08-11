@@ -16,14 +16,15 @@ import { setPage } from "../../../redux/actions";
 export default function Sellers() {
   const dispatch = useDispatch();
   const allPurchases = useSelector((state) => state.allPurchases);
+  const [allPurchases2, setAllPurchases2] = useState(allPurchases);
   console.log(allPurchases);
   const allSellers = useSelector((state) => state.allSellers);
   let page = useSelector((state) => state.page);
-  let sellersPerPage = 3;
+  let sellersPerPage = 5;
   const [modalOpen, setModalOpen] = useState(false);
   let lastIndex = page * sellersPerPage; //indice incial para metodo slice
   let firstIndex = lastIndex - sellersPerPage; //indice final para metodo slice
-  let currentSeller = allSellers.slice(firstIndex, lastIndex); //metodo slice para determinar del array los libros a mostrar por pagina
+  let currentSeller = allSellers.slice(firstIndex, lastIndex); //metodo slice para determinar del array los libros xddddd a mostrar por pagina
 
   const limitPage = Math.ceil(allSellers.length / sellersPerPage);
 
@@ -81,8 +82,8 @@ export default function Sellers() {
                   {modalOpen && (
                     <SaleDetails
                       setModalOpen={setModalOpen}
-                      sellerId={e.id}
-                      allPurchases={allPurchases}
+                      id={e.id}
+                      allPurchases={allPurchases2}
                     />
                   )}
                 </TableCell>

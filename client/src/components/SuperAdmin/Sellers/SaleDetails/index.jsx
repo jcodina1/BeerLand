@@ -9,24 +9,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export default function SaleDetails({ setModalOpen, sellerId, allPurchases }) {
+export default function SaleDetails({ setModalOpen, id, allPurchases }) {
   console.log(allPurchases);
   let purchaseInfo = [];
   if (allPurchases != null) {
     allPurchases.forEach((purchase) => {
-      purchaseInfo = [
-        ...purchaseInfo,
-        ...purchase.purchaseDetails,
-        ...purchase.beers,
-      ];
+      purchaseInfo = [...purchaseInfo, ...purchase.purchaseDetails];
     });
   }
   // console.log(purchaseInfo);
-  const filteredPurchases = purchaseInfo.filter(
-    (info) => (info.sellerId = sellerId)
-  );
+  const filteredPurchases = purchaseInfo.filter((info) => (info.sellerId = id));
 
-  // console.log(filteredPurchases);
+  console.log(filteredPurchases);
 
   return (
     <div className={styles.modalBackground}>
@@ -46,7 +40,7 @@ export default function SaleDetails({ setModalOpen, sellerId, allPurchases }) {
               {/* {allPurchases
                 .map((purchase) =>
                   purchase.purchaseDetails.filter(
-                    (detail) => detail.sellerId == sellerId
+                    (detail) => detail.sellerId == id
                   )
                 )
                 .map((filteredPurchases) => {
