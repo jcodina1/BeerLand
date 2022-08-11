@@ -65,7 +65,6 @@ export function Login() {
         rol: "user",
         image:google._tokenResponse.photoUrl
       };
-
       const docuRef = doc(firestore, `usuarios/${google.user.uid}`);
       setDoc(docuRef, {
         email: user2.email,

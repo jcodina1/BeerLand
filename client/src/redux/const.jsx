@@ -2,7 +2,6 @@ export const ALL_PURCHASES = '/purchases';
 export const ALL_API = "/beer";
 export const ALL_ID = "/beer/id/";
 export const ALL_SELLERS = "/sellers";
-export const all = "/seller"
 export const FAVS = "/user/fav";
 export const GET_USER = "/user";
 export const SELLERS_ID = "/seller/";
