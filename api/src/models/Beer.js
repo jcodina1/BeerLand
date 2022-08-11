@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     price: {
       type: DataTypes.STRING,
@@ -22,9 +22,21 @@ module.exports = (sequelize) => {
     stock: {
       type: DataTypes.INTEGER,
     },
+    grade: {
+      type: DataTypes.INTEGER,
+    },
+    origin: {
+      type: DataTypes.STRING,
+    },
+    tipo: {
+      type: DataTypes.STRING,
+    },
+    ibu: {
+      type: DataTypes.INTEGER,
+    },
     image: {
       type: DataTypes.STRING,
-    }
+    },
   }, { paranoid: true });
 };
 //AÑADIR COSAS TIPO GRADUACIÓN, Y PARAMETROS PARA FANÁTICOS DE LA BIRRA

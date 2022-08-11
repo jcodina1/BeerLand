@@ -1,136 +1,168 @@
 import React from "react";
 import { useState } from "react";
-import style from '../Login/Login.module.css'
-import swal from 'sweetalert'
+import style from "./Registers.module.css";
+import swal from "sweetalert";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../context/contestautenticacion";
+import { useAuth } from "../Context/Contestautenticacion";
+import { postUser } from "../../redux/actions";
+import NavBar from "../NavBar/NavBar";
+import { useDispatch } from "react-redux";
+import Footer from "../Footer/Footer";
 
 
 export function Register() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { signup } = useAuth();
 
-    const history = useHistory()
-    const {signup} = useAuth()
+  const [error, setError] = useState("");
+  const [user, SetUser] = useState({
+    email: "",
+    password: "",
+    confirmation: "",
+    name: "",
+    surname: "",
+    address: "",
+    rol: "user",
+  });
 
-    const [error,setError] = useState('')
-    const [user, SetUser] = useState({
-                email:'',
-                password: '',
-                rol:'user'
-               
-            })
-             console.log(user)
+
+
+  const handleChange = (e) => {
+    SetUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signup(user.email, user.password, user.rol);
+      dispatch(postUser(user));
+    } catch (error) {
+      setError(error.message);
+      swal(error.message);
+    }
+  };
+
+
+
+  return (
+    <>
+      <div className={style.navBar}>
+            <NavBar/>
+      </div>
+  
+    <div className={style.container}>
+      <div className={style.RegisterForm}>
+
+      <form style={{ display: 'flex', justifyContent: 'center', flexDirection:'column'}}>
         
-        //     function verifica_seleccion(check){
-        //         if(!check.checked){
-        //             check.checked=1;
-        //         }
-        //     }
-        
-            const handleChange = (e) => {
-                SetUser({
-                    ...user,
-                    [e.target.name]: e.target.value
-                })
-            }
-        
-        
-        
-             const handleSubmit = async (e) => {
-                e.preventDefault()
-                try {
-                    await signup(user.email, user.password, user.rol)
-                    console.log('enviado',user.email, user.password, user )
-                } catch (error) {
-                    setError(error.message)
-                    swal(error.message)
-                }
-            }
-        
-        
-        //     const handleGoogle = async ()=>{
-        //        try {
-        //         user.User = user.User
-        //           const google =  await  logingWithGoogle()
-        //           console.log(google)
-        //           const userdata ={ name:google._tokenResponse.firstName, surname:google._tokenResponse.lastName,  email:google.user.email,  user:user.User}
-        //           dispatch(postUser(userdata))
-        //           history.push('/home')
-        
-        //          } catch (error) {
-        //              console.log(error.message)
-        //              setError(error.message)
-        //              swal(error.message)
-        //          }
-             
-        //     }
-        
-        //     const handelResetPassword =async ()=>{
-        //         if (!user.email) return swal("please enter your mail")
-        //         try {
-        //             await resetPassword(user.email)
-        //             swal('We sent you an mail with a link to reset you password')
-        //         } catch (error) {
-        //             setError(error.message)
-        //         }
-                
-        //     }
-
-
-
-
-
-
-        return (
-        <div className={style.container}>
-            <form>
-                <h1>Login</h1>
-            <div className={style.password}>
-                <label>Email: </label>
-                <input name='email'
-                    type="email"
-                    placeholder='youremail@company.com'
-                    onChange={handleChange} />
-            </div>
-
-            <div className={style.password}>
-                <label>Password: </label>
-                <input name='password'
-                    type='password' id="password"
-                    placeholder='******'
-                    onChange={handleChange} />
-            </div>
-
-            
-
-         {/* <a href='#!'onClick={handelResetPassword}>
-                Forgot Password
-            </a> */}
-
-            </form>
-            <div className={style.submit}>
-                <button onClick={handleSubmit} >Login</button>
-            </div>
-            {/* <div>
-                <button onClick={handleGoogle}>Google Login</button>
-            </div> */}
-<div>
-            <label>Don't have an Account  . </label>
-            <Link to='/register'>
-                <button>Register</button>
-            </Link>
-</div>
-            <label>Register as a company : </label>
-            <Link to='/registerCompany'>
-                <button>Register</button>
-            </Link>
-           <div>
-             <Link to='/home'>
-                <button>Return</button>
-            </Link>
-           </div>
-           
-            
+        <div className={style.contactInfo}>
+        <h1 style={{ textAlign: 'center', margin: '0', color:"rgb(35,20,10)"  }}>Sign In</h1>
+        <div className={style.description}>
+          <label>Name: </label>
+          <input
+            className={style.otromas}
+            name="name"
+            type="name"
+            placeholder="Name"
+            onChange={handleChange}
+          />
         </div>
-    )
+
+        <div className={style.description}>
+          <label>Last Name: </label>
+          <input
+           className={style.otromas}
+            name="surname"
+            type="surname"
+            placeholder="Last Name"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={style.description}>
+          <label>Address: </label>
+          <input
+            className={style.otromas}
+            name="address"
+            type="address"
+            placeholder="Address"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={style.description}>
+          <label>Email: </label>
+          <input
+            className={style.otromas}
+            name="email"
+            type="email"
+            placeholder="youremail@company.com"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={style.description}>
+          <label>Password: </label>
+          <input
+           className={style.otromas}
+            name="password"
+            type="password"
+            id="password"
+            placeholder="Password"
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className={style.description}>
+          <label>Confirmation: </label>
+          <input
+            className={style.otromas}
+            name="confirmation"
+            type="password"
+            id="confirmation"
+            placeholder="Confirmation"
+            onChange={handleChange}
+          />
+        </div>
+
+
+      
+      <div className={style.descriptionS}>
+        <button className={style.minimize} onClick={handleSubmit}>Sign In</button>
+      </div>
     
+
+      <div>
+       
+        <Link className={style.textde} to="/registerCompany">
+          <div className={style.descriptionS}>
+            <label>Register as a company </label>
+          </div>
+          
+        </Link>
+      </div>
+      <div>
+        <Link className={style.textde} to="/home">
+        <div className={style.descriptionS}>
+            <button className={style.minimize}>Return</button>
+          </div>
+        </Link>
+      </div>
+
+
+
+        </div>
+
+      </form>
+      </div>
+    </div>
+    <Footer></Footer>
+    </>
+  );
 }

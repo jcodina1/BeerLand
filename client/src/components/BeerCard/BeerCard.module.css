@@ -1,44 +1,431 @@
-.cardContainer {
-    background-color: brown;
-    width: 15vw;
-    height: 17rem;
-    margin: 20px 20px 100px 20px;
-    display: flex;
-    font-size: large;
-    font-family: 'Trebuchet MS', sans-serif;
-    color: aqua;
-    flex-direction: column;
-    justify-content: space-evenly;
-    text-align: center;
-    align-items: center;
-    padding: 16px;
-    border-radius: 10px;
+ .container {
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	min-height: 100vh;
+	
+ }
+
+ .card {
+ 	position: relative;
+ 	width: 540px;
+ 	height: 380px;
+ 	/* background: blue; */
+ 	border-radius: 10px;
+ 	display: flex;
+ 	align-items: center;
+ 	transition: 0.5s;
+ 	margin: 40px 0px 50px 0px;
+ 	padding: 15px;
+ }
+
+ .card .circle {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	/* overflow: hidden; */
+
+ }
+
+ .card .circle::before {
+ 	content: '';
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	height: 100%;
+ 	/* background: rgb(180, 90, 30); */
+ 	clip-path: circle(120px at center);
+ 	transition: 0.5s;
+ }
+
+ .card:hover .circle:before {
+ 	background: #704021;
+ 	clip-path: circle(400px at center);
+ 	border-radius: 10px;
+ }
 
 
-}
+ .card img {
+ 	/* background-color: aquamarine; */
+ 	position: absolute;
+ 	top: 32%;
+ 	left: 50%;
+ 	transform: translate(-50%, -50%);
+ 	height: 450px;
+ 	pointer-events: none;
+ 	transition: 0.5s;
+ 	height: 400px;
+ 	width: 320px;
 
-.content {
-    margin: 1rem 0 0 0;
-}
+ }
 
-.cardImg {
-    width: 45%;
-}
-.button{
-    background-color: bisque;
-    color: rgb(2, 32, 10);
-    font-family: 'Trebuchet MS',  sans-serif;
-    border-radius: 5px;
-    margin: 0 5px 0 5px;
-    border: none;
-    height: 30px;
-    left:60%;
-}
-.textbox{
-    color:rgb(2, 32, 10);
-    font-family: 'Trebuchet MS', sans-serif;
-}
-p{
-    font-family: 'Trebuchet MS', sans-serif;
+ .card:hover img {
+ 	left: 75%;
+ 	height: 650px;
+ 	width: 540px;
 
-}
+ }
+
+ .card .content {
+ 	position: relative;
+ 	width: 50%;
+ 	left: 20%;
+ 	padding: 35px 20px 20px 30px;
+ 	transition: 0.5s;
+ 	opacity: 0;
+ 	visibility: hidden;
+ 	margin-right: 40px;
+ 	margin-top: -7px;
+ 	text-decoration: none;
+ }
+
+ .card:hover .content {
+ 	left: 0;
+ 	opacity: 1;
+ 	visibility: visible;
+
+ }
+
+ .card .content h2 {
+ 	color: antiquewhite;
+ 	text-transform: uppercase;
+ 	font-size: 1.8em;
+ 	line-height: 1em;
+ 	/* margin-bottom: 10px;  */
+ 	font-family: 'Trebuchet MS', sans-serif;
+ 	font-weight: 700;
+
+ }
+
+ .link {
+ 	text-decoration: none;
+ }
+
+ .card .content h4 {
+ 	color: aliceblue;
+ 	font-size: 1.7em;
+ 	line-height: 1em;
+ 	margin: 1px;
+
+ }
+
+ .card .content p {
+ 	color: antiquewhite;
+
+ }
+
+ .card .content button {
+ 	position: relative;
+ 	color: aliceblue;
+ 	padding: 10px 20px;
+ 	border-radius: 10px;
+ 	background: rgb(185, 155, 103);
+ 	color: rgb(35, 20, 20);
+ 	margin-top: 10px;
+ 	display: inline-block;
+ 	text-decoration: none;
+ 	font-weight: 700;
+
+ }
+
+ .content .heart {
+ 	/*background-color: blueviolet;*/
+ 	color: rgb(185, 155, 103);
+ 	z-index: 4;
+ 	margin-top: 25px;
+ }
+ @media (max-width:1280px){
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100%;
+	}
+   
+	.card {
+		position: relative;
+		width: 350px;
+		height: 250px;
+		/* background: blue; */
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		transition: 0.5s;
+		margin: 40px 0px 50px 0px;
+		padding: 20px;
+	}
+   
+	.card .circle {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		/* overflow: hidden; */
+   
+	}
+   
+	.card .circle::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		/* background: rgb(180, 90, 30); */
+		clip-path: circle(120px at center);
+		transition: 0.5s;
+	}
+   
+	.card:hover .circle:before {
+		background: #704021;
+		clip-path: circle(400px at center);
+		border-radius: 8px;
+	}
+   
+   
+	.card img {
+		/* background-color: aquamarine; */
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		pointer-events: none;
+		transition: 0.5s;
+		height: 340px;
+		width: 260px;
+   
+	}
+   
+	.card:hover img {
+		left: 75%;
+		height: 380px;
+		width: 320px;
+   
+	}
+   
+	.card .content {
+		position: relative;
+		width: 50%;
+		left: 20%;
+		padding: 20px 5px 5px 20px;
+		transition: 0.5s;
+		opacity: 0;
+		visibility: hidden;
+		margin-right: 40px;
+		margin-top: -7px;
+		text-decoration: none;
+	}
+   
+	.card:hover .content {
+		left: 0;
+		opacity: 1;
+		visibility: visible;
+   
+	}
+   
+	.card .content h2 {
+		color: antiquewhite;
+		text-transform: uppercase;
+		font-size: 1.2em;
+		line-height: 1em;
+		/* margin-bottom: 10px;  */
+		font-family: 'Trebuchet MS', sans-serif;
+		font-weight: 700;
+		margin-bottom: 0px;
+   
+	}
+   
+	.link {
+		text-decoration: none;
+	}
+   
+	.card .content h4 {
+		color: aliceblue;
+		font-size: 1em;
+		line-height: 0.2em;
+		margin: 0px 0 1px 0;
+   
+	}
+   
+	.card .content p {
+		color: rgb(196, 124, 30);
+		font-size: 1.2rem;
+		margin-bottom: 2px;
+   
+	}
+   
+	.card .content button {
+		position: relative;
+		color: aliceblue;
+		padding: 5px 10px;
+		border-radius: 5px;
+		background: rgb(185, 155, 103);
+		color: rgb(35, 20, 20);
+		margin-top: 5px;
+		display: inline-block;
+		text-decoration: none;
+		font-weight: 700;
+   
+	}
+   
+	.content .heart {
+		/*background-color: blueviolet;*/
+		color: rgb(185, 155, 103);
+		z-index: 4;
+		margin-top: 25px;
+	}
+ 
+ }
+
+ @media (max-width: 900px) {
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 100%;
+	}
+   
+	.card {
+		position: relative;
+		width: 350px;
+		height: 250px;
+		/* background: blue; */
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		transition: 0.5s;
+		margin: 40px 0px 50px 0px;
+		padding: 20px;
+	}
+   
+	.card .circle {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		/* overflow: hidden; */
+   
+	}
+   
+	.card .circle::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		/* background: rgb(180, 90, 30); */
+		clip-path: circle(120px at center);
+		transition: 0.5s;
+	}
+   
+	.card:hover .circle:before {
+		background: #704021;
+		clip-path: circle(400px at center);
+		border-radius: 8px;
+	}
+   
+   
+	.card img {
+		/* background-color: aquamarine; */
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		pointer-events: none;
+		transition: 0.5s;
+		height: 340px;
+		width: 260px;
+   
+	}
+   
+	.card:hover img {
+		left: 75%;
+		height: 380px;
+		width: 320px;
+   
+	}
+   
+	.card .content {
+		position: relative;
+		width: 50%;
+		left: 20%;
+		padding: 20px 5px 5px 20px;
+		transition: 0.5s;
+		opacity: 0;
+		visibility: hidden;
+		margin-right: 40px;
+		margin-top: -7px;
+		text-decoration: none;
+	}
+   
+	.card:hover .content {
+		left: 0;
+		opacity: 1;
+		visibility: visible;
+   
+	}
+   
+	.card .content h2 {
+		color: antiquewhite;
+		text-transform: uppercase;
+		font-size: 1.2em;
+		line-height: 1em;
+		/* margin-bottom: 10px;  */
+		font-family: 'Trebuchet MS', sans-serif;
+		font-weight: 700;
+		margin-bottom: 0px;
+   
+	}
+   
+	.link {
+		text-decoration: none;
+	}
+   
+	.card .content h4 {
+		color: aliceblue;
+		font-size: 1em;
+		line-height: 0.2em;
+		margin: 0px 0 1px 0;
+   
+	}
+   
+	.card .content p {
+		color: rgb(196, 124, 30);
+		font-size: 1.2rem;
+		margin-bottom: 2px;
+   
+	}
+   
+	.card .content button {
+		position: relative;
+		color: aliceblue;
+		padding: 5px 10px;
+		border-radius: 5px;
+		background: rgb(185, 155, 103);
+		color: rgb(35, 20, 20);
+		margin-top: 5px;
+		display: inline-block;
+		text-decoration: none;
+		font-weight: 700;
+   
+	}
+   
+	.content .heart {
+		/*background-color: blueviolet;*/
+		color: rgb(185, 155, 103);
+		z-index: 4;
+		margin-top: 25px;
+	}
+ }
+
+ @media (max-width: 420px) {
+ 	.card .content {
+ 		padding: 20px;
+ 	}
+ }

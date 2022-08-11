@@ -1,119 +1,132 @@
-import Paypal from '../PayPal/PayPal'
+import Paypal from "./PayPal/PayPal";
 import React from "react";
-import ReactDOM from "react-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../Footer/Footer";
 import Itemscheckout from "./ItemsCheckout";
-import { getCart, infoBeers, infoSoldBeers, totalPrice} from "../../redux/actions";
-import { useHistory } from "react-router-dom";
-import Login from "../Login/login2";
-import Swal from "sweetalert2";
-
-
+import { exchangeCrypto, getCart, getUser } from "../../redux/actions";
+import { useAuth } from "../Context/Contestautenticacion";
+import Crypto from "./Crypto/Crypto";
+import { FaEthereum } from "react-icons/fa";
+import style from "../Checkout/Checkout.module.css";
+import NavBar from "../NavBar/NavBar";
+import Container from "@mui/material/Container";
+import { Link } from "react-router-dom";
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const infoBeer = useSelector((state) => state.infoBeers);
+
   const checkoutinfo = JSON.parse(localStorage.getItem("carrito"));
   let precio = checkoutinfo.map((e) => e.cant * e.price);
-  var user = useSelector((state) => state.user);
-  let preciototal = precio.reduce(function (a, b) {
+  let users = useSelector((state) => state.user);
+  const { user } = useAuth();
+  console.log(user);
+  let precioTotal = precio.reduce(function (a, b) {
     return a + b;
   }, 0);
-  const history = useHistory();
+  precioTotal = Number(precioTotal.toFixed(2));
+  console.log(users);
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getCart());
+    dispatch(exchangeCrypto());
   }, [dispatch]);
 
+  const crypto = useSelector((state) => state.crypto);
+  console.log(checkoutinfo);
+  let x = precioTotal / crypto;
+  let valuecrypto = x.toString();
+  let val = valuecrypto.slice(0, 11);
 
-  const createOrder = (data, actions) => {
-    if (user.hasOwnProperty("name")) {
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: preciototal,
-            },
-          },
-        ],
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "You have to be logged in to buy!",
-      });
-    }
-  };
+  let currentUser;
+  let userId;
+  let userEmail;
+  if (user !== null) {
+    currentUser = users.filter((u) => u.email === user.email);
+    console.log(currentUser);
 
-/*   const onApprove = (data, actions) => {
-    let totalInfo = {
-      data: data,
-      totalPrice: preciototal,
-      infoBook: infoBook,
-      userId: userId,
-      address: address
-    };
+    currentUser = users?.filter((u) => u.email === user.email);
 
-    dispatch(infoBooks(infoBook));
-    dispatch(infoSoldBooks(totalInfo));
+    userId = currentUser[0].id;
+    userEmail = currentUser[0].email;
+  }
 
-    let timerInterval;
-    Swal.fire({
-      title: "Your payment was successful",
-      html: 'Thank you for trusting in BookStore',
-      timer: 5000,
-      timerProgressBar: true,
-      didOpen: () => {
-        Swal.showLoading()
-        const b = Swal.getHtmlContainer().querySelector('b')
-        timerInterval = setInterval(() => {
-          b.textContent = Swal.getTimerLeft()
-        }, 100)
-      },
-      willClose: () => {
-        clearInterval(timerInterval);
-      },
-    }).then((result) => {
-      <-- Read more about handling dismissals below -->
-      if (result.dismiss === Swal.DismissReason.timer) {
-        localStorage.removeItem("carrito");
-        window.location.href = "/home";
-        console.log("I was closed by the timer");
-      }
-    });
-
-    return actions.order.capture();
-  }; */
-
+  const purchaseDetails = [];
+  checkoutinfo.forEach((beer) => {
+    purchaseDetails.push({
+       beerId:  beer.id,
+       cant:  beer.cant,
+      price: beer.price,
+      sellerId: beer.sellerId,
+      beerName: beer.name,
+     });
+  });
+  const beers = [];
+  checkoutinfo.forEach((beer) => {
+    beers.push(beer.id);
+  });
+  console.log(purchaseDetails);
   return (
-    <div className="checkout">
-      <div className="checkoutCont">
-        <div>
-          {checkoutinfo?.map((e) => (
-            <Itemscheckout
-              key={e.id}
-              image={e.image}
-              name={e.name}
-              price={e.price * e.cant}
-              cant={e.cant}
-            />
-          ))}
-        </div>
-        <div className="pay">
-          <h1 style={{ textAlign: 'center', fontSize: '30px' }}>Order Total</h1>
-          <h3>Total: ${preciototal} </h3>
-          <div className="paypal">
-            <Paypal/>
+    <Container maxWidth="xxl" disableGutters="false" >
+      <div>
+        <NavBar />
+      </div>
+
+      <div className={style.checkout}>
+        <div className={style.detailPage}>
+          <div className={style.link2}><Link className={style.link2} to="/cart">...Edit</Link></div>
+
+          <div className={style.pay}>
+
+            <div className={style.row2} >
+              <div className={style.payInfo}>
+                <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
+                <h3 className={style.h3}>Total: ${precioTotal} </h3>
+                <h3 className={style.h3}><FaEthereum />ETH: {val} </h3>
+              </div>
+              <div className={style.paymentCont}>
+                <div >
+                  <Crypto
+                    email={userEmail}
+                    userId={userId}
+                    precioTotal={val}
+                    purchaseDetails={purchaseDetails}
+                  />
+                  <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '5px', marginBottom: '20px' }}> What is Metamask?</span></a>
+                </div>
+                <div className={style.paypal}>
+                  <Paypal
+                    email={userEmail}
+                    userId={userId}
+                    precioTotal={precioTotal}
+                    purchaseDetails={purchaseDetails}
+                  />
+                </div>
+              </div>
+
+            </div>
+            <div /* className={style.items} */>
+              {checkoutinfo?.map((e) => (
+                <Itemscheckout className={style.items}
+                  key={e.id}
+                  image={e.image}
+                  name={e.name}
+                  price={e.price * e.cant}
+                  cant={e.cant}
+                />
+              ))}
+
+            </div>
+
 
           </div>
-
-
         </div>
       </div>
+
       <Footer />
-    </div>
+    </Container>
   );
 }

@@ -1,0 +1,36 @@
+.input {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    transition: color 200ms;
+    display: flex;
+    flex-direction: column;
+    margin: 4px 8px 4px 6px;
+}
+.dis{
+    display: flex;
+    flex-direction: row;
+    align-content: space-evenly;
+    margin-left: 10px;
+    
+}
+.button {
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    margin: 0px 20px 10px 20px;
+    font-size: 16px;
+    font-family: 'Trebuchet MS', sans-serif;
+    border-radius: 2px;
+    align-items: center;
+    outline: none;
+    border: none;
+    background-color: rgb(185,155,103);
+    transition: transform 0.5s;
+  }
+  .button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    background-color: #704021;
+    color:antiquewhite;
+  }

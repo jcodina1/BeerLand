@@ -1,6 +1,7 @@
 const axios = require('axios')
 const { Op } = require('sequelize')
-const { Beer, Seller } = require('../db.js')
+const { Beer, Seller , Comment, Score} = require('../db.js')
+
 
 async function createdAllBeers(req, res, next) {
     try {
@@ -34,11 +35,18 @@ async function getAllBeers(req, res, next) {
                 where: {
                     name: b.name ? b.name : "It does not contain name",
                     description: b.description ? b.description : "It does not contain description",
-                    price: b.price ? b.price : "It does not contain price",
-                    stock: b.stock ? b.stock : "It does not contain stock",
+                    price: b.price,
+                    stock: b.stock,
+                    grade: b.grade,
+                    origin: b.origin ? b.origin : "España",
+                    tipo: b.tipo ? b.tipo : 'No se le ha asignado tipo',
+                    ibu: b.ibu,
                     image: b.image ? b.image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
-                    sellerId: b.sellerId
-                }
+                    sellerId: b.sellerid?b.sellerid:Math.floor(Math.random() * 51)
+                },
+                order:[['id','ASC']],
+                
+
             })
         })
         const BeersDb = await Beer.findAll()
@@ -48,7 +56,7 @@ async function getAllBeers(req, res, next) {
                 res.status(200).json(BeerName) :
                 res.status(404).send('Beer not found');
         } else {
-            const BeersDb = await Beer.findAll()
+            const BeersDb = await Beer.findAll({include:{model:Seller}})
             res.status(200).send(BeersDb)
         }
     } catch (error) {
@@ -71,7 +79,7 @@ async function updateBeer(req, res, next) {
     const { id } = req.params
     const { name, description, price, stock, image } = req.body
     try {
-        beer = await Beer.findByPk(id)
+         const beer = await Beer.findByPk(id)
         beer.name = name
         beer.description = description
         beer.price = price
@@ -93,26 +101,36 @@ async function deleteBeer(req, res, next) {
 }
 
 async function postBeer(req, res, next) {
-    const { name, description, price, stock, image, sellerId } = req.body;
+    const { name, description, price, stock, image, sellerId,tipo } = req.body;
     try {
-        let newBeer = await Beer.create(
-            {
-                name,
-                description,
-                price,
-                stock,
-                image,
-                sellerId,
-            },
-            {
-                fields: ["name", "description", "price", "stock", "image"],
-            }
-        );
+        let newBeer = await Beer.findOrCreate({
+                where:{
+                    name: name ? name : "It does not contain name",
+                    description: description ? description : "It does not contain description",
+                    price: price?price:"12",
+                    stock: stock?stock:10,                    
+                    image: image ? image : "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg",
+                    sellerId: sellerId,
+                    tipo: tipo ? tipo : "IPA",    
+                }
+            });
         return res.json(newBeer);
     } catch (error) {
         next(error)
     }
 }
+
+
+async function Beerbrewery(req, res, next) {
+    const { sellerId } = req.query
+    try {
+      const beer = await Beer.findAll({ where: { sellerId: sellerId } })
+      res.send(beer)
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
 module.exports = {
     createdAllBeers,
@@ -121,4 +139,6 @@ module.exports = {
     postBeer,
     updateBeer,
     deleteBeer,
+    Beerbrewery
+    
 }

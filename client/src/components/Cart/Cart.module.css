@@ -1,11 +1,448 @@
-.info {
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.detailPage {
+  background-color: rgba(74, 47, 3, 0.5);
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  max-height: fit-content;
+  padding: 3% 5% 4% 5%;;
+  margin: 0px;
+  background-size: cover;
+}
+.tittle{
+ 
+  height: 40px;
+  width: auto;
+  z-index: 2;
+  padding-top: 90px;
+  margin-bottom: 0px;
+  
+}
+.tittle h1{
+  color:rgb(35,20,10);
+  font-size: 60px;
+  font-weight: bold;
+  font-family: 'Staatliches', cursive;
+  margin-top: 20px;
+  /* background-color: aqua; */
 }
 
 .checkoutWrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.logo {
+  height: 70%;
+  width: 20%;
+  position: absolute;
+  top: 10%;
+  margin-left: -48%;
+  margin-top: 15px;
+}
+
+.cartContainer{
+  background-color: rgb(24, 54, 254) ;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-y:hidden;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.keep{
+  padding-top: 0.5%;
+  background-color: antiquewhite;
+  color: rgb(35,20,10);
+  font-size: 25px;
+  font-weight: 700;
+  width: 220px;
+  height: 60px;
+  border-radius: 5px;
+  margin-left: 88%;
+  margin-top:-2%;
+}
+
+.link{
+  text-decoration: none;
+}
+.link2{
+  color: rgb(35,20,10);
+  text-decoration: none;
+  font-size: 22px;
+  font-family: 'Trebuchet MS' sans-serif;
+  z-index: 3;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row row-reverse;
+  /* align-content: flex-start; */
+  text-align: right;
+  margin-left: 70%;
+  position: relative;
+  font-weight: 600;
+  margin-bottom: -15px;
+  
+
+}
+
+.cart{
+  background-color: rgb(245,245, 245);
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  position: relative;
+  padding: 20px ;
+  margin: 30px 10px 10px 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+ 
+}
+
+.items{
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 50px 0px 10px 20px;
+}
+
+.checkout{
+  margin-top: 0px;
+  margin-left: 90%;
+  height: 30px;
+  width: 230px;
+  padding: 1px;
+
+} 
+
+.check2{
+  padding-top: 2px 5px 2px 5px;
+  background-color: rgb(35,20,10);
+  color: antiquewhite;
+  font-size: 30px;
+  font-weight: 600;
+  width: 180px;
+  height: 50px;
+  border-radius: 5px;
+}
+.boxend{
+  background-color: #704021;
+  height: 55px;
+  align-items: center;
+  align-content: center;
+  padding: 5px 0 0 0;
+}
+.h1{
+  color: rgb(245,245,245);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+}
+
+@media (max-width:1280px){
+  .detailPage {
+    background-color: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: fit-content;
+    padding: 2% 5% 4% 5%;;
+    margin-top: -25px;
+    background-size: cover;
+  }
+  .tittle{
+   
+    height: 40px;
+    width: auto;
+    z-index: 2;
+    padding-top: 90px;
+    margin-bottom: 0px;
+    
+  }
+  .tittle h1{
+    color:rgb(35,20,10);
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Staatliches', cursive;
+    margin-top: 0px;
+    /* background-color: aqua; */
+  }
+  
+  .checkoutWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .logo {
+    height: 70%;
+    width: 20%;
+    position: absolute;
+    top: 10%;
+    margin-left: -48%;
+    margin-top: 15px;
+  }
+  
+  .cartContainer{
+    /* background-color: rgb(24, 54, 254) ; */
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y:hidden;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .keep{
+    padding-top: 0.5%;
+    background-color: antiquewhite;
+    color: rgb(35,20,10);
+    font-size: 25px;
+    font-weight: 700;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 83%;
+    margin-top:0.5%;
+  }
+  
+  .link{
+    text-decoration: none;
+  }
+  .link2{
+    color: rgb(35,20,10);
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Trebuchet MS' sans-serif;
+    z-index: 3;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row row-reverse;
+    /* align-content: flex-start; */
+    text-align: right;
+    margin-left: 68%;
+    position: relative;
+    font-weight: 600;
+    margin-bottom: -15px;
+    
+  
+  }
+  
+  .cart{
+    background-color: rgb(245,245, 245);
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px ;
+    margin: 30px 10px 10px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+   
+  }
+  
+  .items{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 50px 0px 10px 20px;
+  }
+  
+  .checkout{
+    margin-top: 0px;
+    margin-left: 87%;
+    height: 30px;
+    width: 230px;
+    padding: 1px;
+  
+  } 
+  
+  .check2{
+    padding-top: 2px 5px 2px 25px;
+    background-color: rgb(35,20,10);
+    color: antiquewhite;
+    font-size: 26px;
+    font-weight: 600;
+    width: 160px;
+    height: 50px;
+    border-radius: 5px;
+  }
+  .boxend{
+    background-color: #704021;
+    height: 55px;
+    align-items: center;
+    align-content: center;
+    padding: 5px 0 0 0;
+  }
+  .h1{
+    color: rgb(245,245,245);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+  }
+}
+
+@media (max-width:900px){
+  .detailPage {
+    background-color: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: fit-content;
+    padding: 2% 5% 4% 5%;;
+    margin-top: -25px;
+    background-size: cover;
+  }
+  .tittle{
+   
+    height: 40px;
+    width: auto;
+    z-index: 2;
+    padding-top: 90px;
+    margin-bottom: 0px;
+    
+  }
+  .tittle h1{
+    color:rgb(35,20,10);
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Staatliches', cursive;
+    margin-top: 0px;
+    /* background-color: aqua; */
+  }
+  
+  .checkoutWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .logo {
+    height: 70%;
+    width: 20%;
+    position: absolute;
+    top: 10%;
+    margin-left: -48%;
+    margin-top: 15px;
+  }
+  
+  .cartContainer{
+    /* background-color: rgb(24, 54, 254) ; */
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y:hidden;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .keep{
+    padding-top: 0.5%;
+    background-color: antiquewhite;
+    color: rgb(35,20,10);
+    font-size: 20px;
+    font-weight: 600;
+    width: 150px;
+    height: 45px;
+    border-radius: 5px;
+    margin-left: 82%;
+    margin-top:1%;
+  }
+  
+  .link{
+    text-decoration: none;
+  }
+  .link2{
+    color: rgb(35,20,10);
+    text-decoration: none;
+    font-size: 22px;
+    font-family: 'Trebuchet MS' sans-serif;
+    z-index: 3;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row row-reverse;
+    /* align-content: flex-start; */
+    text-align: right;
+    margin-left: 60%;
+    position: relative;
+    font-weight: 600;
+    margin-bottom: -15px;
+    cursor: pointer;
+    
+  
+  }
+  
+  .cart{
+    background-color: rgb(245,245, 245);
+    height: auto;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    padding: 20px ;
+    margin: 30px 10px 10px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+   
+  }
+  
+  .items{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 50px 0px 10px 20px;
+  }
+  
+  .checkout{
+    margin-top: 0px;
+    margin-left: 82%;
+    height: 30px;
+    width: 230px;
+    padding: 1px;
+  
+  } 
+  
+  .check2{
+    padding-top: 2px 5px 2px 25px;
+    background-color: rgb(35,20,10);
+    color: antiquewhite;
+    font-size: 26px;
+    font-weight: 600;
+    width: 160px;
+    height: 50px;
+    border-radius: 5px;
+  }
+  .boxend{
+    background-color: #704021;
+    height: 55px;
+    align-items: center;
+    align-content: center;
+    padding: 5px 0 0 0;
+  }
+  .h1{
+    color: rgb(245,245,245);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+  }
+
 }

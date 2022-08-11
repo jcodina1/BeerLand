@@ -11,16 +11,188 @@
 .headerAndFooter {
     direction: flex;
     flex-direction: row
-}
+}   
 
 
 .productList {
     direction: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
 }
 
 .productContainer {
     direction: flex;
-    flex-direction: row
+    flex-direction: row;
+    
+}
+
+.itemBeer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin: 10px 0px 10px 50px;
+}
+.itemBeer p{
+    margin: 10px;
+}
+.itemBeer h4{
+    margin: 15px 0 10px -40px;
+   /*  background-color: darkgoldenrod; */
+    width: 300px;
+    height: 100px;
+}
+
+.itemBeer img{
+    width: 150px;
+    height: 80%;
+   /*  background-color: brown; */
+    margin: 5px 0px 5px 0;
+}
+
+.itemContainer{
+    border-radius: 20px;
+    background-color: rgb(185, 155, 103,0.10);
+
+    height: 150px;
+    width: 800px;
+    margin: 20px 0px 20px 80px;
+    padding: 0 30px 0 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width:1280px){
+    .wrapper {
+        direction: flex;
+        flex-direction: row;
+    }
+    
+    .paymentContainer {
+        direction: flex;
+        flex-direction: column;
+    }
+    
+    .headerAndFooter {
+        direction: flex;
+        flex-direction: row
+    }   
+    
+    
+    .productList {
+        direction: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    
+    .productContainer {
+        direction: flex;
+        flex-direction: row;
+        
+    }
+    
+    .itemBeer{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        margin: 10px 0px 10px 50px;
+    }
+    .itemBeer p{
+        margin: 10px;
+    }
+    .itemBeer h4{
+        margin: 5px 0 10px -40px;
+        /* background-color: darkgoldenrod; */
+        width: 200px;
+        height: 100px;
+        font-size: 22px;
+    }
+    
+    .itemBeer img{
+        width: 150px;
+        height: 80%;
+        /* background-color: brown; */
+        margin: 5px 0px 5px 0;
+    }
+    
+    .itemContainer{
+        border-radius: 20px;
+        background-color: rgb(185, 155, 103,0.10);
+    
+        height: 120px;
+        width: 650px;
+        margin: 20px 0px 20px 60px;
+        padding: 0 30px 0 20px;
+        display: flex;
+        flex-direction: row;
+    } 
+
+}
+
+@media (max-width: 900px) {
+    .wrapper {
+        direction: flex;
+        flex-direction: row;
+    }
+    
+    .paymentContainer {
+        direction: flex;
+        flex-direction: column;
+    }
+    
+    .headerAndFooter {
+        direction: flex;
+        flex-direction: row
+    }   
+    
+    
+    .productList {
+        direction: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    
+    .productContainer {
+        direction: flex;
+        flex-direction: row;
+        
+    }
+    
+    .itemBeer{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        margin: 10px 0px 10px 30px;
+    }
+    .itemBeer p{
+        margin: 5px;
+    }
+    .itemBeer h4{
+        margin: 0px 0 10px -60px;
+      /*   background-color: darkgoldenrod; */
+        width: 150px;
+        height: 100px;
+        font-size: 16px;
+    }
+    
+    .itemBeer img{
+        width: 80px;
+        height: 80%;
+        /* background-color: brown; */
+        margin: 5px 0px 5px 0;
+    }
+    
+    .itemContainer{
+        border-radius: 10px;
+        background-color: rgb(185, 155, 103,0.10);
+    
+        height: 100px;
+        width: 450px;
+        margin: 20px 0px 20px 40px;
+        padding: 0 2px 0 2px;
+        display: flex;
+        flex-direction: row;
+    } 
 }

@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+.checkout h1 {
+  font-size: 30px;
+  font-family: 'Staatliches', cursive;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: rgb(35,20,10);
+}
+.checkout .paypal {
+  display: flex;
+  justify-content: center;
+}
+.checkoutCont {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 20px 20px 20px;
+}
+.pay {
+  position: sticky;
+  top: 20px;
+  background-color: rgb(245,245,245);
+  padding: 30px 50px;
+  height: min-content;
+  border-radius: 10px;
+  border: 1px solid #c4c4c4;
+  display: flex;
+  flex-direction: row;
+}
+.pay h3 {
+  font-size: 20px;
+  text-align: justify;
+  padding-top: '10px';
+  font-family: 'Trebuchet MS', sans-serif;
+}
+.detailPage{
+  
+    background-color: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: fit-content;
+    padding: 8% 5% 4% 5%;;
+    margin: 0px;
+    background-size: cover;
+  
+}
+.link2{
+  color: rgb(35,20,10);
+  text-decoration: none;
+  font-size: 22px;
+  font-family: 'Trebuchet MS' sans-serif;
+  z-index: 3;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: row row-reverse;
+  /* align-content: flex-start; */
+  text-align: right;
+  margin-left: 70%;
+  position: relative;
+  font-weight: 600;
+  margin-bottom: -25px;
+
+}
+.row2{
+  /* background-color:orangered; */
+  width: 40%;
+  margin-top: 20px;
+  position: sticky;
+  top: 20px;
+  background-color: rgb(185, 155, 103,0.10);
+  padding: 30px 50px;
+  height: min-content;
+  border-radius: 10px;
+   display: flex;
+  flex-direction: column;
+}
+.payInfo{
+  /* background-color: violet; */
+  margin-bottom: 20px;
+ 
+}
+.payInfo h3{
+  margin-left: 40%;
+}
+.paymentCont{
+  margin: 0;
+}
+
+@media (max-width: 1280px){
+  .payInfo h3{
+    margin-left: 25%;
+
+  }
+}
+
+@media (max-width: 900px) {
+  .checkout h1 {
+    font-size: 150px;
+    font-family: 'Staatliches', cursive;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: rgb(35,20,10);
+  }
+  .checkout .paypal {
+    display: flex;
+    justify-content: center;
+  }
+  .checkoutCont {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 10px 20px 10px;
+  }
+  .pay {
+    position: sticky;
+    top: 20px;
+    background-color: rgb(245,245,245);
+    padding: 30px 50px;
+    height: min-content;
+    border-radius: 10px;
+    border: 1px solid #c4c4c4;
+    display: flex;
+    flex-direction: row;
+  }
+  .pay h3 {
+    font-size: 18px;
+    text-align: justify;
+    padding-top: '10px';
+    font-family: 'Trebuchet MS', sans-serif;
+  }
+  .detailPage{
+    
+      background-color: rgba(74, 47, 3, 0.5);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      max-height: fit-content;
+      padding: 12% 5% 4% 5%;;
+      margin: 0px;
+      background-size: cover;
+    
+  }
+  .link2{
+    color: rgb(35,20,10);
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Trebuchet MS' sans-serif;
+    z-index: 3;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row row-reverse;
+    /* align-content: flex-start; */
+    text-align: right;
+    margin-left: 70%;
+    position: relative;
+    font-weight: 600;
+    margin-bottom: -25px;
+  
+  }
+  .row2{
+    /* background-color:orangered; */
+    width: 35%;
+    margin-top: 20px;
+    position: sticky;
+    top: 20px;
+    background-color: rgb(185, 155, 103,0.10);
+    padding: 30px 50px;
+    height: min-content;
+    border-radius: 10px;
+     display: flex;
+    flex-direction: column;
+  }
+  .payInfo{
+    /* background-color: violet; */
+    margin-bottom: 20px;
+   
+  }
+  .payInfo h3{
+    margin-left: 15%;
+  }
+  .paymentCont{
+    margin: 0;
+  }
+  .items{
+    background-color: aqua;
+    margin: 0 0px 0 -30px;
+    display: flex;
+    flex-direction: column;
+    
+  }
+}

@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+.us{
+    background: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 2% 5% 4% 5%;;
+    margin: 0px;
+    background-size: contain;
+}
+.profile{
+    display: flex;
+    flex-direction: row;
+    margin-left: 300px;
+    margin-right: 300px;
+    background-color: rgb(245,245,245);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-family: 'Staatliches', cursive;
+}
+.data{
+    /* background-color: aqua; */
+    background-color: rgba(74, 47, 3, 0.1);
+    flex-direction: column;
+    display: flex;
+    height: 250px;
+    margin: 30px 10px 30px 10px;
+    width: 780px;
+    padding: 20px 40px 20px 40px;
+   
+}
+.profile img{
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    margin: 30px;
+    border-color: rgb(35,20,10);
+    border:5px;
+}
+.about{
+    font-family:  'Staatliches', cursive;
+    font-size: 50px;
+    margin-top: 0px;
+}
+.data p{
+    font-family: 'Trebuchet MS',sans-serif;
+    text-align: left;
+}

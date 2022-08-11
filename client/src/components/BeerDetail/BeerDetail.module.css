@@ -1,33 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
 .detailPage {
-    background-color: rgba(3, 48, 9, 0.5);
+    background: rgba(74, 47, 3, 0.5);
     display: flex;
     flex-direction: column;
     height: fit-content;
-    padding: 10% 20% 4% 20%;
+    padding: 8% 5% 4% 5%;;
     margin: 0px;
+    background-size: contain;
 }
 
 .box {
     display: flex;
-    align-content: inherit;
+    /* align-content: inherit; */
     flex-direction: row;
-    border-radius: 10px;
-    color: blanchedalmond;
-    background-color: brown;
-    height: 535px;
+    /* border-radius: 10px; */
+    color: rgb(35,20,10);
+    background-color: rgb(245, 245, 245);
+    
+    min-height: auto;
 }
 .leftContainer{
-    background-color: aqua;
+    background-color: rgb(245, 245, 245);
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    padding: 50px 20px 20px 20px;
+    padding: 35px 0px 0px 20px;
     border-radius: 10px 0  0 10px;
-    width: 450px;
-    margin-right: 100px;
+    min-width: 500px;
+    min-height: 650px;
+    margin-right: 0px;
 }
 .containerR{
-    padding: 50px 20px 20px 20px;
+    padding: 50px 20px 20px 0px;
     align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.leftContainer img{
+    width: 70%;
+    margin: -20px;
+}
+.containerR p{
+    text-align: left;
+    width: 60%;
+    line-height: 22px
+}
+
+.textBox{
+
+font-size: 20px;
+line-height: 26px ;
+
+}
+.comments{
+    margin-top: 50px;
+}
+.dis h1{
+    font-family: 'Staatliches', cursive;
+    font-size: 58px;
+    color: rgb(35,20,10);
+}
+
+@media (max-width:1280px) {
+    .detailPage {
+        background: rgba(74, 47, 3, 0.5);
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding: 8% 5% 4% 5%;;
+        margin: 0px;
+        background-size: cover;
+    }
     
+    .box {
+        display: flex;
+        /* align-content: inherit; */
+        flex-direction: column;
+        /* border-radius: 10px; */
+        color: rgb(35,20,10);
+        background-color: rgb(245, 245, 245);
+        height: auto;
+        min-height: 650px;
+    }
+    .leftContainer{
+        background-color: rgb(245,245,245);
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        padding: 35px 0px 0px 20px;
+        border-radius: 10px 0  0 10px;
+        min-width: 500px;
+        min-height: 250px;
+        margin-right: 0px;
+    }
+    .containerR{
+        padding: 0px 20px 20px 0px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .leftContainer img{
+        width: 25%;
+        margin: 0px;
+    }
+    .containerR p{
+        text-align: left;
+        width: 60%;
+        line-height: 18px;
+        padding-left: 40px;
+        padding-right: 10px;
+
+    }
+    
+    .textBox{
+    
+    font-size: 15px;
+    line-height: 20px ;
+    
+    
+    }
+    .comments{
+        margin-top: 50px;
+    }
+    .dis h1{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+    .containerR h2{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+}
+
+
+@media (max-width:900px) {
+    .detailPage {
+        background: rgba(74, 47, 3, 0.5);
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding: 10% 5% 4% 5%;;
+        margin: 0px;
+        background-size: cover;
+    }
+    
+    .box {
+        display: flex;
+        /* align-content: inherit; */
+        flex-direction: column;
+        /* border-radius: 10px; */
+        color: rgb(35,20,10);
+        background-color: rgb(245, 245, 245);
+        height: auto;
+        min-height: 650px;
+    }
+    .leftContainer{
+        background-color: rgb(245,245,245);
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        padding: 35px 0px 0px 20px;
+        border-radius: 10px 0  0 10px;
+        min-width: 500px;
+        min-height: 250px;
+        margin-right: 0px;
+    }
+    .containerR{
+        padding: 0px 20px 20px 0px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .leftContainer img{
+        width: 30%;
+        margin: 0px;
+    }
+    .containerR p{
+        text-align: left;
+        width: 60%;
+        line-height: 18px;
+        padding-left: 40px;
+        padding-right: 10px;
+
+    }
+    
+    .textBox{
+    
+    font-size: 15px;
+    line-height: 20px ;
+    
+    
+    }
+    .comments{
+        margin-top: 50px;
+    }
+    .dis h1{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+    .containerR h2{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+
+
 }

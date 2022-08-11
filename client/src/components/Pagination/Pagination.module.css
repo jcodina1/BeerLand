@@ -10,18 +10,18 @@
 .containerPag ul .pagButton,
 .containerPag ul .disable {
   margin: 5px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  background-color: #d35e5e;
-  color: white;
-  padding: 5px;
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 22px;
+  background-color: #704021;
+  color: rgb(248, 246, 242);
+  padding: 8px;
   outline: none;
-  border: 1px solid #c4c4c4;
+  border: 1px solid #705542;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 .containerPag ul .disable {
-  background-color: gray;
+  background-color: #241511;
   cursor: default;
 }
 .paginate ul {
@@ -40,11 +40,11 @@
   margin: 0;
 }
 .paginate ul li h5:hover {
-  color: #f5b3b3;
+  color: #7e695a;
   cursor: pointer;
 }
 .currentPage {
-  color: gray;
+  color: #705542;
 }
 .currentPage h5 {
   background-color: #c9c9c9;
