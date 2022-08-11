@@ -19,6 +19,12 @@
     /* margin: 1rem, 0; */
 }
 
+.loading{
+    position: relative;
+    min-width: 300px;
+    min-height: 300px;
+}
+
 .cardsContainer {
     width: auto;
     height: auto;
