@@ -36,11 +36,10 @@ export default function Slider() {
                 return (
                     <div
                         key={obj.id}
-                        className={slideIndex === index + 1 ? "slide active-anim" : "slide"}
-                    >
-                        <Link to="/home">
+                        className={slideIndex === index + 1 ? "slide active-anim" : "slide"}>
+                       
                             <img src={`./Imgs/img${index + 1}.jpg`} />
-                        </Link>
+                        
                     </div>
                 )
             })}

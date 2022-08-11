@@ -1,6 +1,13 @@
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPurchases, updateStatus } from "../../redux/actions";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import style from "./Purchases.module.css"
 
 export default function Purchase({ id, total, status, create, beers, user, address }) {
@@ -11,6 +18,8 @@ export default function Purchase({ id, total, status, create, beers, user, addre
     let statusA = ["PENDING", "CANCELLED", "COMPLETED"]
     const [statusAc, setStatusAc] = useState(status)
     const [statusB, setStatusB] = useState(status)
+    const [changeStatus,setChangeStatus]=useState(false)
+    const [seeBeer,setSeeBeer]=useState(false)
     useEffect(() => { dispatch(getAllPurchases()) }, [status])
     const handleChangeStatus = (e) => {
         setStatusAc(e.target.value)
@@ -19,16 +28,18 @@ export default function Purchase({ id, total, status, create, beers, user, addre
         e.preventDefault()
         console.log("enviado");
         dispatch(updateStatus(id, statusAc)).then(res => setStatusB(statusAc))
-
+        setChangeStatus(false)
     }
     return (
-        <div >
-            <div >
-                <h3>Id purchase: {id}</h3>
-                <h3>Total: {total}</h3>
-                <div>
-                    <h3>Status purchase: {statusB}</h3></div>
-                <select
+
+        <>
+            <TableRow>
+                <TableCell>{id}</TableCell>
+                <TableCell>
+                    {!changeStatus?<>{statusB}<br />
+                    <button onClick={() => setChangeStatus(true)}>Change Status</button></>:
+                    <>
+                    <select
                     name='status'
                     onChange={(e) => { handleChangeStatus(e) }}
                 >
@@ -37,41 +48,53 @@ export default function Purchase({ id, total, status, create, beers, user, addre
                 </select>
                 <p>Esta seguro de cambiar El estado a : {statusAc === statusB ? "" : statusAc}</p>
                 <button onClick={e => hadleSubmit(e)}>Si</button>
-                <h3>Date: {create}</h3>
-                <h3>Address:</h3>
-                {address.map(e =>
+                    </>}                    
+                </TableCell>
+                <TableCell>{create}</TableCell>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{Array.isArray(address) ? address?.map(e =>
                     <>
                         <p> Street address: {e.address}</p>
                         <p>Apto: {e.extra}</p>
                         <p>City: {e.city}</p>
 
-                    </>)}
-                <h1>Details:</h1>
-                {beers.map((b) =>
-                    <div key={b.id}>
-                        <h2>Producto #{i++}</h2>
-                        <p >Id beer: {b.id}</p>
-                        <p>Beer: {b.name}</p>
-                        <p>Price: {b.price}</p>
-                        <p>Id seller: {b.sellerId}</p>
-                        <p>Seller name:{b.seller.name}</p>
+                    </>) : address}</TableCell>
+                <TableCell>$ {total}</TableCell>
+                <TableCell onClick={()=>setSeeBeer(true)}>Detail</TableCell>
+            </TableRow>
+                    {
+                        seeBeer?
+                        <>
+                        <p onClick={()=>setSeeBeer(false)}>❌</p>
+                        
+                            <TableRow>
+                            <TableCell>Beer Id</TableCell>
+                            <TableCell>Beer</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Id seller</TableCell>
+                            <TableCell>Seller name</TableCell>
+                        </TableRow>
+                        
 
-                    </div>
-                )}
-                <p>Id user : {user.id}</p>
-                <p>Name: {user.name}</p>
-                <p>Surname: {user.surname}</p>
-                <p>Address: {user.address}</p>
-                <p>Email: {user.email}</p>
-                <div>
+                        {beers.map((b) =>
+                    
+                        <TableRow key={b.id}>
+                        <TableCell>{b.id}</TableCell>
+                            <TableCell>{b.name}</TableCell>
+                            <TableCell>{b.price}</TableCell>
+                            <TableCell>{b.sellerId}</TableCell>
+                            <TableCell>{b.seller.name}</TableCell>
+                        </TableRow>
+                        )}
+                        </>
+                        :""
+                    }
+           
+        </>
 
 
 
-                </div>
-                <p> ------- </p><hr />
-
-
-            </div>
-        </div>
     );
 }

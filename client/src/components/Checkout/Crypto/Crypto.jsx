@@ -47,6 +47,7 @@ export default function Crypto({value, precioTotal, userId, purchaseDetails, ema
     e.preventDefault();
     const data = new FormData(e.target);
     setError();
+    console.log(data)
 
     await startPayment({
       setError,
@@ -90,9 +91,10 @@ export default function Crypto({value, precioTotal, userId, purchaseDetails, ema
     status: "PENDING",
     email:email
   }
+  console.log(totalInfo)
 
   return (
-    <form onSubmit={handleSubmit} style={{ borderTop: '1px solid gray' }}>
+    <form onSubmit={handleSubmit} >
     <div style={{ display: 'flex', justifyContent: 'center' }}>
 
       <button

@@ -15,7 +15,7 @@ export default function HomeAdmin() {
   return (
     <div>
       <div>
-        <AdminSeller user={user}/>
+        <AdminSeller salir2={salir2} user={user}/>
       </div>
       <button onClick={(e) => salir2(e)}>Get out!</button>
     </div>

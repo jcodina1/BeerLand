@@ -84,7 +84,7 @@ export default function ShowBeers() {
           <div className={style.cardsBox}>
             {allBeers.length === 0 ? (
 
-              <Loading setLoading={setLoading} />
+              <Loading className={style.loading} setLoading={setLoading} />
 
             ) : (
               <>

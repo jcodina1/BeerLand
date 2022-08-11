@@ -8,7 +8,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SaleDetails from "./SaleDetails";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
 import { setPage } from "../../../redux/actions";
@@ -56,7 +55,6 @@ export default function Sellers() {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Register date</TableCell>
-              <TableCell>Sales</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -70,19 +68,9 @@ export default function Sellers() {
                 <TableCell>{e.name}</TableCell>
                 <TableCell>{e.mail}</TableCell>
                 <TableCell>{e.createdAt.split("T")}</TableCell>
-                <TableCell>
-                  {" "}
-                  <button onClick={() => setModalOpen(true)}>
-                    {" "}
-                    Sales Details{" "}
-                  </button>{" "}
-                  {modalOpen && (
-                    <SaleDetails setModalOpen={setModalOpen} sellerId={e.id} />
-                  )}
-                </TableCell>
               </TableRow>
             ))}
-            {console.log(allSellers)}
+
           </TableBody>
         </Table>
         <Pagination

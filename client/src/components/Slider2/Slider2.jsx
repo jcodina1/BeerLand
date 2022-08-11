@@ -20,7 +20,7 @@ export default function Slider2() {
     let imagesToShow = images.map(e => e.image)
     let sellerImages = []
     
-    const legends=['destapa y chupa','sin licor no pasa Henry','destapa y chupa','hasta el fondo que no duele','sin licor no pasa Henry','una más y a vomitar','sin licor no pasa Henry','A beberrrrr','Borremos cassette','la última y nos vamos','Borremos cassette']
+    const legends=['TASTE THE BEST CRAFT-BEERS','UNIQUE FLAVOURS','ALL THAT YOU WANT','AN AMAZING EXPERIENCE','ONLY AT BEERLAND.COM','TASTE THE BEST CRAFT-BEERS','UNIQUE FLAVOURS','ALL THAT YOU WANT','AN AMAZING EXPERIENCE','ONLY AT BEERLAND.COM','ALL THAT YOU WANT']
     
     function renderImages() {
         

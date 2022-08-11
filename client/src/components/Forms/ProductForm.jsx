@@ -56,11 +56,11 @@ export default function PostBeer() {
 
   function post(values) {
     values.image = imageUrls
-    values.sellerId = idSeller[0]
-    
+    values.sellerId = idSeller[0] 
+    console.log(values);   
     dispatch(postBeer(values))
   }
-
+console.log(imageUrls);
   return (
     <Fragment>
       <div className={styles.container}>
@@ -87,14 +87,7 @@ export default function PostBeer() {
               errores.name = "Only letters and spaces";
             }
 
-            if (!values.image) {
-              errores.image = "Please enter an image";
-            }
-            else if (
-              !/([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/.test(values.image)
-            ) {
-              errores.image = "Image must be valid jpg or png file";
-            }
+            
 
             if (!values.price) {
               errores.price = "Please enter a price";
@@ -147,12 +140,7 @@ export default function PostBeer() {
                     setImageUpload(event.target.files[0])
                   }
                 />
-                <ErrorMessage
-                  name="image"
-                  component={() => (
-                    <div className={styles.error}>{errors.image}</div>
-                  )}
-                />
+               
                 <button type='button' onClick={e => uploadFile(e)}>Upload Image</button>
               </div>
               <div>
