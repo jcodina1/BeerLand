@@ -182,6 +182,16 @@ export function postUser(payload) {
   };
 }
 
+export function getBrewerysl(id) {
+  return async function (dispatch) {
+    const breweryById = await axios.get(SELLERS_ID + id);
+    return dispatch({
+      type: GET_BREWERY_DETAIL,
+      payload: breweryById.data,
+    });
+  };
+}
+
 export function setPage(num) {
   return async function (dispatch) {
     try {
