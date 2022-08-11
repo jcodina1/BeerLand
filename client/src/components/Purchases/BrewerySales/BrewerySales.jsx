@@ -36,7 +36,7 @@ export default function BrewerySales() {
                 
               </TableRow>
               <TableRow>
-              <SaleDetail purchase={e} mostrar={mostrar} setMostrar={setMostrar} />
+              <SaleDetail purchase={e}  />
               </TableRow>
               </>
             ))}
