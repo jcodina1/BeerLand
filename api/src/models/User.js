@@ -23,9 +23,9 @@ module.exports = (sequelize) => {
       email: {
         type: DataTypes.STRING,
       },
-      // image:{
-      //   type: DataTypes.STRING,
-      // },
+      image:{
+        type: DataTypes.STRING,
+      },
       rol: {
         type: DataTypes.STRING,
       },

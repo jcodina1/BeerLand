@@ -143,7 +143,7 @@ export default function Contact() {
                                                         <div>
                                                             <ReCAPTCHA
                                                                 ref={captcha}
-                                                                sitekey="6Le8-2AhAAAAAPx_GKUiEMh49QehRwpGASbwyXNc"
+                                                                sitekey="6LfFR2YhAAAAAIAfR-w_Nna_b7L1YChu2uYaRRCj"
                                                                 onChange={onChange}
                                                                 style={{ justifyContent: 'center', display: 'flex' }}
                                                             />
