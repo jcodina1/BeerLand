@@ -75,6 +75,10 @@ export function Login() {
         login: "google",
         image:google._tokenResponse.photoUrl
       });
+      dispatch(postUser(user2));
+
+      //   dispatch(postUser(userdata))
+      history.push("/home");
     } catch (error) {
       setError(error.message);
       swal(error.message);
