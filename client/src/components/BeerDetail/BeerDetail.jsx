@@ -43,8 +43,6 @@ export default function BeerDetail(props) {
                 <Link to="/home">
                   <button className={style.button}>Back</button>
                 </Link>
-
-                {/* //este botón es para la ruta de put para el vendedor */}
               </div>
               <div className={style.box}>
                 <div className={style.leftContainer}>

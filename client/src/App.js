@@ -26,10 +26,11 @@ import SupportUser from "./components/SupportUser/SuportUser";
 import Contact from "./components/Contact/Contact";
 import AdminAnswer from "./components/SuperAdmin/AdminSupport/AdminAnswer";
 
-import BrewerySales from "./components/Purchases/BrewerySales"
+// import BrewerySales from "./components/Purchases/BrewerySales"
 import SuperAdmin from "./components/SuperAdmin/SuperAdmin";
 import Support from "./components/Support/Support";
 
+import AboutUs from "./components/AboutUs/AboutUs";
 
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
@@ -57,12 +58,13 @@ function App() {
             <Route path="/seller/detail/:id" component={BreweryDetail}/>
             <Route path="/userProfile" component={UserProfile}/>
             <Route path="/history" component={UserPurchases}/>
-            <Route path="/purchases/seller/:id" component={BrewerySales}/>
+            {/* <Route path="/purchases/seller/:id" component={BrewerySales}/> */}
             <Route path="/test" component={SuperAdmin}/>
             <Route exact path="/SupportUser" component={SupportUser}/>
             <Route exact path="/Support" component={Support}/>
             <Route exact path="/Contact" component={Contact}/>
             <Route exact path="/AdminAnswer" component={AdminAnswer}/>
+            <Route path="/aboutus" component={AboutUs}/>
           </Switch>
         </AuthProvider>
       </div>

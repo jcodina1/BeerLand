@@ -8,7 +8,7 @@ export default function DashBoard() {
     const allUser = useSelector(state => state.user)
     const allSellers = useSelector(state => state.allSellers)
     const allBeers = useSelector(state => state.allBeers)
-    console.log(allPurchases);
+
     let totalEarnings = 0
     let soldUnits = 0
     for (let i = 0; i < allPurchases.length; i++) {

@@ -8,23 +8,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SaleDetails from "./SaleDetails";
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../Pagination/Pagination";
 import { setPage } from "../../../redux/actions";
 
 export default function Sellers() {
   const dispatch = useDispatch();
-  const allPurchases = useSelector((state) => state.allPurchases);
-  const [allPurchases2, setAllPurchases2] = useState(allPurchases);
-  console.log(allPurchases);
   const allSellers = useSelector((state) => state.allSellers);
   let page = useSelector((state) => state.page);
-  let sellersPerPage = 5;
+  let sellersPerPage = 3;
   const [modalOpen, setModalOpen] = useState(false);
   let lastIndex = page * sellersPerPage; //indice incial para metodo slice
   let firstIndex = lastIndex - sellersPerPage; //indice final para metodo slice
-  let currentSeller = allSellers.slice(firstIndex, lastIndex); //metodo slice para determinar del array los libros xddddd a mostrar por pagina
+  let currentSeller = allSellers.slice(firstIndex, lastIndex); //metodo slice para determinar del array los libros a mostrar por pagina
 
   const limitPage = Math.ceil(allSellers.length / sellersPerPage);
 
@@ -59,7 +55,6 @@ export default function Sellers() {
               <TableCell>Name</TableCell>
               <TableCell>Email</TableCell>
               <TableCell>Register date</TableCell>
-              <TableCell>Sales</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -73,23 +68,8 @@ export default function Sellers() {
                 <TableCell>{e.name}</TableCell>
                 <TableCell>{e.mail}</TableCell>
                 <TableCell>{e.createdAt.split("T")}</TableCell>
-                <TableCell>
-                  {" "}
-                  <button onClick={() => setModalOpen(true)}>
-                    {" "}
-                    Sales Details{" "}
-                  </button>{" "}
-                  {modalOpen && (
-                    <SaleDetails
-                      setModalOpen={setModalOpen}
-                      id={e.id}
-                      allPurchases={allPurchases2}
-                    />
-                  )}
-                </TableCell>
               </TableRow>
             ))}
-            {console.log(allSellers)}
           </TableBody>
         </Table>
         <Pagination
