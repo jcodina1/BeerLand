@@ -61,7 +61,6 @@ export default function Beers() {
               <TableCell>Id</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Register date</TableCell>
-              <TableCell>Purchases</TableCell>
               <TableCell>Stock</TableCell>
               <TableCell>Price($)</TableCell>
               <TableCell>Update</TableCell>
@@ -74,7 +73,6 @@ export default function Beers() {
                 <TableCell>{e.id}</TableCell>
                 <TableCell>{e.name}</TableCell>
                 <TableCell>{e.createdAt.split("T")}</TableCell>
-                <TableCell>NaN</TableCell>
                 <UpDateBeer
                   stock={e.stock}
                   price={e.price}
