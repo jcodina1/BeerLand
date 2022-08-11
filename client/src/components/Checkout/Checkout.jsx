@@ -11,6 +11,7 @@ import { FaEthereum } from "react-icons/fa";
 import style from "../Checkout/Checkout.module.css";
 import NavBar from "../NavBar/NavBar";
 import Container from "@mui/material/Container";
+import { Link } from "react-router-dom";
 
 export default function Checkout() {
   const dispatch = useDispatch();
@@ -56,12 +57,12 @@ export default function Checkout() {
   const purchaseDetails = [];
   checkoutinfo.forEach((beer) => {
     purchaseDetails.push({
-      beerId: beer.id,
-      cant: beer.cant,
+       beerId:  beer.id,
+       cant:  beer.cant,
       price: beer.price,
       sellerId: beer.sellerId,
       beerName: beer.name,
-    });
+     });
   });
   const beers = [];
   checkoutinfo.forEach((beer) => {
@@ -69,61 +70,62 @@ export default function Checkout() {
   });
   console.log(purchaseDetails);
   return (
-    <Container maxWidth="xxl" disableGutters="false">
-      <NavBar />
+    <Container maxWidth="xxl" disableGutters="false" >
+      <div>
+        <NavBar />
+      </div>
+
       <div className={style.checkout}>
-        <div className={style.checkoutCont}>
+        <div className={style.detailPage}>
+          <div className={style.link2}><Link className={style.link2} to="/cart">...Edit</Link></div>
+
           <div className={style.pay}>
-            <h1 style={{ textAlign: "center", fontSize: "30px" }}>
-              Order Total
-            </h1>
-            <h3>Total: ${precioTotal} </h3>
-            <h3>
-              ETH <FaEthereum /> : {val}{" "}
-            </h3>
-            <div>
-              <Crypto
-                email={userEmail}
-                userId={userId}
-                precioTotal={val}
-                purchaseDetails={purchaseDetails}
-              />
-              <a href="https://metamask.io/" target="_blank">
-                <span
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    marginTop: "-20px",
-                    marginBottom: "-8px",
-                  }}
-                >
-                  {" "}
-                  What is Metamask?
-                </span>
-              </a>
+
+            <div className={style.row2} >
+              <div className={style.payInfo}>
+                <h1 style={{ textAlign: "center", fontSize: "30px" }}>Order Total</h1>
+                <h3 className={style.h3}>Total: ${precioTotal} </h3>
+                <h3 className={style.h3}><FaEthereum />ETH: {val} </h3>
+              </div>
+              <div className={style.paymentCont}>
+                <div >
+                  <Crypto
+                    email={userEmail}
+                    userId={userId}
+                    precioTotal={val}
+                    purchaseDetails={purchaseDetails}
+                  />
+                  <a href="https://metamask.io/" target='_blank'><span style={{ display: 'flex', justifyContent: 'center', marginTop: '5px', marginBottom: '20px' }}> What is Metamask?</span></a>
+                </div>
+                <div className={style.paypal}>
+                  <Paypal
+                    email={userEmail}
+                    userId={userId}
+                    precioTotal={precioTotal}
+                    purchaseDetails={purchaseDetails}
+                  />
+                </div>
+              </div>
+
             </div>
-            <div className={style.paypal}>
-              <Paypal
-                email={userEmail}
-                userId={userId}
-                precioTotal={precioTotal}
-                purchaseDetails={purchaseDetails}
-              />
+            <div /* className={style.items} */>
+              {checkoutinfo?.map((e) => (
+                <Itemscheckout className={style.items}
+                  key={e.id}
+                  image={e.image}
+                  name={e.name}
+                  price={e.price * e.cant}
+                  cant={e.cant}
+                />
+              ))}
+
             </div>
-          </div>
-          <div>
-            {checkoutinfo?.map((e) => (
-              <Itemscheckout
-                key={e.id}
-                image={e.image}
-                name={e.name}
-                price={e.price * e.cant}
-                cant={e.cant}
-              />
-            ))}
+
+
           </div>
         </div>
       </div>
+
       <Footer />
     </Container>
   );

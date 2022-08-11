@@ -30,6 +30,7 @@ import AdminAnswer from "./components/SuperAdmin/AdminSupport/AdminAnswer";
 import SuperAdmin from "./components/SuperAdmin/SuperAdmin";
 import Support from "./components/Support/Support";
 
+import AboutUs from "./components/AboutUs/AboutUs";
 
 require("dotenv").config();
 axios.defaults.baseURL = process.env.REACT_APP_API || "http://localhost:3001"; //
@@ -63,6 +64,7 @@ function App() {
             <Route exact path="/Support" component={Support}/>
             <Route exact path="/Contact" component={Contact}/>
             <Route exact path="/AdminAnswer" component={AdminAnswer}/>
+            <Route path="/aboutus" component={AboutUs}/>
           </Switch>
         </AuthProvider>
       </div>

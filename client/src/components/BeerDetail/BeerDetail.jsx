@@ -42,7 +42,7 @@ export default function BeerDetail(props) {
           ) : (
             <div>
               <div>
-                <Link to="/home">
+                 <Link to="/home">
                   <button className={style.button}>Back</button>
                 </Link>
               </div>

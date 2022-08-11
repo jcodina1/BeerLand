@@ -7,35 +7,34 @@ import Footer from "../Footer/Footer";
 import { useSelector } from "react-redux";
 /* import PromoBanner from "../PromoPage/PromoPage"; */
 import Slider from "../Slider/Slider";
+import { Container } from "@mui/material";
 
 export default function Home() {
+  
   /* const [userType, setUserType] = useState('') */
-  const carga = useSelector((state) => state);
+  const carga = useSelector(state => state)
 
-  function up() {
-    window.scrollTo(0, 0)
-  }
 
   return (
-    <div className={style.navbar}>
-      <div className="">
-        <NavBar />
-      </div>
-      <div>
-        <Slider />
-      </div>
-      <div className={style.h1Tittle}>Our Products</div>
+    <Container maxWidth='xxl' disableGutters='false'>
+      <div className={style.navbar}>
+      <div><NavBar /></div>
+      <div><Slider /></div>
+      <div className={style.h1Tittle}>Our Products</div>  
       <div className={style.homeContainer}>
-        <div>
-          <div className={style.beerBox}>
-            <ShowBeers />
-          </div>
+       
+        <div >
+          <div className={style.beerBox}><ShowBeers /></div>
         </div>
-        <button className={style.btnScrollTop} onClick={up}>Ʌ</button>
+
       </div>
       <div className={style.footer}>
-        <Footer className={style.footer} />
+        
       </div>
     </div>
+    <Footer className={style.footer} />
+    </Container>
+
+
   );
 }
