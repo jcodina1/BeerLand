@@ -1,13 +1,7 @@
 ::-webkit-scrollbar {
     display: none;
 }
-.stop{
-    pointer-events:none;  
-    /* overflow-wrap: unset;
-    overflow-y: unset;
-    overflow-x: unset; */
-    overflow: hidden;
-}
+
 
 
 .log {
@@ -34,7 +28,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    pointer-events:none;
 }
 
 .container {
