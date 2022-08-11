@@ -16,7 +16,7 @@ async function getAllUsers(req, res, next) {
 }
 
 async function postUser(req, res, next) {
-  const { id, name, surname, address, email, rol, image } = req.body;
+  const { name, surname, address, email, rol, image } = req.body;
   try {
     let newUser = await User.findOrCreate({
       where: {
@@ -25,7 +25,7 @@ async function postUser(req, res, next) {
         address: address,
         email: email,
         rol: rol,
-        // image:image
+        image:image
       },
     });
     sendConfirmationEmail(name, email);

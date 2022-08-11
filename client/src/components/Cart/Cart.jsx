@@ -107,7 +107,7 @@ export default function Cart() {
 
         <div className={style.checkoutCont}>
           <div className={style.cart}>
-            <div className={style.link2}><Link className={style.link2} to="/checkout">...Checkout</Link></div>
+            {/* <div className={style.link2}><Link className={style.link2} to="/checkout">...Checkout</Link></div> */}
 
             {JSON.parse(localStorage.getItem("carrito"))?.length ? (
               <div className={style.items}>
