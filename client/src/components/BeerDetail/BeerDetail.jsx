@@ -30,7 +30,7 @@ export default function BeerDetail(props) {
   return (
     <Container maxWidth='xxl' disableGutters='false' >
       <div>
-       
+
         <div>
           <NavBar />
         </div>
@@ -42,13 +42,9 @@ export default function BeerDetail(props) {
           ) : (
             <div>
               <div>
-                {/* <Link to="/home">
+                 <Link to="/home">
                   <button className={style.button}>Back</button>
                 </Link>
-                <Link to="/update">
-                  <button>Update</button>
-                </Link> */}
-                {/* //este botón es para la ruta de put para el vendedor */}
               </div>
               <div className={style.box}>
                 <div className={style.leftContainer}>
@@ -82,6 +78,6 @@ export default function BeerDetail(props) {
           </div>
         </div>
       </div>
-      </Container>
-      );
+    </Container>
+  );
 }

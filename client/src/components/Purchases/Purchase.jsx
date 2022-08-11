@@ -39,13 +39,13 @@ export default function Purchase({ id, total, status, create, beers, user, addre
                 <button onClick={e => hadleSubmit(e)}>Si</button>
                 <h3>Date: {create}</h3>
                 <h3>Address:</h3>
-                {address.map(e =>
+                {Array.isArray(address)?address?.map(e =>
                     <>
                         <p> Street address: {e.address}</p>
                         <p>Apto: {e.extra}</p>
                         <p>City: {e.city}</p>
 
-                    </>)}
+                    </>):address}
                 <h1>Details:</h1>
                 {beers.map((b) =>
                     <div key={b.id}>
