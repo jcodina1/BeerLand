@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+
+.detailPage {
+    background: rgba(74, 47, 3, 0.5);
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 8% 5% 4% 5%;;
+    margin: 0px;
+    background-size: contain;
+}
+.button{
+    background-color: #704021;
+    color: antiquewhite;
+    border: none;
+    margin-bottom: 25px;
+    position: absolute;
+    left: 92%;
+}
+.box {
+    display: flex;
+    align-content: inherit;
+    flex-direction: row;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(245, 245, 245);
+    height: 535px;
+    padding: 10px 30px 10px 50px;
+    margin-top: 40px;
+}
+.leftContainer{
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    padding: 50px 20px 20px 20px;
+    border-radius: 10px 0 0 10px;
+    min-width: 452px;
+    min-height: 482px;
+    margin-right: 100px;
+}
+.containerR{
+    padding: 50px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+}
+.leftContainer img{
+    width: 100%;
+}
+.containerR p{
+    text-align: left;
+    width: 100%;
+    line-height: 22px
+}
+
+.textBox{
+
+font-size: 16px;
+line-height: 16px;
+
+}
+
+.cardsBox {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    justify-content: space-evenly;
+    /* margin: 1rem, 0; */
+}
+
+.cardsContainer {
+    width: auto;
+    height: auto;
+    /* padding: 0 0 2rem 0; */
+    background-color: rgb(245, 245, 245);
+    
+    padding:80px 20px 20px 20px;
+}
+.beers{
+    display: flex;
+    flex-direction: column;
+}
+h2{
+    margin-bottom: 64px;
+    font-family: 'Staatliches', cursive;
+    font-weight: 500;
+    font-size: 50px;
+    margin: 0 0 10px 0;
+}
+.whitebox{
+    height: 535px;
+    padding: 10px 30px 10px 50px;
+}
+
+@media (max-width:1280px) {
+    .detailPage {
+        background: rgba(74, 47, 3, 0.5);
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding: 8% 5% 4% 5%;;
+        margin: 0px;
+        background-size: contain;
+    }
+    .button{
+        background-color: #704021;
+        color: antiquewhite;
+        border: none;
+        margin-bottom: 25px;
+        position: absolute;
+        left: 92%;
+    }
+    .box {
+        display: flex;
+        align-content: inherit;
+        flex-direction: row;
+        border-radius: 10px;
+        color: rgb(0, 0, 0);
+        background-color: rgb(245, 245, 245);
+        height: 535px;
+        padding: 10px 30px 10px 50px;
+        margin-top:40px;
+    }
+    .leftContainer{
+        background-color: rgb(245, 245, 245);
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        padding: 50px 20px 20px 20px;
+        border-radius: 10px 0 0 10px;
+        min-width: 452px;
+        min-height: 482px;
+        margin-right: 100px;
+    }
+    .containerR{
+        padding: 50px 20px 20px 10px;
+        display: flex;
+        align-items: center;
+    }
+    .leftContainer img{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .containerR p{
+        text-align: left;
+        width: 100%;
+        line-height: 22px
+    }
+    
+    .textBox{
+    
+    font-size: 16px;
+    line-height: 16px;
+    
+    }
+    
+    .cardsBox {
+        display: flex;
+        flex-wrap: wrap;
+        height: 85%;
+        justify-content: space-evenly;
+        /* margin: 1rem, 0; */
+    }
+    
+    .cardsContainer {
+        width: auto;
+        height: auto;
+        /* padding: 0 0 2rem 0; */
+        background-color: rgb(245, 245, 245);
+        
+        padding:80px 20px 20px 20px;
+    }
+    .beers{
+        display: flex;
+        flex-direction: column;
+    }
+    h2{
+        margin-bottom: 64px;
+        font-family: 'Staatliches', cursive;
+        font-weight: 500;
+        font-size: 50px;
+        margin: 0 0 10px 0;
+    }
+    .whitebox{
+        height: 535px;
+        padding: 10px 30px 10px 50px;
+    }
+}
+
+@media (max-width:900px) {
+    .detailPage {
+        background: rgba(74, 47, 3, 0.5);
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        padding: 10% 5% 4% 5%;;
+        margin: 0px;
+        background-size: cover;
+    }
+    
+    .button{
+        background-color: #704021;
+        color: antiquewhite;
+        border: none;
+        margin-bottom: 25px;
+        position: absolute;
+        left: 90%;
+    }
+    .box {
+        display: flex;
+        /* align-content: inherit; */
+        flex-direction: column;
+        /* border-radius: 10px; */
+        color: rgb(35,20,10);
+        background-color: rgb(245, 245, 245);
+        height: auto;
+        min-height: 650px;
+    }
+    .leftContainer{
+        background-color: rgb(245,245,245);
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        padding: 35px 0px 0px 20px;
+        border-radius: 10px 0  0 10px;
+        min-width: 500px;
+        min-height: 250px;
+        margin-right: 0px;
+    }
+    .containerR{
+        padding: 15px 20px 20px 0px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .leftContainer img{
+        width: 30%;
+        margin: 0px;
+    }
+    .containerR p{
+        text-align: left;
+        width: 100%;
+        line-height: 18px;
+        padding-left: 0px;
+        padding-right: 0px;
+
+    }
+    
+    .textBox{
+    
+    font-size: 15px;
+    line-height: 20px ;
+    
+    
+    }
+    .comments{
+        margin-top: 50px;
+    }
+    .dis h1{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+    .containerR h2{
+        font-family: 'Staatliches', cursive;
+        font-size: 40px;
+        color: rgb(35,20,10);
+    }
+
+
+}

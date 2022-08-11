@@ -1,13 +1,33 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+.log {
+    height: 750px;
+    padding-top: 100px;
+    width: 400px;
+}
+
 .login {
     display: flex;
     flex-direction: column;
     padding: 200px 300px 100px 450px;
-    background-color: rgba(3, 48, 9, 0.5);
+    background-color: rgba(35, 20, 10, 0.5);
     align-content: center;
     align-items: inherit;
     height: fit-content;
     background-size: cover;
+    overflow: hidden;
 
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -22,13 +42,35 @@
     min-width: 450px;
     max-width: 500px;
     border-radius: 20px;
-    color: rgb(3, 44, 14);
+    color: rgb(35, 20, 10);
     overflow-y: hidden;
-    box-shadow:  5px 5px 10px  rgba(0,0,0,0.25);
+    overflow-anchor: none;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
+    z-index: 4;
 
 
 }
-h1{
+
+.fieldLog {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    border: none;
+    border-bottom: 2px solid #4fb8b8;
+    background-color: unset;
+    outline: none;
+    margin: 10px;
+}
+
+.fieldLog input {
+    border: none;
+    outline: none;
+}
+
+.fieldLog input:focus {
+    border-bottom: 2px solid #83c290;
+}
+
+h1 {
     color: rgb(3, 44, 14);
     font-weight: bold;
 }
@@ -38,6 +80,7 @@ h1{
     background-color: None;
     color: rgb(3, 44, 14);
     font-family: 'Trebuchet MS', sans-serif;
+
 }
 
 .submit {
@@ -65,13 +108,13 @@ h1{
     /* background-image: url('../../img/googleLogin.png'); */
     background-size: contain;
     padding: 10px;
-    height: 80px;
-    width: 80px;
+    height: 50px;
+    width: 50px;
     cursor: pointer;
     border: none;
     background-color: aliceblue;
     border-color: black;
-    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 0 25px 25px 25px;
     cursor: pointer;
@@ -79,16 +122,16 @@ h1{
 
 .facebookIcon {
     background-size: contain;
-    padding: 0px;
-    height: 80px;
-    width: 80px;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
     cursor: pointer;
     border: none;
     background-color: aliceblue;
     border-radius: 10px;
     margin: 0 10px 25px 0px;
     cursor: pointer;
-    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
 }
 
 .footer {
@@ -96,6 +139,7 @@ h1{
     display: flex;
     padding: 10px;
     flex-direction: column;
+    color: black
 }
 
 .loginBox {
@@ -139,20 +183,22 @@ h1{
 
 
 }
-.button{
+
+.button {
     color: beige;
     background-color: rgba(3, 48, 9);
     border-radius: 5px;
-    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
     width: 100px;
 }
-.buttonA{
+
+.buttonA {
     color: beige;
     background-color: rgba(3, 48, 9);
     border-radius: 5px;
-    box-shadow: 5px 5px 2px  rgba(0,0,0,0.25);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.25);
     width: 70px;
-    margin: 2px ;
+    margin: 2px;
     height: 30px;
     cursor: pointer;
     text-decoration: none;

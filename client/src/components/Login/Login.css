@@ -1,0 +1,20 @@
+.modal-container:hover {
+  cursor: default;
+}
+
+.modal-container button {
+  font-size: 20px;
+  outline: none;
+  padding: 4px 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  background-color: #704021;
+  color: antiquewhite;
+  z-index: 9999;
+}
+
+.modal-container button:hover {
+  background-color: #a5704d;
+  cursor: pointer;
+}

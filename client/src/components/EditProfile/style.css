@@ -1,0 +1,55 @@
+.modal-container:hover {
+  cursor: default;
+}
+
+.modal-container button {
+  font-size: 20px;
+  outline: none;
+  padding: 4px 10px;
+  font-family: 'Source Sans Pro', sans-serif;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  background-color: #704021;
+  color: white;
+}
+
+.modal-container button:hover {
+  background-color: #a5704d;
+  cursor: pointer;
+}
+
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #001044;
+}
+
+.LoginForm .fieldLog {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.fieldLog input {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid #4fb8b8;
+  background-color: unset;
+  outline: none;
+  margin: 10px;
+}
+
+.fieldLog input:focus {
+  border-bottom: 2px solid #3735bd;
+}
+
+.fieldLog label {
+  font-family: 'Merriweather', serif;
+  font-size: 20px;
+}

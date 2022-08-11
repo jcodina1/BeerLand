@@ -13,15 +13,18 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     mail: {
       type: DataTypes.STRING,
     },
-    password: {
+    image: {
       type: DataTypes.STRING,
     },
     dni: {
+      type: DataTypes.INTEGER,
+    },
+    rol:{
       type: DataTypes.STRING,
     }
   });

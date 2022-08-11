@@ -1,0 +1,16 @@
+.loading {
+    position: relative;
+    min-width: 600px;
+    min-height: 606px;
+    margin-top: -300px;
+}
+
+@media (max-width: 900px) {
+    .loading {
+
+        position: relative;
+        min-width: 500px;
+        min-height: 506px;
+        margin-top: -200px;
+    }
+}

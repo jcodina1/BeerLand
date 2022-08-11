@@ -1,0 +1,302 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    background-color: rgb(185, 155, 103, 0.10);
+    padding: 10px;
+    margin-bottom: 5px;
+    border-bottom-color: rgb(35, 20, 10);
+    border-bottom: 2px;
+    z-index: 1;
+}
+
+.item img {
+    height: 80%;
+    margin-left: 50px;
+    margin-right: 50px;
+    /* background-color: blueviolet; */
+    width: 200px;
+
+
+}
+
+.trash {
+    border: 2px solid rgb(35, 20, 10);
+    position: absolute;
+    margin-left: 35%;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: rgb(35, 20, 10);
+    color: rgb(185, 155, 103);
+    border-radius: 50px;
+}
+
+.h2 {
+    height: auto;
+    width: 600px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', sans-serif;
+    color: rgb(35, 20, 10);
+    /* background-color: aqua; */
+    margin-left: 10px;
+    margin-right: 30px;
+    text-align: left;
+}
+
+h3 {
+    color: rgb(35, 20, 10);
+    font-size: 30px;
+    font-weight: bold;
+    height: 40px;
+    width: 120px;
+    /* background-color: aqua; */
+    margin: 0 20px 0 20px;
+}
+
+
+.box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+    width: 550px;
+    /*  background-color: coral; */
+}
+
+.amount2 {
+    padding: 5px 20px;
+    margin: 0 20px 0 20px;
+    /* background-color: yellow; */
+    width: 500px;
+
+}
+
+.amount2 button {
+    font-weight: bold;
+    color: rgb(185, 155, 103);
+    background-color: rgb(35, 20, 10);
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.amount2 input {
+
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 5%;
+    background-color: rgb(185, 155, 103);
+    color: rgb(35, 20, 10);
+    height: 2.6rem;
+    width: 3rem;
+    margin: 10px 10px 10px 10px;
+    border: rgba(255, 159, 41, 0.20) 2px;
+}
+
+@media (max-width:1280px) {
+    .item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 150px;
+        width: 100%;
+        background-color: rgb(185, 155, 103, 0.10);
+        padding: 10px;
+        margin-bottom: 5px;
+        border-bottom-color: rgb(35, 20, 10);
+        border-bottom: 2px;
+        z-index: 1;
+    }
+
+    .item img {
+        height: 80%;
+        margin-left: 50px;
+        margin-right: 50px;
+        /*  background-color: blueviolet; */
+        width: 200px;
+
+
+    }
+
+    .trash {
+        border: 2px solid rgb(35, 20, 10);
+        position: absolute;
+        margin-left: 33%;
+        height: 3rem;
+        width: 3rem;
+        background-color: rgb(35, 20, 10);
+        color: rgb(185, 155, 103);
+        border-radius: 50px;
+    }
+
+    .h2 {
+        height: auto;
+        width: 550px;
+        font-size: 30px;
+        font-family: 'Trebuchet MS', sans-serif;
+        color: rgb(35, 20, 10);
+        /* background-color: aqua; */
+        margin-left: 10px;
+        margin-right: 30px;
+        text-align: left;
+    }
+
+    h3 {
+        color: rgb(35, 20, 10);
+        font-size: 30px;
+        font-weight: bold;
+        height: 40px;
+        width: 100px;
+        /*  background-color: green; */
+        margin: 0 20px 0 20px;
+    }
+
+
+    .box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 70px;
+        width: 550px;
+        /*   background-color: coral; */
+    }
+
+    .amount2 {
+        padding: 5px 20px;
+        margin: 0 20px 0 20px;
+        /*  background-color: yellow; */
+        width: 400px;
+
+    }
+
+    .amount2 button {
+        font-weight: bold;
+        color: rgb(185, 155, 103);
+        background-color: rgb(35, 20, 10);
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .amount2 input {
+
+        font-size: 24px;
+        font-weight: 500;
+        text-align: center;
+        border-radius: 5%;
+        background-color: rgb(185, 155, 103);
+        color: rgb(35, 20, 10);
+        height: 2.6rem;
+        width: 3rem;
+        margin: 10px 10px 10px 10px;
+        border: rgba(255, 159, 41, 0.20) 2px;
+
+    }
+}
+
+@media (max-width:900px) {
+    .item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 150px;
+        width: 100%;
+        background-color: rgb(185, 155, 103, 0.10);
+        padding: 10px;
+        margin-bottom: 5px;
+        border-bottom-color: rgb(35, 20, 10);
+        border-bottom: 2px;
+        z-index: 1;
+    }
+
+    .item img {
+        height: 80%;
+        margin-left: 20px;
+        margin-right: 20px;
+        /* background-color: blueviolet; */
+        width: 150px;
+
+
+    }
+
+    .trash {
+        border: 2px solid rgb(35, 20, 10);
+        position: absolute;
+        margin-left: 33%;
+        height: 2.8rem;
+        width: 2.8rem;
+        background-color: rgb(35, 20, 10);
+        color: rgb(185, 155, 103);
+        border-radius: 50px;
+    }
+
+    .h2 {
+        height: auto;
+        width: 450px;
+        font-size: 22px;
+        font-family: 'Trebuchet MS', sans-serif;
+        color: rgb(35, 20, 10);
+       /*  background-color: aqua; */
+        margin-left: 0px;
+        margin-right: 10px;
+        text-align: left;
+    }
+
+    h3 {
+        color: rgb(35, 20, 10);
+        font-size: 30px;
+        font-weight: bold;
+        height: 40px;
+        width: 100px;
+       /*  background-color: green; */
+        margin: 0 2px 0 2px;
+    }
+
+
+    .box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 70px;
+        width: 400px;
+       /*  background-color: coral; */
+    }
+
+    .amount2 {
+        padding: 5px 8px;
+        margin: 0 45px 0 5px;
+        /* background-color: yellow; */
+        width: 500px;
+
+    }
+
+    .amount2 button {
+        font-weight: bold;
+        color: rgb(185, 155, 103);
+        background-color: rgb(35, 20, 10);
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        margin-bottom: 10px;
+    }
+
+    .amount2 input {
+
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center;
+        border-radius: 5%;
+        background-color: rgb(185, 155, 103);
+        color: rgb(35, 20, 10);
+        height: 2.6rem;
+        width: 3rem;
+        margin: 10px 10px 10px 10px;
+        border: rgba(255, 159, 41, 0.20) 2px;
+
+    }
+}

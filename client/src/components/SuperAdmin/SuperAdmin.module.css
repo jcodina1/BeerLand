@@ -1,0 +1,28 @@
+.superAdmin{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+.container {
+    position: relative;
+    height: 100%;
+    width: calc(100% - 240px);
+    left: 240px;
+    display: flex;
+    margin: 10px;
+}
+
+.container2 {
+    position: relative;
+    height: 100%;
+    width: calc(100% - 78px);
+    left: 78px;
+    display: flex;
+    flex-direction: column;
+
+}
+.side{
+    position: absolute;
+    z-index: 100;
+}

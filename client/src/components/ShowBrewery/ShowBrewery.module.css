@@ -1,0 +1,28 @@
+.showBrewery{
+    padding: 180px 50px 0 50px;
+}
+
+.showBeers {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+    gap: 40px;
+    max-height: 140vh;
+    min-height: 140vh;
+    margin-bottom: 400px;
+}
+
+.cardsBox {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85%;
+    justify-content: space-evenly;
+    /* margin: 1rem, 0; */
+}
+
+.cardsContainer {
+    width: auto;
+    height: auto;
+    /* padding: 0 0 2rem 0; */
+}

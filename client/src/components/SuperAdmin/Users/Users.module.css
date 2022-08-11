@@ -1,0 +1,32 @@
+.purchasesWrapper {
+    direction: flex;
+    flex-direction: column;
+  }
+  
+  .purchaseContainer {
+    direction: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  table{
+      width: 1000px;
+      background-color: white;
+      text-align: left;
+      border-collapse: collapse;
+  }
+  
+  th, td{
+      padding: 10px;
+  }
+  
+  thead{
+      background-color: rgba(185, 155, 103, 0.687);
+      color: white;
+  }
+  
+  tr:hover td{
+      font-size: 14px;
+      font-weight: 600;
+  }
+  
