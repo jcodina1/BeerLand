@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import styles from "./styles.module.css";
 
-export default function SaleDetail({ purchase, mostrar, setMostrar }) {
+export default function SaleDetail({purchase}) {
   const TAX_RATE = 0.05;
   const invoiceSubtotal = purchase.totalPrice;
   const invoiceTaxes = TAX_RATE * invoiceSubtotal;
