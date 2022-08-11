@@ -16,6 +16,7 @@ import { useAuth } from "../Context/Contestautenticacion";
 import Swal from "sweetalert2";
 import NavBar from "../NavBar/NavBar";
 import Container from '@mui/material/Container';
+import notfound from '../../img/notfound.png'
 
 export default function Cart() {
   const [checkout, setCheckout] = useState(false);
@@ -131,7 +132,7 @@ export default function Cart() {
               <div className="empty">
                 <h1>Oops, Your Cart is Empty!</h1>
                 <p>Looks like you haven't added anything to your cart yet</p>
-                <img src="https://jersix.com/wp-content/uploads/2020/10/Empty-pana-uai-2000x1500.png" width='500em' />
+                <img src={notfound} width='500em' />
               </div>
             )}
           </div>
